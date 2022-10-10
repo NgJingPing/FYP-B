@@ -14,7 +14,9 @@
 
 
 <body>
-	<a href="edit_vehicle.php?plateNumber=$plateNumber">link</a>
+	<?php
+		echo "<a href=\"edit_vehicle.php?plateNumber=$plateNumber\">link</a>";
+	?>
 </body>
 
 </html>

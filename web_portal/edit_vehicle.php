@@ -16,20 +16,21 @@
 		$tenantLotNumberErr = $modelErr = $brandErr = $colorErr = $msg = "";
 
 		// get the plate number from the link
-		/*if(isset($_POST["plateNumber"])) {
-			//$plateNumber = $_POST["plateNumber"];
+		if(isset($_GET["plateNumber"])) {
+			$plateNumber = $_GET["plateNumber"];
 		} else {
 			header("Location: database.php");
-		}*/
+		}
 		
-		$plateNumber = "QAA1234";
-	
+		//$plateNumber = "QAA1234";
+
+
 		function test_input($data) {
-            		$data = trim($data);
-           		 $data = stripslashes($data);
-            		$data = htmlspecialchars($data);
-            		return $data;
-        	}
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
 
 		$servername = "localhost";
 		$username = "root";

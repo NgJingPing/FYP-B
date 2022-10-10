@@ -5,7 +5,7 @@
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
 	<link type="text/css" rel="stylesheet" href="style/style.css">
-    <title>ANPR - Entry Log</title>
+    <title>ANPR - Denied Access Log</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -20,20 +20,19 @@
 	$username = "root";
 	$password = "";
 	$dbname = "anprdb";
-    $referenceID = "";
 
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	if($conn->connect_error){
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
+	$myquery = "SELECT * FROM deniedAccess ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);
 ?>
 
 <body>
     <header>
-		<h1>Entry Log</h1>
+		<h1>Denied Access Log</h1>
 	</header>
 
 	<div class="log_container">
@@ -43,7 +42,6 @@
                     <td>Reference ID</td>  
                     <td>Timestamp</td>  
                     <td>License Plate Number</td>  
-                    <td>Tenant Lot Number</td>  
                     <td>Actions</td>  
                 </tr>  
             </thead>  
@@ -54,10 +52,9 @@
                     echo '  
                     <tr>  
                         <td>'.$row["referenceID"].'</td>  
-                        <td>'.$row["entryTime"].'</td>  
+                        <td>'.$row["deniedTime"].'</td>  
                         <td>'.$row["licensePlate"].'</td>  
-                        <td>'.$row["tenantLotNumber"].'</td>  
-                        <td><a href="entry_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+                         <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
                     </tr>  
                     ';  
                 } 

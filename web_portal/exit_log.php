@@ -56,7 +56,7 @@
                         <td>'.$row["exitTime"].'</td>  
                         <td>'.$row["licensePlate"].'</td>  
                         <td>'.$row["tenantLotNumber"].'</td>  
-                        <td><i class="fa fa-external-link"><a href="action.php?referenceID=\"'.$row["referenceID"].'\"></i></td>  
+                        <td><a href="exit_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
                     </tr>  
                     ';  
                 } 
