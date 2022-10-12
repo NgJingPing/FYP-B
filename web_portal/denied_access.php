@@ -4,7 +4,11 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
-	<link type="text/css" rel="stylesheet" href="style/style.css">
+	
+    <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <title>ANPR - Denied Access Log</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -13,6 +17,7 @@
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
 
 <?php
@@ -30,7 +35,30 @@
 	$result = $conn->query($myquery);
 ?>
 
+<!--Sidebar starts here-->
+<div class="navigation_bar">
+  <div class="logo"><img src="images/grab-logo.png"></div> 
+  <div class="navigation_links_container">
+
+  <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+  <div class="navigation_links"><a href="register_vehicle.php" class="active_page"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
+  <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
+    <div class="sub_menu">
+        <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
+        <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+    </div>
+  
+  <div class="navigation_links"><a href="database.php"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
+  <div class="navigation_links"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
+  
+</div>
+</div>
+</div>
+<script src="script/log.js"></script>
+<!--Sidebar ends here-->
 <body>
+    <div class="content-container">
     <header>
 		<h1>Denied Access Log</h1>
 	</header>
@@ -61,11 +89,6 @@
 			?>
 		</table>
 	</div>
+            </div>
 </body>
 </html>
-
-<script>
-    $(document).ready(function(){  
-          $('#log_table').DataTable();  
-     });  
-</script>
