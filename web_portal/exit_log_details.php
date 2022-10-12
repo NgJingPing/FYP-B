@@ -48,12 +48,12 @@
   </div>
   <div class="navigation_links_container">
 
-  <div class="navigation_links"><a href="dashboard.php" class="active_page"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+  <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
   <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
-  <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
+  <div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
         <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
-        <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+        <div class="navigation_links"><a href="exit_log.php" class="active_page"></i>Exit Log</a></div>
     </div>
   
   <div class="navigation_links"><a href="database.php"><i class="fa-solid fa-table"></i>Database</a></div>

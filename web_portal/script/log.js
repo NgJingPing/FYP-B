@@ -1,5 +1,7 @@
 $(document).ready(function(){  
     $('#log_table').DataTable();  
+    $('#entry_log_table').DataTable(); 
+    $('#exit_log_table').DataTable(); 
 });  
 
 //Navbar 
