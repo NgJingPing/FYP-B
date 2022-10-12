@@ -18,7 +18,6 @@ if (!$conn) {
 error_reporting(0);
 
 $vehicle = $_GET['vehicle'];
-$tenant = $_GET['tenant'];
 $del1 = "DELETE FROM vehicle where  licensePlate= '$vehicle'";
 
 $remove_data = [$del1];
