@@ -20,9 +20,8 @@ error_reporting(0);
 $vehicle = $_GET['vehicle'];
 $tenant = $_GET['tenant'];
 $del1 = "DELETE FROM vehicle where  licensePlate= '$vehicle'";
-$del2 = "DELETE FROM tenant where  tenantLotNumber= '$tenant'";
 
-$remove_data = [$del1, $del2];
+$remove_data = [$del1];
 
 foreach($remove_data as $sql){
     $data = mysqli_query($conn,$sql);
