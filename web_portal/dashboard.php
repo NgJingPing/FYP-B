@@ -4,18 +4,29 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Irwan Ngo">
-	<link type="text/css" rel="stylesheet" href="style/style.css">
+	<title>ANPR - Dashboard</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <title>ANPR - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
     <!--Sidebar starts here-->
   <div class="navigation_bar">
-  <div class="logo"><img src="images/grab-logo.png"></div> 
+  <div class="logo_container"> 
+  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
+  <div class="logo_tail"><span>ANPR</span></div> 
+  </div>
   <div class="navigation_links_container">
 
   <div class="navigation_links"><a href="dashboard.php" class="active_page"><i class="fa-solid fa-house"></i>Dashboard</a></div>
@@ -33,12 +44,86 @@
 </div>
 </div>
 </div>
-<script src="script/navbar.js"></script>
+<script src="script/log.js"></script>
 <!--Sidebar ends here-->
 
-<div class="content-container">
-    <h1>Content</h1>
-</div>
+<?php
+    $servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "anprdb";
+    $referenceID = "";
 
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	if($conn->connect_error){
+		die("Connection Failed: " . $conn->connect_error);
+	}
+
+	$entrylogquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
+	$result = $conn->query($entrylogquery);
+?>
+<div class="content-container">
+    <header>
+    <h1>Dashboard(WORK IN PROGRESS)</h1>
+    </header>
+    <div class="dashboard_logs">
+        <div class="dashboard_logs_container">
+		<table id="entry_log_table" class="table table-striped table-bordered">  
+			<thead>  
+                <tr>  
+                    <td>Timestamp</td>  
+                    <td>License Plate Number</td>  
+                    <td>Tenant Lot Number</td>  
+                </tr>  
+            </thead>  
+
+			<?php
+				while($row = mysqli_fetch_array($result))  
+                {  
+                    echo '  
+                    <tr>  
+                        <td>'.$row["entryTime"].'</td>  
+                        <td>'.$row["licensePlate"].'</td>  
+                        <td>'.$row["tenantLotNumber"].'</td>  
+                    </tr>  
+                    ';  
+                } 
+			?>
+		</table>
+            </div>
+
+<?php
+
+	$exitlogquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
+	$result = $conn->query($exitlogquery);
+?>
+
+        <div class="dashboard_logs_container">
+		<table id="exit_log_table" class="table table-striped table-bordered">  
+			<thead>  
+                <tr>  
+                    <td>Timestamp</td>  
+                    <td>License Plate Number</td>  
+                    <td>Tenant Lot Number</td>  
+                 </tr>  
+            </thead>  
+
+			<?php
+				while($row = mysqli_fetch_array($result))  
+                {  
+                    echo '  
+                    <tr>  
+                        <td>'.$row["exitTime"].'</td>  
+                        <td>'.$row["licensePlate"].'</td>  
+                        <td>'.$row["tenantLotNumber"].'</td>  
+                    </tr>  
+                    ';  
+                } 
+			?>
+		</table>
+            </div>
+	</div>
+    
+</div>
 </body>
 </html>
