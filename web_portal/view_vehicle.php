@@ -63,8 +63,8 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
-                        "</td><td>".$row["colour"]."</td><td><span><a href='https://en.wikipedia.org/wiki/Automatic_number-plate_recognition'>Edit</a>
-                        </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]&tenant=$row[tenantLotNumber]'>Remove</a></span>"."</td></tr>";
+                        "</td><td>".$row["colour"]."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'>Edit</a>
+                        </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]'>Remove</a></span>"."</td></tr>";
                     }
                     echo "</table>";
                 } else {
