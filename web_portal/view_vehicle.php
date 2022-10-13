@@ -57,67 +57,75 @@
     <h2>Database</h2>
 
     <section>
-        <table>
-            <tr>
-                <th>License Plate</th>
-                <th>Tenant Lot Number</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Colour</th>
-                <th>Modify/Delete</th>
-            </tr>
+        <div class="log_container">
+            <table id="log_table" class="table table-striped table-bordered">  
+                <thead>
+                    <tr>
+                        <th>License Plate</th>
+                        <th>Tenant Lot Number</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Colour</th>
+                        <th>Modify/Delete</th>
+                    </tr>
+                </thead>
 
-            <?php
+                <?php
                 
-               // set the servername,username and password
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "anprdb";
+                   // set the servername,username and password
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "anprdb";
 
-                // Create connection
-                //The mysqli_connect() function attempts to open a connection to the MySQL Server 
-                //running on host which can be either a host name or an IP address. 
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    // Create connection
+                    //The mysqli_connect() function attempts to open a connection to the MySQL Server 
+                    //running on host which can be either a host name or an IP address. 
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-                // Check connection
-                if (!$conn) {
-                    //The die() function is an alias of the exit() function.
-                    die("Connection failed: " . mysqli_connect_error()); 
-                }
-                //echo "Connected successfully </br>";
-
-                $sql = "SELECT * FROM vehicle";
-                $result = mysqli_query($conn, $sql);
-
-                if (!$result) {
-                    echo '<script>alert("Empty Result!")</script>';
-                }
-
-                $sumprice = 0;
-
-                if (mysqli_num_rows($result)) {
-                    // output data of each row
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
-                        "</td><td>".$row["colour"]."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'>Edit</a>
-                        </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]'>Remove</a></span>"."</td></tr>";
+                    // Check connection
+                    if (!$conn) {
+                        //The die() function is an alias of the exit() function.
+                        die("Connection failed: " . mysqli_connect_error()); 
                     }
-                    echo "</table>";
-                } else {
-                    echo '<script>alert("Empty Result!")</script>';
-                }
+                    //echo "Connected successfully </br>";
+
+                    $sql = "SELECT * FROM vehicle";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (!$result) {
+                        echo '<script>alert("Empty Result!")</script>';
+                    }
+
+                    $sumprice = 0;
+
+                    if (mysqli_num_rows($result)) {
+                        // output data of each row
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
+                            "</td><td>".$row["colour"]."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'>Edit</a>
+                            </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]'>Remove</a></span>"."</td></tr>";
+                        }
+                    } else {
+                        echo '<script>alert("Empty Result!")</script>';
+                    }
 
 
-                mysqli_close($conn);
+                    mysqli_close($conn);
             
             
-            ?>
+                ?>
 
-            </table>
+                </table>
+            </div>
 
     </section>
    
-
 </body>
 </html>
+
+<script>
+    $(document).ready(function(){  
+          $('#log_table').DataTable();  
+     });  
+</script>

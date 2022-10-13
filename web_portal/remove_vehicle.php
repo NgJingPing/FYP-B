@@ -18,9 +18,11 @@ if (!$conn) {
 error_reporting(0);
 
 $vehicle = $_GET['vehicle'];
-$del1 = "DELETE FROM vehicle where  licensePlate= '$vehicle'";
+$del1 = "DELETE FROM entryLog WHERE licensePlate='$vehicle';";
+$del2 =  "DELETE FROM exitLog WHERE licensePlate='$vehicle';";
+$del3 = "DELETE FROM vehicle WHERE licensePlate='$vehicle';";
 
-$remove_data = [$del1];
+$remove_data = [$del1, $del2, $del3];
 
 foreach($remove_data as $sql){
     $data = mysqli_query($conn,$sql);
