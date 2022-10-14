@@ -21,8 +21,8 @@
 </head>
 
 <body>
-	   <!--Sidebar starts here-->
-		<div class="navigation_bar">
+	<!--Sidebar starts here-->
+	<div class="navigation_bar">
   <div class="logo_container"> 
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
   <div class="logo_tail"><span>ANPR</span></div> 
@@ -35,9 +35,10 @@
     <div class="sub_menu">
         <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+		<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
   
-  <div class="navigation_links"><a href="database.php"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
   <div class="navigation_links"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   

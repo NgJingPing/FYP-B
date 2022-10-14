@@ -37,7 +37,7 @@
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
     </div>
   
-  <div class="navigation_links"><a href="database.php"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
   <div class="navigation_links"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
@@ -59,16 +59,81 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$entrylogquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
-	$result = $conn->query($entrylogquery);
 ?>
 <div class="content-container">
     <header>
-    <h1>Dashboard(WORK IN PROGRESS)</h1>
+    <h1>Dashboard</h1>
     </header>
+    <div class="widget_group">
+    <div class="widget_container">
+        <div class="widget_name"><p>Total Flow Today</p></div>
+        <i class="fa-solid fa-right-left"></i>
+        <div class="widget_value">
+        <?php
+        $totalflowquery = "SELECT(SELECT COUNT(*) FROM entrylog WHERE DATE(`entryTime`) = CURDATE()) + (SELECT COUNT(*) FROM exitlog WHERE DATE(`exitTime`) = CURDATE()) AS total";
+        $result = $conn->query($totalflowquery);
+        while($row = mysqli_fetch_array($result)){
+        echo "<p>" . $row['total'] . "</p>";
+        }
+        ?>
+        </div>
+        
+
+    </div>
+    <div class="widget_container">
+        <div class="widget_name"><p>Entries Today</p></div>
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        <div class="widget_value">
+        <?php
+        $totalentryquery = "SELECT COUNT(*) AS totalentry FROM entrylog WHERE DATE(`entryTime`) = CURDATE()";
+        $result = $conn->query($totalentryquery);
+        while($row = mysqli_fetch_array($result)){
+        echo "<p>" . $row['totalentry'] . "</p>";
+        }
+        ?>
+        </div>
+        
+
+    </div>
+    <div class="widget_container">
+        <div class="widget_name"><p>Exits Today</p></div>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <div class="widget_value">
+        <?php
+         $totalexitquery = "SELECT COUNT(*) AS totalexit FROM exitlog WHERE DATE(`exitTime`) = CURDATE()";
+         $result = $conn->query($totalexitquery);
+         while($row = mysqli_fetch_array($result)){
+         echo "<p>" . $row['totalexit'] . "</p>";
+         }
+        ?>
+        </div>
+        
+
+    </div>
+    <div class="widget_container">
+        <div class="widget_name"><p>Denied Entries</p></div>
+        <i class="fa-solid fa-ban"></i>
+        <div class="widget_value">
+        <?php
+        $totalflowquery = "SELECT(SELECT COUNT(*) FROM entrylog WHERE DATE(`entryTime`) = CURDATE()) + (SELECT COUNT(*) FROM exitlog WHERE DATE(`exitTime`) = CURDATE()) AS total";
+        $result = $conn->query($totalflowquery);
+        while($row = mysqli_fetch_array($result)){
+        echo "<p>" . $row['total'] . "</p>";
+        }
+        ?>
+        </div>
+        
+
+    </div>
+    </div>
+    <?php
+    $entrylogquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
+	$result = $conn->query($entrylogquery);
+    ?>
     <div class="dashboard_logs">
         <div class="dashboard_logs_container">
-		<table id="entry_log_table" class="table table-striped table-bordered">  
+        <h1>Recent Entries</h1>
+		<table id="entry_log_table" class="table table-borderless">  
 			<thead>  
                 <tr>  
                     <td>Timestamp</td>  
@@ -99,7 +164,8 @@
 ?>
 
         <div class="dashboard_logs_container">
-		<table id="exit_log_table" class="table table-striped table-bordered">  
+        <h1>Recent Exits</h1>
+		<table id="exit_log_table" class="table table-borderless">  
 			<thead>  
                 <tr>  
                     <td>Timestamp</td>  

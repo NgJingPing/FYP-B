@@ -17,15 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/style.css">
-    <style>
-        table, th, td, tr {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td, td > span{
-            padding: 8px;
-        }
-    </style>
 </head>
 <body>
     <!--Sidebar starts here-->
@@ -42,9 +33,10 @@
     <div class="sub_menu">
         <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+        <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
   
-  <div class="navigation_links"><a href="database.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links"><a href="view_vehicle.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
   <div class="navigation_links"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
@@ -53,7 +45,7 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
-
+<div class="content-container">
     <h2>Database</h2>
 
     <section>
@@ -120,12 +112,6 @@
             </div>
 
     </section>
-   
+</div>
 </body>
 </html>
-
-<script>
-    $(document).ready(function(){  
-          $('#log_table').DataTable();  
-     });  
-</script>

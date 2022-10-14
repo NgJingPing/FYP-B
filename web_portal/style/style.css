@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body{
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     min-width: 1280px;
@@ -8,7 +12,7 @@ body{
 /*Navbar css starts here*/
 .navigation_bar {
     height: 100%;
-    width: 250px; 
+    min-width: 250px; 
     position: fixed; 
     z-index: 1; 
     top: 0; 
@@ -18,7 +22,7 @@ body{
     padding-top: 40px;
   }
 
-  .navigation_bar .logo_container {
+.navigation_bar .logo_container {
     display: block;
     margin: 0px 32px;
 }
@@ -27,7 +31,7 @@ body{
   color: rgb(223, 246, 255);
 }
 
-  .navigation_bar .logo {
+.navigation_bar .logo {
     font-size: 48px;
     color: rgb(71, 181, 255);
     font-weight: bold;
@@ -37,9 +41,9 @@ body{
 .navigation_bar .logo_tail {
   text-align: right;
   font-size: 12px;
-  color: rgb(223, 246, 255);
+  color: #DFF6FF;
   font-weight: lighter;
-  font-family: Lato, Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 
   .navigation_bar a {
@@ -82,26 +86,84 @@ body{
   }
 
   @media screen and (max-height: 540px) {
-    .navigation_bar {padding-top: 15px;}
+    .navigation_bar {padding-top: 5px;}
     .navigation_bar a {font-size: 20px;}
     .fa-angle-right {padding-left: 50px;}
+    .navigation_links_container{margin-top: 10px;}
   }
 /*Navbar css ends here*/
 
   .content-container{
-    margin-left: 250px;
+    margin-top: 20px;
+    margin-left:300px;
+  }
+  header h1{
+    margin: 10px;
   }
 
-  .dashboard_logs{
-    margin-left: auto;
-    margin-right: auto;
+  .widget_group{
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
 
-  .dashboard_logs_container {
+  .widget_container{
+    height: 140px;
+    padding: 10px 10px 20px 10px;
+    margin: 10px;
+    width: 25%;
+    background: #06283D;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+
+  .widget_name, .widget_value{
     display: block;
-    margin: 20px;
+    flex-direction: row; 
+    color: #DFF6FF;
+  }
+
+  .widget_name{
+    font-size: 25px;
+  }
+
+  .widget_value{
+    font-size: 30px;
+  }
+
+  .widget_container i{
+    margin: 0px 20px 0px 0px;
+    text-align: right;
+    font-size: 35px;
+    color:#47B5FF;
+    display: block;
+  }
+  
+  .dashboard_logs{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+.dashboard_logs_container {
+    color: #06283D;
+    margin: 10px;
+    display: block;
+    width: 50%;
+    padding: 0px 10px;
+    background-color:#DFF6FF;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.table{
+    width: 100%;
+}
+
+thead{
+  color: #DFF6FF;
+  background-color: #06283D;
+
 }
 
 .log_container {
