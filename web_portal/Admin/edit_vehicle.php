@@ -75,7 +75,7 @@
 		if(isset($_GET["plateNumber"])) {
 			$plateNumber = $_GET["plateNumber"];
 		} else {
-			header("Location: dashboard.php");
+			header("Location: view_vehivle.php");
 		}
 		
 		//$plateNumber = "QAA1234";
