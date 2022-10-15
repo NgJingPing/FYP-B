@@ -4,12 +4,12 @@
 	session_start();
 	// If $_SESSION['email'] not set, force redirect to login page 
 	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) { 
-		header("Location: login.php");
+		header("Location: ../login.php");
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
 		$session_type = $_SESSION['type'];
 		if($session_type != "Admin") {
-			header("Location: login.php");
+			header("Location: ../login.php");
 		}
 	}
 ?> 
@@ -20,7 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
-    <title>ANPR - Exit Log Details</title>
+    <title>ANPR - Exit Log</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -37,8 +37,7 @@
 </head>
 
 <?php
-	$id = $_GET["referenceID"];
-	$servername = "localhost";
+    $servername = "localhost";
 	$username = "root";
 	$password = "";
 	$dbname = "anprdb";
@@ -48,16 +47,13 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, exitlog.image, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate WHERE exitlog.referenceID = $id; ";
+	$myquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);
-	if(mysqli_num_rows($result) == 1) {
-		$item = $result->fetch_assoc();
-	}
 ?>
 
 <body>
-	<!--Sidebar starts here-->
-	<div class="navigation_bar">
+  <!--Sidebar starts here-->
+  <div class="navigation_bar">
   <div class="logo_container"> 
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
   <div class="logo_tail"><span>ANPR</span></div> 
@@ -70,7 +66,7 @@
     <div class="sub_menu">
         <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
         <div class="navigation_links"><a href="exit_log.php" class="active_page"></i>Exit Log</a></div>
-		<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
+        <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
   
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
@@ -84,24 +80,38 @@
 <!--Sidebar ends here-->
 
 <div class="content-container">
-	<header>
-		<h1>Exit Log Details</h1>
+    <header>
+		<h1>Exit Log</h1>
 	</header>
 
-	<section>
-		<div class="container_left">
-			<p>Tenant Lot Number: <?php echo $item["tenantLotNumber"]; ?></p>
-			<p>Vehicle Brand: <?php echo $item["brand"]; ?></p>
-			<p>Vehicle Model: <?php echo $item["model"]; ?></p>
-			<p>Vehicle Colour: <?php echo $item["colour"]; ?></p>
-		</div>
-		<div class="container_right">
-			<p> <?php echo '<img height = "250" width = "250" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
-			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
-			<p>Timestamp:  <?php echo $item["exitTime"] ?></p>
-			<p>Mode: Exit</p>
-		</div>
-	</section>
-</div>
+	<div class="log_container">
+		<table id="log_table" class="table table-striped table-bordered">  
+			<thead>  
+                <tr>  
+                    <td>Reference ID</td>  
+                    <td>Timestamp</td>  
+                    <td>License Plate Number</td>  
+                    <td>Tenant Lot Number</td>  
+                    <td>Actions</td>  
+                </tr>  
+            </thead>  
+
+			<?php
+				while($row = mysqli_fetch_array($result))  
+                {  
+                    echo '  
+                    <tr>  
+                        <td>'.$row["referenceID"].'</td>  
+                        <td>'.$row["exitTime"].'</td>  
+                        <td>'.$row["licensePlate"].'</td>  
+                        <td>'.$row["tenantLotNumber"].'</td>  
+                        <td><a href="exit_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+                    </tr>  
+                    ';  
+                } 
+			?>
+		</table>
+	</div>
+            </div>
 </body>
 </html>

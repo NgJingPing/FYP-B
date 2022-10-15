@@ -1,4 +1,6 @@
 <?php
+  session_start();
+  session_destroy();
   $error_msg = "";
   $email = $pass = "";
 
@@ -34,7 +36,11 @@
 			session_start();
 			$_SESSION['email'] = $email;
             $_SESSION['type'] = $user_type;
-			header("location:dashboard.php");
+            if($user_type == "Admin") {
+                header("location: Admin/dashboard.php");
+            } else {
+                header("location: Security/dashboard.php");
+            }
 		  } else {
 			$error_msg = "<p>Invalid password or login id</p>";
 		  }

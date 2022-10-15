@@ -4,15 +4,15 @@
 	session_start();
 	// If $_SESSION['email'] not set, force redirect to login page 
 	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) { 
-		header("Location: login.php");
+		header("Location: ../login.php");
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
 		$session_type = $_SESSION['type'];
 		if($session_type != "Admin") {
-			header("Location: login.php");
+			header("Location: ../login.php");
 		}
 	}
-?> 
+?>  
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -20,9 +20,8 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
-    <title>ANPR - Denied Access Log Details</title>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+	<title>ANPR - Denied Access Log</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
@@ -34,11 +33,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/style.css">
-</head>
 
 <?php
-	$id = $_GET["referenceID"];
-	$servername = "localhost";
+    $servername = "localhost";
 	$username = "root";
 	$password = "";
 	$dbname = "anprdb";
@@ -48,14 +45,10 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT * FROM deniedAccess WHERE deniedAccess.referenceID = $id; ";
+	$myquery = "SELECT * FROM deniedAccess ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);
-	if(mysqli_num_rows($result) == 1) {
-		$item = $result->fetch_assoc();
-	}
 ?>
 
-<body>
 <!--Sidebar starts here-->
 <div class="navigation_bar">
   <div class="logo_container"> 
@@ -82,17 +75,38 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
-
-	<header>
-		<h1>Denied Access Log Details</h1>
+<body>
+    <div class="content-container">
+    <header>
+		<h1>Denied Access Log</h1>
 	</header>
 
-	<section>
-		<div class="container_right">
-			<p> <?php echo '<img height = "250" width = "250" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
-			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
-			<p>Timestamp:  <?php echo $item["deniedTime"] ?></p>
-		</div>
-	</section>
+	<div class="log_container">
+		<table id="log_table" class="table table-striped table-bordered">  
+			<thead>  
+                <tr>  
+                    <td>Reference ID</td>  
+                    <td>Timestamp</td>  
+                    <td>License Plate Number</td>  
+                    <td>Actions</td>  
+                </tr>  
+            </thead>  
+
+			<?php
+				while($row = mysqli_fetch_array($result))  
+                {  
+                    echo '  
+                    <tr>  
+                        <td>'.$row["referenceID"].'</td>  
+                        <td>'.$row["deniedTime"].'</td>  
+                        <td>'.$row["licensePlate"].'</td>  
+                         <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+                    </tr>  
+                    ';  
+                } 
+			?>
+		</table>
+	</div>
+            </div>
 </body>
 </html>

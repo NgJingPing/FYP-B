@@ -4,15 +4,15 @@
 	session_start();
 	// If $_SESSION['email'] not set, force redirect to login page 
 	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) { 
-		header("Location: login.php");
+		header("Location: ../login.php");
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
 		$session_type = $_SESSION['type'];
 		if($session_type != "Admin") {
-			header("Location: login.php");
+			header("Location: ../login.php");
 		}
 	}
-?> 
+?>  
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -20,8 +20,9 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
-	<title>ANPR - Denied Access Log</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+    <title>ANPR - Exit Log Details</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
@@ -33,9 +34,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/style.css">
+</head>
 
 <?php
-    $servername = "localhost";
+	$id = $_GET["referenceID"];
+	$servername = "localhost";
 	$username = "root";
 	$password = "";
 	$dbname = "anprdb";
@@ -45,12 +48,16 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT * FROM deniedAccess ORDER BY referenceID DESC; ";
+	$myquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, exitlog.image, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate WHERE exitlog.referenceID = $id; ";
 	$result = $conn->query($myquery);
+	if(mysqli_num_rows($result) == 1) {
+		$item = $result->fetch_assoc();
+	}
 ?>
 
-<!--Sidebar starts here-->
-<div class="navigation_bar">
+<body>
+	<!--Sidebar starts here-->
+	<div class="navigation_bar">
   <div class="logo_container"> 
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
   <div class="logo_tail"><span>ANPR</span></div> 
@@ -62,8 +69,8 @@
   <div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
         <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
-        <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
-        <div class="navigation_links"><a href="denied_access.php" class="active_page"></i>Denial Log</a></div>
+        <div class="navigation_links"><a href="exit_log.php" class="active_page"></i>Exit Log</a></div>
+		<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
   
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
@@ -75,38 +82,26 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
-<body>
-    <div class="content-container">
-    <header>
-		<h1>Denied Access Log</h1>
+
+<div class="content-container">
+	<header>
+		<h1>Exit Log Details</h1>
 	</header>
 
-	<div class="log_container">
-		<table id="log_table" class="table table-striped table-bordered">  
-			<thead>  
-                <tr>  
-                    <td>Reference ID</td>  
-                    <td>Timestamp</td>  
-                    <td>License Plate Number</td>  
-                    <td>Actions</td>  
-                </tr>  
-            </thead>  
-
-			<?php
-				while($row = mysqli_fetch_array($result))  
-                {  
-                    echo '  
-                    <tr>  
-                        <td>'.$row["referenceID"].'</td>  
-                        <td>'.$row["deniedTime"].'</td>  
-                        <td>'.$row["licensePlate"].'</td>  
-                         <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
-                    </tr>  
-                    ';  
-                } 
-			?>
-		</table>
-	</div>
-            </div>
+	<section>
+		<div class="container_left">
+			<p>Tenant Lot Number: <?php echo $item["tenantLotNumber"]; ?></p>
+			<p>Vehicle Brand: <?php echo $item["brand"]; ?></p>
+			<p>Vehicle Model: <?php echo $item["model"]; ?></p>
+			<p>Vehicle Colour: <?php echo $item["colour"]; ?></p>
+		</div>
+		<div class="container_right">
+			<p> <?php echo '<img height = "250" width = "250" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
+			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
+			<p>Timestamp:  <?php echo $item["exitTime"] ?></p>
+			<p>Mode: Exit</p>
+		</div>
+	</section>
+</div>
 </body>
 </html>
