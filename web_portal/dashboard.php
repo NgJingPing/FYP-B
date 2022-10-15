@@ -115,10 +115,10 @@
         <i class="fa-solid fa-ban"></i>
         <div class="widget_value">
         <?php
-        $totalflowquery = "SELECT(SELECT COUNT(*) FROM entrylog WHERE DATE(`entryTime`) = CURDATE()) + (SELECT COUNT(*) FROM exitlog WHERE DATE(`exitTime`) = CURDATE()) AS total";
-        $result = $conn->query($totalflowquery);
+        $totaldeniedquery = "SELECT COUNT(*) AS totaldenied FROM deniedaccess WHERE DATE(`deniedTime`) = CURDATE()";
+        $result = $conn->query($totaldeniedquery);
         while($row = mysqli_fetch_array($result)){
-        echo "<p>" . $row['total'] . "</p>";
+        echo "<p>" . $row['totaldenied'] . "</p>";
         }
         ?>
         </div>
@@ -127,7 +127,7 @@
     </div>
     </div>
     <?php
-    $entrylogquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
+    $entrylogquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate WHERE DATE(entryTime) = CURDATE()";
 	$result = $conn->query($entrylogquery);
     ?>
     <div class="dashboard_logs">
@@ -159,7 +159,7 @@
 
 <?php
 
-	$exitlogquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC; ";
+	$exitlogquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate WHERE DATE(exitTime) = CURDATE()";
 	$result = $conn->query($exitlogquery);
 ?>
 
