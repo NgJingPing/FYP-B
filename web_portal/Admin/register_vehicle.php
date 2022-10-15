@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style/style.css">
+    <link type="text/css" rel="stylesheet" href="style/registration.css">
 </head>
 
 <body>
