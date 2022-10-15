@@ -1,10 +1,12 @@
 <?php
   $error_msg = "";
   $email = $pass = "";
+
   $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "anprdb";
+
   $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
     if($conn->connect_error){
       die("Connection Failed: " . $conn->connect_error);
@@ -31,6 +33,7 @@
       if($pass == $dbpass) {
 			session_start();
 			$_SESSION['email'] = $email;
+            $_SESSION['type'] = $user_type;
 			header("location:dashboard.php");
 		  } else {
 			$error_msg = "<p>Invalid password or login id</p>";
@@ -42,7 +45,7 @@
 
 <head>
   <meta charset = "utf-8">
-  <meta name = "author" content = "Jeffery SIa">
+  <meta name = "author" content = "Jeffery Sia">
   <title>ANPR - Login</title>
 <style>
   body {font-family: Arial, Helvetica, sans-serif;}
