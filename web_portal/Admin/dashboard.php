@@ -51,6 +51,7 @@
     <div class="sub_menu">
         <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+        <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
   
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>

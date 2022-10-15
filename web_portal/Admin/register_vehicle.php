@@ -20,7 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
-    <title>ANPR - Register</title>
+    <title>ANPR - Registration</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -163,7 +163,7 @@
 	?>
 	<div class="content-container">
 	<header>
-		<h1>Register</h1>
+		<h1>Registration</h1>
 	</header>
 
 	<section>
@@ -171,20 +171,36 @@
 			<div class="com_con">
 				<fieldset>
 					<legend>Vehicle Information</legend>
-					<p><span class="error">* required field</span></p>
 
-					<p>Tenant Lot Number: <input type="text" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>"><span class="error"> * <?php echo $tenantLotNumberErr;?></span></p>
-
-					<p>License Plate Number: <input type="text" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>"><span class="error"> * <?php echo $plateNumberErr;?></span></p>
-
-					<p>Brand: <input type="text" name="brand" value="<?php echo isset($_POST["brand"]) ? $_POST["brand"] : ''; ?>"><span class="error"> * <?php echo $brandErr;?></span></p>
-
-
-					<p>Model: <input type="text" name="model" value="<?php echo isset($_POST["model"]) ? $_POST["model"] : ''; ?>"><span class="error"> * <?php echo $modelErr;?></span></p>
-
-					<p>Colour: <input type="text" name="color" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>"><span class="error"> * <?php echo $colorErr;?></span></p>
-
-					 <p><input type="submit" name="submit" value="Submit"></p>
+					<div class="form_group">
+					<div class="form_container">
+					<label>Tenant Lot Number</label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
+					</div>
+					<div class="form_container">
+					<label>License Plate Number</label><span class="error"> * <?php echo $plateNumberErr;?></span><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
+					</div>	
+					</div>
+					<div class="form_group">
+					<div class="form_container">
+					<label>Brand</label><span class="error"> * <?php echo $brandErr;?></span><input type="text" name="brand" class="form_control" value="<?php echo isset($_POST["brand"]) ? $_POST["brand"] : ''; ?>">
+					</div>
+					<div class="form_container">
+					<label>Model</label><span class="error"> * <?php echo $modelErr;?></span><input type="text" name="model" class="form_control" value="<?php echo isset($_POST["model"]) ? $_POST["model"] : ''; ?>">
+					</div>
+					</div>
+					<div class="form_group">
+					<div class="form_container">
+					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
+					</div>
+					<div class="form_group">
+					<div class="form_container">
+					 <button type="submit" class="button_submit" name ="submit" value="Submit">Submit</button>
+					</div>
+					<div class="form_container">
+					<button onclick="window.location='dashboard.php';" type="button" class="button_cancel">Cancel</button>
+					</div>
+					</div>
+					</div>
 				</fieldset>
 				 <p class="message"><span class="successMsg"><?php echo $msg;?></span><p>
 			</div>
