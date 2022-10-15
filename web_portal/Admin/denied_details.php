@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style/style.css">
+    <link type="text/css" rel="stylesheet" href="style/denied_details.css">
 </head>
 
 <?php
@@ -82,17 +82,18 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
-
+<div class="content-container">
 	<header>
 		<h1>Denied Access Log Details</h1>
 	</header>
 
 	<section>
-		<div class="container_right">
-			<p> <?php echo '<img height = "250" width = "250" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
+		<div class="main_container">
+			<p> <?php echo '<img class="db_image" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
 			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
 			<p>Timestamp:  <?php echo $item["deniedTime"] ?></p>
 		</div>
 	</section>
+</div>
 </body>
 </html>

@@ -62,7 +62,9 @@
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
 <div class="content-container">
-    <h2>Database</h2>
+    <header>
+        <h1>Database</h1>
+    </header>
 
     <section>
         <div class="log_container">

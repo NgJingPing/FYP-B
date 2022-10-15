@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style/style.css">
+    <link type="text/css" rel="stylesheet" href="style/log_details.css">
 </head>
 
 <?php
@@ -89,6 +89,7 @@
 	</header>
 
 	<section>
+		<div class="main_container">
 		<div class="container_left">
 			<p>Tenant Lot Number: <?php echo $item["tenantLotNumber"]; ?></p>
 			<p>Vehicle Brand: <?php echo $item["brand"]; ?></p>
@@ -96,10 +97,10 @@
 			<p>Vehicle Colour: <?php echo $item["colour"]; ?></p>
 		</div>
 		<div class="container_right">
-			<p> <?php echo '<img height = "250" width = "250" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
+			<p> <?php echo '<img class="db_image" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
 			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
 			<p>Timestamp:  <?php echo $item["exitTime"] ?></p>
-			<p>Mode: Exit</p>
+		</div>
 		</div>
 	</section>
 </div>
