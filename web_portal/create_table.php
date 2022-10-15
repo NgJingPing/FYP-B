@@ -7,8 +7,8 @@ $password = "";
 $dbname = "anprdb";
 
 // Create connection
-//The mysqli_connect() function attempts to open a connection to the MySQL Server 
-//running on host which can be either a host name or an IP address. 
+//The mysqli_connect() function attempts to open a connection to the MySQL Server
+//running on host which can be either a host name or an IP address.
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // sql to create Enquiry table
@@ -19,7 +19,7 @@ $sql1 = "CREATE TABLE tenant (
 
 $sql2 = "CREATE TABLE vehicle (
 	licensePlate VARCHAR(20) PRIMARY KEY NOT NULL,
-	tenantLotNumber VARCHAR(6) NOT NULL, 
+	tenantLotNumber VARCHAR(6) NOT NULL,
 	brand VARCHAR(20) NOT NULL,
 	model VARCHAR(20) NOT NULL,
 	colour VARCHAR(20) NOT NULL,
@@ -29,7 +29,7 @@ $sql2 = "CREATE TABLE vehicle (
 
 $sql3 = "CREATE TABLE entryLog (
    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   licensePlate VARCHAR(20) NOT NULL, 
+   licensePlate VARCHAR(20) NOT NULL,
    entryTime DATETIME NOT NULL,
    image blob NOT NULL,
    FOREIGN KEY(licensePlate) REFERENCES vehicle(licensePlate)
@@ -38,19 +38,19 @@ $sql3 = "CREATE TABLE entryLog (
 
 $sql4 = "CREATE TABLE exitLog (
    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   licensePlate VARCHAR(20) NOT NULL, 
+   licensePlate VARCHAR(20) NOT NULL,
    exitTime DATETIME NOT NULL,
    image blob NOT NULL,
    FOREIGN KEY(licensePlate) REFERENCES vehicle(licensePlate)
-   );    
+   );
 ";
 
 $sql5 = "CREATE TABLE deniedAccess(
    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   licensePlate VARCHAR(20) NOT NULL, 
+   licensePlate VARCHAR(20) NOT NULL,
    deniedTime DATETIME NOT NULL,
    image blob NOT NULL
-   );  
+   );
 ";
 
 $sql6 = "CREATE TABLE admin (
@@ -60,7 +60,7 @@ $sql6 = "CREATE TABLE admin (
    isAdvanced BOOLEAN NOT NULL
    );
 ";
-   
+
 $sql7 = "CREATE TABLE security (
    securityID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
    email VARCHAR(256) NOT NULL,
@@ -134,6 +134,46 @@ foreach($vehicle_datas as $sql){
 		//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	 }
 }
+
+$password0 = hash("sha256", "naim000");
+$password1 = hash("sha256", "naim001");
+$password2 = hash("sha256", "naim002");
+$sql1 = "INSERT INTO admin (email, password, isAdvanced)
+VALUES ('naim000@naim.com.my', '$password0', 'TRUE')";
+$sql2 = "INSERT INTO admin (email, password, isAdvanced)
+VALUES ('naim001@naim.com.my', '$password1', 'FALSE')";
+$sql3 = "INSERT INTO admin (email, password, isAdvanced)
+VALUES ('naim002@naim.com.my', '$password2', 'FALSE')";
+
+$admin_datas = [$sql1, $sql2, $sql3];
+
+foreach($admin_datas as $sql){
+	if (mysqli_query($conn, $sql)) {
+		//echo "New record created successfully";
+	 } else {
+		//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	 }
+}
+
+$password0 = hash("sha256", "naim100");
+$password1 = hash("sha256", "naim101");
+$password2 = hash("sha256", "naim102");
+$sql1 = "INSERT INTO security (email, password)
+VALUES ('naim100@naim.com.my', '$password0')";
+$sql2 = "INSERT INTO security (email, password)
+VALUES ('naim101@naim.com.my', '$password1')";
+$sql3 = "INSERT INTO security (email, password)
+VALUES ('naim102@naim.com.my', '$password2')";
+
+$security_datas = [$sql1, $sql2, $sql3];
+
+foreach($security_datas as $sql){
+	if (mysqli_query($conn, $sql)) {
+		//echo "New record created successfully";
+	 } else {
+		//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	 }
+ }
 
 mysqli_close($conn);
 header("location:view_vehicle.php");
