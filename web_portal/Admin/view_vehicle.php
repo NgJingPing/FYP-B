@@ -54,7 +54,7 @@
   
   <div class="navigation_links"><a href="view_vehicle.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
-  <div class="navigation_links"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
+  <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
 </div>
 </div>
@@ -113,8 +113,8 @@
                         // output data of each row
                         while($row = mysqli_fetch_assoc($result)) {
                             echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
-                            "</td><td>".$row["colour"]."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'>Edit</a>
-                            </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]'>Remove</a></span>"."</td></tr>";
+                            "</td><td>".$row["colour"]."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'><i class='fa-solid fa-pen-to-square'></i></a>
+                            </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]'><i class='fa-solid fa-trash-can'></i></a></span>"."</td></tr>";
                         }
                     } else {
                         echo '<script>alert("Empty Result!")</script>';
