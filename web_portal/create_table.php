@@ -176,7 +176,7 @@ foreach($security_datas as $sql){
  }
 
 mysqli_close($conn);
-header("location:view_vehicle.php");
+header("location:login.php");
 exit();
 
 ?>
