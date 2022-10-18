@@ -1,49 +1,51 @@
 <?php
-  session_start();
-  session_destroy();
-  $error_msg = "";
-  $email = $pass = "";
+session_start();
+session_destroy();
+$error_msg = "";
+$email = $pass = $user_type = "";
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "anprdb";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "anprdb";
 
-  $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
+$conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
     if($conn->connect_error){
-      die("Connection Failed: " . $conn->connect_error);
+        die("Connection Failed: " . $conn->connect_error);
     }
 
     if(isset($_POST["login_button"])) {// If login button is clicked, do the following
-      $user_type = $_POST["user_type"];
-  		$email = mysqli_escape_string($conn, $_POST["email"]);
-  		$pass = mysqli_escape_string($conn, $_POST["password"]);
-      if ($user_type == "Admin"){
-        $myquery = "SELECT password FROM admin WHERE email = '$email';";
-      }
-      elseif ($user_type == "Security") {
-        $myquery = "SELECT password FROM security WHERE email = '$email';";
-      }
-  		//$myquery = "SELECT password FROM admin WHERE email = '$email';";
-  		$sql = mysqli_query($conn, $myquery);
-  		$pass = hash("sha256", $pass);
-  		$dbpass = "";
-  		while($row = mysqli_fetch_assoc($sql)) {
-  			$dbpass = $row['password'];
-  		}
+  	    $email = mysqli_escape_string($conn, $_POST["email"]);
+  	    $pass = mysqli_escape_string($conn, $_POST["password"]);
 
-      if($pass == $dbpass) {
-			session_start();
-			$_SESSION['email'] = $email;
+        $myquery = "SELECT password, role FROM users WHERE email = '$email';";
+
+  	    $sql = mysqli_query($conn, $myquery);
+  	    $pass = hash("sha256", $pass);
+  	    $dbpass = "";
+        $role = "";
+  	    while($row = mysqli_fetch_assoc($sql)) {
+  		    $dbpass = $row['password'];
+            $role = $row['role'];
+  	    }
+
+        if($pass == $dbpass) {
+            if($role == 1) {
+                $user_type = "Admin";
+            } else {
+                $user_type = "Security";
+            }
+		    session_start();
+		    $_SESSION['email'] = $email;
             $_SESSION['type'] = $user_type;
             if($user_type == "Admin") {
                 header("location: Admin/dashboard.php");
             } else {
                 header("location: Security/dashboard.php");
             }
-		  } else {
-			$error_msg = "<p>Invalid password or login id</p>";
-		  }
+		} else {
+		$error_msg = "<p>Invalid password or login id</p>";
+		}  
     }
 ?>
 <!DOCTYPE html>
