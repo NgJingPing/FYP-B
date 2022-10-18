@@ -67,7 +67,8 @@
 	<?php
 		//define variable and set to empty value
 		$tenantLotNumber = $plateNumber = $model = $brand = $color = "";
-		$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = $msg = "";
+		$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
+		$active = TRUE;
 
 		function test_input($data) {
             $data = trim($data);
@@ -94,7 +95,7 @@
 			} else {
 				$tenantLotNumber = test_input($_POST["tenantLotNumber"]);
 				$tenantLotNumber = str_replace(' ', '', $tenantLotNumber);
-				$myquery = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
+				/*$myquery = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
 				$sql = mysqli_query($conn, $myquery);
 				$result = mysqli_num_rows($sql);
 
@@ -103,7 +104,7 @@
 					$stmt = $conn->prepare($myquery2);
 					$stmt->bind_param("s", $tenantLotNumber);
 					$stmt->execute();
-				}
+				}*/
 			}
 
 			if(empty($_POST["plateNumber"])) {
@@ -113,14 +114,6 @@
 			} else {
 				$plateNumber = test_input($_POST["plateNumber"]);
 				$plateNumber = str_replace(' ', '', $plateNumber);
-				$myquery = "SELECT licensePlate FROM vehicle WHERE licensePlate = '$plateNumber';";
-				$sql = mysqli_query($conn, $myquery);
-				$result = mysqli_num_rows($sql);
-
-				if($result > 0){
-					$plateNumberErr = "A vehicle with the same License plate number already exist.";
-					$plateNumber = "";
-				}
 			}
 
 			if(empty($_POST["brand"])) {
@@ -147,17 +140,24 @@
 				$color = test_input($_POST["color"]);
 			}
 
+			$check = isset($_POST['active']) ? "checked" : "unchecked";
+			if($check == "checked") { 
+				$active = TRUE;
+			} else { 
+				$active = FALSE; 
+			}
+
 			if($tenantLotNumber != "" && $plateNumber != "" && $brand != "" && $model != "" && $color != "")
 			{
-				$myquery = "INSERT INTO vehicle (licensePlate, tenantLotNumber, brand, model, colour) VALUES (?, ?, ?, ?, ?);";
+				$myquery = "INSERT INTO vehicle (tenantLotNumber, licensePlate, brand, model, colour, isActive) VALUES (?, ?, ?, ?, ?, ?);";
 				$stmt = $conn->prepare($myquery);
-				$stmt->bind_param("sssss", $plateNumber, $tenantLotNumber, $brand, $model, $color);
+				$stmt->bind_param("ssssss", $tenantLotNumber, $plateNumber, $brand, $model, $color, $active);
 				$stmt->execute();
 				$conn->close();
 				$msg = "Record is saved.";
-				$tenantLotNumber = $plateNumber = $model = $brand = $color = "";
-				$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = "";
-				$_POST["plateNumber"] = $_POST["tenantLotNumber"] = $_POST["brand"] = $_POST["model"] = $_POST["color"] = "";
+				$tenantLotNumber = $plateNumber = $model = $brand = $color = $active= "";
+				$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $activeErr = $colorErr = "";
+				$_POST["plateNumber"] = $_POST["tenantLotNumber"] = $_POST["brand"] = $_POST["model"] = $_POST["color"] = $_POST["active"] = "";
 			}
 		}
 	?>
@@ -191,6 +191,8 @@
 					<div class="form_group">
 					<div class="form_container">
 					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
+					</div>
+					<label>Active</label><span class="error"> * <?php echo $activeErr;?></span> <input type="checkbox" checked="checked" name="active" class="form_control">
 					</div>
 					<div class="form_group">
 					<div class="form_container">
