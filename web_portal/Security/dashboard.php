@@ -158,16 +158,18 @@
             </thead>  
 
 			<?php
-				while($row = mysqli_fetch_array($result))  
-                {  
-                    echo '  
-                    <tr>  
-                        <td>'.$row["entryTime"].'</td>  
-                        <td>'.$row["licensePlate"].'</td>  
-                        <td>'.$row["tenantLotNumber"].'</td>  
-                    </tr>  
-                    ';  
-                } 
+                if($result){
+                    while($row = mysqli_fetch_array($result))  
+                    {  
+                        echo '  
+                        <tr>  
+                            <td>'.$row["entryTime"].'</td>  
+                            <td>'.$row["licensePlate"].'</td>  
+                            <td>'.$row["tenantLotNumber"].'</td>  
+                        </tr>  
+                        ';  
+                    } 
+                }
 			?>
 		</table>
             </div>
@@ -190,16 +192,18 @@
             </thead>  
 
 			<?php
-				while($row = mysqli_fetch_array($result))  
-                {  
-                    echo '  
-                    <tr>  
-                        <td>'.$row["exitTime"].'</td>  
-                        <td>'.$row["licensePlate"].'</td>  
-                        <td>'.$row["tenantLotNumber"].'</td>  
-                    </tr>  
-                    ';  
-                } 
+                if($result){
+                    while($row = mysqli_fetch_array($result))  
+                    {  
+                        echo '  
+                        <tr>  
+                            <td>'.$row["exitTime"].'</td>  
+                            <td>'.$row["licensePlate"].'</td>  
+                            <td>'.$row["tenantLotNumber"].'</td>  
+                        </tr>  
+                        ';  
+                    } 
+                }
 			?>
 		</table>
             </div>

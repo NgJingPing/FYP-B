@@ -97,18 +97,20 @@
             </thead>  
 
 			<?php
-				while($row = mysqli_fetch_array($result))  
-                {  
-                    echo '  
-                    <tr>  
-                        <td>'.$row["referenceID"].'</td>  
-                        <td>'.$row["exitTime"].'</td>  
-                        <td>'.$row["licensePlate"].'</td>  
-                        <td>'.$row["tenantLotNumber"].'</td>  
-                        <td><a href="exit_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
-                    </tr>  
-                    ';  
-                } 
+                if($result){
+                    while($row = mysqli_fetch_array($result))  
+                    {  
+                        echo '  
+                        <tr>  
+                            <td>'.$row["referenceID"].'</td>  
+                            <td>'.$row["exitTime"].'</td>  
+                            <td>'.$row["licensePlate"].'</td>  
+                            <td>'.$row["tenantLotNumber"].'</td>  
+                            <td><a href="exit_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+                        </tr>  
+                        ';  
+                    } 
+                }
 			?>
 		</table>
 	</div>

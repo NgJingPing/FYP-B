@@ -93,17 +93,19 @@
             </thead>  
 
 			<?php
-				while($row = mysqli_fetch_array($result))  
-                {  
-                    echo '  
-                    <tr>  
-                        <td>'.$row["referenceID"].'</td>  
-                        <td>'.$row["deniedTime"].'</td>  
-                        <td>'.$row["licensePlate"].'</td>  
-                         <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
-                    </tr>  
-                    ';  
-                } 
+                if($result){
+                    while($row = mysqli_fetch_array($result))  
+                    {  
+                        echo '  
+                        <tr>  
+                            <td>'.$row["referenceID"].'</td>  
+                            <td>'.$row["deniedTime"].'</td>  
+                            <td>'.$row["licensePlate"].'</td>  
+                            <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+                        </tr>  
+                        ';  
+                    } 
+                }
 			?>
 		</table>
 	</div>

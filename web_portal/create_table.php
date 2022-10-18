@@ -13,63 +13,61 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // sql to create Enquiry table
 $sql1 = "CREATE TABLE tenant (
-    tenantLotNumber VARCHAR(6) PRIMARY KEY NOT NULL
+   	tenantLotNumber VARCHAR(6) PRIMARY KEY NOT NULL,
+    name VARCHAR(256) NOT NULL,
+    phoneNumber INT(10) NOT NULL
     );
 ";
 
 $sql2 = "CREATE TABLE vehicle (
-	licensePlate VARCHAR(20) PRIMARY KEY NOT NULL,
-	tenantLotNumber VARCHAR(6) NOT NULL,
-	brand VARCHAR(20) NOT NULL,
-	model VARCHAR(20) NOT NULL,
-	colour VARCHAR(20) NOT NULL,
-	FOREIGN KEY(tenantLotNumber) REFERENCES tenant(tenantLotNumber)
+	vehicleID INT(6) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    tenantLotNumber VARCHAR(6) NOT NULL, 
+    licensePlate VARCHAR(20) NOT NULL,
+    brand VARCHAR(20) NOT NULL,
+    model VARCHAR(20) NOT NULL,
+    colour VARCHAR(20) NOT NULL,
+    isActive BOOLEAN NOT NULL,
+    FOREIGN KEY(tenantLotNumber) REFERENCES tenant(tenantLotNumber)
 	);
 ";
 
 $sql3 = "CREATE TABLE entryLog (
-   referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   licensePlate VARCHAR(20) NOT NULL,
-   entryTime DATETIME NOT NULL,
-   image blob NOT NULL,
-   FOREIGN KEY(licensePlate) REFERENCES vehicle(licensePlate)
+    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    vehicleID INT(6) NOT NULL, 
+    entryTime DATETIME NOT NULL,
+    image VARCHAR(100) NOT NULL,
+    FOREIGN KEY(vehicleID) REFERENCES vehicle(vehicleID)
    );
 ";
 
 $sql4 = "CREATE TABLE exitLog (
-   referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   licensePlate VARCHAR(20) NOT NULL,
-   exitTime DATETIME NOT NULL,
-   image blob NOT NULL,
-   FOREIGN KEY(licensePlate) REFERENCES vehicle(licensePlate)
+    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    vehicleID INT(6) NOT NULL, 
+    exitTime DATETIME NOT NULL,
+    image VARCHAR(100) NOT NULL,
+    FOREIGN KEY(vehicleID) REFERENCES vehicle(vehicleID)
    );
 ";
 
 $sql5 = "CREATE TABLE deniedAccess(
-   referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   licensePlate VARCHAR(20) NOT NULL,
-   deniedTime DATETIME NOT NULL,
-   image blob NOT NULL
+    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    licensePlate VARCHAR(20) NOT NULL, 
+    deniedTime DATETIME NOT NULL,
+    image VARCHAR(100) NOT NULL
    );
 ";
 
-$sql6 = "CREATE TABLE admin (
-   adminID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   email VARCHAR(256) NOT NULL,
-   password VARCHAR(256) NOT NULL,
-   isAdvanced BOOLEAN NOT NULL
-   );
-";
-
-$sql7 = "CREATE TABLE security (
-   securityID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   email VARCHAR(256) NOT NULL,
-   password VARCHAR(256) NOT NULL
-   );
+$sql6 = "CREATE TABLE users (
+    userID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR(256) NOT NULL,
+    password VARCHAR(256) NOT NULL,
+    role INT(1) NOT NULL,
+    isAdvanced BOOLEAN NOT NULL
+    );
 ";
 
 
-$tables = [$sql1, $sql2, $sql3, $sql4, $sql5, $sql6, $sql7];
+$tables = [$sql1, $sql2, $sql3, $sql4, $sql5, $sql6];
 
 foreach($tables as $sql){
 	if (mysqli_query($conn, $sql)) {
@@ -135,15 +133,16 @@ foreach($vehicle_datas as $sql){
 	 }
 }
 
+# Admin
 $password0 = hash("sha256", "naim000");
 $password1 = hash("sha256", "naim001");
 $password2 = hash("sha256", "naim002");
-$sql1 = "INSERT INTO admin (email, password, isAdvanced)
-VALUES ('naim000@naim.com.my', '$password0', 'TRUE')";
-$sql2 = "INSERT INTO admin (email, password, isAdvanced)
-VALUES ('naim001@naim.com.my', '$password1', 'FALSE')";
-$sql3 = "INSERT INTO admin (email, password, isAdvanced)
-VALUES ('naim002@naim.com.my', '$password2', 'FALSE')";
+$sql1 = "INSERT INTO users (email, password, role, isAdvanced)
+VALUES ('naim000@naim.com.my', '$password0', 1, TRUE)";
+$sql2 = "INSERT INTO users (email, password, role, isAdvanced)
+VALUES ('naim001@naim.com.my', '$password1', 1, FALSE)";
+$sql3 = "INSERT INTO users (email, password, role, isAdvanced)
+VALUES ('naim002@naim.com.my', '$password2', 1, FALSE)";
 
 $admin_datas = [$sql1, $sql2, $sql3];
 
@@ -155,15 +154,16 @@ foreach($admin_datas as $sql){
 	 }
 }
 
+#Security
 $password0 = hash("sha256", "naim100");
 $password1 = hash("sha256", "naim101");
 $password2 = hash("sha256", "naim102");
-$sql1 = "INSERT INTO security (email, password)
-VALUES ('naim100@naim.com.my', '$password0')";
-$sql2 = "INSERT INTO security (email, password)
-VALUES ('naim101@naim.com.my', '$password1')";
-$sql3 = "INSERT INTO security (email, password)
-VALUES ('naim102@naim.com.my', '$password2')";
+$sql1 = "INSERT INTO users (email, password, role, isAdvanced)
+VALUES ('naim100@naim.com.my', '$password0', 2, FALSE)";
+$sql2 = "INSERT INTO users (email, password, role, isAdvanced)
+VALUES ('naim101@naim.com.my', '$password1', 2, FALSE)";
+$sql3 = "INSERT INTO users (email, password, role, isAdvanced)
+VALUES ('naim102@naim.com.my', '$password2', 2, FALSE)";
 
 $security_datas = [$sql1, $sql2, $sql3];
 

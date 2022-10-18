@@ -192,7 +192,9 @@
 					<div class="form_container">
 					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
 					</div>
+					<div class="form_container">
 					<label>Active</label><span class="error"> * <?php echo $activeErr;?></span> <input type="checkbox" checked="checked" name="active" class="form_control">
+					</div>
 					</div>
 					<div class="form_group">
 					<div class="form_container">
