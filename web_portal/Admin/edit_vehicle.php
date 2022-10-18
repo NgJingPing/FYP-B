@@ -68,17 +68,34 @@
 
 	<?php
 		//define variable and set to empty value
-		$tenantLotNumber = $model = $brand = $color = "";
-		$tenantLotNumberErr = $modelErr = $brandErr = $colorErr = $msg = "";
+		$tenantLotNumber = $plateNumber = $model = $brand = $color = $checked = $id = "";
+		$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
+		$active = TRUE;
+
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "anprdb";
 
 		// get the plate number from the link
 		if(isset($_GET["plateNumber"])) {
 			$plateNumber = $_GET["plateNumber"];
+			$conn = mysqli_connect($servername, $username, $password, $dbname);
+			if($conn->connect_error){
+				die("Connection Failed: " . $conn->connect_error);
+			}
+
+			$myquery = "SELECT vehicleID FROM vehicle WHERE licensePlate = '$plateNumber';";
+			$sql = mysqli_query($conn, $myquery);
+			$result = $conn->query($myquery);
+			if(mysqli_num_rows($result) == 1) {
+				$item = $result->fetch_assoc();
+				$id = $item['vehicleID'];
+			}
+
 		} else {
 			header("Location: view_vehivle.php");
 		}
-		
-		//$plateNumber = "QAA1234";
 
 
 		function test_input($data) {
@@ -87,11 +104,6 @@
 		    $data = htmlspecialchars($data);
 		    return $data;
 		}
-
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "anprdb";
 
 		if (isset($_POST["submit"])) {
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -106,7 +118,7 @@
 			} else {
 				$tenantLotNumber = test_input($_POST["tenantLotNumber"]);
 				$tenantLotNumber = str_replace(' ', '', $tenantLotNumber);
-				$myquery = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
+				/*$myquery = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
 				$sql = mysqli_query($conn, $myquery);
 				$result = mysqli_num_rows($sql);
 
@@ -115,7 +127,7 @@
 					$stmt = $conn->prepare($myquery2);
 					$stmt->bind_param("s", $tenantLotNumber);
 					$stmt->execute();
-				}
+				}*/
 			}
 
 			if(empty($_POST["brand"])) {
@@ -144,15 +156,15 @@
 
 			if($tenantLotNumber != "" && $plateNumber != "" && $brand != "" && $model != "" && $color != "")
 			{
-				$myquery = "UPDATE vehicle SET tenantLotNumber = ?, brand = ?, model = ?, colour = ? WHERE licensePlate = '$plateNumber';";
+				$myquery = "UPDATE vehicle SET tenantLotNumber = ?, licensePlate = ?, brand = ?, model = ?, colour = ?, isActive = ? WHERE licensePlate = '$plateNumber';";
 				$stmt = $conn->prepare($myquery);
-				$stmt->bind_param("ssss", $tenantLotNumber, $brand, $model, $color);
+				$stmt->bind_param("ssssss", $tenantLotNumber, $plateNumber, $brand, $model, $color, $active);
 				$stmt->execute();
 				$conn->close();
 				$msg = "Record is updated.";
 				$tenantLotNumber = $model = $brand = $color = "";
 				$tenantLotNumberErr = $modelErr = $brandErr = $colorErr = "";
-				$_POST["tenantLotNumber"] = $_POST["brand"] = $_POST["model"] = $_POST["color"] = "";
+				$_POST["tenantLotNumber"] = $_POST["brand"] = $_POST["plateNumber"] = $_POST["model"] = $_POST["color"] = "";
 			}
 		}
 
@@ -165,16 +177,22 @@
 			die("Connection Failed: " . $conn->connect_error);
 		}
 
-		$myquery = "SELECT tenantLotNumber, brand, model, colour FROM vehicle WHERE licensePlate = '$plateNumber';";
+		$myquery = "SELECT tenantLotNumber, licensePlate, brand, model, colour, isActive FROM vehicle WHERE vehicleID = $id;";
 
 		$result = $conn->query($myquery);
 
 		if(mysqli_num_rows($result) == 1) {
 			$item = $result->fetch_assoc();
 			$_POST["tenantLotNumber"] = $item['tenantLotNumber'];
+			$_POST["plateNumber"] = $item["licensePlate"];
 			$_POST["brand"] = $item["brand"];
 			$_POST["model"] = $item["model"];
 			$_POST["color"] = $item["colour"];
+			if($item["isActive"] == 1) {
+				$checked = "checked";
+			} else {
+				$checked = "unchecked";
+			}
 		}
 		$conn->close();
 	?>
@@ -194,7 +212,7 @@
 					<label>Tenant Lot Number</label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
 					</div>
 					<div class="form_container">
-					<label>License Plate Number</label><input type="text" class="form_control" placeholder="<?php echo $plateNumber; ?>" disabled="disabled">
+					<label>License Plate Number</label><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
 					</div>	
 					</div>
 					<div class="form_group">
@@ -208,6 +226,17 @@
 					<div class="form_group">
 					<div class="form_container">
 					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
+					</div>
+					<div class="form_container">
+					<label>Active</label><span class="error"> * <?php echo $activeErr;?></span> 
+					<?php
+						if($checked == "checked") {
+							echo '<input type="checkbox" checked name="active" class="form_control">';
+						} else {
+							echo '<input type="checkbox" unchecked name="active" class="form_control">';
+						}
+					?>
+					</div>
 					</div>
 					<div class="form_group">
 					<div class="form_container">
