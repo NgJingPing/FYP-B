@@ -76,6 +76,7 @@
                         <th>Brand</th>
                         <th>Model</th>
                         <th>Colour</th>
+                        <th>Active</th>
                         <th>Modify/Delete</th>
                     </tr>
                 </thead>
@@ -108,12 +109,17 @@
                     }
 
                     $sumprice = 0;
-
+                    $active = "";
                     if (mysqli_num_rows($result)) {
                         // output data of each row
                         while($row = mysqli_fetch_assoc($result)) {
+                            if($row['isActive'] == 1) {
+                                $active = "True";
+                            } else {
+                                $active = "False";
+                            }
                             echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
-                            "</td><td>".$row["colour"]."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'><i class='fa-solid fa-pen-to-square'></i></a>
+                            "</td><td>".$row["colour"]."</td><td>".$active."</td><td><span><a href='edit_vehicle.php?plateNumber=$row[licensePlate]'><i class='fa-solid fa-pen-to-square'></i></a>
                             </span><span><a href='remove_vehicle.php?vehicle=$row[licensePlate]'><i class='fa-solid fa-trash-can'></i></a></span>"."</td></tr>";
                         }
                     } else {
