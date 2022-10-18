@@ -1,0 +1,178 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    min-width: 1280px;
+    background-color: #06283D;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  color:#06283D;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-sizing: border-box;
+  background-color: #DFF6FF;
+}
+
+/* Set a style for all buttons */
+
+
+button {
+  background-color: #DFF6FF;
+  font-size: 18px;
+  color: #06283D;
+  padding: 14px 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button_login{
+  background-color: rgb(71, 181, 255);
+  color: #DFF6FF;
+}
+
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  color:#DFF6FF;
+  background-color: #f44336;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  color: #DFF6FF;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 200px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #06283D;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+.logo_container {
+  padding: 10px;
+  display: block;
+  background-color: #06283D;
+  text-align: center;
+}
+
+.logo_group {
+display: block;
+margin-top: 80px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 10px;
+width: 240px;
+}
+
+.logo_initial {
+color: rgb(223, 246, 255);
+}
+
+.logo {
+  font-size: 60px;
+  color: rgb(71, 181, 255);
+  font-weight: bold;
+  font-family: "Bungee Hairline", Arial, Helvetica, sans-serif;
+}
+
+.logo_tail {
+text-align: right;
+font-size: 18px;
+color: #DFF6FF;
+font-weight: lighter;
+font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+.user_lvl{
+text-align: center;
+color: #DFF6FF;
+margin-top: 200px;
+}
+
+.user_lvl_buttons{
+text-align: center; 
+}

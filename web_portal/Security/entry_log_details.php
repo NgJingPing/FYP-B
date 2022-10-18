@@ -95,11 +95,12 @@
 			<p>Vehicle Brand: <?php echo $item["brand"]; ?></p>
 			<p>Vehicle Model: <?php echo $item["model"]; ?></p>
 			<p>Vehicle Colour: <?php echo $item["colour"]; ?></p>
+			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
+			<p>Timestamp:  <?php echo $item["entryTime"] ?></p>
 		</div>
 		<div class="container_right">
 			<p> <?php echo '<img class="db_image" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
-			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
-			<p>Timestamp:  <?php echo $item["entryTime"] ?></p>
+			
 		</div>
 		</div>
 	</section>
