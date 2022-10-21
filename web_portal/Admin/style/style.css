@@ -17,7 +17,7 @@ body{
     z-index: 1; 
     top: 0; 
     left: 0;
-    background-color: #06283D;
+    background-color: #061C17;
     overflow: hidden; 
     padding-top: 40px;
   }
@@ -28,12 +28,12 @@ body{
 }
 
 .navigation_bar .logo_initial {
-  color: rgb(223, 246, 255);
+  color: #C5E5CC;
 }
 
 .navigation_bar .logo {
     font-size: 48px;
-    color: rgb(71, 181, 255);
+    color: #4DAC62;
     font-weight: bold;
     font-family: "Bungee Hairline", Arial, Helvetica, sans-serif;
 }
@@ -41,7 +41,7 @@ body{
 .navigation_bar .logo_tail {
   text-align: right;
   font-size: 12px;
-  color: #DFF6FF;
+  color: #C5E5CC;
   font-weight: lighter;
   font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
@@ -51,12 +51,12 @@ body{
     padding-left: 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #DFF6FF;
+    color: #C5E5CC;
     display: block;
   }
 
 .navigation_bar .active_page {
-    color: #47B5FF;
+    color: #4DAC62;
     text-decoration: none;
   }
 
@@ -67,7 +67,7 @@ body{
   
   .navigation_bar a:hover {
     text-decoration: none;
-    color: #47B5FF;
+    color: #4DAC62;
   }
 
   .navigation_links_container{
@@ -112,7 +112,7 @@ body{
     padding: 10px 10px 20px 10px;
     margin: 10px;
     width: 25%;
-    background: #06283D;
+    background: #061C17;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
@@ -120,7 +120,7 @@ body{
   .widget_name, .widget_value{
     display: block;
     flex-direction: row; 
-    color: #DFF6FF;
+    color: #C5E5CC;
   }
 
   .widget_name{
@@ -135,7 +135,7 @@ body{
     margin: 0px 20px 0px 0px;
     text-align: right;
     font-size: 35px;
-    color:#47B5FF;
+    color:#4DAC62;
     display: block;
   }
   
@@ -146,12 +146,12 @@ body{
   }
 
 .dashboard_logs_container {
-    color: #06283D;
+    color: #061C17;
     margin: 10px;
     display: block;
     width: 50%;
     padding: 0px 10px;
-    background-color:#DFF6FF;
+    background-color:#C5E5CC;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
@@ -161,8 +161,8 @@ body{
 }
 
 thead{
-  color: #DFF6FF;
-  background-color: #06283D;
+  color: #C5E5CC;
+  background-color: #061C17;
 
 }
 
