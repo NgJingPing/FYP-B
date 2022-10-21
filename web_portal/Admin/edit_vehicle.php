@@ -19,7 +19,7 @@
 
 <head>
     <meta charset = "utf-8">
-	<meta name = "autor" content = "Sabrina Tan">
+	<meta name = "author" content = "Sabrina Tan">
     <title>ANPR - Edit</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -68,9 +68,10 @@
 
 	<?php
 		//define variable and set to empty value
-		$tenantLotNumber = $plateNumber = $model = $brand = $color = $checked = $id = "";
+		$tenantLotNumber = $plateNumber = $model = $brand = $color = $checked = "";
 		$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
 		$active = TRUE;
+		$vehicleID = 0;
 
 		$servername = "localhost";
 		$username = "root";
@@ -78,23 +79,23 @@
 		$dbname = "anprdb";
 
 		// get the plate number from the link
-		if(isset($_GET["plateNumber"])) {
-			$plateNumber = $_GET["plateNumber"];
+		if(isset($_GET["vehicleID"])) {
+			$vehicleID = $_GET["vehicleID"];
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
 			if($conn->connect_error){
 				die("Connection Failed: " . $conn->connect_error);
 			}
 
-			$myquery = "SELECT vehicleID FROM vehicle WHERE licensePlate = '$plateNumber';";
+			/*$myquery = "SELECT vehicleID FROM vehicle WHERE licensePlate = '$plateNumber';";
 			$sql = mysqli_query($conn, $myquery);
 			$result = $conn->query($myquery);
 			if(mysqli_num_rows($result) == 1) {
 				$item = $result->fetch_assoc();
 				$id = $item['vehicleID'];
-			}
+			}*/
 
 		} else {
-			header("Location: view_vehivle.php");
+			header("Location: view_vehicle.php");
 		}
 
 
@@ -156,7 +157,7 @@
 
 			if($tenantLotNumber != "" && $plateNumber != "" && $brand != "" && $model != "" && $color != "")
 			{
-				$myquery = "UPDATE vehicle SET tenantLotNumber = ?, licensePlate = ?, brand = ?, model = ?, colour = ?, isActive = ? WHERE licensePlate = '$plateNumber';";
+				$myquery = "UPDATE vehicle SET tenantLotNumber = ?, licensePlate = ?, brand = ?, model = ?, colour = ?, isActive = ? WHERE vehicleID = $vehicleID;";
 				$stmt = $conn->prepare($myquery);
 				$stmt->bind_param("ssssss", $tenantLotNumber, $plateNumber, $brand, $model, $color, $active);
 				$stmt->execute();
@@ -177,7 +178,7 @@
 			die("Connection Failed: " . $conn->connect_error);
 		}
 
-		$myquery = "SELECT tenantLotNumber, licensePlate, brand, model, colour, isActive FROM vehicle WHERE vehicleID = $id;";
+		$myquery = "SELECT tenantLotNumber, licensePlate, brand, model, colour, isActive FROM vehicle WHERE vehicleID = $vehicleID;";
 
 		$result = $conn->query($myquery);
 
