@@ -93,81 +93,81 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 /*Navbar css ends here*/
 
-  .content-container{
-    margin-top: 20px;
-    margin-left:300px;
-  }
-  header h1{
-    margin: 10px;
-  }
+.content-container{
+  margin-top: 20px;
+  margin-left:300px;
+}
+header h1{
+  margin: 10px;
+}
 
-  .widget_group{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
+.widget_group{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
 
-  .widget_container{
-    height: 140px;
-    padding: 10px 10px 20px 10px;
-    margin: 10px;
-    width: 25%;
-    background: #06283D;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  }
+.widget_container{
+  height: 140px;
+  padding: 10px 10px 20px 10px;
+  margin: 10px;
+  width: 25%;
+  background: #061C17;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
 
-  .widget_name, .widget_value{
-    display: block;
-    flex-direction: row; 
-    color: #DFF6FF;
-  }
+.widget_name, .widget_value{
+  display: block;
+  flex-direction: row; 
+  color: #C5E5CC;
+}
 
-  .widget_name{
-    font-size: 25px;
-  }
+.widget_name{
+  font-size: 25px;
+}
 
-  .widget_value{
-    font-size: 30px;
-  }
+.widget_value{
+  font-size: 30px;
+}
 
-  .widget_container i{
-    margin: 0px 20px 0px 0px;
-    text-align: right;
-    font-size: 35px;
-    color:#47B5FF;
-    display: block;
-  }
-  
-  .dashboard_logs{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
+.widget_container i{
+  margin: 0px 20px 0px 0px;
+  text-align: right;
+  font-size: 35px;
+  color:#4DAC62;
+  display: block;
+}
+
+.dashboard_logs{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
 
 .dashboard_logs_container {
-    color: #06283D;
-    margin: 10px;
-    display: block;
-    width: 50%;
-    padding: 0px 10px;
-    background-color:#DFF6FF;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  color: #061C17;
+  margin: 10px;
+  display: block;
+  width: 50%;
+  padding: 0px 10px;
+  background-color:#C5E5CC;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .table{
-    width: 100%;
+  width: 100%;
 }
 
 thead{
-  color: #DFF6FF;
-  background-color: #06283D;
+color: #C5E5CC;
+background-color: #061C17;
 
 }
 
 .log_container {
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
 }
