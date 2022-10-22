@@ -77,7 +77,7 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate ORDER BY referenceID DESC";
+	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID ORDER BY referenceID DESC";
 	$result = $conn->query($myquery);
 ?>
    

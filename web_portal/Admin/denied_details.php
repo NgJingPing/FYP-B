@@ -89,7 +89,7 @@
 
 	<section>
 		<div class="main_container">
-			<p> <?php echo '<img class="db_image" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
+			<p> <?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></p>
 			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
 			<p>Timestamp:  <?php echo $item["deniedTime"] ?></p>
 		</div>
