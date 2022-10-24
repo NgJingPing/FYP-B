@@ -1,5 +1,7 @@
 $(document).ready(function(){  
     $('#log_table').DataTable();  
+    $('#log_table2').DataTable();  
+    $('#log_table3').DataTable();  
     $('#entry_log_table').DataTable(); 
     $('#exit_log_table').DataTable(); 
 });  
