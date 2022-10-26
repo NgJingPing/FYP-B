@@ -182,7 +182,25 @@
 					</div>
 					<div class="form_group">
 					<div class="form_container">
-					<label>Brand</label><span class="error"> * <?php echo $brandErr;?></span><input type="text" name="brand" class="form_control" value="<?php echo isset($_POST["brand"]) ? $_POST["brand"] : ''; ?>">
+					<label>Brand</label><span class="error"> * <?php echo $brandErr;?></span><input type="text" name="brand" class="form_control" list="brands" value="<?php echo isset($_POST["brand"]) ? $_POST["brand"] : ''; ?>">
+					<datalist id="brands">
+					<option value="Audi">Audi</option>
+					<option value="BMW">BMW</option>
+					<option value="Chevrolet">Chevrolet</option>
+					<option value="Honda">Honda</option>
+					<option value="Hyundai">Hyundai</option>
+					<option value="Isuzu">Isuzu</option>
+					<option value="Mazda">Mazda</option>
+					<option value="Mercedes">Mercedes</option>
+					<option value="Mercedes">Mini</option>
+					<option value="Mitsubishi">Mitsubishi</option>
+					<option value="Nissan">Nissan</option>
+					<option value="Perodua">Perodua</option>
+					<option value="Proton">Proton</option>
+					<option value="Toyota">Toyota</option>
+					<option value="Volkswagen">Volkswagen</option>
+					<option value="Volvo">Volvo</option>
+					</datalist>
 					</div>
 					<div class="form_container">
 					<label>Model</label><span class="error"> * <?php echo $modelErr;?></span><input type="text" name="model" class="form_control" value="<?php echo isset($_POST["model"]) ? $_POST["model"] : ''; ?>">
@@ -190,7 +208,15 @@
 					</div>
 					<div class="form_group">
 					<div class="form_container">
-					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
+					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" list="colors" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
+					<datalist id="colors">
+					<option value="Black">Black</option>
+					<option value="Blue">Blue</option>
+					<option value="Grey">Grey</option>
+					<option value="Red">Red</option>
+					<option value="Silver">Silver</option>
+					<option value="White">White</option>
+					</datalist>
 					</div>
 					<div class="form_container">
 					<label>Active</label><span class="error"> * <?php echo $activeErr;?></span> <input type="checkbox" checked="checked" name="active" class="form_control">

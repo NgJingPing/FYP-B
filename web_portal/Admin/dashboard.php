@@ -144,7 +144,7 @@
     </div>
     </div>
     <?php
-    $entrylogquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate WHERE DATE(entryTime) = CURDATE()";
+    $entrylogquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE DATE(entryTime) = CURDATE()";
 	$result = $conn->query($entrylogquery);
     ?>
     <div class="dashboard_logs">
@@ -178,7 +178,7 @@
 
 <?php
 
-	$exitlogquery = "SELECT exitlog.referenceID, exitlog.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.licensePlate = vehicle.licensePlate WHERE DATE(exitTime) = CURDATE()";
+	$exitlogquery = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE DATE(exitTime) = CURDATE()";
 	$result = $conn->query($exitlogquery);
 ?>
 
