@@ -131,6 +131,15 @@
 				}*/
 			}
 
+			if(empty($_POST["plateNumber"])) {
+				$plateNumberErr = "License Plate Number is required";
+			} elseif (strlen($_POST["plateNumber"]) > 20 ){ 
+				$plateNumberErr = "License plate number should not exceed 20 characters";
+			} else {
+				$plateNumber = test_input($_POST["plateNumber"]);
+				$plateNumber = str_replace(' ', '', $plateNumber);
+			}
+
 			if(empty($_POST["brand"])) {
 				$brandErr = "Brand is required";
 			} elseif (strlen($_POST["brand"]) > 20 ){ 
@@ -153,6 +162,13 @@
 				$colorErr = "Colour should not exceed 20 characters";
 			} else {
 				$color = test_input($_POST["color"]);
+			}
+
+			$check = isset($_POST['active']) ? "checked" : "unchecked"; 
+			if($check == "checked") { 
+				$active = TRUE;
+			} else { 
+				$active = FALSE; 
 			}
 
 			if($tenantLotNumber != "" && $plateNumber != "" && $brand != "" && $model != "" && $color != "")
@@ -229,14 +245,17 @@
 					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
 					</div>
 					<div class="form_container">
-					<label>Active</label><span class="error"> * <?php echo $activeErr;?></span> 
-					<?php
-						if($checked == "checked") {
-							echo '<input type="checkbox" checked name="active" class="form_control">';
-						} else {
-							echo '<input type="checkbox" unchecked name="active" class="form_control">';
-						}
-					?>
+					<label>Active</label> 
+					<label class="switch">
+						<?php
+							if($checked == "checked") {
+								echo '<input type="checkbox" checked name="active" class="form_control">';
+							} else {
+								echo '<input type="checkbox" unchecked name="active" class="form_control">';
+							}
+						?>
+						<span class="slider round"></span>
+					</label>
 					</div>
 					</div>
 					<div class="form_group">

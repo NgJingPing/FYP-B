@@ -219,7 +219,7 @@
 					</datalist>
 					</div>
 					<div class="form_container">
-					<label>Active</label><span class="error"> * <?php echo $activeErr;?></span> <input type="checkbox" checked="checked" name="active" class="form_control">
+					<label>Active</label><label class="switch"><input type="checkbox" checked="checked" name="active" class="form_control"><span class="slider round"></span></label>
 					</div>
 					</div>
 					<div class="form_group">
