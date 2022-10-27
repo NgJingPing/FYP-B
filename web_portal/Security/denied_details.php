@@ -87,10 +87,21 @@
 	</header>
 
 	<section>
-		<div class="main_container">
-			<p> <?php echo '<img class="db_image" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>';?></p>
-			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
-			<p>Timestamp:  <?php echo $item["deniedTime"] ?></p>
+	<div class="main_container">
+		<table class="table table-bordered">  
+                    <tr>
+						<td class="row-header">License Plate Number</td>
+						<td><?php echo $item["licensePlate"]; ?></td>
+					</tr>  
+					<tr>
+						<td class="row-header">Time</td>
+						<td><?php echo $item["deniedTime"]; ?></td>
+					</tr>
+					<tr>
+						<td class="row-header">Image</td>
+						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
+					</tr>
+		</table>
 		</div>
 	</section>
 </div>

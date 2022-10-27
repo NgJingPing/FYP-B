@@ -103,26 +103,23 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 
   section{
     margin-left: 10px;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin-right: 50px;
 }
 
 .main_container{
-  display: block;
-  color:#06283D;
-  text-align: center;
-  font-size: 30px;
+  color:#061C17;
+  font-size: 1.8em;
   margin: 30px 0px;
-  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.main_container p{
-  margin-top: 65px;
+.row-header{
+  width: 300px;
 }
+
 .db_image{
-  max-width: 850px;
-  width: 100%;
+  width: 850px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);

@@ -89,19 +89,40 @@
 	</header>
 
 	<section>
-		<div class="main_container">
-		<div class="container_left">
-			<p>Tenant Lot Number: <?php echo $item["tenantLotNumber"]; ?></p>
-			<p>Vehicle Brand: <?php echo $item["brand"]; ?></p>
-			<p>Vehicle Model: <?php echo $item["model"]; ?></p>
-			<p>Vehicle Colour: <?php echo $item["colour"]; ?></p>
-			<p>License Plate Number: <?php echo $item["licensePlate"] ?></p>
-			<p>Timestamp:  <?php echo $item["entryTime"] ?></p>
-		</div>
-		<div class="container_right">
-			<p> <?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></p>
-			
-		</div>
+	<div class="main_container">
+	<table class="table table-bordered">  
+  
+                    <tr>
+						<td class="row-header">Tenant Lot Number</td>
+						<td><?php echo $item["tenantLotNumber"]; ?></td>
+					</tr>  
+                    <tr>
+						<td class="row-header">Vehicle Brand</td>
+						<td><?php echo $item["brand"]; ?></td>
+					</tr>  
+                    <tr>
+						<td class="row-header">Vehicle Model</td>
+						<td><?php echo $item["model"]; ?></td>
+					</tr>  
+                    <tr>
+						<td class="row-header">Vehicle Colour</td>
+						<td><?php echo $item["colour"]; ?></td>
+					</tr>  
+                    <tr>
+						<td class="row-header">License Plate Number</td>
+						<td><?php echo $item["licensePlate"]; ?></td>
+					</tr>  
+					<tr>
+						<td class="row-header">Entry Time</td>
+						<td><?php echo $item["entryTime"]; ?></td>
+					</tr>
+					<tr>
+						<td class="row-header">Image</td>
+						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
+					</tr>
+
+
+		</table>
 		</div>
 	</section>
 </div>
