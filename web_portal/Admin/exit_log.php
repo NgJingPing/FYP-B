@@ -20,6 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Exit Log</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -86,7 +87,7 @@
 	</header>
 
 	<div class="log_container">
-		<table id="log_table" class="table table-striped table-bordered">  
+		<table id="log_table" class="table table-borderless">  
 			<thead>  
                 <tr>  
                     <td>Reference ID</td>  
@@ -116,5 +117,6 @@
 		</table>
 	</div>
             </div>
+            <div class="waves"><p>&</p></div>
 </body>
 </html>

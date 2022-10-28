@@ -20,6 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Registration</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -238,6 +239,7 @@
 		 </form>
 	</section>
 	</div>
+	<div class="waves"><p>&</p></div>
 </body>
 
 </html>

@@ -20,6 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ANPR - Denied Access Log</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -111,5 +112,6 @@
 		</table>
 	</div>
             </div>
+            <div class="waves"><p>&</p></div>
 </body>
 </html>

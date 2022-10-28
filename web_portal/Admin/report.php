@@ -20,6 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "author" content = "Sabrina Tan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Entry Log</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -64,6 +65,10 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
+<div class="content-container">
+    <header>
+		<h1>Report</h1>
+	</header>
 <?php
     $servername = "localhost";
 	$username = "root";
@@ -77,11 +82,8 @@
 	if($conn->connect_error){
 		die("Connection Failed: " . $conn->connect_error);
 	}
-
-    echo '<div class="content-container">
-    <header>
-		<h1>Report</h1>
-	</header>
+    
+    echo '
 
         <form method="post" action="">
             <label>Start Date</label> <input type="date" id="start" name="start">
@@ -113,7 +115,7 @@
 
         echo '<h2>Entry Log</h2>';
         echo '<div class="log_container">
-                <table id="log_table" class="table table-striped table-bordered">  
+                <table id="log_table" class="table table-borderless">  
 			    <thead>  
                     <tr>
                         <td>No</td>  
@@ -141,7 +143,7 @@
 
         echo '<h2>Exit Log</h2>';
         echo '<div class="log_container">
-                <table id="log_table2" class="table table-striped table-bordered">  
+                <table id="log_table2" class="table table-borderless">  
 			    <thead>  
                     <tr>
                         <td>No</td>  
@@ -168,7 +170,7 @@
 
         echo '<h2>Denied Access Log</h2>';
         echo '<div class="log_container">
-                <table id="log_table3" class="table table-striped table-bordered">   
+                <table id="log_table3" class="table table-borderless">   
 			    <thead>  
                     <tr>
                         <td>No</td>  
@@ -189,10 +191,10 @@
             </tr>';  
             $count3 += 1;
         }
-        echo '</table></div></div>';  
+        echo '</table></div>';  
     }
    
 ?>
-
+</div>
 </body>
 </html>

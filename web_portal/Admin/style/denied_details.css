@@ -1,10 +1,19 @@
 *{
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-size: 100%;
 }
 
 body{
     font-family: 'Lato', Arial, Helvetica, sans-serif;
-    min-width: 1280px;
+    font-weight: 400;
+    width: 100%;
+    font-size: 16px;
+   
 }
 .error {
     color: red;
@@ -32,7 +41,7 @@ color: #C5E5CC;
 }
 
 .navigation_bar .logo {
-  font-size: 48px;
+  font-size: 3rem;
   color: #4DAC62;
   font-weight: bold;
   font-family: "Bungee Hairline", Arial, Helvetica, sans-serif;
@@ -40,7 +49,7 @@ color: #C5E5CC;
 
 .navigation_bar .logo_tail {
 text-align: right;
-font-size: 12px;
+font-size: 0.75rem;
 color: #C5E5CC;
 font-weight: lighter;
 font-family: 'Lato', Arial, Helvetica, sans-serif;
@@ -50,7 +59,7 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   margin-top: 32px;
   padding-left: 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.563rem;
   color: #C5E5CC;
   display: block;
 }
@@ -81,13 +90,13 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 
 .sub_menu {
  display: none;
- font-size: 20px;
+ font-size: 1.25rem;
  padding-left: 57px;
 }
 
 @media screen and (max-height: 540px) {
   .navigation_bar {padding-top: 5px;}
-  .navigation_bar a {font-size: 20px;}
+  .navigation_bar a {font-size: 1.25rem;}
   .fa-angle-right {padding-left: 50px;}
   .navigation_links_container{margin-top: 10px;}
 }
@@ -99,6 +108,7 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   }
   header h1{
     margin: 10px;
+    color: #061C17;
   }
 
   section{
@@ -108,7 +118,7 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 
 .main_container{
   color:#061C17;
-  font-size: 1.8em;
+  font-size: 1.8rem;
   margin: 30px 0px;
   margin-left: auto;
   margin-right: auto;
@@ -123,4 +133,15 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
+}
+
+div.waves {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+  height: 40%;
+  background-image:url("../../images/waves.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }

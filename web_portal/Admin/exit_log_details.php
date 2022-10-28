@@ -20,6 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Exit Log Details</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -127,5 +128,6 @@
 		</div>
 	</section>
 </div>
+<div class="waves"><p>&</p></div>
 </body>
 </html>
