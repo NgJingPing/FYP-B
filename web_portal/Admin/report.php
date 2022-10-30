@@ -128,10 +128,13 @@
 
         while($row = mysqli_fetch_array($result))  
         {  
+            $date = $row['entryTime'];
+            $dateObject = new DateTime($date);
+            $format = $dateObject->format('d M, Y h:i A');
             echo '  
             <tr>  
                 <td>'.$count.'</td>  
-                <td>'.$row["entryTime"].'</td>  
+                <td>'.$format.'</td>  
                 <td>'.$row["licensePlate"].'</td>  
                 <td>'.$row["tenantLotNumber"].'</td>  
                 <td><a href="entry_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
@@ -156,10 +159,13 @@
 
         while($row = mysqli_fetch_array($result2))  
         {  
+            $date = $row['exitTime'];
+            $dateObject = new DateTime($date);
+            $format = $dateObject->format('d M, Y h:i A');
             echo '  
             <tr>  
                 <td>'.$count2.'</td>  
-                <td>'.$row["exitTime"].'</td>  
+                <td>'.$format.'</td>  
                 <td>'.$row["licensePlate"].'</td>  
                 <td>'.$row["tenantLotNumber"].'</td>  
                 <td><a href="exit_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
@@ -182,10 +188,13 @@
 
         while($row = mysqli_fetch_array($result3))  
         {  
+            $date = $row['deniedTime'];
+            $dateObject = new DateTime($date);
+            $format = $dateObject->format('d M, Y h:i A');
             echo '  
             <tr>  
                 <td>'.$count3.'</td>  
-                <td>'.$row["deniedTime"].'</td>  
+                <td>'.$format.'</td>  
                 <td>'.$row["licensePlate"].'</td>  
                     <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
             </tr>';  

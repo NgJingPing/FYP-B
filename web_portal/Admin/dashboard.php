@@ -164,10 +164,13 @@
 			<?php
 				if($result){
                     while($row = mysqli_fetch_array($result))  
-                    {  
+                    {
+                        $date = $row['entryTime'];
+                        $dateObject = new DateTime($date);
+                        $format = $dateObject->format('d M, Y h:i A');
                         echo '  
                         <tr>  
-                            <td>'.$row["entryTime"].'</td>  
+                            <td>'.$format.'</td>  
                             <td>'.$row["licensePlate"].'</td>  
                             <td>'.$row["tenantLotNumber"].'</td>  
                         </tr>  
@@ -199,9 +202,12 @@
 				if($result){
                     while($row = mysqli_fetch_array($result))  
                     {  
+                        $date = $row['exitTime'];
+                        $dateObject = new DateTime($date);
+                        $format = $dateObject->format('d M, Y h:i A');
                         echo '  
                         <tr>  
-                            <td>'.$row["exitTime"].'</td>  
+                            <td>'.$format.'</td>  
                             <td>'.$row["licensePlate"].'</td>  
                             <td>'.$row["tenantLotNumber"].'</td>  
                         </tr>  
