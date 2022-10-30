@@ -68,8 +68,8 @@
 
 	<?php
 		//define variable and set to empty value
-		$tenantLotNumber = $plateNumber = $model = $brand = $color = "";
-		$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
+		$tenantLotNumber = $plateNumber = $tenantName = $contactNumber = $model = $brand = $color = "";
+		$tenantLotNumberErr = $plateNumberErr = $tenantNameErr = $contactNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
 		$active = TRUE;
 
 		function test_input($data) {
@@ -111,11 +111,27 @@
 
 			if(empty($_POST["plateNumber"])) {
 				$plateNumberErr = "License Plate Number is required";
-			} elseif (strlen($_POST["plateNumber"]) > 20 ){ 
-				$plateNumberErr = "License plate number should not exceed 20 characters";
+			} elseif (strlen($_POST["plateNumber"]) > 10 ){ 
+				$plateNumberErr = "License plate number should not exceed 10 characters";
 			} else {
 				$plateNumber = test_input($_POST["plateNumber"]);
 				$plateNumber = str_replace(' ', '', $plateNumber);
+			}
+
+			if(empty($_POST["tenantName"])) {
+				$tenantNameErr = "Tenant name is required";
+			} elseif (strlen($_POST["tenantName"]) > 50 ){ 
+				$tenantNameErr = "Tenant name should not exceed 50 characters";
+			} else {
+				$tenantName = test_input($_POST["tenantName"]);
+			}
+
+			if(empty($_POST["contactNumber"])) {
+				$contactNumberErr = "Contact Number is required";
+			} elseif (strlen($_POST["contactNumber"]) > 15 ){ 
+				$contactNumberErr = "Contact number should not exceed 15 characters";
+			} else {
+				$contactNumber = test_input($_POST["contactNumber"]);
 			}
 
 			if(empty($_POST["brand"])) {
@@ -149,17 +165,28 @@
 				$active = FALSE; 
 			}
 
-			if($tenantLotNumber != "" && $plateNumber != "" && $brand != "" && $model != "" && $color != "")
+			if($tenantLotNumber != "" && $plateNumber != "" && $tenantName !="" && $contactNumber !="" && $brand != "" && $model != "" && $color != "")
 			{
+				$checkTenant = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
+				$sql = mysqli_query($conn, $checkTenant);
+				$result = mysqli_num_rows($sql);
+				if($result > 0) {
+   					$msg = "An account with the same Tenant Number already exists, Record is saved";
+				} else {
+  					$createTenant = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber) VALUES (?, ?, ?)";
+   					$stmt = $conn->prepare($createTenant);
+   					$stmt->bind_param("sss", $tenantLotNumber, $tenantName, $contactNumber);
+   					$stmt->execute();
+					$msg = "New Tenant added. Record is saved.";
+				}
 				$myquery = "INSERT INTO vehicle (tenantLotNumber, licensePlate, brand, model, colour, isActive) VALUES (?, ?, ?, ?, ?, ?);";
 				$stmt = $conn->prepare($myquery);
 				$stmt->bind_param("ssssss", $tenantLotNumber, $plateNumber, $brand, $model, $color, $active);
 				$stmt->execute();
 				$conn->close();
-				$msg = "Record is saved.";
-				$tenantLotNumber = $plateNumber = $model = $brand = $color = $active= "";
-				$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $activeErr = $colorErr = "";
-				$_POST["plateNumber"] = $_POST["tenantLotNumber"] = $_POST["brand"] = $_POST["model"] = $_POST["color"] = $_POST["active"] = "";
+				$tenantLotNumber = $plateNumber = $tenantName = $contactNumber = $model = $brand = $color = "";
+				$tenantLotNumberErr = $plateNumberErr = $tenantNameErr = $contactNumberErr = $modelErr = $brandErr = $colorErr = "";
+				$_POST["plateNumber"] = $_POST["tenantLotNumber"] = $_POST["tenantName"] = $_POST["contactNumber"] = $_POST["brand"] = $_POST["model"] = $_POST["color"] = $_POST["active"] = "";
 			}
 		}
 	?>
@@ -173,13 +200,20 @@
 			<div class="com_con">
 				<fieldset>
 					<legend>Vehicle Information</legend>
-
 					<div class="form_group">
 					<div class="form_container">
 					<label>Tenant Lot Number</label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
 					</div>
 					<div class="form_container">
 					<label>License Plate Number</label><span class="error"> * <?php echo $plateNumberErr;?></span><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
+					</div>	
+					</div>
+					<div class="form_group">
+					<div class="form_container">
+					<label>Tenant Name</label><span class="error"> * <?php echo $tenantNameErr;?></span><input type="text" class="form_control" name="tenantName" value="<?php echo isset($_POST["tenantName"]) ? $_POST["tenantName"] : ''; ?>">
+					</div>
+					<div class="form_container">
+					<label>Contact Number</label><span class="error"> * <?php echo $contactNumberErr;?></span><input type="text" class="form_control" name="contactNumber" value="<?php echo isset($_POST["contactNumber"]) ? $_POST["contactNumber"] : ''; ?>">
 					</div>	
 					</div>
 					<div class="form_group">

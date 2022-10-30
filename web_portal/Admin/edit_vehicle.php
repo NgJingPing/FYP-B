@@ -70,8 +70,8 @@
 
 	<?php
 		//define variable and set to empty value
-		$tenantLotNumber = $plateNumber = $model = $brand = $color = $checked = "";
-		$tenantLotNumberErr = $plateNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
+		$tenantLotNumber = $plateNumber = $tenantName = $contactNumber = $model = $brand = $color = "";
+		$tenantLotNumberErr = $plateNumberErr = $tenantNameErr = $contactNumberErr = $modelErr = $brandErr = $colorErr = $activeErr = $msg = "";
 		$active = TRUE;
 		$vehicleID = 0;
 
@@ -135,11 +135,27 @@
 
 			if(empty($_POST["plateNumber"])) {
 				$plateNumberErr = "License Plate Number is required";
-			} elseif (strlen($_POST["plateNumber"]) > 20 ){ 
-				$plateNumberErr = "License plate number should not exceed 20 characters";
+			} elseif (strlen($_POST["plateNumber"]) > 10 ){ 
+				$plateNumberErr = "License plate number should not exceed 10 characters";
 			} else {
 				$plateNumber = test_input($_POST["plateNumber"]);
 				$plateNumber = str_replace(' ', '', $plateNumber);
+			}
+
+			if(empty($_POST["tenantName"])) {
+				$tenantNameErr = "Tenant name is required";
+			} elseif (strlen($_POST["tenantName"]) > 50 ){ 
+				$tenantNameErr = "Tenant name should not exceed 50 characters";
+			} else {
+				$tenantName = test_input($_POST["tenantName"]);
+			}
+
+			if(empty($_POST["contactNumber"])) {
+				$contactNumberErr = "Contact Number is required";
+			} elseif (strlen($_POST["contactNumber"]) > 15 ){ 
+				$contactNumberErr = "Contact number should not exceed 15 characters";
+			} else {
+				$contactNumber = test_input($_POST["contactNumber"]);
 			}
 
 			if(empty($_POST["brand"])) {
@@ -173,7 +189,7 @@
 				$active = FALSE; 
 			}
 
-			if($tenantLotNumber != "" && $plateNumber != "" && $brand != "" && $model != "" && $color != "")
+			if($tenantLotNumber != "" && $plateNumber != "" && $tenantName !="" && $contactNumber !="" && $brand != "" && $model != "" && $color != "")
 			{
 				$myquery = "UPDATE vehicle SET tenantLotNumber = ?, licensePlate = ?, brand = ?, model = ?, colour = ?, isActive = ? WHERE vehicleID = $vehicleID;";
 				$stmt = $conn->prepare($myquery);
@@ -181,8 +197,8 @@
 				$stmt->execute();
 				$conn->close();
 				$msg = "Record is updated.";
-				$tenantLotNumber = $model = $brand = $color = "";
-				$tenantLotNumberErr = $modelErr = $brandErr = $colorErr = "";
+				$tenantLotNumber = $plateNumber = $tenantName = $contactNumber = $model = $brand = $color = "";
+				$tenantLotNumberErr = $plateNumberErr = $tenantNameErr = $contactNumberErr = $modelErr = $brandErr = $colorErr = "";
 				$_POST["tenantLotNumber"] = $_POST["brand"] = $_POST["plateNumber"] = $_POST["model"] = $_POST["color"] = "";
 			}
 		}
@@ -232,6 +248,14 @@
 					</div>
 					<div class="form_container">
 					<label>License Plate Number</label><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
+					</div>	
+					</div>
+					<div class="form_group">
+					<div class="form_container">
+					<label>Tenant Name</label><span class="error"> * <?php echo $tenantNameErr;?></span><input type="text" class="form_control" name="tenantName" value="<?php echo isset($_POST["tenantName"]) ? $_POST["tenantName"] : ''; ?>">
+					</div>
+					<div class="form_container">
+					<label>Contact Number</label><span class="error"> * <?php echo $contactNumberErr;?></span><input type="text" class="form_control" name="contactNumber" value="<?php echo isset($_POST["contactNumber"]) ? $_POST["contactNumber"] : ''; ?>">
 					</div>	
 					</div>
 					<div class="form_group">
