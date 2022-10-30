@@ -5,7 +5,7 @@
 body{
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     min-width: 1280px;
-    background-color: #06283D;
+    background-color: #061C17;
 }
 
 /* Full-width input fields */
@@ -26,7 +26,7 @@ input[type=text], input[type=password] {
 
 
 button {
-  background-color: #DFF6FF;
+  background-color: #4DAC62;
   font-size: 18px;
   color: #06283D;
   padding: 14px 20px;
@@ -39,7 +39,7 @@ button {
 }
 
 .button_login{
-  background-color: rgb(71, 181, 255);
+  background-color: #4DAC62;
   color: #DFF6FF;
 }
 
@@ -58,6 +58,7 @@ button:hover {
 
 .container {
   padding: 16px;
+  background-color: #DFF6FF;
 }
 
 span.psw {
@@ -135,7 +136,7 @@ span.psw {
 .logo_container {
   padding: 10px;
   display: block;
-  background-color: #06283D;
+  background-color: #061C17;
   text-align: center;
 }
 
@@ -149,12 +150,12 @@ width: 240px;
 }
 
 .logo_initial {
-color: rgb(223, 246, 255);
+color: #C5E5CC;
 }
 
 .logo {
   font-size: 60px;
-  color: rgb(71, 181, 255);
+  color: #4DAC62;
   font-weight: bold;
   font-family: "Bungee Hairline", Arial, Helvetica, sans-serif;
 }
@@ -162,7 +163,7 @@ color: rgb(223, 246, 255);
 .logo_tail {
 text-align: right;
 font-size: 18px;
-color: #DFF6FF;
+color: #C5E5CC;
 font-weight: lighter;
 font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
@@ -174,5 +175,12 @@ margin-top: 200px;
 }
 
 .user_lvl_buttons{
-text-align: center; 
+text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
 }
