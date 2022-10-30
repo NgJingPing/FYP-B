@@ -105,7 +105,7 @@
                     }
                     //echo "Connected successfully </br>";
 
-                    $sql = "SELECT * FROM vehicle";
+                    $sql = "SELECT vehicle.vehicleID, vehicle.licensePlate, vehicle.tenantLotNumber, name, phoneNumber, vehicle.brand, vehicle.model, vehicle.colour, vehicle.isActive FROM vehicle JOIN tenant WHERE vehicle.tenantLotNumber = tenant.tenantLotNumber;";
                     $result = mysqli_query($conn, $sql);
 
                     if (!$result) {

@@ -42,30 +42,30 @@
 <body>
 	<!--Sidebar starts here-->
 	<div class="navigation_bar">
-  <div class="logo_container"> 
-  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
-  <div class="logo_tail"><span>ANPR</span></div> 
-  </div>
-  <div class="navigation_links_container">
+	<div class="logo_container"> 
+	<div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
+	<div class="logo_tail"><span>ANPR</span></div> 
+	</div>
+	<div class="navigation_links_container">
 
-  <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
-  <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
-  <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
-    <div class="sub_menu">
-		<div class="navigation_links"><a href="report.php"></i>Report</a></div>
-        <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
-        <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
-		<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
-    </div>
+	<div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+	<div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
+	<div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
+		<div class="sub_menu">
+			<div class="navigation_links"><a href="report.php"></i>Report</a></div>
+			<div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
+			<div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+			<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
+		</div>
   
-  <div class="navigation_links"><a href="view_vehicle.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
-  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
-  <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
+	<div class="navigation_links"><a href="view_vehicle.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
+	<div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
+	<div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
-</div>
-</div>
-</div>
-<script src="script/log.js"></script>
+	</div>
+	</div>
+	</div>
+	<script src="script/log.js"></script>
 <!--Sidebar ends here-->
 
 	<?php
@@ -112,25 +112,6 @@
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
 			if($conn->connect_error){
 				die("Connection Failed: " . $conn->connect_error);
-			}
-			
-			if(empty($_POST["tenantLotNumber"])) {
-				$tenantLotNumberErr = "Tenant Lot Number is required";
-			} elseif (strlen($_POST["tenantLotNumber"]) > 6 ){ 
-				$tenantLotNumberErr = "tenantLotNumber should not exceed 6 characters";
-			} else {
-				$tenantLotNumber = test_input($_POST["tenantLotNumber"]);
-				$tenantLotNumber = str_replace(' ', '', $tenantLotNumber);
-				/*$myquery = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
-				$sql = mysqli_query($conn, $myquery);
-				$result = mysqli_num_rows($sql);
-
-				if($result == 0){
-					$myquery2 = "INSERT INTO tenant (tenantLotNumber) VALUES (?);";
-					$stmt = $conn->prepare($myquery2);
-					$stmt->bind_param("s", $tenantLotNumber);
-					$stmt->execute();
-				}*/
 			}
 
 			if(empty($_POST["plateNumber"])) {
@@ -189,12 +170,16 @@
 				$active = FALSE; 
 			}
 
-			if($tenantLotNumber != "" && $plateNumber != "" && $tenantName !="" && $contactNumber !="" && $brand != "" && $model != "" && $color != "")
+			if($plateNumber != "" && $tenantName != "" && $contactNumber !="" && $brand != "" && $model != "" && $color != "")
 			{
-				$myquery = "UPDATE vehicle SET tenantLotNumber = ?, licensePlate = ?, brand = ?, model = ?, colour = ?, isActive = ? WHERE vehicleID = $vehicleID;";
+				$myquery = "UPDATE vehicle SET licensePlate = ?, brand = ?, model = ?, colour = ?, isActive = ? WHERE vehicleID = $vehicleID;";
 				$stmt = $conn->prepare($myquery);
-				$stmt->bind_param("ssssss", $tenantLotNumber, $plateNumber, $brand, $model, $color, $active);
+				$stmt->bind_param("sssss", $plateNumber, $brand, $model, $color, $active);
 				$stmt->execute();
+				$nums = $_SESSION['num'];
+				$sql = "UPDATE tenant SET name = '$tenantName', phoneNumber = $contactNumber WHERE tenantLotNumber = '$nums'";
+				$conn->query($sql);
+
 				$conn->close();
 				$msg = "Record is updated.";
 				$tenantLotNumber = $plateNumber = $tenantName = $contactNumber = $model = $brand = $color = "";
@@ -212,22 +197,26 @@
 			die("Connection Failed: " . $conn->connect_error);
 		}
 
-		$myquery = "SELECT tenantLotNumber, licensePlate, brand, model, colour, isActive FROM vehicle WHERE vehicleID = $vehicleID;";
+		$myquery = "SELECT vehicle.tenantLotNumber, vehicle.licensePlate, vehicle.brand, vehicle.model, vehicle.colour, vehicle.isActive, tenant.name, tenant.phoneNumber FROM vehicle JOIN tenant WHERE tenant.tenantLotNumber = vehicle.tenantLotNumber AND vehicleID = $vehicleID;";
 
 		$result = $conn->query($myquery);
 
 		if(mysqli_num_rows($result) == 1) {
 			$item = $result->fetch_assoc();
 			$_POST["tenantLotNumber"] = $item['tenantLotNumber'];
+			$tenantLotNumber = $item['tenantLotNumber'];
 			$_POST["plateNumber"] = $item["licensePlate"];
 			$_POST["brand"] = $item["brand"];
 			$_POST["model"] = $item["model"];
 			$_POST["color"] = $item["colour"];
+			$_POST["tenantName"] = $item["name"];
+			$_POST["contactNumber"] = $item["phoneNumber"];
 			if($item["isActive"] == 1) {
 				$checked = "checked";
 			} else {
 				$checked = "unchecked";
 			}
+			$_SESSION['num'] = $tenantLotNumber;
 		}
 		$conn->close();
 	?>
@@ -244,7 +233,7 @@
 
 					<div class="form_group">
 					<div class="form_container">
-					<label>Tenant Lot Number</label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
+					<label>Tenant Lot Number</label><input type="text" class="form_control" name="tenantLotNumber" placeholder="<?php echo $tenantLotNumber; ?>" disabled="disabled">
 					</div>
 					<div class="form_container">
 					<label>License Plate Number</label><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
