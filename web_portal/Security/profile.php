@@ -94,6 +94,7 @@
     <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
     <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
       <div class="sub_menu">
+          <div class="navigation_links"><a href="report.php"></i>Report</a></div>
           <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
           <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
           <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
