@@ -39,7 +39,7 @@
     <style>
     .card {
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-      width: 100%;
+      width: 80%;
       text-align: center;
       font-family: arial;
       padding: 20px 20px;
@@ -133,8 +133,10 @@
   }
 ?>
 
-
-<h1>User Profile Card</h1>
+<div class="content-container">
+		<header>
+		<h1>User Profile Card</h1>
+		</header>
 
     <div class="card">
       <img src="../images/administrator.png" alt="User" class="center" style="width:240px;height:260px;">
@@ -164,7 +166,7 @@
         }
       ?>
     </div>
-
+</div>
 
 <div class="waves"><p>&</p></div>
 </body>

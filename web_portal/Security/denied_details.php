@@ -1,9 +1,9 @@
-<?php 
+<?php
 	$session_email = $ssession_type = "";
-	// Resume the session 
+	// Resume the session
 	session_start();
-	// If $_SESSION['email'] not set, force redirect to login page 
-	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) { 
+	// If $_SESSION['email'] not set, force redirect to login page
+	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) {
 		header("Location: ../login.php");
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
@@ -12,7 +12,7 @@
 			header("Location: ../login.php");
 		}
 	}
-?> 
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -22,11 +22,11 @@
 	<meta name = "autor" content = "Sabrina Tan">
     <title>ANPR - Denied Access Log Details</title>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,9 +58,9 @@
 <body>
 <!--Sidebar starts here-->
 <div class="navigation_bar">
-  <div class="logo_container"> 
-  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
-  <div class="logo_tail"><span>ANPR</span></div> 
+  <div class="logo_container">
+  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div>
+  <div class="logo_tail"><span>ANPR</span></div>
   </div>
   <div class="navigation_links_container">
 
@@ -71,11 +71,11 @@
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
         <div class="navigation_links"><a href="denied_access.php" class="active_page"></i>Denial Log</a></div>
     </div>
-  
+
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
-  
+
 </div>
 </div>
 </div>
@@ -88,19 +88,19 @@
 
 	<section>
 	<div class="main_container">
-		<table class="table table-bordered">  
+		<table class="table table-bordered">
                     <tr>
 						<td class="row-header">License Plate Number</td>
 						<td><?php echo $item["licensePlate"]; ?></td>
-					</tr>  
+					</tr>
 					<tr>
 						<td class="row-header">Time</td>
 						<td>
-						<?php 
+						<?php
 						$date = $item["deniedTime"];
 						$dateObject = new DateTime($date);
 						$format = $dateObject->format('d M, Y h:i A');
-						echo $format; 
+						echo $format;
 						?></td>
 					</tr>
 					<tr>
@@ -111,5 +111,7 @@
 		</div>
 	</section>
 </div>
+
+<div class="waves"><p>&</p></div>
 </body>
 </html>

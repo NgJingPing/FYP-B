@@ -69,7 +69,7 @@
 
 <head>
     <meta charset = "utf-8">
-	<meta name = "autor" content = "Sabrina Tan">
+	<meta name = "author" content = "Jeffery Sia">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Registration</title>
 
@@ -126,8 +126,9 @@
    echo $email;
     echo $advanced;?>
     <div class="container">
+			<div class="form_container">
       <label for="user_type"><b>Choose the Type of New User</b></label><br>
-      <div class="form_container">
+
       <input type="radio" id="html" name="user_type" value="1" required>
       <label for="html">Admin</label>
       <br/><input type="radio" id="css" name="user_type" value="2">
@@ -135,17 +136,19 @@
       </div>
 
       <div class="form_container">
-      <p><label for="email"><b>Enter New User Email</b></label>
+      <p><label for="email"><b>Enter New User Email</b></label><br>
       <input type="text" placeholder="Enter Email" name="email" required><span class="error"> * <?php echo $emailErr;?></span></p>
 
-      <p><label for="psw"><b>Enter Password for New User</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required></p>
+      <p><label for="psw"><b>Enter Password for New User</b></label><br>
+      <input type="password" placeholder="Enter Password" name="password" required> * </p>
 
-      <p><label for="psw"><b>Re-enter the Password</b></label>
-      <input type="password" placeholder="Re-enter Password" name="repassword" required></p>
-      </div>
+      <p><label for="psw"><b>Re-enter the Password</b></label><br>
+      <input type="password" placeholder="Re-enter Password" name="repassword" required> * </p>
+			</div>
 
-      <button class="button_login" type="submit" value="Register" name="register_button">Register</button>
+			<div>
+      <button class="button_login" type="submit" value="Register" name="register_button">Register</button><br>
+			</div>
 
       <p class="message"><span class="successMsg"><?php echo $msg;?></span><p>
     </div>
