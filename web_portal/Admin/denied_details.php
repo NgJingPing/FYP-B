@@ -97,7 +97,13 @@
 					</tr>  
 					<tr>
 						<td class="row-header">Time</td>
-						<td><?php echo $item["deniedTime"]; ?></td>
+						<td>
+						<?php 
+						$date = $item["deniedTime"];
+						$dateObject = new DateTime($date);
+						$format = $dateObject->format('d M, Y h:i A');
+						echo $format; 
+						?></td>
 					</tr>
 					<tr>
 						<td class="row-header">Image</td>

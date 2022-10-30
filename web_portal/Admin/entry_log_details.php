@@ -116,7 +116,13 @@
 					</tr>  
 					<tr>
 						<td class="row-header">Entry Time</td>
-						<td><?php echo $item["entryTime"]; ?></td>
+						<td>
+						<?php 
+						$date = $item["entryTime"];
+						$dateObject = new DateTime($date);
+						$format = $dateObject->format('d M, Y h:i A');
+						echo $format; 
+						?></td>
 					</tr>
 					<tr>
 						<td class="row-header">Image</td>

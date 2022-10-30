@@ -98,10 +98,13 @@
                 if($result){
                     while($row = mysqli_fetch_array($result))  
                     {  
+                        $date = $row['deniedTime'];
+                        $dateObject = new DateTime($date);
+                        $format = $dateObject->format('d M, Y h:i A');
                         echo '  
                         <tr>  
                             <td>'.$row["referenceID"].'</td>  
-                            <td>'.$row["deniedTime"].'</td>  
+                            <td>'.$format.'</td>  
                             <td>'.$row["licensePlate"].'</td>  
                             <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
                         </tr>  
