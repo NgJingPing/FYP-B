@@ -39,7 +39,7 @@
     <style>
     .card {
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-      width: 100%;
+      width: 80%;
       text-align: center;
       font-family: arial;
       padding: 20px 20px;
@@ -91,7 +91,7 @@
     </div>
     <div class="navigation_links_container">
 
-    <div class="navigation_links"><a href="dashboard.php" class="active_page"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+    <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
     <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
       <div class="sub_menu">
           <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
@@ -99,7 +99,7 @@
           <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
       </div>
       <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
-    <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
+    <div class="navigation_links"><a href="profile.php" class="active_page"><i class="fa-solid fa-user"></i>Profile</a></div>
     <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
 
   </div>
@@ -131,7 +131,10 @@
 ?>
 
 
-<h1>User Profile Card</h1>
+<div class="content-container">
+		<header>
+		<h1>User Profile Card</h1>
+		</header>
 
     <div class="card">
       <img src="../images/security.png" alt="User" class="center" style="width:240px;height:260px;">
@@ -154,7 +157,7 @@
       <br>
       <p><button>Change Password</button></p>
     </div>
-
+	</div>
 
 <div class="waves"><p>&</p></div>
 </body>
