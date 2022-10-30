@@ -18,6 +18,8 @@
   $password = "";
   $dbname = "anprdb";
 
+  $emailErr = "";
+
   $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
       if($conn->connect_error){
           die("Connection Failed: " . $conn->connect_error);
@@ -30,20 +32,34 @@
     $password = $_POST["password"];
     $repassword = $_POST["repassword"];
     $user_type = $_POST["user_type"];
+    $user_type = (int)$user_type;
+    $advanced = FALSE;
 
-    if ($password == $repassword){
-      $password = hash("sha256", $password);
-      $myquery = "INSERT INTO users (email, password, role, isAdvanced)
-      VALUES ('$email', '$password', '$user_type', FALSE)";
-      $stmt = $conn->prepare($myquery);
-      $stmt->bind_param("ssssss", $email, $password, $repassword, $user_type);
-      $stmt->execute();
-      $conn->close();
-      $msg = "Record is saved.";
-      $email = $password = $user_type = $repassword = $error_msg = "";
-      $_POST["email"] = $_POST["password"] = $_POST["repassword"] = $_POST["user_type"] = "";
-    } else {
-      $error_msg = "<p>Password does not same</p>";
+    $myquery2 = "SELECT email FROM users WHERE email = '$email';";
+    $sql = mysqli_query($conn, $myquery2);
+	$result = mysqli_num_rows($sql);
+    if($result > 0) {
+        $emailErr = "An account with the same email already existed";
+        $email = "";
+
+    }
+
+
+    if($email != "" & $password != "" & $repassword != "" & $user_type != "") {
+        if ($password == $repassword){
+          $password = hash("sha256", $password);
+          $myquery = "INSERT INTO users (email, password, role, isAdvanced)
+          VALUES (?, ?, ?, ?)";
+          $stmt = $conn->prepare($myquery);
+          $stmt->bind_param("ssss", $email, $password, $user_type, $advanced);
+          $stmt->execute();
+          $conn->close();
+          $msg = "Record is saved.";
+          $email = $password = $user_type = $repassword = $error_msg = "";
+          $_POST["email"] = $_POST["password"] = $_POST["repassword"] = $_POST["user_type"] = "";
+        } else {
+          $error_msg = "<p>Password does not same</p>";
+        }
     }
   }
 ?>
@@ -106,31 +122,33 @@
 </header>
 <section>
   <form action="register_user.php" method="POST">
-
+  <php echo $user_type;
+   echo $email;
+    echo $advanced;?>
     <div class="container">
       <label for="user_type"><b>Choose the Type of New User</b></label><br>
       <div class="form_container">
       <input type="radio" id="html" name="user_type" value="1" required>
-      <label for="html">Admin</label><br>
-      <input type="radio" id="css" name="user_type" value="2">
+      <label for="html">Admin</label>
+      <br/><input type="radio" id="css" name="user_type" value="2">
       <label for="css">Security</label><br>
       </div>
 
       <div class="form_container">
-      <label for="email"><b>Enter New User Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required><br>
+      <p><label for="email"><b>Enter New User Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required><span class="error"> * <?php echo $emailErr;?></span></p>
 
-      <label for="psw"><b>Enter Password for New User</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required><br>
+      <p><label for="psw"><b>Enter Password for New User</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required></p>
 
-      <label for="psw"><b>Re-enter the Password</b></label>
-      <input type="password" placeholder="Re-enter Password" name="repassword" required><br>
+      <p><label for="psw"><b>Re-enter the Password</b></label>
+      <input type="password" placeholder="Re-enter Password" name="repassword" required></p>
       </div>
 
       <button class="button_login" type="submit" value="Register" name="register_button">Register</button>
-    </div>
 
-    <p class="message"><span class="successMsg"><?php echo $msg;?></span><p>
+      <p class="message"><span class="successMsg"><?php echo $msg;?></span><p>
+    </div>
   </div>
   </form>
 </section>
