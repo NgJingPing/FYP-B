@@ -100,10 +100,13 @@
                 if($result){
                     while($row = mysqli_fetch_array($result))  
                     {  
+                        $date = $row['entryTime'];
+                        $dateObject = new DateTime($date);
+                        $format = $dateObject->format('d M, Y h:i A');
                         echo '  
                         <tr>  
                             <td>'.$row["referenceID"].'</td>  
-                            <td>'.$row["entryTime"].'</td>  
+                            <td>'.$format.'</td>  
                             <td>'.$row["licensePlate"].'</td>  
                             <td>'.$row["tenantLotNumber"].'</td>  
                             <td><a href="entry_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 

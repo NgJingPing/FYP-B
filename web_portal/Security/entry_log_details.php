@@ -20,6 +20,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "autor" content = "Sabrina Tan">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ANPR - Entry Log Details</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
@@ -48,7 +49,7 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT entrylog.referenceID, entrylog.licensePlate, entrylog.entryTime, entrylog.image, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM entrylog INNER JOIN vehicle ON entrylog.licensePlate = vehicle.licensePlate WHERE entrylog.referenceID = $id; ";
+	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, entrylog.image, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE entrylog.referenceID = $id; ";
 	$result = $conn->query($myquery);
 	if(mysqli_num_rows($result) == 1) {
 		$item = $result->fetch_assoc();
@@ -65,8 +66,10 @@
   <div class="navigation_links_container">
 
   <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+  <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
   <div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
+		<div class="navigation_links"><a href="report.php"></i>Report</a></div>
         <div class="navigation_links"><a href="entry_log.php" class="active_page"></i>Entry Log</a></div>
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
 		<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
@@ -114,15 +117,24 @@
 					</tr>  
 					<tr>
 						<td class="row-header">Entry Time</td>
-						<td><?php echo $item["entryTime"]; ?></td>
+						<td>
+						<?php 
+						$date = $item["entryTime"];
+						$dateObject = new DateTime($date);
+						$format = $dateObject->format('d M, Y h:i A');
+						echo $format; 
+						?></td>
 					</tr>
 					<tr>
 						<td class="row-header">Image</td>
 						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
 					</tr>
+
+
 		</table>
 		</div>
 	</section>
 </div>
+<div class="waves"><p>&</p></div>
 </body>
 </html>
