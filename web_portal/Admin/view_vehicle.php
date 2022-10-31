@@ -81,7 +81,7 @@
                         <th>Model</th>
                         <th>Colour</th>
                         <th>Active</th>
-                        <th>Modify/Delete</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
@@ -124,7 +124,7 @@
                             }
                             echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["name"]."</td><td>".$row["phoneNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
                             "</td><td>".$row["colour"]."</td><td>".$active."</td><td><span><a href='edit_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-pen-to-square'></i></a>
-                            </span><span><a href='remove_vehicle.php?vehicle=$row[vehicleID]'><i class='fa-solid fa-trash-can'></i></a></span>"."</td></tr>";
+                            </span>"."</td></tr>";
                         }
                     } else {
                         echo '<script>alert("Empty Result!")</script>';
