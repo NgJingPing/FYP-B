@@ -113,5 +113,6 @@
 		</div>
 	</section>
 </div>
+<div class="waves"><p>&</p></div>
 </body>
 </html>
