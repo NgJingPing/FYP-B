@@ -252,7 +252,6 @@
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
         <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
-<<<<<<< Updated upstream
     <div class="navigation_links_container">
 
     <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
@@ -266,8 +265,6 @@
       <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
     <div class="navigation_links"><a href="profile.php" class="active_page"><i class="fa-solid fa-user"></i>Profile</a></div>
     <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
-=======
->>>>>>> Stashed changes
 
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php" class="active_page"><i class="fa-solid fa-user"></i>Profile</a></div>
