@@ -35,7 +35,7 @@
 		$renewpassword = $_POST["renewpassword"];
 		$renewpassword = mysqli_escape_string($conn, $renewpassword);
 		$email = $session_email;
-		$email = mysqli_escape_string($conn, $_POST["email"]);
+		$email = mysqli_escape_string($conn, $email);
 
 		$myquery = "SELECT password, role, isAdvanced, userID FROM users WHERE email = '$email'";
 
