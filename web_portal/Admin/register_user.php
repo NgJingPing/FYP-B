@@ -35,6 +35,10 @@
     $user_type = (int)$user_type;
     $advanced = FALSE;
 
+    $email = mysqli_escape_string($conn, $email);
+    $password = mysqli_escape_string($conn, $password);
+    $repassword = mysqli_escape_string($conn, $repassword);
+
     $myquery2 = "SELECT email FROM users WHERE email = '$email';";
     $sql = mysqli_query($conn, $myquery2);
 	$result = mysqli_num_rows($sql);

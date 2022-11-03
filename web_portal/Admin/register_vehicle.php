@@ -97,25 +97,17 @@
 			} else {
 				$tenantLotNumber = test_input($_POST["tenantLotNumber"]);
 				$tenantLotNumber = str_replace(' ', '', $tenantLotNumber);
-				/*$myquery = "SELECT tenantLotNumber FROM tenant WHERE tenantLotNumber = '$tenantLotNumber';";
-				$sql = mysqli_query($conn, $myquery);
-				$result = mysqli_num_rows($sql);
-
-				if($result == 0){
-					$myquery2 = "INSERT INTO tenant (tenantLotNumber) VALUES (?);";
-					$stmt = $conn->prepare($myquery2);
-					$stmt->bind_param("s", $tenantLotNumber);
-					$stmt->execute();
-				}*/
+				$tenantLotNumber = mysqli_escape_string($conn, $tenantLotNumber);
 			}
 
 			if(empty($_POST["plateNumber"])) {
 				$plateNumberErr = "License Plate Number is required";
-			} elseif (strlen($_POST["plateNumber"]) > 10 ){ 
-				$plateNumberErr = "License plate number should not exceed 10 characters";
+			} elseif (strlen($_POST["plateNumber"]) > 15 ){ 
+				$plateNumberErr = "License plate number should not exceed 15 characters";
 			} else {
 				$plateNumber = test_input($_POST["plateNumber"]);
 				$plateNumber = str_replace(' ', '', $plateNumber);
+				$plateNumber = mysqli_escape_string($conn, $plateNumber);
 			}
 
 			if(empty($_POST["tenantName"])) {
@@ -124,6 +116,7 @@
 				$tenantNameErr = "Tenant name should not exceed 50 characters";
 			} else {
 				$tenantName = test_input($_POST["tenantName"]);
+				$tenantName = mysqli_escape_string($conn, $tenantName);
 			}
 
 			if(empty($_POST["contactNumber"])) {
@@ -132,6 +125,7 @@
 				$contactNumberErr = "Contact number should not exceed 15 characters";
 			} else {
 				$contactNumber = test_input($_POST["contactNumber"]);
+				$contactNumber = mysqli_escape_string($conn, $contactNumber);
 			}
 
 			if(empty($_POST["brand"])) {
@@ -140,6 +134,7 @@
 				$brandErr = "Brand should not exceed 20 characters";
 			} else {
 				$brand = test_input($_POST["brand"]);
+				$brand = mysqli_escape_string($conn, $brand);
 			}
 
 			if(empty($_POST["model"])) {
@@ -148,6 +143,7 @@
 				$modelErr = "Model should not exceed 30 characters";
 			} else {
 				$model = test_input($_POST["model"]);
+				$model = mysqli_escape_string($conn, $model);
 			}
 
 			if(empty($_POST["color"])) {
@@ -156,6 +152,7 @@
 				$colorErr = "Colour should not exceed 20 characters";
 			} else {
 				$color = test_input($_POST["color"]);
+				$color = mysqli_escape_string($conn, $color);
 			}
 
 			$check = isset($_POST['active']) ? "checked" : "unchecked";
