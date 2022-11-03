@@ -29,9 +29,13 @@
 
 	if(isset($_POST["submit"])) {
 		$oldpassword = $_POST["oldpassword"];
+		$oldpassword = mysqli_escape_string($conn, $oldpassword);
 		$newpassword = $_POST["newpassword"];
+		$newpassword = mysqli_escape_string($conn, $newpassword);
 		$renewpassword = $_POST["renewpassword"];
+		$renewpassword = mysqli_escape_string($conn, $renewpassword);
 		$email = $session_email;
+		$email = mysqli_escape_string($conn, $_POST["email"]);
 
 		$myquery = "SELECT password, role, isAdvanced, userID FROM users WHERE email = '$email'";
 
