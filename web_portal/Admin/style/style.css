@@ -36,6 +36,13 @@ body{
     margin: 0px 32px;
 }
 
+.navigation_bar .naim_logo {
+  margin: auto;
+  display: block;
+  height: auto; 
+  width: 185px;
+}
+
 .navigation_bar .logo_initial {
   color: #C5E5CC;
 }

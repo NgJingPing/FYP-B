@@ -41,6 +41,7 @@
    <!--Sidebar starts here-->
   <div class="navigation_bar">
   <div class="logo_container"> 
+  <img src="../images/naim.png" class="naim_logo"></img>
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
   <div class="logo_tail"><span>ANPR</span></div> 
   </div>
@@ -130,7 +131,7 @@
         {  
             $date = $row['entryTime'];
             $dateObject = new DateTime($date);
-            $format = $dateObject->format('d M, Y h:i A');
+            $format = $dateObject->format('d M Y h:i A');
             echo '  
             <tr>  
                 <td>'.$count.'</td>  
@@ -161,7 +162,7 @@
         {  
             $date = $row['exitTime'];
             $dateObject = new DateTime($date);
-            $format = $dateObject->format('d M, Y h:i A');
+            $format = $dateObject->format('d M Y h:i A');
             echo '  
             <tr>  
                 <td>'.$count2.'</td>  
@@ -190,7 +191,7 @@
         {  
             $date = $row['deniedTime'];
             $dateObject = new DateTime($date);
-            $format = $dateObject->format('d M, Y h:i A');
+            $format = $dateObject->format('d M Y h:i A');
             echo '  
             <tr>  
                 <td>'.$count3.'</td>  

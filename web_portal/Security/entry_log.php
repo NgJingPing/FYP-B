@@ -42,6 +42,7 @@
    <!--Sidebar starts here-->
   <div class="navigation_bar">
   <div class="logo_container">
+  <img src="../images/naim.png" class="naim_logo"></img>
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div>
   <div class="logo_tail"><span>ANPR</span></div>
   </div>

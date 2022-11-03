@@ -41,6 +41,7 @@
 	<!--Sidebar starts here-->
 	<div class="navigation_bar">
   <div class="logo_container"> 
+  <img src="../images/naim.png" class="naim_logo"></img>
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
   <div class="logo_tail"><span>ANPR</span></div> 
   </div>
@@ -196,7 +197,6 @@
 		 <form method="post" action="">
 			<div class="com_con">
 				<fieldset>
-					<legend>Vehicle Information</legend>
 					<div class="form_group">
 					<div class="form_container">
 					<label>Tenant Lot Number</label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
@@ -257,10 +257,10 @@
 					</div>
 					<div class="form_group">
 					<div class="form_container">
-					 <button type="submit" class="button_submit" name ="submit" value="Submit">Submit</button>
+					<button onclick="window.location='dashboard.php';" type="button" class="button_cancel">Cancel</button>
 					</div>
 					<div class="form_container">
-					<button onclick="window.location='dashboard.php';" type="button" class="button_cancel">Cancel</button>
+					 <button type="submit" class="button_submit" name ="submit" value="Submit">Submit</button>
 					</div>
 					</div>
 					</div>

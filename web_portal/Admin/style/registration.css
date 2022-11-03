@@ -35,6 +35,13 @@
   margin: 0px 32px;
 }
 
+.navigation_bar .naim_logo {
+  margin: auto;
+  display: block;
+  height: auto; 
+  width: 185px;
+}
+
 .navigation_bar .logo_initial {
 color: #C5E5CC;
 }
@@ -114,8 +121,8 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
     }
 
     form {
-        width: 80%;
-        margin: 50px auto auto 10px;
+        width: 48%;
+        margin: auto;
         color: #061C17;
     }
       
@@ -132,7 +139,7 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
     
     .form_container {
         display: inline-block;
-        width: 50%;
+        width: 100%;
       }
 
       .form_container label{
@@ -145,13 +152,13 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 
     input{
       box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
-      font-size: 1rem;
+      font-size: 1.25rem;
       background-color: #e9e9e9;
     }
 
     .form_control {
       border: 1px solid #333;
-      width: 300px;
+      width: 90%;
       border: none;
       display: block;
       height: 40px;
@@ -164,8 +171,8 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
     .button_submit, .button_cancel {
       font-size: 1.25rem;
       padding: 5px;
-      margin: 30px 70px 0px 0px;
-      width: 100px;
+      margin-top: 30px;
+      width: 90%;
       border: none;
       display: block;
       height: 45px;
@@ -190,7 +197,7 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 /* The switch - the box around the slider */
 .switch {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 60px;
     height: 34px;
 }
