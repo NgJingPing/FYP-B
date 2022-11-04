@@ -106,7 +106,7 @@
                     {  
                         $date = $row['entryTime'];
                         $dateObject = new DateTime($date);
-                        $format = $dateObject->format('d M, Y h:i A');
+                        $format = $dateObject->format('d M Y h:i A');
                         echo '  
                         <tr>  
                             <td>'.$row["referenceID"].'</td>  

@@ -121,7 +121,7 @@
 						<?php 
 						$date = $item["exitTime"];
 						$dateObject = new DateTime($date);
-						$format = $dateObject->format('d M, Y h:i A');
+						$format = $dateObject->format('d M Y h:i A');
 						echo $format; 
 						?></td>
 					</tr>
