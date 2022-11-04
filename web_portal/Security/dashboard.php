@@ -94,7 +94,7 @@
         }
         ?>
         </div>
-
+        
 
     </div>
     <div class="widget_container">
@@ -109,7 +109,7 @@
         }
         ?>
         </div>
-
+        
 
     </div>
     <div class="widget_container">
@@ -124,7 +124,7 @@
          }
         ?>
         </div>
-
+        
 
     </div>
     <div class="widget_container">
@@ -139,7 +139,7 @@
         }
         ?>
         </div>
-
+        
 
     </div>
     </div>
@@ -150,27 +150,30 @@
     <div class="dashboard_logs">
         <div class="dashboard_logs_container">
         <h1>Recent Entries</h1>
-		<table id="entry_log_table" class="table table-borderless">
-			<thead>
-                <tr>
-                    <td>Timestamp</td>
-                    <td>License Plate Number</td>
-                    <td>Tenant Lot Number</td>
-                </tr>
-            </thead>
+		<table id="entry_log_table" class="table table-borderless">  
+			<thead>  
+                <tr>  
+                    <td>Timestamp</td>  
+                    <td>License Plate Number</td>  
+                    <td>Tenant Lot Number</td>  
+                </tr>  
+            </thead>  
 
 			<?php
-                if($result){
-                    while($row = mysqli_fetch_array($result))
+				if($result){
+                    while($row = mysqli_fetch_array($result))  
                     {
-                        echo '
-                        <tr>
-                            <td>'.$row["entryTime"].'</td>
-                            <td>'.$row["licensePlate"].'</td>
-                            <td>'.$row["tenantLotNumber"].'</td>
-                        </tr>
-                        ';
-                    }
+                        $date = $row['entryTime'];
+                        $dateObject = new DateTime($date);
+                        $format = $dateObject->format('d M Y h:i A');
+                        echo '  
+                        <tr>  
+                            <td>'.$format.'</td>  
+                            <td>'.$row["licensePlate"].'</td>  
+                            <td>'.$row["tenantLotNumber"].'</td>  
+                        </tr>  
+                        ';  
+                    } 
                 }
 			?>
 		</table>
@@ -184,33 +187,36 @@
 
         <div class="dashboard_logs_container">
         <h1>Recent Exits</h1>
-		<table id="exit_log_table" class="table table-borderless">
-			<thead>
-                <tr>
-                    <td>Timestamp</td>
-                    <td>License Plate Number</td>
-                    <td>Tenant Lot Number</td>
-                 </tr>
-            </thead>
+		<table id="exit_log_table" class="table table-borderless">  
+			<thead>  
+                <tr>  
+                    <td>Timestamp</td>  
+                    <td>License Plate Number</td>  
+                    <td>Tenant Lot Number</td>  
+                 </tr>  
+            </thead>  
 
 			<?php
-                if($result){
-                    while($row = mysqli_fetch_array($result))
-                    {
-                        echo '
-                        <tr>
-                            <td>'.$row["exitTime"].'</td>
-                            <td>'.$row["licensePlate"].'</td>
-                            <td>'.$row["tenantLotNumber"].'</td>
-                        </tr>
-                        ';
-                    }
+				if($result){
+                    while($row = mysqli_fetch_array($result))  
+                    {  
+                        $date = $row['exitTime'];
+                        $dateObject = new DateTime($date);
+                        $format = $dateObject->format('d M Y h:i A');
+                        echo '  
+                        <tr>  
+                            <td>'.$format.'</td>  
+                            <td>'.$row["licensePlate"].'</td>  
+                            <td>'.$row["tenantLotNumber"].'</td>  
+                        </tr>  
+                        ';  
+                    } 
                 }
 			?>
 		</table>
             </div>
 	</div>
-
+    
 </div>
 <div class="waves"><p>&</p></div>
 </body>
