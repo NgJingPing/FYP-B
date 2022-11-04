@@ -196,6 +196,38 @@ thead{
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
+.date_selector {
+  margin-left: 11px;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.report_table_name {
+  margin-left: 11px;
+}
+
+.button_submit {
+  font-size: 1.25rem;
+  padding: 5px;
+  margin-top: 30px;
+  width: 10%;
+  border: none;
+  display: inline-block;
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
+}
+
+.button_submit {
+background-color: #061C17;
+color: #C5E5CC;
+}
+
+.button_submit:hover {
+  color: #4DAC62;
+}
+
+
 div.waves {
   bottom: 0;
   position: fixed;

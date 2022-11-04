@@ -236,8 +236,6 @@
 		 <form method="post" action="">
 			<div class="com_con">
 				<fieldset>
-					<legend>Vehicle Information</legend>
-
 					<div class="form_group">
 					<div class="form_container">
 					<label>Tenant Lot Number</label><input type="text" class="form_control" name="tenantLotNumber" placeholder="<?php echo $tenantLotNumber; ?>" disabled="disabled">
@@ -282,10 +280,10 @@
 					</div>
 					<div class="form_group">
 					<div class="form_container">
-					 <button type="submit" class="button_submit" name ="submit" value="Submit">Submit</button>
+					<button onclick="window.location='view_vehicle.php';" type="button" class="button_cancel">Cancel</button>
 					</div>
 					<div class="form_container">
-					<button onclick="window.location='view_vehicle.php';" type="button" class="button_cancel">Cancel</button>
+					 <button type="submit" class="button_submit" name ="submit" value="Submit">Submit</button>
 					</div>
 					</div>
 					</div>

@@ -21,7 +21,7 @@
     <meta charset = "utf-8">
 	<meta name = "author" content = "Sabrina Tan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ANPR - Entry Log</title>
+    <title>ANPR - Report</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -84,10 +84,9 @@
 	}
     
     echo '
-
-        <form method="post" action="">
-            <label>Start Date</label> <input type="date" id="start" name="start">
-            <label>End date</label> <input type="date" id="end" name="end">
+        <form method="post" action="" class="date_selector">
+            <label class="date_selector_label">Start Date</label> <input type="date" id="start" name="start" class="date_input">
+            <label class="date_selector_label">End date</label> <input type="date" id="end" name="end" class="date_input">
             <button type="submit" class="button_submit" name ="submit" value="Submit">Search</button>
         </form>';
 
@@ -112,8 +111,9 @@
 
         $myquery3 = "SELECT * FROM deniedAccess WHERE deniedTime BETWEEN '$startdate' AND '$enddate';";
         $result3 = $conn->query($myquery3);
-
-        echo '<h2>Entry Log</h2>';
+        
+        
+        echo '<h2 class="report_table_name">Entry Log</h2>';
         echo '<div class="log_container">
                 <table id="log_table" class="table table-borderless">  
 			    <thead>  
@@ -144,7 +144,7 @@
         echo '</table></div>';  
 
 
-        echo '<h2>Exit Log</h2>';
+        echo '<h2 class="report_table_name">Exit Log</h2>';
         echo '<div class="log_container">
                 <table id="log_table2" class="table table-borderless">  
 			    <thead>  
@@ -174,7 +174,7 @@
         }
         echo '</table></div>';  
 
-        echo '<h2>Denied Access Log</h2>';
+        echo '<h2 class="report_table_name">Denied Access Log</h2>';
         echo '<div class="log_container">
                 <table id="log_table3" class="table table-borderless">   
 			    <thead>  

@@ -19,6 +19,7 @@
 <head>
     <meta charset = "utf-8">
 	<meta name = "author" content = "Ng Jing Ping">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Database</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -69,7 +70,7 @@
 
     <section>
         <div class="log_container">
-            <table id="log_table" class="table table-striped table-bordered">
+            <table id="log_table" class="table table-borderless">
                 <thead>
                     <tr>
                         <th>License Plate</th>
