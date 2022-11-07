@@ -48,7 +48,7 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, entrylog.image, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE entrylog.referenceID = $id; ";
+	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, entrylog.image, entrylog.image_2, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE entrylog.referenceID = $id; ";
 	$result = $conn->query($myquery);
 	if(mysqli_num_rows($result) == 1) {
 		$item = $result->fetch_assoc();
@@ -127,6 +127,10 @@
 					</tr>
 					<tr>
 						<td class="row-header">Image</td>
+						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image_2"].'"/>';?></td>
+					</tr>
+					<tr>
+						<td class="row-header">Image with detection box</td>
 						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
 					</tr>
 

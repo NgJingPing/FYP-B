@@ -108,6 +108,10 @@
 					</tr>
 					<tr>
 						<td class="row-header">Image</td>
+						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image_2"].'"/>';?></td>
+					</tr>
+					<tr>
+						<td class="row-header">Image with detection box</td>
 						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
 					</tr>
 		</table>

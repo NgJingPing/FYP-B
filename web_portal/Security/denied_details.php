@@ -108,7 +108,7 @@
 					</tr>
 					<tr>
 						<td class="row-header">Image</td>
-						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
+						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image_2"].'"/>';?></td>
 					</tr>
 		</table>
 		</div>
