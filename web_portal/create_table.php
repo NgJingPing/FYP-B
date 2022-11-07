@@ -36,6 +36,7 @@ $sql3 = "CREATE TABLE entryLog (
     vehicleID INT(6) NOT NULL, 
     entryTime DATETIME NOT NULL,
     image VARCHAR(100) NOT NULL,
+    image_2 VARCHAR(100) NOT NULL,
     FOREIGN KEY(vehicleID) REFERENCES vehicle(vehicleID)
    );
 ";
@@ -45,6 +46,7 @@ $sql4 = "CREATE TABLE exitLog (
     vehicleID INT(6) NOT NULL, 
     exitTime DATETIME NOT NULL,
     image VARCHAR(100) NOT NULL,
+    image_2 VARCHAR(100) NOT NULL,
     FOREIGN KEY(vehicleID) REFERENCES vehicle(vehicleID)
    );
 ";
@@ -53,7 +55,8 @@ $sql5 = "CREATE TABLE deniedAccess(
     referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     licensePlate VARCHAR(20) NOT NULL, 
     deniedTime DATETIME NOT NULL,
-    image VARCHAR(100) NOT NULL
+    image VARCHAR(100) NOT NULL,
+    image_2 VARCHAR(100) NOT NULL
    );
 ";
 
