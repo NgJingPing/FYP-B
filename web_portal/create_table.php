@@ -13,14 +13,14 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // sql to create Enquiry table
 $sql1 = "CREATE TABLE tenant (
-   	tenantLotNumber VARCHAR(6) PRIMARY KEY NOT NULL,
+    tenantLotNumber VARCHAR(6) PRIMARY KEY NOT NULL,
     name VARCHAR(256) NOT NULL,
     phoneNumber VARCHAR(10) NOT NULL
     );
 ";
 
 $sql2 = "CREATE TABLE vehicle (
-	vehicleID INT(6) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    vehicleID INT(6) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     tenantLotNumber VARCHAR(6) NOT NULL, 
     licensePlate VARCHAR(20) NOT NULL,
     brand VARCHAR(20) NOT NULL,
@@ -85,20 +85,20 @@ foreach($tables as $sql){
 //VALUES ('".$_POST['plateNumber']."', '".$_POST['tenantLotNumber']."', '".$_POST['brand']."','".$_POST['model']."','".$_POST['colour']."')";
 //
 // Hardcoded
-$sql1 = "INSERT INTO tenant (tenantLotNumber)
-VALUES ('AB1234')";
+$sql1 = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber)
+VALUES ('AB1234', 'Mandy', '0123456789')";
 
-$sql2 = "INSERT INTO tenant (tenantLotNumber)
-VALUES ('AB2345')";
+$sql2 = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber)
+VALUES ('AB2345', 'Tony', '0123654987')";
 
-$sql3 = "INSERT INTO tenant (tenantLotNumber)
-VALUES ('AB3456')";
+$sql3 = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber)
+VALUES ('AB3456', 'Karen', '0132748596')";
 
-$sql4 = "INSERT INTO tenant (tenantLotNumber)
-VALUES ('AB4567')";
+$sql4 = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber)
+VALUES ('AB4567', 'John', '0142536998')";
 
-$sql5 = "INSERT INTO tenant (tenantLotNumber)
-VALUES ('AB5678')";
+$sql5 = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber)
+VALUES ('AB5678', 'Neon', '0165478932')";
 
 $tenant_datas = [$sql1, $sql2, $sql3, $sql4, $sql5];
 
