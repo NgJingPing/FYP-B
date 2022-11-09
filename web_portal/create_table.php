@@ -15,7 +15,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 $sql1 = "CREATE TABLE tenant (
    	tenantLotNumber VARCHAR(6) PRIMARY KEY NOT NULL,
     name VARCHAR(256) NOT NULL,
-    phoneNumber INT(10) NOT NULL
+    phoneNumber VARCHAR(10) NOT NULL
     );
 ";
 
