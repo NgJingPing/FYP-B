@@ -125,7 +125,16 @@
                             }
                             echo "<tr><td>".$row["licensePlate"]."</td><td>".$row["tenantLotNumber"]."</td><td>".$row["name"]."</td><td>".$row["phoneNumber"]."</td><td>".$row["brand"]."</td><td>".$row["model"].
                             "</td><td>".$row["colour"]."</td><td>".$active."</td><td><span><a href='edit_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-pen-to-square'></i></a>
-                            </span>"."</td></tr>";
+                            </span>";
+                            $id = $row['vehicleID'];
+                            $sql2 = "SELECT * FROM entryLog WHERE vehicleID = $id;";
+                            $result2 = mysqli_query($conn, $sql2);
+                            if(mysqli_num_rows($result2) == 0){
+                                echo "<span><a href='remove_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-pen-to-square'></i></a>
+                            </span>";
+                            }
+                            
+                            echo "</td></tr>";
                         }
                     } else {
                         echo '<script>alert("Empty Result!")</script>';
