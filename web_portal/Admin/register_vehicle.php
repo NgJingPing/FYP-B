@@ -122,8 +122,10 @@
 
 			if(empty($_POST["contactNumber"])) {
 				$contactNumberErr = "Contact Number is required";
-			} elseif (strlen($_POST["contactNumber"]) > 15 ){ 
-				$contactNumberErr = "Contact number should not exceed 15 characters";
+			} elseif (strlen($_POST["contactNumber"]) > 10 ){ 
+				$contactNumberErr = "Contact number should not exceed 10 characters";
+			} elseif (!preg_match('/^[0-9]*$/',$_POST["contactNumber"])){ 
+				$contactNumberErr = "Contact number should only contain numbers";
 			} else {
 				$contactNumber = test_input($_POST["contactNumber"]);
 				$contactNumber = mysqli_escape_string($conn, $contactNumber);
