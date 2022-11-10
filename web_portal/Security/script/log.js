@@ -20,3 +20,16 @@ for (i = 0; i < dropdown.length; i++) {
     }
   });
 }
+
+function table(){
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function(){
+    document.getElementById("table").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "dashboard.php");
+  xhttp.send();
+}
+
+setInterval(function(){
+  table();
+}, 500);

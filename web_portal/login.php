@@ -39,9 +39,9 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
 		    $_SESSION['email'] = $email;
             $_SESSION['type'] = $user_type;
             if($user_type == "Admin") {
-                header("location: Admin/dashboard.php");
+                header("location: Admin/index.php");
             } else {
-                header("location: Security/dashboard.php");
+                header("location: Security/index.php");
             }
 		} else {
 		$error_msg = "<p>Invalid password or login id</p>";

@@ -45,7 +45,7 @@
   </div>
   <div class="navigation_links_container">
 
-  <div class="navigation_links"><a href="dashboard.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+  <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
   <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
   <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
@@ -130,7 +130,7 @@
                             $sql2 = "SELECT * FROM entryLog WHERE vehicleID = $id;";
                             $result2 = mysqli_query($conn, $sql2);
                             if(mysqli_num_rows($result2) == 0){
-                                echo "<span><a href='remove_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-pen-to-square'></i></a>
+                                echo "<span><a href='remove_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-trash-can'></i></a>
                             </span>";
                             }
                             
