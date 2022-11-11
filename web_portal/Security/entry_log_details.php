@@ -135,6 +135,6 @@
 		</div>
 	</section>
 </div>
-<div class="waves"><p>&</p></div>
+<div class="waves"></div>
 </body>
 </html>

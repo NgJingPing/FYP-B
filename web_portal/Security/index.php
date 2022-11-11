@@ -80,70 +80,10 @@
     <header>
     <h1>Dashboard</h1>
     </header>
-  <div class="widget_group">
-    <div class="widget_container">
-        <div class="widget_name"><p>Total Flow Today</p></div>
-        <i class="fa-solid fa-right-left"></i>
-        <div class="widget_value">
-        <?php
-        $totalflowquery = "SELECT(SELECT COUNT(*) FROM entrylog WHERE DATE(`entryTime`) = CURDATE()) + (SELECT COUNT(*) FROM exitlog WHERE DATE(`exitTime`) = CURDATE()) AS total";
-        $result = $conn->query($totalflowquery);
-        while($row = mysqli_fetch_array($result)){
-        echo "<p>" . $row['total'] . "</p>";
-        }
-        ?>
-        </div>
-        
-
-    </div>
-    <div class="widget_container">
-        <div class="widget_name"><p>Entries Today</p></div>
-        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-        <div class="widget_value">
-        <?php
-        $totalentryquery = "SELECT COUNT(*) AS totalentry FROM entrylog WHERE DATE(`entryTime`) = CURDATE()";
-        $result = $conn->query($totalentryquery);
-        while($row = mysqli_fetch_array($result)){
-        echo "<p>" . $row['totalentry'] . "</p>";
-        }
-        ?>
-        </div>
-        
-
-    </div>
-    <div class="widget_container">
-        <div class="widget_name"><p>Exits Today</p></div>
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <div class="widget_value">
-        <?php
-         $totalexitquery = "SELECT COUNT(*) AS totalexit FROM exitlog WHERE DATE(`exitTime`) = CURDATE()";
-         $result = $conn->query($totalexitquery);
-         while($row = mysqli_fetch_array($result)){
-         echo "<p>" . $row['totalexit'] . "</p>";
-         }
-        ?>
-        </div>
-        
-
-    </div>
-    <div class="widget_container">
-        <div class="widget_name"><p>Denied Entries</p></div>
-        <i class="fa-solid fa-ban"></i>
-        <div class="widget_value">
-        <?php
-        $totaldeniedquery = "SELECT COUNT(*) AS totaldenied FROM deniedaccess WHERE DATE(`deniedTime`) = CURDATE()";
-        $result = $conn->query($totaldeniedquery);
-        while($row = mysqli_fetch_array($result)){
-        echo "<p>" . $row['totaldenied'] . "</p>";
-        }
-        ?>
-        </div>
-        
-
-    </div>
-    </div>
+  
     <div id="table" onload = "table();">
     </div>
   </div>
+  <div class="waves"></div>
   </body>
 </html>

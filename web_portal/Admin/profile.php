@@ -365,6 +365,6 @@ window.onclick = function(event) {
 }
 </script>
 
-<div class="waves"><p>&</p></div>
+<div class="waves"></div>
 </body>
 </html>
