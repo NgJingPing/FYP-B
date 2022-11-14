@@ -72,8 +72,9 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
 
 .alert {
   font-size: 18px;
+  font-weight: bold;
   background-color: #f44336;
-  color: black;
+  color: white;
   opacity: 1;
   transition: opacity 0.6s;
   width: 95%;
@@ -87,7 +88,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
   font-weight: bold;
   float: right;
   font-size: 28px;
-  line-height: 20px;
+  line-height: 22px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -113,7 +114,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
   if ($error_msg != ""){
     echo '<div class="alert">
             <span class="closebtn">&times;</span>
-            <strong>' . $error_msg . '</strong>
+            ' . $error_msg . '
           </div>';
   }
 ?>
@@ -137,13 +138,13 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
   var close = document.getElementsByClassName("closebtn");
   var i;
 
-
-    close.onclick = function(){
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
       var div = this.parentElement;
       div.style.opacity = "0";
       setTimeout(function(){ div.style.display = "none"; }, 600);
     }
-
+  }
 </script>
 
 </body>

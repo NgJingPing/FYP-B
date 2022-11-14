@@ -236,8 +236,9 @@
 
 		.alert {
 			font-size: 18px;
+			font-weight: bold;
 		  background-color: #FFFFFF;
-		  color: black;
+		  color: white;
 		  opacity: 1;
 		  transition: opacity 0.6s;
 			width: 95%;
@@ -255,7 +256,7 @@
 		  font-weight: bold;
 		  float: right;
 		  font-size: 28px;
-		  line-height: 20px;
+		  line-height: 22px;
 		  cursor: pointer;
 		  transition: 0.3s;
 		}
@@ -328,21 +329,21 @@
 			if ($successmsg != ""){
 				echo '<div class="alert success">
 								<span class="closebtn">&times;</span>
-								<strong>' . $successmsg . '</strong>
+								' . $successmsg . '
 							</div>';
 			}
 
 			if ($error_msg != ""){
 				echo '<div class="alert error">
 								<span class="closebtn">&times;</span>
-								<strong>' . $error_msg . '</strong>
+								' . $error_msg . '
 							</div>';
 			}
 
 			if ($msg != ""){
 				echo '<div class="alert error">
 								<span class="closebtn">&times;</span>
-								<strong>' . $msg . '</strong>
+								' . $msg . '
 							</div>';
 			}
 		?>
