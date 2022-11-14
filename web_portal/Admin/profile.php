@@ -103,8 +103,8 @@
       font-family: arial;
       padding: 20px 20px;
       margin: 10px;
-      margin-left: 100px;
-      margin-right: 100px;
+      margin-left: auto;
+      margin-right: auto;
       margin-top: 50px;
       opacity: 90%;
       border-radius: 5px;
@@ -234,6 +234,36 @@
 		  }
 		}
 
+		.alert {
+			font-size: 18px;
+		  background-color: #f44336;
+		  color: black;
+		  opacity: 1;
+		  transition: opacity 0.6s;
+			width: 95%;
+			margin-left: auto;
+      margin-right: auto;
+		}
+
+		.alert.success {background-color: #4DAC62;}
+		.alert.error {background-color: #f44336;}
+		.alert.warning {background-color: #ff9800;}
+
+		.closebtn {
+		  margin-left: auto;
+		  color: white;
+		  font-weight: bold;
+		  float: right;
+		  font-size: 28px;
+		  line-height: 20px;
+		  cursor: pointer;
+		  transition: 0.3s;
+		}
+
+		.closebtn:hover {
+		  color: black;
+		}
+
 
     </style>
 </head>
@@ -248,7 +278,7 @@
   </div>
   <div class="navigation_links_container">
 
-  <div class="navigation_links"><a href="index.php" ><i class="fa-solid fa-house"></i>Dashboard</a></div>
+  <div class="navigation_links"><a href="dashboard.php" ><i class="fa-solid fa-house"></i>Dashboard</a></div>
   <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
   <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
@@ -295,6 +325,30 @@
 		<h1>User Profile Card</h1>
 		</header>
 
+
+		<?php
+			if ($successmsg != ""){
+				echo '<div class="alert success">
+								<span class="closebtn">&times;</span>
+								<strong>' . $successmsg . '</strong>
+							</div>';
+			}
+
+			if ($error_msg != ""){
+				echo '<div class="alert error">
+								<span class="closebtn">&times;</span>
+								<strong>' . $error_msg . '</strong>
+							</div>';
+			}
+
+			if ($msg != ""){
+				echo '<div class="alert error">
+								<span class="closebtn">&times;</span>
+								<strong>' . $msg . '</strong>
+							</div>';
+			}
+		?>
+
     <div class="card">
       <img src="../images/administrator.png" alt="User" class="center" style="width:240px;height:260px;">
       <br>
@@ -314,8 +368,7 @@
       <br>
       <p>NAIM Holdings Berhad</p>
       <br>
-      <p><button onclick="document.getElementById('id01').style.display='block'">Change Password</button><br>
-				<span class="error"><?php echo $successmsg;?></span></p>
+      <p><button onclick="document.getElementById('id01').style.display='block'">Change Password</button><br></p>
       <br>
 
       <?php
@@ -336,13 +389,13 @@
 
     <div class="container">
       <label for="oldpassword"><b>Enter Old Password</b></label><br>
-      <input type="password" placeholder="Enter Old Password" name="oldpassword" required><span class="error"> * <?php echo $msg;?></span></p><br>
+      <input type="password" placeholder="Enter Old Password" name="oldpassword" required><span class="error"> * </span></p><br>
 
       <label for="newpassword"><b>Enter New Password</b></label><br>
       <input type="password" placeholder="Enter New Password" name="newpassword" required><span class="error"> * </span></p><br>
 
 			<label for="renewpassword"><b>Re-Enter New Password</b></label><br>
-      <input type="password" placeholder="Re-Enter New Password" name="renewpassword" required><span class="error"> * <?php echo $error_msg;?></span></p><br>
+      <input type="password" placeholder="Re-Enter New Password" name="renewpassword" required><span class="error"> * </span></p><br>
 
       <button type="submit" name = "submit">Submit</button>
     </div>
@@ -363,8 +416,19 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
 </script>
 
-<div class="waves"></div>
+<div class="waves"><p>&</p></div>
 </body>
 </html>
