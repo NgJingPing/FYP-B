@@ -69,6 +69,33 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/login.css">
 <style>
+
+.alert {
+  font-size: 18px;
+  background-color: #f44336;
+  color: black;
+  opacity: 1;
+  transition: opacity 0.6s;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closebtn {
+  margin-left: auto;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 28px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
 </style>
 
 </head>
@@ -82,7 +109,14 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
   </div>
 </div>
 
-
+<?php
+  if ($error_msg != ""){
+    echo '<div class="alert">
+            <span class="closebtn">&times;</span>
+            <strong>' . $error_msg . '</strong>
+          </div>';
+  }
+?>
 
 
   <form class="modal-content animate" action="login.php" method="POST">
@@ -97,10 +131,20 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
       <button class="button_login" type="submit" value="Login" name="login_button">Login</button>
     </div>
 
-
-    <?php echo $error_msg; ?>
   </form>
 
+<script>
+  var close = document.getElementsByClassName("closebtn");
+  var i;
+
+
+    close.onclick = function(){
+      var div = this.parentElement;
+      div.style.opacity = "0";
+      setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+
+</script>
 
 </body>
 </html>
