@@ -89,6 +89,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/registration.css">
+
+		<style>
+			.alert {
+				font-size: 18px;
+				font-weight: bold;
+			  background-color: #FFFFFF;
+			  color: white;
+			  opacity: 1;
+			  transition: opacity 0.6s;
+				width: 95%;
+				margin-left: auto;
+	      margin-right: auto;
+			}
+
+			.alert.success {background-color: #4DAC62;}
+			.alert.error {background-color: #f44336;}
+			.alert.warning {background-color: #ff9800;}
+
+			.closebtn {
+			  margin-left: auto;
+			  color: white;
+			  font-weight: bold;
+			  float: right;
+			  font-size: 28px;
+			  line-height: 22px;
+			  cursor: pointer;
+			  transition: 0.3s;
+			}
+
+			.closebtn:hover {
+			  color: black;
+			}
+		</style>
 </head>
 
 <body>
@@ -125,12 +158,36 @@
 <header>
   <h1>Registration of New User</h1>
 </header>
+
+<?php
+	if ($msg != ""){
+		echo '<div class="alert success">
+						<span class="closebtn">&times;</span>
+						' . $msg . '
+					</div>';
+	}
+
+	if ($emailErr != ""){
+		echo '<div class="alert error">
+						<span class="closebtn">&times;</span>
+						' . $emailErr . '
+					</div>';
+	}
+
+	if ($error_msg != ""){
+		echo '<div class="alert error">
+						<span class="closebtn">&times;</span>
+						' . $error_msg . '
+					</div>';
+	}
+?>
+
 <section>
   <form action="register_user.php" method="POST">
   <php echo $user_type;
    echo $email;
     echo $advanced;?>
-    <div class="container">
+    <div class="com_con">
 			<div class="form_container">
       <label for="user_type"><b>Choose the Type of New User</b></label><br>
 
@@ -141,25 +198,38 @@
       </div>
 
       <div class="form_container">
-      <p><label for="email"><b>Enter New User Email</b></label><br>
-      <input type="text" placeholder="Enter Email" name="email" required><span class="error"> * <?php echo $emailErr;?></span></p>
+      <p><label for="email"><b>Enter New User Email</b></label><span class="error"> * </span><br>
+      <input type="text" class="form_control" placeholder="Enter Email" name="email" required><span class="error"></p>
 
-      <p><label for="psw"><b>Enter Password for New User</b></label><br>
-      <input type="password" placeholder="Enter Password" name="password" required> * </p>
+      <p><label for="psw"><b>Enter Password for New User</b></label><span class="error"> * </span><br>
+      <input type="password" class="form_control" placeholder="Enter Password" name="password" required></p>
 
-      <p><label for="psw"><b>Re-enter the Password</b></label><br>
-      <input type="password" placeholder="Re-enter Password" name="repassword" required> * </p>
+      <p><label for="psw"><b>Re-enter the Password</b></label><span class="error"> * </span><br>
+      <input type="password" class="form_control" placeholder="Re-enter Password" name="repassword" required></p>
 			</div>
 
 			<div>
-      <button class="button_login" type="submit" value="Register" name="register_button">Register</button><br>
+      <button class="button_submit" type="submit" value="Register" name="register_button">Register</button><br>
 			</div>
 
-      <p class="message"><span class="successMsg"><?php echo $msg;?></span><p>
     </div>
   </div>
   </form>
 </section>
+
+<script>
+
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
 
 
 <div class="waves"></div>

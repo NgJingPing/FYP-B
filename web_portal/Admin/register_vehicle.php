@@ -1,9 +1,9 @@
-<?php 
+<?php
 	$session_email = $ssession_type = "";
-	// Resume the session 
+	// Resume the session
 	session_start();
-	// If $_SESSION['email'] not set, force redirect to login page 
-	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) { 
+	// If $_SESSION['email'] not set, force redirect to login page
+	if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) {
 		header("Location: ../login.php");
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
@@ -12,7 +12,7 @@
 			header("Location: ../login.php");
 		}
 	}
-?> 
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -23,11 +23,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Registration</title>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,10 +40,10 @@
 <body>
 	<!--Sidebar starts here-->
 	<div class="navigation_bar">
-  <div class="logo_container"> 
+  <div class="logo_container">
   <img src="../images/naim.png" class="naim_logo"></img>
-  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
-  <div class="logo_tail"><span>ANPR</span></div> 
+  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div>
+  <div class="logo_tail"><span>ANPR</span></div>
   </div>
   <div class="navigation_links_container">
 
@@ -56,11 +56,11 @@
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
 		<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
-  
+
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
-  
+
 </div>
 </div>
 </div>
@@ -93,7 +93,7 @@
 		if (isset($_POST["submit"])) {
 			if(empty($_POST["tenantLotNumber"])) {
 				$tenantLotNumberErr = "Tenant Lot Number is required";
-			} elseif (strlen($_POST["tenantLotNumber"]) > 6 ){ 
+			} elseif (strlen($_POST["tenantLotNumber"]) > 6 ){
 				$tenantLotNumberErr = "tenantLotNumber should not exceed 6 characters";
 			} else {
 				$tenantLotNumber = test_input($_POST["tenantLotNumber"]);
@@ -103,7 +103,7 @@
 
 			if(empty($_POST["plateNumber"])) {
 				$plateNumberErr = "License Plate Number is required";
-			} elseif (strlen($_POST["plateNumber"]) > 15 ){ 
+			} elseif (strlen($_POST["plateNumber"]) > 15 ){
 				$plateNumberErr = "License plate number should not exceed 15 characters";
 			} else {
 				$plateNumber = test_input($_POST["plateNumber"]);
@@ -113,7 +113,7 @@
 
 			if(empty($_POST["tenantName"])) {
 				$tenantNameErr = "Tenant name is required";
-			} elseif (strlen($_POST["tenantName"]) > 50 ){ 
+			} elseif (strlen($_POST["tenantName"]) > 50 ){
 				$tenantNameErr = "Tenant name should not exceed 50 characters";
 			} else {
 				$tenantName = test_input($_POST["tenantName"]);
@@ -122,9 +122,9 @@
 
 			if(empty($_POST["contactNumber"])) {
 				$contactNumberErr = "Contact Number is required";
-			} elseif (strlen($_POST["contactNumber"]) > 10 ){ 
+			} elseif (strlen($_POST["contactNumber"]) > 10 ){
 				$contactNumberErr = "Contact number should not exceed 10 characters";
-			} elseif (!preg_match('/^[0-9]*$/',$_POST["contactNumber"])){ 
+			} elseif (!preg_match('/^[0-9]*$/',$_POST["contactNumber"])){
 				$contactNumberErr = "Contact number should only contain numbers";
 			} else {
 				$contactNumber = test_input($_POST["contactNumber"]);
@@ -133,7 +133,7 @@
 
 			if(empty($_POST["brand"])) {
 				$brandErr = "Brand is required";
-			} elseif (strlen($_POST["brand"]) > 20 ){ 
+			} elseif (strlen($_POST["brand"]) > 20 ){
 				$brandErr = "Brand should not exceed 20 characters";
 			} else {
 				$brand = test_input($_POST["brand"]);
@@ -142,7 +142,7 @@
 
 			if(empty($_POST["model"])) {
 				$modelErr = "Model is required";
-			} elseif (strlen($_POST["model"]) > 30 ){ 
+			} elseif (strlen($_POST["model"]) > 30 ){
 				$modelErr = "Model should not exceed 30 characters";
 			} else {
 				$model = test_input($_POST["model"]);
@@ -151,7 +151,7 @@
 
 			if(empty($_POST["color"])) {
 				$colorErr = "Colour is required";
-			} elseif (strlen($_POST["color"]) > 20 ){ 
+			} elseif (strlen($_POST["color"]) > 20 ){
 				$colorErr = "Colour should not exceed 20 characters";
 			} else {
 				$color = test_input($_POST["color"]);
@@ -159,10 +159,10 @@
 			}
 
 			$check = isset($_POST['active']) ? "checked" : "unchecked";
-			if($check == "checked") { 
+			if($check == "checked") {
 				$active = TRUE;
-			} else { 
-				$active = FALSE; 
+			} else {
+				$active = FALSE;
 			}
 
 			if($tenantLotNumber != "" && $plateNumber != "" && $tenantName !="" && $contactNumber !="" && $brand != "" && $model != "" && $color != "")
@@ -201,23 +201,23 @@
 				<fieldset>
 					<div class="form_group">
 					<div class="form_container">
-					<label>Tenant Lot Number</label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
+					<label><b>Tenant Lot Number</b></label><span class="error"> * <?php echo $tenantLotNumberErr;?></span><input type="text" class="form_control" name="tenantLotNumber" value="<?php echo isset($_POST["tenantLotNumber"]) ? $_POST["tenantLotNumber"] : ''; ?>">
 					</div>
 					<div class="form_container">
-					<label>License Plate Number</label><span class="error"> * <?php echo $plateNumberErr;?></span><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
-					</div>	
+					<label><b>License Plate Number</b></label><span class="error"> * <?php echo $plateNumberErr;?></span><input type="text" class="form_control" name="plateNumber" value="<?php echo isset($_POST["plateNumber"]) ? $_POST["plateNumber"] : ''; ?>">
 					</div>
-					<div class="form_group">
-					<div class="form_container">
-					<label>Tenant Name</label><span class="error"> * <?php echo $tenantNameErr;?></span><input type="text" class="form_control" name="tenantName" value="<?php echo isset($_POST["tenantName"]) ? $_POST["tenantName"] : ''; ?>">
-					</div>
-					<div class="form_container">
-					<label>Contact Number</label><span class="error"> * <?php echo $contactNumberErr;?></span><input type="text" class="form_control" name="contactNumber" value="<?php echo isset($_POST["contactNumber"]) ? $_POST["contactNumber"] : ''; ?>">
-					</div>	
 					</div>
 					<div class="form_group">
 					<div class="form_container">
-					<label>Brand</label><span class="error"> * <?php echo $brandErr;?></span><input type="text" name="brand" class="form_control" list="brands" value="<?php echo isset($_POST["brand"]) ? $_POST["brand"] : ''; ?>">
+					<label><b>Tenant Name</b></label><span class="error"> * <?php echo $tenantNameErr;?></span><input type="text" class="form_control" name="tenantName" value="<?php echo isset($_POST["tenantName"]) ? $_POST["tenantName"] : ''; ?>">
+					</div>
+					<div class="form_container">
+					<label><b>Contact Number</b></label><span class="error"> * <?php echo $contactNumberErr;?></span><input type="text" class="form_control" name="contactNumber" value="<?php echo isset($_POST["contactNumber"]) ? $_POST["contactNumber"] : ''; ?>">
+					</div>
+					</div>
+					<div class="form_group">
+					<div class="form_container">
+					<label><b>Brand</b></label><span class="error"> * <?php echo $brandErr;?></span><input type="text" name="brand" class="form_control" list="brands" value="<?php echo isset($_POST["brand"]) ? $_POST["brand"] : ''; ?>">
 					<datalist id="brands">
 					<option value="Audi">Audi</option>
 					<option value="BMW">BMW</option>
@@ -238,12 +238,12 @@
 					</datalist>
 					</div>
 					<div class="form_container">
-					<label>Model</label><span class="error"> * <?php echo $modelErr;?></span><input type="text" name="model" class="form_control" value="<?php echo isset($_POST["model"]) ? $_POST["model"] : ''; ?>">
+					<label><b>Model</b></label><span class="error"> * <?php echo $modelErr;?></span><input type="text" name="model" class="form_control" value="<?php echo isset($_POST["model"]) ? $_POST["model"] : ''; ?>">
 					</div>
 					</div>
 					<div class="form_group">
 					<div class="form_container">
-					<label>Colour</label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" list="colors" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
+					<label><b>Colour</b></label><span class="error"> * <?php echo $colorErr;?></span><input type="text" name="color" class="form_control" list="colors" value="<?php echo isset($_POST["color"]) ? $_POST["color"] : ''; ?>">
 					<datalist id="colors">
 					<option value="Black">Black</option>
 					<option value="Blue">Blue</option>
@@ -254,7 +254,7 @@
 					</datalist>
 					</div>
 					<div class="form_container">
-					<label>Active</label><label class="switch"><input type="checkbox" checked="checked" name="active" class="form_control"><span class="slider round"></span></label>
+					<label><b>Active</b></label><label class="switch"><input type="checkbox" checked="checked" name="active" class="form_control"><span class="slider round"></span></label>
 					</div>
 					</div>
 					<div class="form_group">
