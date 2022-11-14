@@ -188,7 +188,7 @@ def detect():
                                     z = (plate, active)
                                     mycursor.execute(sql, z)
                                     myresult = mycursor.fetchone()
-                                    if(plate == ""):
+                                    if(myresult != None):
                                         if current_plate != plate:
                                             vehicle_id = myresult[0]
                                             sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
