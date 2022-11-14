@@ -58,7 +58,7 @@
           $stmt->bind_param("ssss", $email, $password, $user_type, $advanced);
           $stmt->execute();
           $conn->close();
-          $msg = "Record is saved.";
+          $msg = "New user is added. Record is saved.";
           $email = $password = $user_type = $repassword = $error_msg = "";
           $_POST["email"] = $_POST["password"] = $_POST["repassword"] = $_POST["user_type"] = "";
         } else {

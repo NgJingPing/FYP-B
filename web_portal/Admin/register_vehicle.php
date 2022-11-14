@@ -35,6 +35,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/registration.css">
+
+		<style>
+			.alert {
+				font-size: 18px;
+				font-weight: bold;
+			  background-color: #FFFFFF;
+			  color: white;
+			  opacity: 1;
+			  transition: opacity 0.6s;
+				width: 95%;
+				margin-left: auto;
+	      margin-right: auto;
+			}
+
+			.alert.success {background-color: #4DAC62;}
+			.alert.error {background-color: #f44336;}
+			.alert.warning {background-color: #ff9800;}
+
+			.closebtn {
+			  margin-left: auto;
+			  color: white;
+			  font-weight: bold;
+			  float: right;
+			  font-size: 28px;
+			  line-height: 22px;
+			  cursor: pointer;
+			  transition: 0.3s;
+			}
+
+			.closebtn:hover {
+			  color: black;
+			}
+		</style>
 </head>
 
 <body>
@@ -195,6 +228,15 @@
 		<h1>Registration</h1>
 	</header>
 
+	<?php
+		if ($msg != ""){
+			echo '<div class="alert success">
+							<span class="closebtn">&times;</span>
+							' . $msg . '
+						</div>';
+		}
+	?>
+
 	<section>
 		 <form method="post" action="">
 			<div class="com_con">
@@ -267,11 +309,24 @@
 					</div>
 					</div>
 				</fieldset>
-				 <p class="message"><span class="successMsg"><?php echo $msg;?></span><p>
 			</div>
 		 </form>
 	</section>
 	</div>
+
+	<script>
+
+	var close = document.getElementsByClassName("closebtn");
+	var i;
+
+	for (i = 0; i < close.length; i++) {
+	  close[i].onclick = function(){
+	    var div = this.parentElement;
+	    div.style.opacity = "0";
+	    setTimeout(function(){ div.style.display = "none"; }, 600);
+	  }
+	}
+	</script>
 	<div class="waves"></div>
 </body>
 
