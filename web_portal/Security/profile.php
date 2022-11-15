@@ -62,7 +62,7 @@
           $email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
           $_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
         } else {
-          $error_msg = "<p>New Password does not same</p>";
+          $error_msg = "<p>New Password does not match</p>";
         }
 			} else {
 				$msg = "<p>Incorrect password entered</p>";
@@ -271,7 +271,53 @@
 		  color: black;
 		}
 
+		.button_submit, .button_cancel {
+      font-size: 1.25rem;
+      padding: 5px;
+      margin-top: 30px;
+			margin-bottom: 30px;
+			margin-left: auto;
+			margin-right: auto;
+      width: 60%;
+      border: none;
+      display: block;
+      height: 45px;
+      border-radius: 4px;
+      box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
+	  }
 
+	  .button_submit {
+	    background-color: #061C17;
+	    color: #C5E5CC;
+	  }
+
+	  .button_cancel {
+	    background-color: #C5E5CC;
+	    color: #061C17;
+	  }
+
+	  .button_submit:hover, .button_cancel:hover {
+	    color: #4DAC62;
+	  }
+
+		.form_group {
+        display: flex;
+        min-width: 720px;
+      }
+
+
+    .form_container {
+        display: inline-block;
+        width: 100%;
+      }
+
+      .form_container label{
+        font-weight: normal;
+        padding-top: 5px;
+        margin-right: 10px;
+        font-size: 1.25rem;
+        white-space: nowrap;
+      }
     </style>
 </head>
 
@@ -403,10 +449,16 @@
       <input type="password" placeholder="Re-Enter New Password" name="renewpassword" required></p><br>
     </div>
 
-		<div class="container" style="background-color:#f1f1f1;text-align:center;">
-			<button type="submit" name = "submit">Submit</button>
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
+		<div class="com_con">
+		<div class="form_group">
+		<div class="form_container">
+		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="button_cancel">Cancel</button>
+		</div>
+		<div class="form_container">
+		 <button type="submit" name = "submit" class="button_submit">Submit</button>
+		</div>
+		</div>
+		</div>
   </form>
 </div>
 
