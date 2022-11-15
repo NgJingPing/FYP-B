@@ -115,7 +115,7 @@
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
         echo '<div class="log_container">
-                <table id="log_table" class="table table-borderless">  
+                <table id="entry_log_table" class="table table-borderless">  
 			    <thead>  
                     <tr>
                         <td>No</td>  
@@ -146,7 +146,7 @@
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
         echo '<div class="log_container">
-                <table id="log_table2" class="table table-borderless">  
+                <table id="exit_log_table" class="table table-borderless">  
 			    <thead>  
                     <tr>
                         <td>No</td>  
@@ -176,7 +176,7 @@
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
         echo '<div class="log_container">
-                <table id="log_table3" class="table table-borderless">   
+                <table id="log_table" class="table table-borderless">   
 			    <thead>  
                     <tr>
                         <td>No</td>  
