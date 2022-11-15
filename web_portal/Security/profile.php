@@ -142,12 +142,14 @@
 
 
 		input[type=password] {
-		  width: 60%;
+		  width: 100%;
 		  padding: 12px 20px;
 		  margin: 8px 0;
 		  display: inline-block;
 		  border: 1px solid #ccc;
 		  box-sizing: border-box;
+			font-size: 1.25rem;
+			box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
 		}
 
 		.cancelbtn {
@@ -165,6 +167,10 @@
 		.container {
 		  padding: 16px;
 			background-color: #f2f2f2;
+		}
+
+		.container label{
+			font-weight: bold;
 		}
 
 		span.psw {
@@ -387,19 +393,18 @@
     </div>
 
     <div class="container">
-      <label for="oldpassword"><b>Enter Old Password</b></label><br>
-      <input type="password" placeholder="Enter Old Password" name="oldpassword" required><span class="error"> * </span></p><br>
+			<label for="oldpassword"><b>Enter Old Password</b></label><span class="error"> * </span><br>
+      <input type="password" placeholder="Enter Old Password" name="oldpassword" required></p><br>
 
-      <label for="newpassword"><b>Enter New Password</b></label><br>
-      <input type="password" placeholder="Enter New Password" name="newpassword" required><span class="error"> * </span></p><br>
+      <label for="newpassword"><b>Enter New Password</b></label><span class="error"> * </span><br>
+      <input type="password" placeholder="Enter New Password" name="newpassword" required></p><br>
 
-			<label for="renewpassword"><b>Re-Enter New Password</b></label><br>
-      <input type="password" placeholder="Re-Enter New Password" name="renewpassword" required><span class="error"> * </span></p><br>
-
-      <button type="submit" name = "submit">Submit</button>
+			<label for="renewpassword"><b>Re-Enter New Password</b></label><span class="error"> * </span><br>
+      <input type="password" placeholder="Re-Enter New Password" name="renewpassword" required></p><br>
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
+		<div class="container" style="background-color:#f1f1f1;text-align:center;">
+			<button type="submit" name = "submit">Submit</button>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
