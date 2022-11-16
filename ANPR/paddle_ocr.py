@@ -63,10 +63,10 @@ def detect():
     image_width, image_height = frames.shape[1], frames.shape[0]
     x_scale = image_width/640
     y_scale = image_height/640
-    
+
     # Green line box
     cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)
-    
+ 
     for i in range(rows):
         row = detections[i]
         confidence = row[4]
@@ -172,12 +172,13 @@ def detect():
                                 result = ocr.ocr(plate_img, cls=True)
                                 plate_num = ''
                                 for line in result:
-                                    plate = line[0][1][0]
-                                    for y in plate:
-                                        a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
-                                        for x in a:
-                                            if(y == x):
-                                                plate_num += x 
+                                    if(len(line) != 0):
+                                        plate = line[0][1][0]
+                                        for y in plate:
+                                            a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
+                                            for x in a:
+                                                if(y == x):
+                                                    plate_num += x 
                                     print("Number plate is:", plate_num)
 
                                     plate = plate_num
