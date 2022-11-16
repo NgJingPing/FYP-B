@@ -63,7 +63,10 @@ def detect():
     image_width, image_height = frames.shape[1], frames.shape[0]
     x_scale = image_width/640
     y_scale = image_height/640
- 
+    
+    # Green line box
+    cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)
+    
     for i in range(rows):
         row = detections[i]
         confidence = row[4]
@@ -224,9 +227,6 @@ def detect():
 
 
                         cv2.imshow('Vehicle', vehicle_img)    
-    
-    # Green line box
-    cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)
                                         
     return frames
 
