@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-#from keras.preprocessing.image import save_img
-from tensorflow.keras.utils import save_img
+from keras.preprocessing.image import save_img
+#from tensorflow.keras.utils import save_img
 import os.path
 
 from paddleocr import PaddleOCR,draw_ocr
@@ -12,25 +12,25 @@ import mysql.connector
 import uuid
 import datetime
 
-cap = cv2.VideoCapture("video.mp4")
+cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.54.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 #cap = cv2.VideoCapture(0)
 #cap = cv2.VideoCapture()
 #cap.open("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 
-net = cv2.dnn.readNetFromONNX("yolov5n.onnx")
+net = cv2.dnn.readNetFromONNX("ANPR\yolov5n.onnx")
 
-net_2 = cv2.dnn.readNetFromONNX("yolov5n_2.onnx")
+net_2 = cv2.dnn.readNetFromONNX("ANPR\yolov5n_2.onnx")
 
-file = open("coco.txt", "r")
+file = open("ANPR\coco.txt", "r")
 classes = file.read().split('\n')
 #print(classes)
 
-file_2 = open("coco2.txt","r")
+file_2 = open("ANPR\coco2.txt","r")
 classes_2 = file_2.read().split('\n')
 #print(classes_2)
 
-folder_path = "images"
+folder_path = "ANPR\images"
 plate = ""
 vehicle_id = ""
 current_plate = ""
@@ -63,9 +63,6 @@ def detect():
     image_width, image_height = frames.shape[1], frames.shape[0]
     x_scale = image_width/640
     y_scale = image_height/640
-
-    # Green line box
-    cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)
  
     for i in range(rows):
         row = detections[i]
@@ -102,21 +99,25 @@ def detect():
                     v = frames[y1:y1 + h, x1:x1+w+5]
                     if (x1>0 and y1>0 and h>0 and w>0):
                         # Save real-time vehicle image without bounding box 
-                        save_img('saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                        save_img('ANPR\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         area = [(170,182),(930,194),(936,590),(9,530)] 
+                    else:
+                        area = [(170,182),(930,194),(936,590),(9,530)]
                     cv2.rectangle(frames,(x1,y1), (x1+w+5, y1+h), (51,51,255), 2)
                     cv2.rectangle(frames, (x1, y1 - 40), (x1 + w + 5, y1), (51,51,255), -2)
                     cv2.putText(frames, text, (x1, y1-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
                     if (x1>0 and y1>0 and h>0 and w>0):
                         # Save real-time vehicle image with bounding box 
-                        save_img('saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                        save_img('ANPR\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         area = [(170,182),(930,194),(936,590),(9,530)] 
+                    else:
+                        area = [(170,182),(930,194),(936,590),(9,530)]
 
-                    file_exists = os.path.exists("saved.jpg")
+                    file_exists = os.path.exists("ANPR\saved.jpg")
                     
                     if file_exists == True:
-                        vehicle_img = cv2.imread('saved.jpg')
-                        vehicle_img_2 = cv2.imread('saved.jpg')
+                        vehicle_img = cv2.imread('ANPR\saved.jpg')
+                        vehicle_img_2 = cv2.imread('ANPR\saved.jpg')
                         blob_2 = cv2.dnn.blobFromImage(vehicle_img,scalefactor= 1/255,size=(640,640),mean=[0,0,0],swapRB= True, crop= False)
                         net_2.setInput(blob_2)
                         detections_2 = net_2.forward()[0]
@@ -158,14 +159,14 @@ def detect():
                             text_2 = " " + label_2 + " {:.2f}".format(conf_2)
                             plate = vehicle_img[y2:y2+h2, x2:x2+w2]
                             # Save real-time licence plate image without bounding box 
-                            save_img('saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                            save_img('ANPR\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
                             cv2.rectangle(vehicle_img,(x2,y2),(x2+w2, y2+h2) ,(51 ,51,255),2)
                             cv2.rectangle(vehicle_img, (x2, y2 - 30), (x2 + w2, y2), (51,51,255), -2)
                             cv2.putText(vehicle_img, text_2, (x2+5, y2 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
                             cv2.imshow('Licence Plate', plate)
                             # Save real-time licence plate image with bounding box 
-                            save_img('saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
-                            plate_img = 'saved2.jpg'
+                            save_img('ANPR\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                            plate_img = 'ANPR\saved2.jpg'
                 
                             file_exists = os.path.exists(plate_img)
                             if file_exists == True:
@@ -228,6 +229,9 @@ def detect():
 
 
                         cv2.imshow('Vehicle', vehicle_img)    
+    
+    # Green line box
+    cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)
                                         
     return frames
 

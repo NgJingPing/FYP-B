@@ -10,7 +10,7 @@ import mysql.connector
 import uuid
 import datetime
 
-cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-05 at 09.59.39.mp4")
+cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.54.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 #cap = cv2.VideoCapture(0)
 
