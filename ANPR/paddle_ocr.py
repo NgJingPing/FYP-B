@@ -194,33 +194,20 @@ def detect():
                                     mycursor.execute(sql, z)
                                     myresult = mycursor.fetchone()
                                     if(myresult != None):
-                                        vehicle_id = myresult[0]
                                         if current_plate != plate:
-                                            sql4 = "SELECT vehicleID, referenceID FROM entryLog ORDER BY referenceID DESC LIMIT 1"
-                                            mycursor.execute(sql4)
-                                            myresult = mycursor.fetchone()
-                                            if(myresult != None):
-                                                vID = myresult[0]
-                                                if(vID == vehicle_id):
-                                                    sql2 = "UPDATE entryLog SET entryTime = %s WHERE referenceID = %s"
-                                                    rID = myresult[1]
-                                                    z = (date, rID)
-                                                    mycursor.execute(sql2, z)
-                                                    conn.commit()
-                                                    count = 0
-                                                else:
-                                                    sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
-                                                    val = (vehicle_id, date, img_name, img_name_2)
-                                                    mycursor.execute(sql2, val)
-                                                    conn.commit()
-                                                    #Save image with Licence Plate detection box
-                                                    cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
-                                                    # Save image without Licence Plate detection box
-                                                    cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
-                                                    found = True
-                                                    print("Found")
-                                                    current_plate = plate
-                                                    count = 0
+                                            vehicle_id = myresult[0]
+                                            sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                            val = (vehicle_id, date, img_name, img_name_2)
+                                            mycursor.execute(sql2, val)
+                                            conn.commit()
+                                            #Save image with Licence Plate detection box
+                                            cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
+                                            # Save image without Licence Plate detection box
+                                            cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                            found = True
+                                            print("Found")
+                                            current_plate = plate
+                                            count = 0
                                     else:
                                         if (count == 4) & (current_plate != plate):
                                             sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
