@@ -11,8 +11,9 @@ ocr = PaddleOCR(use_angle_cls=True, lang="en")
 import mysql.connector
 import uuid
 import datetime
+import time
 
-cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.54.mp4")
+cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.52.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 #cap = cv2.VideoCapture(0)
 #cap = cv2.VideoCapture()
@@ -236,20 +237,26 @@ def detect():
     return frames
 
 c = 0
+pTime = 0 
 while True:
     ret, frames = cap.read()
     if frames is None:
         break
-
-    c += 1
-    if c % 5 != 0:
-        continue
+    
+    cTime = time.time()
+    fps = 1/ (cTime-pTime)
+    pTime = cTime
+    
+    #c += 1
+    #if c % 5 != 0:
+    #    continue
 
     frames = cv2.resize(frames, (1000,600))
 
     frames = detect()
     
     cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+    cv2.putText(frames, "FPS: " + str(round(fps, 4)), (800, 35), cv2.QT_FONT_NORMAL, 0.8, (58, 245, 255), 2)
     cv2.imshow('Automatic number-plate recognition (ANPR) System', frames)
     
     k = cv2.waitKey(1) 
