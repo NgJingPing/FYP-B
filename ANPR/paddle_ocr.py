@@ -173,16 +173,14 @@ def detect():
                                 result = ocr.ocr(plate_img, cls=True)
                                 plate_num = ''
                                 for line in result:
-                                    if(len(line) == 1):
+                                    if(len(line) != 0):
                                         plate = line[0][1][0]
-                                    elif(len(line) == 2):
-                                        plate = line[0][1][0] + line[1][1][0]
-                                    for y in plate:
-                                        a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
-                                        for x in a:
-                                            if(y == x):
-                                                plate_num += x 
-                                    print("Number plate is:", plate_num) 
+                                        for y in plate:
+                                            a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
+                                            for x in a:
+                                                if(y == x):
+                                                    plate_num += x 
+                                    print("Number plate is:", plate_num)
 
                                     plate = plate_num
                                     date = datetime.datetime.now()
