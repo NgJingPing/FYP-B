@@ -40,7 +40,7 @@ body{
   margin: auto;
   display: block;
   height: auto; 
-  width: 185px;
+  max-width: 185px;
 }
 
 .navigation_bar .logo_initial {
@@ -66,7 +66,7 @@ body{
     margin-top: 32px;
     padding-left: 32px;
     text-decoration: none;
-    font-size: 1.563rem;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.563rem);
     color: #C5E5CC;
     display: block;
   }
@@ -88,7 +88,7 @@ body{
 
   .navigation_links_container{
     margin-top: 100px;
-    min-height: 350px;
+    max-height: 350px;
   }
 
   .fa-angle-right {
@@ -103,7 +103,7 @@ body{
 
   @media screen and (max-height: 540px) {
     .navigation_bar {padding-top: 5px;}
-    .navigation_bar a {font-size: 1.25rem;}
+    .navigation_bar a{font-size: 1.25rem;}
     .fa-angle-right {padding-left: 50px;}
     .navigation_links_container{margin-top: 10px;}
   }
@@ -112,7 +112,7 @@ body{
   .content-container{
     margin-top: 20px;
     margin-left:300px;
-    min-width: 1280px;
+    
   }
   header h1{
     margin: 10px;
@@ -121,12 +121,13 @@ body{
 
   .widget_group{
     display: flex;
+    gap: 5px;
     flex-direction: row;
     width: 100%;
   }
 
   .widget_container{
-    height: 140px;
+    min-height: 140px;
     padding: 10px 10px 20px 10px;
     margin: 10px;
     width: 25%;
@@ -134,10 +135,14 @@ body{
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
+  @media(max-width:40em) {
+    .widget_group {display:block;}
+    .widget_container {width: 100%;}
+    .dashboard_logs {display:block;}
+  }
 
   .widget_name, .widget_value{
     display: block;
-    flex-direction: row; 
     color: #C5E5CC;
   }
 
@@ -159,6 +164,7 @@ body{
   
   .dashboard_logs{
     display: flex;
+    gap: 5px;
     flex-direction: row;
     width: 100%;
   }
