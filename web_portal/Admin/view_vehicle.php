@@ -71,6 +71,7 @@
 
     <section>
         <div class="log_container">
+            <div class="table-responsive">
             <table id="log_table" class="table table-borderless">  
                 <thead>
                     <tr>
@@ -147,6 +148,7 @@
                 ?>
 
                 </table>
+            </div>
             </div>
 
     </section>

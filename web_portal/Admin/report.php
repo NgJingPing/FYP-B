@@ -115,15 +115,15 @@
         
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
-        echo '<div class="log_container">
+        echo '<div class="log_container"> <div class="table-responsive">
                 <table id="log_table" class="table table-borderless">  
 			    <thead>  
                     <tr>
-                        <td>No</td>  
-                        <td>Timestamp</td>  
-                        <td>License Plate Number</td>  
-                        <td>Tenant Lot Number</td>  
-                        <td>Actions</td>  
+                        <th>No</td>  
+                        <th>Timestamp</th>  
+                        <th>License Plate Number</th>  
+                        <th>Tenant Lot Number</th>  
+                        <th>Actions</th>  
                     </tr>  
                 </thead>';
 
@@ -142,19 +142,19 @@
             </tr>'; 
             $count += 1;
         } 
-        echo '</table></div>';  
+        echo '</table></div></div>';  
 
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
-        echo '<div class="log_container">
+        echo '<div class="log_container"> <div class="table-responsive">
                 <table id="log_table2" class="table table-borderless">  
 			    <thead>  
                     <tr>
-                        <td>No</td>  
-                        <td>Timestamp</td>  
-                        <td>License Plate Number</td>  
-                        <td>Tenant Lot Number</td>  
-                        <td>Actions</td>  
+                        <th>No</th>  
+                        <th>Timestamp</th>  
+                        <th>License Plate Number</th>  
+                        <th>Tenant Lot Number</th>  
+                        <th>Actions</th>  
                     </tr>  
                 </thead>';
 
@@ -173,17 +173,17 @@
             </tr>';   
             $count2 += 1;
         }
-        echo '</table></div>';  
+        echo '</table></div></div>';  
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
-        echo '<div class="log_container">
+        echo '<div class="log_container"> <div class="table-responsive">
                 <table id="log_table3" class="table table-borderless">   
 			    <thead>  
                     <tr>
-                        <td>No</td>  
-                        <td>Timestamp</td>  
-                        <td>License Plate Number</td>  
-                        <td>Actions</td>  
+                        <th>No</th>  
+                        <th>Timestamp</th>  
+                        <th>License Plate Number</th>  
+                        <th>Actions</th>  
                     </tr>  
                 </thead>';
 
@@ -201,7 +201,7 @@
             </tr>';  
             $count3 += 1;
         }
-        echo '</table></div>';  
+        echo '</table></div></div>';  
     }
    
 ?>

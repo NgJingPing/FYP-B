@@ -49,7 +49,7 @@
 	$myquery = "SELECT * FROM deniedAccess ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);
 ?>
-
+<body>
 <!--Sidebar starts here-->
 <div class="navigation_bar">
   <div class="logo_container"> 
@@ -78,20 +78,21 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
-<body>
     <div class="content-container">
     <header>
 		<h1>Denied Access Log</h1>
 	</header>
 
+    <section>
 	<div class="log_container">
+    <div class="table-responsive">
 		<table id="log_table" class="table table-striped table-bordered">  
 			<thead>  
                 <tr>  
-                    <td>Reference ID</td>  
-                    <td>Timestamp</td>  
-                    <td>License Plate Number</td>  
-                    <td>Actions</td>  
+                    <th>Reference ID</th>  
+                    <th>Timestamp</th>  
+                    <th>License Plate Number</th>  
+                    <th>Actions</th>  
                 </tr>  
             </thead>  
 
@@ -115,6 +116,8 @@
 			?>
 		</table>
 	</div>
+    </div>
+    </section>
             </div>
             <div class="waves"></div>
 </body>
