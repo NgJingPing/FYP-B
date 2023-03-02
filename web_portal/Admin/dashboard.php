@@ -8,7 +8,7 @@
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
 		$session_type = $_SESSION['type'];
-		if($session_type != "Admin") {
+		if($session_type != "Admin" && $session_type != "Super Admin") {
 			header("Location: ../login.php");
 		}
 	}

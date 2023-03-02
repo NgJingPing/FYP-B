@@ -8,7 +8,7 @@
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
 		$session_type = $_SESSION['type'];
-		if($session_type != "Admin") {
+		if($session_type != "Admin" && $session_type != "Super Admin") {
 			header("Location: ../login.php");
 		}
 	}
@@ -77,6 +77,18 @@
   
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
+
+  <?php 
+  
+  if($session_type == "Super Admin") {
+      echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left:0px; padding-left:8px;"></i></a></div>
+    <div class="sub_menu">
+        <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
+        <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
+    </div>';
+  }
+  ?>  
+
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
 </div>
@@ -91,6 +103,7 @@
 
 	<section>
 	<div class="main_container">
+		<div class="table-responsive">
 		<table class="table table-bordered">  
                     <tr>
 						<td class="row-header">License Plate Number</td>
@@ -115,6 +128,7 @@
 						<td><?php echo '<img class="db_image" src="../../ANPR/images/'.$item["image"].'"/>';?></td>
 					</tr>
 		</table>
+		</div>
 		</div>
 	</section>
 </div>

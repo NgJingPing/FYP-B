@@ -18,7 +18,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
   	    $email = mysqli_escape_string($conn, $_POST["email"]);
   	    $pass = mysqli_escape_string($conn, $_POST["password"]);
 
-        $myquery = "SELECT password, role FROM users WHERE email = '$email';";
+        $myquery = "SELECT password, role, isAdvanced FROM users WHERE email = '$email';";
 
   	    $sql = mysqli_query($conn, $myquery);
   	    $pass = hash("sha256", $pass);
@@ -27,18 +27,22 @@ $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB
   	    while($row = mysqli_fetch_assoc($sql)) {
   		    $dbpass = $row['password'];
             $role = $row['role'];
+            $advanced = $row['isAdvanced'];
   	    }
 
         if($pass == $dbpass) {
             if($role == 1) {
                 $user_type = "Admin";
+                if($advanced == 1){
+                    $user_type = "Super Admin";
+                }
             } else {
                 $user_type = "Security";
             }
 		    session_start();
 		    $_SESSION['email'] = $email;
             $_SESSION['type'] = $user_type;
-            if($user_type == "Admin") {
+            if($user_type == "Admin" || $user_type == "Super Admin") {
                 header("location: Admin/index.php");
             } else {
                 header("location: Security/index.php");

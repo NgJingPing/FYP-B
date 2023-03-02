@@ -8,11 +8,11 @@
 	} else { // Otherwise, assign the values into $session_email & $ssession_type
 		$session_email = $_SESSION['email'];
 		$session_type = $_SESSION['type'];
-		if($session_type != "Admin" && $session_type != "Super Admin") {
+		if($session_type != "Super Admin") {
 			header("Location: ../login.php");
 		}
 	}
-?>  
+?> 
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -21,7 +21,7 @@
     <meta charset = "utf-8">
 	<meta name = "author" content = "Sabrina Tan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ANPR - Entry Log</title>
+    <title>ANPR - Manage User</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -37,10 +37,8 @@
     <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
 
-
-
 <body>
-   <!--Sidebar starts here-->
+	<!--Sidebar starts here-->
   <div class="navigation_bar">
   <div class="logo_container"> 
   <img src="../images/naim.png" class="naim_logo"></img>
@@ -59,7 +57,8 @@
         <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
   
-  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div> 
+
   <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
 
   <?php 
@@ -80,6 +79,7 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
+
 <?php
     $servername = "localhost";
 	$username = "root";
@@ -92,13 +92,13 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 
-	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID ORDER BY referenceID DESC";
+	$myquery = "SELECT * FROM users;";
 	$result = $conn->query($myquery);
 ?>
-   
+
     <div class="content-container">
     <header>
-		<h1>Entry Log</h1>
+		<h1>Account Management</h1>
 	</header>
 
     <section>
@@ -107,28 +107,34 @@
 		<table id="log_table" class="table table-borderless">  
 			<thead>  
                 <tr>  
-                    <th>Reference ID</th>  
-                    <th>Timestamp</th>  
-                    <th>License Plate Number</th>  
-                    <th>Tenant Lot Number</th>  
-                    <th>Actions</th>  
+                    <th>User ID</th>   
+                    <th>Email</th>  
+                    <th>Role</th>  
+                    <th>Action</th> 
                 </tr>  
             </thead>  
 
 			<?php
                 if($result){
                     while($row = mysqli_fetch_array($result))  
-                    {  
-                        $date = $row['entryTime'];
-                        $dateObject = new DateTime($date);
-                        $format = $dateObject->format('d M Y h:i A');
+                    { 
+                        if($row["role"] == "1")
+                        {
+                            $role = "Admin";
+                            if($row["isAdvanced"] == "1")
+                        {
+                            $role = "Super Admin";
+                        } 
+                        } else {
+                            $role = "Security";
+                        }
+
                         echo '  
                         <tr>  
-                            <td>'.$row["referenceID"].'</td>  
-                            <td>'.$format.'</td>  
-                            <td>'.$row["licensePlate"].'</td>  
-                            <td>'.$row["tenantLotNumber"].'</td>  
-                            <td><a href="entry_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+                            <td>'.$row["userID"].'</td>  
+                            <td>'.$row["email"].'</td>  
+                            <td>'.$role.'</td> 
+                            <td><a href="edit_user.php?userID='.$row["userID"].'"><i class="fa-solid fa-pen-to-square"></i></a> <a onClick="javascript:return confirm(\'Do you really want to delete this record? \n\nUser ID: '.$row["userID"]. '\nEmail: '.$row["email"].'\')" href="delete_user.php?userID='.$row["userID"].'"><i class="fa-solid fa-trash-can"></i></a></td> 
                         </tr>  
                         ';  
                     } 
