@@ -1,5 +1,10 @@
 $(document).ready(function(){  
-    $('#log_table').DataTable();  
+  $('#log_table').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+      'copy', 'csv', 'excel', 'pdf', 'print'
+    ]
+});    
     $('#entry_log_table').DataTable(); 
     $('#exit_log_table').DataTable(); 
 });  

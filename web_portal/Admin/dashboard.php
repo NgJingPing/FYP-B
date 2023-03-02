@@ -26,6 +26,7 @@
 		die("Connection Failed: " . $conn->connect_error);
 	}
 ?> 
+
    <div class="widget_group">
     <div class="widget_container">
         <div class="widget_name"><p>Total Flow Today</p></div>

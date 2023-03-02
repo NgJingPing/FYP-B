@@ -22,17 +22,34 @@
 	<meta name = "autor" content = "Sabrina Tan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ANPR - Denied Access Log</title>
+    <!-- JQuery and Bootstrap CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+    <!-- ENDS HERE -->
+
+    <!-- DataTables CDN -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap.min.css" /> 
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>  
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap.min.js"></script>   
+    <!-- ENDS HERE -->
+    <!-- DataTables Buttons CDN -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css" /> 
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>  
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.bootstrap.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.print.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> 
+    <!-- ENDS HERE -->
+
+    <!-- Fonts CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
+    <!-- ENDS HERE -->
     <link type="text/css" rel="stylesheet" href="style/style.css">
 
 <?php
