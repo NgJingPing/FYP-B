@@ -342,7 +342,6 @@
     </div>
 
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
-  <div class="navigation_links"><a href="profile.php" class="active_page"><i class="fa-solid fa-user"></i>Profile</a></div>
 
   <?php 
   
@@ -354,6 +353,8 @@
     </div>';
   }
   ?>  
+
+  <div class="navigation_links"><a href="profile.php" class="active_page"><i class="fa-solid fa-user"></i>Profile</a></div>
 
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
 

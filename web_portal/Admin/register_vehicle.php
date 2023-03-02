@@ -91,8 +91,6 @@
     </div>
 
   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
-  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
-
   <?php 
   
   if($session_type == "Super Admin") {
@@ -102,7 +100,8 @@
         <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
     </div>';
   }
-  ?>  
+  ?> 
+  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div> 
 
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
 
