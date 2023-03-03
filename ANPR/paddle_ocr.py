@@ -29,8 +29,8 @@ cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.40.20.mp4")
 #cap.open("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 
 #Camere Types (entry/exit)
-#camera = "entry"
-camera = "exit"
+camera = "entry"
+#camera = "exit"
 
 # Get the video frame count
 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
