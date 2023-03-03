@@ -1,3 +1,12 @@
+"""
+This paddle ocr python files is detecting vehicle, detecting licence plate, recognising number plate, 
+recording into entrylog or exitlog database when the system "found" and recording into deniedaccess database 
+when the system "not found". If camera is "entry", the temporary entrylog images will store in entrylogtemp 
+folder and the permanent entrylog images will store in entrylog folder inside the images folder. If camera is 
+"exit", the temporary exitlog images will store in exitlogtemp folder and the permanent exitlog images store 
+will in exitlog folder inside the images folder.
+
+"""
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
@@ -18,6 +27,10 @@ cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.40.20.mp4")
 #cap = cv2.VideoCapture(1)
 #cap = cv2.VideoCapture()
 #cap.open("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
+
+#Camere Types (entry/exit)
+#camera = "entry"
+camera = "exit"
 
 # Get the video frame count
 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -126,7 +139,10 @@ def detect():
                     v = frames[y1:y1 + h, x1:x1+w+5]
                     if (x1>0 and y1>0 and h>0 and w>0):
                         # Save real-time vehicle image without bounding box 
-                        save_img('ANPR\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                        if camera.lower() == "entry":
+                            save_img('ANPR\entrylogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                        elif camera.lower() == "exit":
+                            save_img('ANPR\exitlogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         area = [(170,182),(930,194),(936,590),(9,530)] 
                     else:
                         area = [(170,182),(930,194),(936,590),(9,530)]
@@ -135,16 +151,26 @@ def detect():
                     cv2.putText(frames, text, (x1, y1-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
                     if (x1>0 and y1>0 and h>0 and w>0):
                         # Save real-time vehicle image with bounding box 
-                        save_img('ANPR\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                        if camera.lower() == "entry":
+                            save_img('ANPR\entrylogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                        elif camera.lower() == "exit":
+                            save_img('ANPR\exitlogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         area = [(170,182),(930,194),(936,590),(9,530)] 
                     else:
                         area = [(170,182),(930,194),(936,590),(9,530)]
 
-                    file_exists = os.path.exists("ANPR\saved.jpg")
-                    
+                    if camera.lower() == "entry":
+                        file_exists = os.path.exists("ANPR\entrylogtemp\saved.jpg")
+                    elif camera.lower() == "exit":
+                        file_exists = os.path.exists("ANPR\exitlogtemp\saved.jpg")
+                        
                     if file_exists == True:
-                        vehicle_img = cv2.imread('ANPR\saved.jpg')
-                        vehicle_img_2 = cv2.imread('ANPR\saved.jpg')
+                        if camera.lower() == "entry":
+                            vehicle_img = cv2.imread('ANPR\entrylogtemp\saved.jpg')
+                            vehicle_img_2 = cv2.imread('ANPR\entrylogtemp\saved.jpg')
+                        elif camera.lower() == "exit":
+                            vehicle_img = cv2.imread('ANPR\exitlogtemp\saved.jpg')
+                            vehicle_img_2 = cv2.imread('ANPR\exitlogtemp\saved.jpg')
                         blob_2 = cv2.dnn.blobFromImage(vehicle_img,scalefactor= 1/255,size=(640,640),mean=[0,0,0],swapRB= True, crop= False)
                         net_2.setInput(blob_2)
                         detections_2 = net_2.forward()[0]
@@ -187,14 +213,22 @@ def detect():
                             plate = vehicle_img[y2:y2+h2, x2:x2+w2]
                             licence_detected = "Yes" 
                             # Save real-time licence plate image without bounding box 
-                            save_img('ANPR\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                            if camera.lower() == "entry":
+                                save_img('ANPR\entrylogtemp\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                            elif camera.lower() == "exit":
+                                save_img('ANPR\exitlogtemp\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
                             cv2.rectangle(vehicle_img,(x2,y2),(x2+w2, y2+h2) ,(51 ,51,255),2)
                             cv2.rectangle(vehicle_img, (x2, y2 - 30), (x2 + w2, y2), (51,51,255), -2)
                             cv2.putText(vehicle_img, text_2, (x2+5, y2 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
                             # cv2.imshow('Licence Plate', plate)
                             # Save real-time licence plate image with bounding box 
-                            save_img('ANPR\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
-                            plate_img = 'ANPR\saved2.jpg'
+                            if camera.lower() == "entry":
+                                save_img('ANPR\entrylogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                                plate_img = 'ANPR\entrylogtemp\saved2.jpg'
+                            elif camera.lower() == "exit":
+                                save_img('ANPR\exitlogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                                plate_img = 'ANPR\exitlogtemp\saved2.jpg'
+                            
                 
                             file_exists = os.path.exists(plate_img)
                             if file_exists == True:
@@ -215,8 +249,12 @@ def detect():
 
                                     plate = plate_num
                                     date = datetime.datetime.now()
-                                    img_name = '{}.jpg'.format(uuid.uuid1())
-                                    img_name_2 = '{}_2.jpg'.format(uuid.uuid1())
+                                    if camera.lower() == "entry":
+                                        img_name = 'entrylog\{}.jpg'.format(uuid.uuid1())
+                                        img_name_2 = 'entrylog\{}_2.jpg'.format(uuid.uuid1())
+                                    elif camera.lower() == "exit":
+                                        img_name = 'exitlog\{}.jpg'.format(uuid.uuid1())
+                                        img_name_2 = 'exitlog\{}_2.jpg'.format(uuid.uuid1())
                                     active = True
 
                                     mycursor = conn.cursor()
@@ -227,20 +265,29 @@ def detect():
                                     if(myresult != None):
                                         vehicle_id = myresult[0]
                                         if current_plate != plate:
-                                            sql4 = "SELECT vehicleID, referenceID FROM entryLog ORDER BY referenceID DESC LIMIT 1"
+                                            if camera.lower() == "entry":
+                                                sql4 = "SELECT vehicleID, referenceID FROM entryLog ORDER BY referenceID DESC LIMIT 1"
+                                            elif camera.lower() == "exit":
+                                                sql4 = "SELECT vehicleID, referenceID FROM exitLog ORDER BY referenceID DESC LIMIT 1"
                                             mycursor.execute(sql4)
                                             myresult = mycursor.fetchone()
                                             if(myresult != None):
                                                 vID = myresult[0]
                                                 if(vID == vehicle_id):
-                                                    sql2 = "UPDATE entryLog SET entryTime = %s WHERE referenceID = %s"
+                                                    if camera.lower() == "entry":
+                                                        sql2 = "UPDATE entryLog SET entryTime = %s WHERE referenceID = %s"
+                                                    elif camera.lower() == "exit":
+                                                        sql2 = "UPDATE exitLog SET exitTime = %s WHERE referenceID = %s"
                                                     rID = myresult[1]
                                                     z = (date, rID)
                                                     mycursor.execute(sql2, z)
                                                     conn.commit()
                                                     count = 0
                                                 else:
-                                                    sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                    if camera.lower() == "entry":
+                                                        sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                    elif camera.lower() == "exit":
+                                                        sql2 = "INSERT INTO exitLog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
                                                     val = (vehicle_id, date, img_name, img_name_2)
                                                     mycursor.execute(sql2, val)
                                                     conn.commit()
@@ -250,10 +297,24 @@ def detect():
                                                     cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
                                                     current_plate = plate
                                                     count = 0
-                                                found = True
-                                                number_plate = plate
-                                                matched = "Found"
-                                                print("Found")
+                                            else:
+                                                if camera.lower() == "entry":
+                                                    sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                elif camera.lower() == "exit":
+                                                    sql2 = "INSERT INTO exitLog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                val = (vehicle_id, date, img_name, img_name_2)
+                                                mycursor.execute(sql2, val)
+                                                conn.commit()
+                                                #Save image with Licence Plate detection box
+                                                cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
+                                                # Save image without Licence Plate detection box
+                                                cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                                current_plate = plate
+                                                count = 0
+                                            found = True
+                                            number_plate = plate
+                                            matched = "Found"
+                                            print("Found")
                                     else:
                                         if (count == 4) & (current_plate != plate):
                                             sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
