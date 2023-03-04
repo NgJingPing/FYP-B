@@ -1,12 +1,13 @@
 $(document).ready(function(){  
-  $('#log_table').DataTable({
-    dom: 'Bfrtip',
+  var logTable = $('#log_table').DataTable({
     buttons: [
       'copy', 'csv', 'excel', 'pdf', 'print'
     ]
-});    
-    $('#entry_log_table').DataTable(); 
-    $('#exit_log_table').DataTable(); 
+});  
+logTable.buttons().container().appendTo('.table-responsive')
+
+$('#entry_log_table').DataTable(); 
+$('#exit_log_table').DataTable(); 
 });  
 
 //Navbar 
@@ -37,4 +38,4 @@ function table(){
 
 setInterval(function(){
   table();
-}, 500);
+}, 1500);

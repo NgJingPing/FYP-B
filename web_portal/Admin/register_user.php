@@ -135,7 +135,7 @@
   <div class="navigation_links_container">
 
   <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
-  <div class="navigation_links"><a href="register_vehicle.php" class="active_page"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
+  <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
   <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
 		<div class="navigation_links"><a href="report.php"></i>Report</a></div>
@@ -148,9 +148,9 @@
   <?php 
   
       if($session_type == "Super Admin") {
-          echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left:0px; padding-left:8px;"></i></a></div>
+          echo '<div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left:0px; padding-left:8px;"></i></a></div>
         <div class="sub_menu">
-            <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
+            <div class="navigation_links"><a href="register_user.php" class="active_page"></i>Add User</a></div>
             <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
         </div>';
       }

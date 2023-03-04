@@ -1,10 +1,11 @@
 $(document).ready(function(){  
-  $('#log_table').DataTable({
-      dom: 'Bfrtip',
+  var logTable = $('#log_table').DataTable({
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
       ]
   });  
+  logTable.buttons().container().appendTo('.table-responsive')
+  
   $('#log_table2').DataTable();  
   $('#log_table3').DataTable();  
   $('#entry_log_table').DataTable(); 
