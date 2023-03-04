@@ -64,6 +64,7 @@
   <div class="navigation_links_container">
 
   <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+  <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
   <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
         <div class="navigation_links"><a href="report.php"></i>Report</a></div>
