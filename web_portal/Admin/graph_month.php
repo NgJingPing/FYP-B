@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Getting Started with Chart JS with www.chartjs3.com</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -30,11 +29,22 @@
             border: solid 3px rgba(0, 100, 0, 1);
             background: white;
         }
+        .dbtn {
+            border-radius: 5px;
+            background-color: #919191;
+            box-shadow: 0 2px 16px rgba(0,0,0,.1);
+            width: fit-content;
+            padding: 5px;
+            font-weight: bold;
+            border: solid 1px;
+            margin-left: 0;
+        }
     </style>
     
 </head>
 
 <body>
+    <button class="dbtn" onclick="downloadPDF2()">Download</button>
     <div class="table-responsive">
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
@@ -145,6 +155,8 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" integrity="sha512-ml/QKfG3+Yes6TwOzQb7aCNtJF4PUyha6R3w8pSTo/VJSywl7ZreYvvtUso7fKevpsI+pYVVwnu82YO0q3V6eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script>
 
     var dateArrayJS = <?php echo json_encode($mdateArray);?>;
@@ -165,6 +177,16 @@
         }]
     };
 
+    bgColor = {
+        id: 'bgColor',
+        beforeDraw: (chart, options) => {
+            const {ctx, width, height} = chart;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0,0, width, height)
+            ctx.restore();
+        }
+    }
+
     // config 
     config = {
         type: 'line',
@@ -184,7 +206,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -225,7 +248,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -266,7 +290,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -307,7 +332,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -320,6 +346,29 @@
     // Instantly assign Chart.js version
     const chartVersion2 = document.getElementById('chartVersion');
     chartVersion2.innerText = Chart.version;
+
+    function downloadPDF2(){
+        var canvas5 = document.getElementById('myChart5');
+        var canvas8 = document.getElementById('myChart8');
+        var canvas6 = document.getElementById('myChart6');
+        var canvas7 = document.getElementById('myChart7');
+
+        var canvasImage5 = canvas5.toDataURL('image/jpeg', 1.0);
+        var canvasImage8 = canvas8.toDataURL('image/jpeg', 1.0);
+        var canvasImage6 = canvas6.toDataURL('image/jpeg', 1.0);
+        var canvasImage7 = canvas7.toDataURL('image/jpeg', 1.0);
+
+        let pdf = new jsPDF('landscape');
+        pdf.setFontSize(20);
+        pdf.addImage(canvasImage5, 'JPEG', 30,30,250,155);
+        pdf.addPage()
+        pdf.addImage(canvasImage8, 'JPEG', 30,30,250,155);
+        pdf.addPage()
+        pdf.addImage(canvasImage6, 'JPEG', 30,30,250,155);
+        pdf.addPage()
+        pdf.addImage(canvasImage7, 'JPEG', 30,30,250,155);
+        pdf.save('analytics_month.pdf')
+    }
 
     </script>
 
