@@ -137,15 +137,17 @@
         <div class="tab-con">
         <ul class="tabs">
             <li class="active" data-cont=".one">Daily</li>
-            <li data-cont=".two">Monthly</li>
-            <li data-cont=".three">Yearly</li>
+            <li data-cont=".two">Weekly</li>
+            <li data-cont=".three">Monthly</li>
+            <li data-cont=".four">Yearly</li>
         </ul>
         </div>
 
         <div class="content">
             <div class="one"><?php include 'graph_day.php'; ?></div>
-            <div class="two"><?php include 'graph_month.php'; ?></div>
-            <div class="three"><?php include 'graph_year.php'; ?></div>
+            <div class="two"><?php include 'graph_week.php'; ?></div>
+            <div class="three"><?php include 'graph_month.php'; ?></div>
+            <div class="four"><?php include 'graph_year.php'; ?></div>
         </div>
         
     </section>
