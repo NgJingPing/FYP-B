@@ -1,5 +1,5 @@
-# SWE40001 Group 5 Matrix
+# SWE40002 Group 5 Matrix
 
-Software Engineering Project A 
+Software Engineering Project B 
 
 Real-Time Vehicle License Plate Recognition.
