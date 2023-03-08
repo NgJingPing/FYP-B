@@ -76,8 +76,15 @@
 	$password = "";
 	$dbname = "anprdb";
     $referenceID = $startdate = $enddate = "";
+    $label = "";
 
     $count = $count2 = $count3 = 1;
+    
+    // get the plate number from the link
+	if(isset($_GET["label"])) {
+		$label = $_GET["label"];
+	}
+
 
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	if($conn->connect_error){
@@ -104,6 +111,8 @@
             $enddate = $_POST["end"];
         }
 
+        $label = "";
+
         $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE entrylog.entryTime BETWEEN '$startdate' AND '$enddate';";
 	    $result = $conn->query($myquery);
 
@@ -116,10 +125,10 @@
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="entry_log_table" class="table table-borderless">  
+                <table id="log_table" class="table table-borderless">  
 			    <thead>  
                     <tr>
-                        <th>No</th>  
+                        <th>No</td>  
                         <th>Timestamp</th>  
                         <th>License Plate Number</th>  
                         <th>Tenant Lot Number</th>  
@@ -147,7 +156,7 @@
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="exit_log_table" class="table table-borderless">  
+                <table id="log_table2" class="table table-borderless">  
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -177,7 +186,158 @@
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table" class="table table-borderless">   
+                <table id="log_table3" class="table table-borderless">   
+			    <thead>  
+                    <tr>
+                        <th>No</th>  
+                        <th>Timestamp</th>  
+                        <th>License Plate Number</th>  
+                        <th>Actions</th>  
+                    </tr>  
+                </thead>';
+
+        while($row = mysqli_fetch_array($result3))  
+        {  
+            $date = $row['deniedTime'];
+            $dateObject = new DateTime($date);
+            $format = $dateObject->format('d M Y h:i A');
+            echo '  
+            <tr>  
+                <td>'.$count3.'</td>  
+                <td>'.$format.'</td>  
+                <td>'.$row["licensePlate"].'</td>  
+                    <td><a href="denied_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+            </tr>';  
+            $count3 += 1;
+        }
+        echo '</table></div></div>';  
+    }
+
+    if($label != "") {
+        if(strlen($label) == 10){
+            $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE DATE(entrylog.entryTime) = '$label';";
+	        $result = $conn->query($myquery);
+
+            $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE DATE(exitlog.exitTime) = '$label';";
+	        $result2 = $conn->query($myquery2);
+
+            $myquery3 = "SELECT * FROM deniedAccess WHERE DATE(deniedTime) = '$label';";
+            $result3 = $conn->query($myquery3);
+        }
+
+        if(strlen($label) == 4) {
+            $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE YEAR(entrylog.entryTime) = '$label';";
+	        $result = $conn->query($myquery);
+
+            $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE YEAR(exitlog.exitTime) = '$label';";
+	        $result2 = $conn->query($myquery2);
+
+            $myquery3 = "SELECT * FROM deniedAccess WHERE YEAR(deniedTime) = '$label';";
+            $result3 = $conn->query($myquery3);
+        }
+
+        if(strlen($label) == 7) {
+            $month = substr($label, 5, 2);
+            $year = substr($label, 0, 4);
+            $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE MONTH(entrylog.entryTime) = '$month' AND YEAR(entrylog.entryTime) =  '$year';";
+	        $result = $conn->query($myquery);
+
+            $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE MONTH(exitlog.exitTime) = '$month' AND YEAR(exitlog.exitTime) = '$year';";
+	        $result2 = $conn->query($myquery2);
+
+            $myquery3 = "SELECT * FROM deniedAccess WHERE MONTH(deniedTime) = '$month' AND YEAR(deniedTime) = '$year';";
+            $result3 = $conn->query($myquery3);
+        }
+
+        if(strlen($label) == 17 || strlen($label) == 18) {
+            if (strlen($label) == 17) {
+                if($label[1] == " "){
+                    $label = "0".$label;
+                }
+            }
+            $z = substr($label, -4);
+            $y =  substr($label, 0, 6);
+            $x = $y." ".$z;
+            $x = strtotime($x);
+            $format = 'Y-m-d';
+            $week = date($format, $x);
+
+            $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE WEEK(entrylog.entryTime) = WEEK('$week') AND YEAR(entrylog.entryTime) =  YEAR('$week');";
+	        $result = $conn->query($myquery);
+
+            $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE WEEK(exitlog.exitTime) = WEEK('$week') AND YEAR(exitlog.exitTime) = YEAR('$week');";
+	        $result2 = $conn->query($myquery2);
+
+            $myquery3 = "SELECT * FROM deniedAccess WHERE WEEK(deniedTime) = WEEK('$week') AND YEAR(deniedTime) = YEAR('$week');";
+            $result3 = $conn->query($myquery3);
+        }
+
+
+        
+        echo '<h2 class="report_table_name">Entry Log</h2>';
+        echo '<div class="log_container"> <div class="table-responsive">
+                <table id="log_table" class="table table-borderless">  
+			    <thead>  
+                    <tr>
+                        <th>No</td>  
+                        <th>Timestamp</th>  
+                        <th>License Plate Number</th>  
+                        <th>Tenant Lot Number</th>  
+                        <th>Actions</th>  
+                    </tr>  
+                </thead>';
+
+        while($row = mysqli_fetch_array($result))  
+        {  
+            $date = $row['entryTime'];
+            $dateObject = new DateTime($date);
+            $format = $dateObject->format('d M Y h:i A');
+            echo '  
+            <tr>  
+                <td>'.$count.'</td>  
+                <td>'.$format.'</td>  
+                <td>'.$row["licensePlate"].'</td>  
+                <td>'.$row["tenantLotNumber"].'</td>  
+                <td><a href="entry_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+            </tr>'; 
+            $count += 1;
+        } 
+        echo '</table></div></div>';  
+
+
+        echo '<h2 class="report_table_name">Exit Log</h2>';
+        echo '<div class="log_container"> <div class="table-responsive">
+                <table id="log_table2" class="table table-borderless">  
+			    <thead>  
+                    <tr>
+                        <th>No</th>  
+                        <th>Timestamp</th>  
+                        <th>License Plate Number</th>  
+                        <th>Tenant Lot Number</th>  
+                        <th>Actions</th>  
+                    </tr>  
+                </thead>';
+
+        while($row = mysqli_fetch_array($result2))  
+        {  
+            $date = $row['exitTime'];
+            $dateObject = new DateTime($date);
+            $format = $dateObject->format('d M Y h:i A');
+            echo '  
+            <tr>  
+                <td>'.$count2.'</td>  
+                <td>'.$format.'</td>  
+                <td>'.$row["licensePlate"].'</td>  
+                <td>'.$row["tenantLotNumber"].'</td>  
+                <td><a href="exit_log_details.php?referenceID='.$row["referenceID"].'"><i class="fa fa-external-link"></i></a></td> 
+            </tr>';   
+            $count2 += 1;
+        }
+        echo '</table></div></div>';  
+
+        echo '<h2 class="report_table_name">Denied Access Log</h2>';
+        echo '<div class="log_container"> <div class="table-responsive">
+                <table id="log_table3" class="table table-borderless">   
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -206,5 +366,6 @@
    
 ?>
 </div>
+
 </body>
 </html>

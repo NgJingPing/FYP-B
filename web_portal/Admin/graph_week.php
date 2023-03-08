@@ -125,7 +125,7 @@
         $start = strtotime('last sunday', strtotime($sdate));
         $end = strtotime('next saturday', strtotime($sdate));
         $format = 'j M';
-        $format2 = 'j M';
+        $format2 = 'j M Y';
         $start_day = date($format, $start);
         $end_day = date($format2, $end);
         $date = $start_day . "-". $end_day;
@@ -216,6 +216,23 @@
         config
     );
 
+    function clickHandler13(click){
+        var points = myChart13.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart13.data.labels[index];
+            var value = myChart13.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart13.canvas.onclick = clickHandler13;
+
      // setup 
     data = {
         labels: dateArrayJS,
@@ -251,6 +268,23 @@
         document.getElementById('myChart14'),
         config
     );
+
+    function clickHandler14(click){
+        var points = myChart14.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart14.data.labels[index];
+            var value = myChart14.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart14.canvas.onclick = clickHandler14;
 
      // setup 
     data = {
@@ -288,6 +322,23 @@
         config
     );
 
+    function clickHandler15(click){
+        var points = myChart15.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart15.data.labels[index];
+            var value = myChart15.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart15.canvas.onclick = clickHandler15;
+
      // setup 
     data = {
         labels: dateArrayJS,
@@ -323,6 +374,23 @@
         document.getElementById('myChart16'),
         config
     );
+
+    function clickHandler16(click){
+        var points = myChart16.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart16.data.labels[index];
+            var value = myChart16.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart16.canvas.onclick = clickHandler16;
 
     // Instantly assign Chart.js version
     var chartVersion = document.getElementById('chartVersion');

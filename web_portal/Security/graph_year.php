@@ -31,20 +31,24 @@
         }
         .dbtn {
             border-radius: 5px;
-            background-color: #919191;
+            background-color: white;
             box-shadow: 0 2px 16px rgba(0,0,0,.1);
             width: fit-content;
-            padding: 5px;
+            padding: 10px;
             font-weight: bold;
             border: solid 1px;
             margin-left: 0;
+            color: rgba(0, 100, 0, 1);
+        }
+        .dbtn i{
+            font-size:30px;
         }
     </style>
     
 </head>
 
 <body>
-    <button class="dbtn" onclick="downloadPDF3()">Download</button>
+    <button class="dbtn" onclick="downloadPDF3()"><i class="fa fa-file-pdf-o"></i></button>
     <div class="table-responsive">
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
@@ -213,6 +217,23 @@
         config
     );
 
+    function clickHandler9(click){
+        var points = myChart9.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart9.data.labels[index];
+            var value = myChart9.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart9.canvas.onclick = clickHandler9;
+
     // setup 
     data = {
         labels: ydateArrayJS,
@@ -254,6 +275,23 @@
         document.getElementById('myChart10'),
         config
     );
+
+    function clickHandler10(click){
+        var points = myChart10.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart10.data.labels[index];
+            var value = myChart10.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart10.canvas.onclick = clickHandler10;
 
      // setup 
     data = {
@@ -297,6 +335,23 @@
         config
     );
 
+    function clickHandler11(click){
+        var points = myChart11.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart11.data.labels[index];
+            var value = myChart11.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart11.canvas.onclick = clickHandler11;
+
      // setup 
     data = {
         labels: ydateArrayJS,
@@ -338,6 +393,23 @@
         document.getElementById('myChart12'),
         config
     );
+
+    function clickHandler12(click){
+        var points = myChart12.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart12.data.labels[index];
+            var value = myChart12.data.datasets[dataset].data[index];
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + label);
+
+        }
+    }
+
+    myChart12.canvas.onclick = clickHandler12;
 
     // Instantly assign Chart.js version
     var chartVersion3 = document.getElementById('chartVersion');
