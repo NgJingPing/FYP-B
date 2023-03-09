@@ -252,7 +252,7 @@
         }
     }
 
-    $myquery3 = "SELECT deniedAccess.referenceID, vehicle.vehicleID, vehicle.tenantLotNumber, vehicle.licensePlate, deniedAccess.deniedTime, tenant.name FROM deniedAccess INNER JOIN vehicle ON deniedAccess.licensePlate = vehicle.licensePlate INNER JOIN tenant ON vehicle.tenantLotNumber = tenant.tenantLotNumber";
+    $myquery3 = "SELECT deniedAccess.referenceID, deniedAccess.licensePlate, deniedAccess.deniedTime FROM deniedAccess";
     $result3 = $conn->query($myquery3);
     
     // Convert the deniedlog result set to JSON
