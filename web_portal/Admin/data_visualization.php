@@ -1127,6 +1127,7 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
+                    legend: {onClick: function() {}},
                     title: {
                         display: true,
                         text: 'Entry Log (Daily)',
@@ -1160,6 +1161,19 @@
                     event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
                 },
                 scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'dd MMM yyyy',
+                            displayFormats: {
+                                day: 'dd MMM yyyy',
+                                week: 'dd MMM yyyy',
+                                month: 'MMM yyyy',
+                                year: 'yyyy'
+                            }
+                        }
+                    },
                     y: {
                         ticks: {
                             precision: 0,
@@ -1179,6 +1193,8 @@
         function updateChart(period){
             //console.log(period.value);
             if(period.value == "day"){
+                myChart.options.scales.x.time.unit = 'day';
+                myChart.options.scales.x.time.tooltipFormat = 'dd MMM yyyy';
                 if (log == "entry"){
                     myChart.data = entry_day;
                     myChart.options.plugins.title.text = 'Entry Log (Daily)';
@@ -1197,6 +1213,8 @@
                 filter = "day";
             }
             else if(period.value == "week"){
+                myChart.options.scales.x.time.unit = 'week';
+                myChart.options.scales.x.time.tooltipFormat = 'dd MMM yyyy';
                 if (log == "entry"){
                     myChart.data = entry_week;
                     myChart.options.plugins.title.text = 'Entry Log (Weekly)';
@@ -1215,6 +1233,8 @@
                 filter = "week";
             }
             else if(period.value == "month"){
+                myChart.options.scales.x.time.unit = 'month';
+                myChart.options.scales.x.time.tooltipFormat = 'MMM yyyy';
                 if (log == "entry"){
                     myChart.data = entry_month;
                     myChart.options.plugins.title.text = 'Entry Log (Monthly)';
@@ -1234,6 +1254,8 @@
                 filter = "month";
             }
             else if(period.value == "year"){
+                myChart.options.scales.x.time.unit = 'year';
+                myChart.options.scales.x.time.tooltipFormat = 'yyyy';
                 if (log == "entry"){
                     myChart.data = entry_year;
                     myChart.options.plugins.title.text = 'Entry Log (Yearly)';
@@ -1399,7 +1421,34 @@
                 if (myChart.data == entry_day || myChart.data == exit_day || myChart.data == denied_day || myChart.data == total_day){
                     const value1 = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
                     const value2 = myChart.data.datasets[firstPoint.datasetIndex].data2[firstPoint.index];
-                    const value3 = myChart.data.datasets[firstPoint.datasetIndex].data3[firstPoint.index];
+                    const value3 = myChart.data.labels[firstPoint.index];
+                    const value4 = myChart.data.datasets[firstPoint.datasetIndex].data3[firstPoint.index];
+                    var options = { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: '2-digit',
+                        hour: 'numeric', 
+                        minute: 'numeric', 
+                        hour12: true,
+                    }; 
+                    var formattedDate = value3.toLocaleString('en-US', options).replace(',', '');
+
+                    if (formattedDate.indexOf('AM') === -1 && formattedDate.indexOf('PM') === -1) {
+                        var date = value3.substr(0, 10);
+                        var dateObj = new Date(date);
+                        var year = dateObj.getFullYear();
+                        var month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(dateObj);
+                        var day = dateObj.getDate();
+                        day = day < 10 ? '0' + day : day;
+                        var hour = value3.substr(11, 2);
+                        var minute = value3.substr(14, 2);
+                        var ampm = hour >= 12 ? 'PM' : 'AM';
+                        hour = (hour % 12) || 12;
+                        hour = hour < 10 ? '0' + hour : hour;
+                        minute = minute < 10 ? '0' + minute : minute;
+                        formattedDate = day + ' ' + month + ' ' + year + ' ' + hour + ':' + minute  + ' ' + ampm;
+                    }
+
                     document.querySelector("body").style.overflow = "hidden";
                     var popout = document.getElementById('popout');
                     var popoutContent = document.getElementById('popout-content');
@@ -1415,13 +1464,15 @@
                                 <table id="log_table" class="table table-borderless">  
                                     <thead>  
                                         <tr>  
-                                            <th>Tenant's License Plates</th> 
+                                            <th>License Plate Number</th> 
+                                            <th>Timestamp</th>
                                             <th>Reference Links</th> 
                                         </tr>  
                                     </thead>  
                                     <tr>
                                         <td>`+value2+`</td> 
-                                        <td><a href= "`+value3+`" target='data_visualization'>Link &nbsp; <i class="fa fa-external-link"></a></td> 
+                                        <td>`+formattedDate+`</td> 
+                                        <td><a href= "`+value4+`" target='data_visualization'>Link &nbsp; <i class="fa fa-external-link"></a></td> 
                                     <tr>
                                 </table>
                             </div>
@@ -1433,16 +1484,116 @@
                 else{
                     const value1 = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
                     const value2 = myChart.data.datasets[firstPoint.datasetIndex].data2[firstPoint.index];
-                    const value3 = myChart.data.datasets[firstPoint.datasetIndex].data3[firstPoint.index];     
+                    const value4 = myChart.data.datasets[firstPoint.datasetIndex].data3[firstPoint.index];   
+
                     var results = "";
                     for (let v = 0; v < value2.length; v++){
+                        const value3 = myChart.data.labels[firstPoint.index];                           
+                        var options = { 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: '2-digit',
+                            hour: 'numeric', 
+                            minute: 'numeric', 
+                            hour12: true,
+                        }; 
+                        var formattedDate = value3.toLocaleString('en-US', options).replace(',', '');
+
+                    
+                        var date = value3.substr(0, 10);
+                        var dateObj = new Date(date);
+                        var year = dateObj.getFullYear();
+                        var month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(dateObj);
+                        
+
+                        if (myChart.data == entry_week || myChart.data == exit_week || myChart.data == denied_week || myChart.data == total_week){
+                            var newyear = dateObj.getFullYear();
+                            var newMonth = month;
+                            var start_day = dateObj.getDate();
+                            start_day = start_day < 10 ? '0' + start_day : start_day;
+                            var end_day = dateObj.getDate()+7;
+                            if (end_day > 27 && month == 'Feb'){
+                                var isLeapYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                                if (isLeapYear && end_day == 29) {
+                                    var newMonth = 'Mar';
+                                    end_day = (end_day % 29) || 29;
+                                } else if (!isLeapYear && end_day == 28) {
+                                    var newMonth = 'Mar';
+                                    end_day = (end_day % 28) || 28;
+                                }
+                                
+                            }
+                            else if (end_day > 29 && (month == 'Apr'|| month == 'Jun' || month == 'Sep'|| month == 'Nov')){
+                                if (month == 'Apr') {
+                                    var newMonth = 'May';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Jun') {
+                                    var newMonth = 'Jul';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Sep') {
+                                    var newMonth = 'OCt';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Nov') {
+                                    var newMonth = 'Dec';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                               
+                            }
+                            else if (end_day > 30 && (month == 'Jan'|| month == 'Mar' || month == 'May' || month == 'Jul' || month == 'Aug' || month == 'Oct'|| month == 'Dec')){
+                                if (month == 'Jan') {
+                                    var newMonth = 'Feb';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Mar') {
+                                    var newMonth = 'Apr';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'May') {
+                                    var newMonth = 'Jun';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Jul') {
+                                    var newMonth = 'Aug';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Aug') {
+                                    var newMonth = 'Sep';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Oct') {
+                                    var newMonth = 'Nov';
+                                    end_day = (end_day % 31) || 31;
+                                }
+                                else if (month == 'Dec') {
+                                    var newMonth = 'Jan';
+                                    newyear += 1;
+                                    end_day = (end_day % 31) || 31;
+                                }
+                            }
+
+                            end_day = end_day < 10 ? '0' + end_day : end_day;
+                            
+                            formattedDate = 'Between ' + start_day + ' ' + month + ' ' + year + ' and '+ end_day + ' ' + newMonth + ' ' + newyear ;
+                        }
+                        else if (myChart.data == entry_month || myChart.data == exit_month || myChart.data == denied_month || myChart.data == total_month){
+                            formattedDate =  month + ' ' + year;
+                        }
+                        else if (myChart.data == entry_year || myChart.data == exit_year || myChart.data == denied_year || myChart.data == total_year){
+                            formattedDate =  year;
+                        }
+                        
                         results +=`
                         <tr>
                             <td>`+value2[v]+`</td> 
-                            <td><a href= "`+value3[v]+`" target='data_visualization'>Link &nbsp; <i class="fa fa-external-link"></i></a></td>
+                            <td>`+formattedDate+`</td> 
+                            <td><a href= "`+value4[v]+`" target='data_visualization'>Link &nbsp; <i class="fa fa-external-link"></i></a></td>
                         <tr>
                         `;
                     }       
+
                     document.querySelector("body").style.overflow = "hidden";
                     var popout = document.getElementById('popout');
                     var popoutContent = document.getElementById('popout-content');
@@ -1458,7 +1609,8 @@
                                 <table id="log_table" class="table table-borderless">  
                                     <thead>  
                                         <tr>  
-                                            <th>Tenant's License Plates</th> 
+                                            <th>License Plate Number</th> 
+                                            <th>Timestamp</th>
                                             <th>Reference Links</th> 
                                         </tr>  
                                     </thead>  
