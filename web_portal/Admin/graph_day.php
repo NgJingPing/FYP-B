@@ -41,7 +41,10 @@
             color: rgba(0, 100, 0, 1);
         }
         .dbtn i{
-            font-size:30px;
+            font-size:20px;
+        }
+        .dbtn span{
+            padding: 5px;
         }
     </style>
     
@@ -49,7 +52,19 @@
 
 <body>
     <button class="dbtn" onclick="downloadPDF()"><i class="fa fa-file-pdf-o"></i></button>
+    <button class="dbtn" onclick="chartType('bar')"><span>Bar</span></button>
+    <button class="dbtn" onclick="chartType('line')"><span>Line</span></i></button>
     <div class="table-responsive">
+        <div class="container-lg- m-1 d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 chartCard">
+                    <p>Total Flows</p>
+                    <div class="chartBox">
+                        <canvas id="myChart17"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-6 col-lg-6 chartCard">
@@ -162,15 +177,55 @@
     var exitCountArrayJS = <?php echo json_encode($exitCountArray);?>;
     var deniedCountArrayJS = <?php echo json_encode($deniedCountArray);?>;
 
-    // setup 
+    var x = [];
+
+    for(let i = 0; i < dateArrayJS.length; i++) {
+        x.push({
+            day: dateArrayJS[i],
+            total: totalCountArrayJS[i],
+            entry: entryCountArrayJS[i],
+            exit: exitCountArrayJS[i],
+            denied: deniedCountArrayJS[i]
+        });
+    }
+
     let data = {
-        labels: dateArrayJS,
         datasets: [{
-        label: 'Total Entry & Exit Flows',
-        data: totalCountArrayJS,
+        label: 'Total Flows',
+        data: x,
         backgroundColor: 'rgba(50, 205, 50, 0.2)',
         borderColor: 'rgba(50, 205, 50, 1)',
-        borderWidth: 1
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'total'
+        }
+        }, {
+        label: 'Entry Flows',
+        data: x,
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderColor: 'rgba(0, 150, 255, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'entry'
+        }
+        }, {
+        label: 'Exit Flows',
+        data: x,
+        backgroundColor: 'rgba(255, 191, 0, 0.2)',
+        borderColor: 'rgba(255, 191, 0, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'exit'
+        }
+        }, {
+        label: 'Denied Flows',
+        data: x,
+        backgroundColor: 'rgba(238, 75, 43, 0.2)',
+        borderColor: 'rgba(238, 75, 43, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'denied'
+        }
         }]
     };
 
@@ -186,7 +241,78 @@
 
     // config 
     let config = {
-        type: 'line',
+        type: 'bar',
+        data,
+        options: {
+            parsing: {
+                    xAxisKey: 'day',
+                },
+            scales: {
+                 x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    }
+                },
+                y: {
+                    ticks: {
+                        precision: 0,
+                        beginAtZero: true
+                    }
+                }
+            }
+        },
+        plugins: [bgColor]
+    };
+
+    // render init block
+    let myChart17 = new Chart(
+        document.getElementById('myChart17'),
+        config
+    );
+
+    function clickHandler17(click){
+        var points = myChart17.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart17.data.labels[index];
+            var value = myChart17.data.datasets[dataset].data[index].day;
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + value);
+
+        }
+    }
+
+    myChart17.canvas.onclick = clickHandler17;
+
+    // setup 
+    data = {
+        labels: dateArrayJS,
+        datasets: [{
+        label: 'Total Entry & Exit Flows',
+        data: totalCountArrayJS,
+        backgroundColor: 'rgba(50, 205, 50, 0.2)',
+        borderColor: 'rgba(50, 205, 50, 1)',
+        borderWidth: 1
+        }]
+    };
+
+    bgColor = {
+        id: 'bgColor',
+        beforeDraw: (chart, options) => {
+            const {ctx, width, height} = chart;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0,0, width, height)
+            ctx.restore();
+        }
+    }
+
+    // config 
+    config = {
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -209,7 +335,7 @@
 
     
     // render init block
-    let myChart = new Chart(
+    myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
@@ -237,15 +363,15 @@
         datasets: [{
         label: 'Total Entry Flows',
         data: entryCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderColor: 'rgba(0, 150, 255, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -296,15 +422,15 @@
         datasets: [{
         label: 'Total Exit Flows',
         data: exitCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(255, 191, 0, 0.2)',
+        borderColor: 'rgba(255, 191, 0, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -355,15 +481,15 @@
         datasets: [{
         label: 'Total Denied Access Flows',
         data: deniedCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(238, 75, 43, 0.2)',
+        borderColor: 'rgba(238, 75, 43, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -417,14 +543,18 @@
         var canvas4 = document.getElementById('myChart4');
         var canvas2 = document.getElementById('myChart2');
         var canvas3 = document.getElementById('myChart3');
+        var canvas17 = document.getElementById('myChart17');
 
         var canvasImage = canvas.toDataURL('image/jpeg', 1.0);
         var canvasImage4 = canvas4.toDataURL('image/jpeg', 1.0);
         var canvasImage2 = canvas2.toDataURL('image/jpeg', 1.0);
         var canvasImage3 = canvas3.toDataURL('image/jpeg', 1.0);
+        var canvasImage17 = canvas17.toDataURL('image/jpeg', 1.0);
 
         let pdf = new jsPDF('landscape');
         pdf.setFontSize(20);
+        pdf.addImage(canvasImage17, 'JPEG', 30,30,250,155);
+        pdf.addPage()
         pdf.addImage(canvasImage, 'JPEG', 30,30,250,155);
         pdf.addPage()
         pdf.addImage(canvasImage4, 'JPEG', 30,30,250,155);
@@ -433,6 +563,68 @@
         pdf.addPage()
         pdf.addImage(canvasImage3, 'JPEG', 30,30,250,155);
         pdf.save('analytics_day.pdf')
+    }
+
+    function chartType(type){
+        myChart.config.type = type;
+        myChart.update()
+
+        myChart2.config.type = type;
+        myChart2.update()
+
+        myChart3.config.type = type;
+        myChart3.update()
+
+        myChart4.config.type = type;
+        myChart4.update()
+
+        myChart17.config.type = type;
+        myChart17.update()
+
+        myChart5.config.type = type;
+        myChart5.update()
+
+        myChart6.config.type = type;
+        myChart6.update()
+
+        myChart7.config.type = type;
+        myChart7.update()
+
+        myChart8.config.type = type;
+        myChart8.update()
+
+        myChart19.config.type = type;
+        myChart19.update()
+
+        myChart9.config.type = type;
+        myChart9.update()
+
+        myChart10.config.type = type;
+        myChart10.update()
+
+        myChart11.config.type = type;
+        myChart11.update()
+
+        myChart12.config.type = type;
+        myChart12.update()
+
+        myChart20.config.type = type;
+        myChart20.update()
+
+        myChart13.config.type = type;
+        myChart13.update()
+
+        myChart14.config.type = type;
+        myChart14.update()
+
+        myChart15.config.type = type;
+        myChart15.update()
+
+        myChart16.config.type = type;
+        myChart16.update()
+
+        myChart18.config.type = type;
+        myChart18.update()
     }
 
     </script>

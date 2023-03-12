@@ -41,15 +41,31 @@
             color: rgba(0, 100, 0, 1);
         }
         .dbtn i{
-            font-size:30px;
+            font-size:20px;
         }
+        .dbtn span{
+            padding: 5px;
+        }
+
     </style>
     
 </head>
 
 <body>
     <button class="dbtn" onclick="downloadPDF4()"><i class="fa fa-file-pdf-o"></i></button>
+    <button class="dbtn" onclick="chartType('bar')"><span>Bar</span></button>
+    <button class="dbtn" onclick="chartType('line')"><span>Line</span></i></button>
     <div class="table-responsive">
+        <div class="container-lg- m-1 d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 chartCard">
+                    <p>Total Flows</p>
+                    <div class="chartBox">
+                        <canvas id="myChart18"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-6 col-lg-6 chartCard">
@@ -122,8 +138,8 @@
     while($startdate <= $enddate){
         $sql = "SELECT(SELECT COUNT(*) FROM entrylog WHERE WEEK(`entryTime`) = WEEK('$sdate') AND YEAR(`entryTime`) = YEAR('$sdate')) + (SELECT COUNT(*) FROM exitlog WHERE WEEK(`exitTime`) = WEEK('$sdate') AND YEAR(`exitTime`) = YEAR('$sdate')) AS total;";
         $result = $conn->query($sql);
-        $start = strtotime('last sunday', strtotime($sdate));
-        $end = strtotime('next saturday', strtotime($sdate));
+        $start = strtotime('sunday', strtotime($sdate));
+        $end = strtotime('saturday', strtotime($sdate));
         $format = 'j M';
         $format2 = 'j M Y';
         $start_day = date($format, $start);
@@ -170,6 +186,111 @@
     var exitCountArrayJS = <?php echo json_encode($exitCountArray);?>;
     var deniedCountArrayJS = <?php echo json_encode($deniedCountArray);?>;
 
+    var x = [];
+
+    for(let i = 0; i < dateArrayJS.length; i++) {
+        x.push({
+            day: dateArrayJS[i],
+            total: totalCountArrayJS[i],
+            entry: entryCountArrayJS[i],
+            exit: exitCountArrayJS[i],
+            denied: deniedCountArrayJS[i]
+        });
+    }
+
+    data = {
+        datasets: [{
+        label: 'Total Flows',
+        data: x,
+        backgroundColor: 'rgba(50, 205, 50, 0.2)',
+        borderColor: 'rgba(50, 205, 50, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'total'
+        }
+        }, {
+        label: 'Entry Flows',
+        data: x,
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderColor: 'rgba(0, 150, 255, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'entry'
+        }
+        }, {
+        label: 'Exit Flows',
+        data: x,
+        backgroundColor: 'rgba(255, 191, 0, 0.2)',
+        borderColor: 'rgba(255, 191, 0, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'exit'
+        }
+        }, {
+        label: 'Denied Flows',
+        data: x,
+        backgroundColor: 'rgba(1238, 75, 43, 0.2)',
+        borderColor: 'rgba(238, 75, 43, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'denied'
+        }
+        }]
+    };
+
+    bgColor = {
+        id: 'bgColor',
+        beforeDraw: (chart, options) => {
+            const {ctx, width, height} = chart;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0,0, width, height)
+            ctx.restore();
+        }
+    }
+
+    // config 
+    config = {
+        type: 'bar',
+        data,
+        options: {
+            parsing: {
+                    xAxisKey: 'day',
+                },
+            scales: {
+                y: {
+                    ticks: {
+                        precision: 0,
+                        beginAtZero: true
+                    }
+                }
+            }
+        },
+        plugins: [bgColor]
+    };
+
+    // render init block
+    let myChart18 = new Chart(
+        document.getElementById('myChart18'),
+        config
+    );
+
+    function clickHandler18(click){
+        var points = myChart18.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart18.data.labels[index];
+            var value = myChart18.data.datasets[dataset].data[index].day;
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + value);
+
+        }
+    }
+
+    myChart18.canvas.onclick = clickHandler18;
+
     // setup 
     data = {
         labels: dateArrayJS,
@@ -194,7 +315,7 @@
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -239,15 +360,15 @@
         datasets: [{
         label: 'Total Entry Flows',
         data: entryCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderColor: 'rgba(0, 150, 255, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -292,15 +413,15 @@
         datasets: [{
         label: 'Total Exit Flows',
         data: exitCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(255, 191, 0, 0.2)',
+        borderColor: 'rgba(255, 191, 0, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -345,15 +466,15 @@
         datasets: [{
         label: 'Total Denied Access Flows',
         data: deniedCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(238, 75, 43, 0.2)',
+        borderColor: 'rgba(238, 75, 43, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -401,14 +522,18 @@
         var canvas16 = document.getElementById('myChart16');
         var canvas14 = document.getElementById('myChart14');
         var canvas15 = document.getElementById('myChart15');
+        var canvas18 = document.getElementById('myChart18');
 
         var canvasImage13 = canvas13.toDataURL('image/jpeg', 1.0);
         var canvasImage16 = canvas16.toDataURL('image/jpeg', 1.0);
         var canvasImage14 = canvas14.toDataURL('image/jpeg', 1.0);
         var canvasImage15 = canvas15.toDataURL('image/jpeg', 1.0);
+        var canvasImage18 = canvas18.toDataURL('image/jpeg', 1.0);
 
         let pdf = new jsPDF('landscape');
         pdf.setFontSize(20);
+        pdf.addImage(canvasImage18, 'JPEG', 30,30,250,155);
+        pdf.addPage()
         pdf.addImage(canvasImage13, 'JPEG', 30,30,250,155);
         pdf.addPage()
         pdf.addImage(canvasImage16, 'JPEG', 30,30,250,155);

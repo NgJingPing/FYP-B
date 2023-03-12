@@ -41,7 +41,10 @@
             color: rgba(0, 100, 0, 1);
         }
         .dbtn i{
-            font-size:30px;
+            font-size:20px;
+        }
+        .dbtn span{
+            padding: 5px;
         }
     </style>
     
@@ -49,7 +52,19 @@
 
 <body>
     <button class="dbtn" onclick="downloadPDF2()"><i class="fa fa-file-pdf-o"></i></button>
+    <button class="dbtn" onclick="chartType('bar')"><span>Bar</span></button>
+    <button class="dbtn" onclick="chartType('line')"><span>Line</span></i></button>
     <div class="table-responsive">
+        <div class="container-lg- m-1 d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 chartCard">
+                    <p>Total Flows</p>
+                    <div class="chartBox">
+                        <canvas id="myChart19"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-6 col-lg-6 chartCard">
@@ -169,6 +184,117 @@
     var exitCountArrayJS = <?php echo json_encode($mexitCountArray);?>;
     var deniedCountArrayJS = <?php echo json_encode($mdeniedCountArray);?>;
 
+    var x = [];
+
+    for(let i = 0; i < dateArrayJS.length; i++) {
+        x.push({
+            day: dateArrayJS[i],
+            total: totalCountArrayJS[i],
+            entry: entryCountArrayJS[i],
+            exit: exitCountArrayJS[i],
+            denied: deniedCountArrayJS[i]
+        });
+    }
+
+    data = {
+        datasets: [{
+        label: 'Total Flows',
+        data: x,
+        backgroundColor: 'rgba(50, 205, 50, 0.2)',
+        borderColor: 'rgba(50, 205, 50, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'total'
+        }
+        }, {
+        label: 'Entry Flows',
+        data: x,
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderColor: 'rgba(0, 150, 255, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'entry'
+        }
+        }, {
+        label: 'Exit Flows',
+        data: x,
+        backgroundColor: 'rgba(255, 191, 0, 0.2)',
+        borderColor: 'rgba(255, 191, 0, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'exit'
+        }
+        }, {
+        label: 'Denied Flows',
+        data: x,
+        backgroundColor: 'rgba(238, 75, 43, 0.2)',
+        borderColor: 'rgba(238, 75, 43, 1)',
+        borderWidth: 1,
+        parsing: {
+            yAxisKey: 'denied'
+        }
+        }]
+    };
+
+    bgColor = {
+        id: 'bgColor',
+        beforeDraw: (chart, options) => {
+            const {ctx, width, height} = chart;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0,0, width, height)
+            ctx.restore();
+        }
+    }
+
+    // config 
+    config = {
+        type: 'bar',
+        data,
+        options: {
+            parsing: {
+                    xAxisKey: 'day',
+                },
+            scales: {
+                 x: {
+                    type: 'time',
+                    time: {
+                        unit: 'month'
+                    }
+                },
+                y: {
+                    ticks: {
+                        precision: 0,
+                        beginAtZero: true
+                    }
+                }
+            }
+        },
+        plugins: [bgColor]
+    };
+
+    // render init block
+    let myChart19 = new Chart(
+        document.getElementById('myChart19'),
+        config
+    );
+
+    function clickHandler19(click){
+        var points = myChart19.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+        if(points[0]){
+            var dataset = points[0].datasetIndex;
+            var index = points[0].index;
+            var label = myChart19.data.labels[index];
+            var value = myChart19.data.datasets[dataset].data[index].day;
+            console.log(label);
+            console.log(value);
+
+            window.open("report.php?label=" + value);
+
+        }
+    }
+
+    myChart19.canvas.onclick = clickHandler19;
+
      // setup 
     data = {
         labels: dateArrayJS,
@@ -193,7 +319,7 @@
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -244,15 +370,15 @@
         datasets: [{
         label: 'Total Entry Flows',
         data: entryCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderColor: 'rgba(0, 150, 255, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -303,15 +429,15 @@
         datasets: [{
         label: 'Total Exit Flows',
         data: exitCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(255, 191, 0, 0.2)',
+        borderColor: 'rgba(255, 191, 0, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -362,15 +488,15 @@
         datasets: [{
         label: 'Total Denied Access Flows',
         data: deniedCountArrayJS,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
+        backgroundColor: 'rgba(238, 75, 43, 0.2)',
+        borderColor: 'rgba(238, 75, 43, 1)',
         borderWidth: 1
         }]
     };
 
     // config 
     config = {
-        type: 'line',
+        type: 'bar',
         data,
         options: {
             scales: {
@@ -424,14 +550,18 @@
         var canvas8 = document.getElementById('myChart8');
         var canvas6 = document.getElementById('myChart6');
         var canvas7 = document.getElementById('myChart7');
+        var canvas19 = document.getElementById('myChart19');
 
         var canvasImage5 = canvas5.toDataURL('image/jpeg', 1.0);
         var canvasImage8 = canvas8.toDataURL('image/jpeg', 1.0);
         var canvasImage6 = canvas6.toDataURL('image/jpeg', 1.0);
         var canvasImage7 = canvas7.toDataURL('image/jpeg', 1.0);
+        var canvasImage19 = canvas19.toDataURL('image/jpeg', 1.0);
 
         let pdf = new jsPDF('landscape');
         pdf.setFontSize(20);
+        pdf.addImage(canvasImage19, 'JPEG', 30,30,250,155);
+        pdf.addPage()
         pdf.addImage(canvasImage5, 'JPEG', 30,30,250,155);
         pdf.addPage()
         pdf.addImage(canvasImage8, 'JPEG', 30,30,250,155);
