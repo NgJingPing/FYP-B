@@ -58,7 +58,7 @@
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-6 col-lg-6 chartCard">
-                    <p>Total Flows</p>
+                    <p>Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart20"></canvas>
                     </div>
