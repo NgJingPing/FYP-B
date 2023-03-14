@@ -77,7 +77,7 @@
 </div>
 </div>
 </div>
-<script src="script/log.js"></script>
+<script src="script/report_log.js"></script>
 <!--Sidebar ends here-->
 <div class="content-container">
     <header>
