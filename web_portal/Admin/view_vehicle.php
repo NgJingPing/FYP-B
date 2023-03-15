@@ -55,7 +55,7 @@
 </head>
 <body>
     <!--Sidebar starts here-->
-  <div class="navigation_bar">
+<div class="navigation_bar">
   <div class="logo_container"> 
   <img src="../images/naim.png" class="naim_logo"></img>
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
@@ -64,8 +64,8 @@
   <div class="navigation_links_container">
 
   <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
-  <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
   <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
+  <div class="navigation_links"><a href="view_vehicle.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
   <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
         <div class="navigation_links"><a href="report.php"></i>Report</a></div>
@@ -73,8 +73,7 @@
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
         <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
     </div>
-
-  <div class="navigation_links"><a href="view_vehicle.php" class="active_page"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
   <?php 
   
   if($session_type == "Super Admin") {
@@ -84,8 +83,8 @@
         <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
     </div>';
   }
-  ?> 
-  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div> 
+  ?>  
+  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
 
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
@@ -102,7 +101,7 @@
     <section>
         <div class="log_container">
             <div class="table-responsive">
-            <table id="log_table" class="table table-borderless">  
+            <table id="log_table" class="table table-striped table-bordered">  
                 <thead>
                     <tr>
                         <th>License Plate</th>
