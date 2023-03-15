@@ -161,8 +161,7 @@
                             $sql2 = "SELECT * FROM entryLog WHERE vehicleID = $id;";
                             $result2 = mysqli_query($conn, $sql2);
                             if(mysqli_num_rows($result2) == 0){
-                                echo "<span><a href='remove_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-trash-can'></i></a>
-                            </span>";
+                                echo '<span><a onClick="javascript:return confirm(\'Do you really want to delete this record? \n\nLicense Plate: '.$row["licensePlate"]. '\nTenant: '.$row["name"].'\')" href="remove_vehicle.php?vehicleID='.$row["vehicleID"].'"><i class="fa-solid fa-trash-can"></i></a></span>';
                             }
                             
                             echo "</td></tr>";
