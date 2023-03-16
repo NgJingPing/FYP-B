@@ -13,7 +13,7 @@ body{
     font-weight: 400;
     width: 100%;
     font-size: 16px;
-   
+    overflow-x: hidden;
 }
 .error {
     color: red;
@@ -112,17 +112,15 @@ body{
   .content-container{
     margin-top: 20px;
     margin-left:300px;
-    
   }
+
   header h1{
     margin: 10px;
     color: #061C17;
   }
 
   .widget_group{
-    display: flex;
-    gap: 5px;
-    flex-direction: row;
+    display: block;
     width: 100%;
   }
 
@@ -130,15 +128,10 @@ body{
     min-height: 140px;
     padding: 10px 10px 20px 10px;
     margin: 10px;
-    width: 25%;
+    width: 90%;
     background: #061C17;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  }
-  @media(max-width:40em) {
-    .widget_group {display:block;}
-    .widget_container {width: 100%;}
-    .dashboard_logs {display:block;}
   }
 
   .widget_name, .widget_value{
@@ -163,9 +156,7 @@ body{
   }
   
   .dashboard_logs{
-    display: flex;
-    gap: 5px;
-    flex-direction: row;
+    display: block;
     width: 100%;
   }
 
@@ -173,12 +164,34 @@ body{
     color: #061C17;
     margin: 10px;
     display: block;
-    width: 50%;
+    width: 90%;
     padding: 0px 10px;
     background-color:#f2f2f2;
     opacity: 90%;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+@media only screen and (min-width: 900px) {
+  .widget_group{
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+  }
+
+  .widget_container{
+    width: 25%;
+  }
+
+  .dashboard_logs{
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+  }
+
+  .dashboard_logs_container{
+    width: 50%;
+  }
 }
 
 .table{
@@ -194,9 +207,7 @@ thead{
 .log_container {
   background-color:#f2f2f2;
   padding: 20px 20px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 50px;
+    margin: 50px 10px 0px 10px;
     opacity: 90%;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
