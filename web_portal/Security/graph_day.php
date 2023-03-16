@@ -6,6 +6,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        body{
+            font-family: 'Lato', Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            width: 100%;
+            font-size: 16px;
+   
+        }
         .container {
             justify-content: center;
             align-items: center;
@@ -188,6 +195,8 @@
             denied: deniedCountArrayJS[i]
         });
     }
+
+    Chart.defaults.font.family = "'Lato', Arial, Helvetica, sans-serif";
 
     let data = {
         datasets: [{

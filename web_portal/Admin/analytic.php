@@ -37,6 +37,13 @@
     <link type="text/css" rel="stylesheet" href="style/style.css">
 
     <style>
+        body{
+            font-family: 'Lato', Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            width: 100%;
+            font-size: 16px;
+   
+        }
         .tab-con{
           box-shadow: 0 2px 16px rgba(0,0,0,.1);
           border-radius: 5px;
