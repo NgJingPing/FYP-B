@@ -119,7 +119,7 @@
     <section>
 	<div class="log_container">
     <div class="table-responsive">
-		<table id="log_table" class="table table-borderless">  
+		<table id="log_table" class="table table-striped table-bordered">  
 			<thead>  
                 <tr>  
                     <th>User ID</th>   

@@ -96,7 +96,7 @@
     <div class="dashboard_logs">
         <div class="dashboard_logs_container">
         <h1>Recent Entries</h1>
-		<table id="entry_log_table" class="table table-borderless">  
+		<table id="entry_log_table" class="table table-striped table-bordered">  
 			<thead>  
                 <tr>  
                     <td>Timestamp</td>  
@@ -132,7 +132,7 @@
 ?>
         <div class="dashboard_logs_container">
         <h1>Recent Exits</h1>
-		<table id="exit_log_table" class="table table-borderless">  
+		<table id="exit_log_table" class="table table-striped table-bordered">  
 			<thead>  
                 <tr>  
                     <td>Timestamp</td>  

@@ -124,7 +124,7 @@
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table" class="table table-borderless">  
+                <table id="log_table" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
                         <th>No</td>  
@@ -155,7 +155,7 @@
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table2" class="table table-borderless">  
+                <table id="log_table2" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -185,7 +185,7 @@
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table3" class="table table-borderless">   
+                <table id="log_table3" class="table table-striped table-bordered">   
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -275,7 +275,7 @@
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table" class="table table-borderless">  
+                <table id="log_table" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
                         <th>No</td>  
@@ -306,7 +306,7 @@
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table2" class="table table-borderless">  
+                <table id="log_table2" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -336,7 +336,7 @@
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
         echo '<div class="log_container"> <div class="table-responsive">
-                <table id="log_table3" class="table table-borderless">   
+                <table id="log_table3" class="table table-striped table-bordered">   
 			    <thead>  
                     <tr>
                         <th>No</th>  
