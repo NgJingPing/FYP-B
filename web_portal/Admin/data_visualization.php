@@ -132,6 +132,19 @@
 		  color: red;
 		  cursor: pointer;
 		}
+
+        .log_container {
+            background-color:#f2f2f2;
+            padding: 20px 20px;
+            margin: 100px 30px 0px 30px;
+            opacity: 90%;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+
+        .log_container:last-child {
+            margin-bottom: 50px;
+        }
         
     </style>
 </head>
@@ -1459,7 +1472,7 @@
                         <h2>`+value1+` `+datas+`</h2></br>
                         <div class="table-responsive">
                             <div class="tablecontainer">
-                                <table id="log_table" class="table table-borderless">  
+                                <table id="log_table" class="table table-striped table-bordered">  
                                     <thead>  
                                         <tr>  
                                             <th>License Plate Number</th> 
@@ -1604,7 +1617,7 @@
                         <h2>`+value1+` `+datas+`</h2></br>
                         <div class="table-responsive">
                             <div class="tablecontainer">
-                                <table id="log_table" class="table table-borderless">  
+                                <table id="log_table" class="table table-striped table-bordered">  
                                     <thead>  
                                         <tr>  
                                             <th>License Plate Number</th> 

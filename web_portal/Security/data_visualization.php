@@ -132,13 +132,26 @@
 		  color: red;
 		  cursor: pointer;
 		}
+
+        .log_container {
+            background-color:#f2f2f2;
+            padding: 20px 20px;
+            margin: 100px 30px 0px 30px;
+            opacity: 90%;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+
+        .log_container:last-child {
+            margin-bottom: 50px;
+        }
         
     </style>
 </head>
 
 <body>
-   <!--Sidebar starts here-->
-  <div class="navigation_bar">
+  <!--Sidebar starts here-->
+<div class="navigation_bar">
   <div class="logo_container"> 
   <img src="../images/naim.png" class="naim_logo"></img>
   <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
@@ -147,29 +160,27 @@
   <div class="navigation_links_container">
 
   <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
-  <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
   <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
-  <div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
+  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
+  <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
     <div class="sub_menu">
-        <div class="navigation_links"><a href="report.php" class="active_page"></i>Report</a></div>
-        <div class="navigation_links"><a href="entry_log.php" ></i>Entry Log</a></div>
+        <div class="navigation_links"><a href="report.php"></i>Report</a></div>
+        <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
         <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
         <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
-    </div>  
-    
-   <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
-
-   <?php 
+    </div>
+  <div class="navigation_links"><a href="analytic.php" class="active_page"><i class="fa fa-line-chart"></i>Analytics</a></div>
+  <?php 
   
-    if($session_type == "Super Admin") {
-        echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left:0px; padding-left:8px;"></i></a></div>
+  if($session_type == "Super Admin") {
+      echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left:0px; padding-left:8px;"></i></a></div>
     <div class="sub_menu">
         <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
         <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
     </div>';
-    }
-    ?> 
-  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div> 
+  }
+  ?>  
+  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
 
   <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
   
@@ -1461,7 +1472,7 @@
                         <h2>`+value1+` `+datas+`</h2></br>
                         <div class="table-responsive">
                             <div class="tablecontainer">
-                                <table id="log_table" class="table table-borderless">  
+                                <table id="log_table" class="table table-striped table-bordered">  
                                     <thead>  
                                         <tr>  
                                             <th>License Plate Number</th> 
@@ -1606,7 +1617,7 @@
                         <h2>`+value1+` `+datas+`</h2></br>
                         <div class="table-responsive">
                             <div class="tablecontainer">
-                                <table id="log_table" class="table table-borderless">  
+                                <table id="log_table" class="table table-striped table-bordered">  
                                     <thead>  
                                         <tr>  
                                             <th>License Plate Number</th> 
