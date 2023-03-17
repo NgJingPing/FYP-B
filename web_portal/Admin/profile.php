@@ -112,8 +112,12 @@
 
     .title {
       color: #4DAC62;
-      font-size: 28px;
+      font-size: 1.2rem;
     }
+
+	.emailtext{
+		font-size: 1.2rem;
+	}
 
     button {
       border: none;
@@ -318,6 +322,10 @@
         font-size: 1.25rem;
         white-space: nowrap;
       }
+
+	  @media only screen and (min-width: 800px) {
+    	.emailtext, .title{font-size: 2rem;}
+  		}
     </style>
 </head>
 
@@ -416,7 +424,7 @@
     <div class="card">
       <img src="../images/administrator.png" alt="User" class="center" style="width:240px;height:260px;">
       <br>
-      <h1><?php echo $session_email;?></h1>
+      <p class="emailtext"><?php echo $session_email;?></p>
       <br>
       <p class="title">
         <?php
