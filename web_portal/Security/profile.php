@@ -164,12 +164,12 @@
 		  position: relative;
 		}
 
-		.container {
+		.input_container {
 		  padding: 16px;
 			background-color: #f2f2f2;
 		}
 
-		.container label{
+		.input_container label{
 			font-weight: bold;
 		}
 
@@ -302,7 +302,7 @@
 
 		.form_group {
         display: flex;
-        min-width: 720px;
+        width: 100%;
       }
 
 
@@ -438,7 +438,7 @@
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
 
-    <div class="container">
+    <div class="input_container">
 			<label for="oldpassword"><b>Enter Old Password</b></label><span class="error"> * </span><br>
       <input type="password" placeholder="Enter Old Password" name="oldpassword" required></p><br>
 
