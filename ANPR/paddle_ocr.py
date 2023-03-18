@@ -110,7 +110,7 @@ def detect():
         if confidence > 0.5:
             classes_score = row[5:]
             ind = np.argmax(classes_score)
-            if classes_score[ind] > 0.5:
+            if classes_score[ind] > 0.3:
                 classes_ids.append(ind)
                 confidences.append(confidence)
                 cx, cy, w, h =  row[:4]
@@ -232,57 +232,73 @@ def detect():
                 
                             file_exists = os.path.exists(plate_img)
                             if file_exists == True:
-                                result = ocr.ocr(plate_img, cls=True)
-                                plate_num = ''
-                                for line in result:
-                                    if(len(line) == 1):
-                                        plate = line[0][1][0]
-                                    elif(len(line) == 2):
-                                        plate = line[0][1][0] + line[1][1][0]
-                                    plate = plate.upper()
-                                    for y in plate:
-                                        a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
-                                        for x in a:
-                                            if(y == x):
-                                                plate_num += x 
-                                    print("Number plate is:", plate_num)
+                                try:
+                                    result = ocr.ocr(plate_img, cls=True)
+                                    plate_num = ''
+                                    for line in result:
+                                        if(len(line) == 1):
+                                            plate = line[0][1][0]
+                                        elif(len(line) == 2):
+                                            plate = line[0][1][0] + line[1][1][0]
+                                        
+                                        plate = plate.upper()
+                                        for y in plate:
+                                            a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
+                                            for x in a:
+                                                if(y == x):
+                                                    plate_num += x 
+                                        print("Number plate is:", plate_num)
 
-                                    plate = plate_num
-                                    date = datetime.datetime.now()
-                                    if camera.lower() == "entry":
-                                        img_name = 'entrylog\{}.jpg'.format(uuid.uuid1())
-                                        img_name_2 = 'entrylog\{}_2.jpg'.format(uuid.uuid1())
-                                    elif camera.lower() == "exit":
-                                        img_name = 'exitlog\{}.jpg'.format(uuid.uuid1())
-                                        img_name_2 = 'exitlog\{}_2.jpg'.format(uuid.uuid1())
-                                    active = True
+                                        plate = plate_num
+                                        date = datetime.datetime.now()
+                                        if camera.lower() == "entry":
+                                            img_name = 'entrylog\{}.jpg'.format(uuid.uuid1())
+                                            img_name_2 = 'entrylog\{}_2.jpg'.format(uuid.uuid1())
+                                        elif camera.lower() == "exit":
+                                            img_name = 'exitlog\{}.jpg'.format(uuid.uuid1())
+                                            img_name_2 = 'exitlog\{}_2.jpg'.format(uuid.uuid1())
+                                        active = True
 
-                                    mycursor = conn.cursor()
-                                    sql = "SELECT vehicleID FROM vehicle WHERE licensePlate = %s AND isActive = %s"
-                                    z = (plate, active)
-                                    mycursor.execute(sql, z)
-                                    myresult = mycursor.fetchone()
-                                    if(myresult != None):
-                                        vehicle_id = myresult[0]
-                                        if current_plate != plate:
-                                            if camera.lower() == "entry":
-                                                sql4 = "SELECT vehicleID, referenceID FROM entryLog ORDER BY referenceID DESC LIMIT 1"
-                                            elif camera.lower() == "exit":
-                                                sql4 = "SELECT vehicleID, referenceID FROM exitLog ORDER BY referenceID DESC LIMIT 1"
-                                            mycursor.execute(sql4)
-                                            myresult = mycursor.fetchone()
-                                            if(myresult != None):
-                                                vID = myresult[0]
-                                                if(vID == vehicle_id):
-                                                    if camera.lower() == "entry":
-                                                        sql2 = "UPDATE entryLog SET entryTime = %s WHERE referenceID = %s"
-                                                    elif camera.lower() == "exit":
-                                                        sql2 = "UPDATE exitLog SET exitTime = %s WHERE referenceID = %s"
-                                                    rID = myresult[1]
-                                                    z = (date, rID)
-                                                    mycursor.execute(sql2, z)
-                                                    conn.commit()
-                                                    count = 0
+                                        mycursor = conn.cursor()
+                                        sql = "SELECT vehicleID FROM vehicle WHERE licensePlate = %s AND isActive = %s"
+                                        z = (plate, active)
+                                        mycursor.execute(sql, z)
+                                        myresult = mycursor.fetchone()
+                                        if(myresult != None):
+                                            vehicle_id = myresult[0]
+                                            if current_plate != plate:
+                                                if camera.lower() == "entry":
+                                                    sql4 = "SELECT vehicleID, referenceID FROM entryLog ORDER BY referenceID DESC LIMIT 1"
+                                                elif camera.lower() == "exit":
+                                                    sql4 = "SELECT vehicleID, referenceID FROM exitLog ORDER BY referenceID DESC LIMIT 1"
+                                                mycursor.execute(sql4)
+                                                myresult = mycursor.fetchone()
+                                                if(myresult != None):
+                                                    vID = myresult[0]
+                                                    if(vID == vehicle_id):
+                                                        if camera.lower() == "entry":
+                                                            sql2 = "UPDATE entryLog SET entryTime = %s WHERE referenceID = %s"
+                                                        elif camera.lower() == "exit":
+                                                            sql2 = "UPDATE exitLog SET exitTime = %s WHERE referenceID = %s"
+                                                        rID = myresult[1]
+                                                        z = (date, rID)
+                                                        mycursor.execute(sql2, z)
+                                                        conn.commit()
+                                                        count = 0
+                                                    else:
+                                                        if camera.lower() == "entry":
+                                                            sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                        elif camera.lower() == "exit":
+                                                            sql2 = "INSERT INTO exitLog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                        val = (vehicle_id, date, img_name, img_name_2)
+                                                        mycursor.execute(sql2, val)
+                                                        conn.commit()
+                                                        #Save image with Licence Plate detection box
+                                                        cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
+                                                        # Save image without Licence Plate detection box
+                                                        cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                                        current_plate = plate
+                                                        count = 0
                                                 else:
                                                     if camera.lower() == "entry":
                                                         sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
@@ -297,44 +313,32 @@ def detect():
                                                     cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
                                                     current_plate = plate
                                                     count = 0
-                                            else:
-                                                if camera.lower() == "entry":
-                                                    sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
-                                                elif camera.lower() == "exit":
-                                                    sql2 = "INSERT INTO exitLog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
-                                                val = (vehicle_id, date, img_name, img_name_2)
-                                                mycursor.execute(sql2, val)
+                                                found = True
+                                                number_plate = plate
+                                                matched = "Found"
+                                                print("Found")
+                                        else:
+                                            if (count == 4) & (current_plate != plate):
+                                                sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                val = (plate, date, img_name, img_name_2)
+                                                mycursor.execute(sql3, val)
                                                 conn.commit()
-                                                #Save image with Licence Plate detection box
+                                                # Save image with Licence Plate detection box
                                                 cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
                                                 # Save image without Licence Plate detection box
                                                 cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                                found = False
+                                                number_plate = plate
+                                                matched = "Not Found"
+                                                print("Not Found")
                                                 current_plate = plate
                                                 count = 0
-                                            found = True
-                                            number_plate = plate
-                                            matched = "Found"
-                                            print("Found")
-                                    else:
-                                        if (count == 4) & (current_plate != plate):
-                                            sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
-                                            val = (plate, date, img_name, img_name_2)
-                                            mycursor.execute(sql3, val)
-                                            conn.commit()
-                                            # Save image with Licence Plate detection box
-                                            cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
-                                            # Save image without Licence Plate detection box
-                                            cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
-                                            found = False
-                                            number_plate = plate
-                                            matched = "Not Found"
-                                            print("Not Found")
-                                            current_plate = plate
-                                            count = 0
-                                        else: 
-                                            count += 1
-                                        if count > 4:
-                                            count = 0 
+                                            else: 
+                                                count += 1
+                                            if count > 4:
+                                                count = 0 
+                                except:
+                                    continue
 
 
                         # cv2.imshow('Vehicle', vehicle_img)    
