@@ -118,18 +118,11 @@
 		$active = TRUE;
 		$vehicleID = 0;
 
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "anprdb";
+		include "../include/config.php";
 
 		// get the plate number from the link
 		if(isset($_GET["vehicleID"])) {
 			$vehicleID = $_GET["vehicleID"];
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
-			if($conn->connect_error){
-				die("Connection Failed: " . $conn->connect_error);
-			}
 
 		} else {
 			header("Location: view_vehicle.php");
@@ -144,10 +137,6 @@
 		}
 
 		if (isset($_POST["submit"])) {
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
-			if($conn->connect_error){
-				die("Connection Failed: " . $conn->connect_error);
-			}
 
 			if(empty($_POST["plateNumber"])) {
 				$plateNumberErr = "License Plate Number is required";
@@ -233,11 +222,6 @@
 
 		if(isset($_POST["cancel"])) {
 			header("Location: database.php");
-		}
-
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		if($conn->connect_error){
-			die("Connection Failed: " . $conn->connect_error);
 		}
 
 		$myquery = "SELECT vehicle.tenantLotNumber, vehicle.licensePlate, vehicle.brand, vehicle.model, vehicle.colour, vehicle.isActive, tenant.name, tenant.phoneNumber FROM vehicle JOIN tenant WHERE tenant.tenantLotNumber = vehicle.tenantLotNumber AND vehicleID = $vehicleID;";

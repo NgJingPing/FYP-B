@@ -82,10 +82,7 @@
 		<h1>Report</h1>
 	</header>
 <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+    include "../include/config.php";
     $referenceID = $startdate = $enddate = "";
     $label = "";
 
@@ -94,12 +91,6 @@
     // get the plate number from the link
 	if(isset($_GET["label"])) {
 		$label = $_GET["label"];
-	}
-
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
 	}
     
     echo '

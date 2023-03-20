@@ -121,10 +121,7 @@
 
 	$userID = 0;
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-    $dbname = "anprdb";
+	include "../include/config.php";
 
 	if(isset($_GET["userID"])) {
 			$userID = $_GET["userID"];
@@ -133,10 +130,6 @@
 			header("Location: manage_user.php");
 		}
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
-		if($conn->connect_error){
-			die("Connection Failed: " . $conn->connect_error);
-        }
 
 	if(isset($_POST["submit"])) {
 		$advance = FALSE;

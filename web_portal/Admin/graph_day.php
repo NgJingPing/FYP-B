@@ -107,22 +107,13 @@
     </div>
 
     <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+    include "../include/config.php";
     $totalCountArray = $dateArray = $entryCountArray = $exitCountArray = $deniedCountArray = array();
     $startdate = date('Y-m-d');
     $startdate = new DateTime($startdate);
     $startdate->modify('1 month ago');
     $enddate = date('Y-m-d');
     $enddate = new DateTime($enddate);
-    
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
 
     if(isset($_POST["submit"])) {
         if(empty($_POST["start"])) {

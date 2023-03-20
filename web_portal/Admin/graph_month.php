@@ -107,10 +107,7 @@
     </div>
 
      <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+    include "../include/config.php";
     $mtotalCountArray = $mdateArray = $mentryCountArray = $mexitCountArray = $mdeniedCountArray = array();
 
     $mstartdate = date('Y-m-d');
@@ -118,11 +115,6 @@
     $mstartdate->modify('12 month ago');
     $menddate = date('Y-m-d');
     $menddate = new DateTime($menddate);;
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
 
     if(isset($_POST["submit"])) {
         if(empty($_POST["start"])) {

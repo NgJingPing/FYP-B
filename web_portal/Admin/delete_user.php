@@ -16,15 +16,7 @@
 	if(isset($_GET['userID'])) {
 		$id = $_GET['userID'];
 
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "anprdb";
-
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		if($conn->connect_error){
-			die("Connection Failed: " . $conn->connect_error);
-		}
+		include "../include/config.php";
 
 		$query = "DELETE FROM users WHERE userID='$id'";
 		$query_run = mysqli_query($conn, $query);

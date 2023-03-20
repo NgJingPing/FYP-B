@@ -13,17 +13,10 @@
 		}
 	}
 
-	$servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "anprdb";
+	include "../include/config.php";
 
   $msgErr = "";
 
-	$conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
-      if($conn->connect_error){
-          die("Connection Failed: " . $conn->connect_error);
-      }
 
 	$oldpassword = $newpassword = $renewpassword = $error_msg = $msg = $successmsg = "";
 
@@ -371,16 +364,8 @@
 <!--Sidebar ends here-->
 
 <?php
-  $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+  include "../include/config.php";
   $referenceID = "";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
 
   $myquery = "SELECT role, isAdvanced FROM users where email = '$session_email'";
   $sql = mysqli_query($conn,$myquery);

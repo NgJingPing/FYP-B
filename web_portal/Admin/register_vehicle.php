@@ -124,15 +124,7 @@
             return $data;
         }
 
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "anprdb";
-
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		if($conn->connect_error){
-			die("Connection Failed: " . $conn->connect_error);
-		}
+		include "../include/config.php";
 
 		if (isset($_POST["submit"])) {
 			if(empty($_POST["tenantLotNumber"])) {

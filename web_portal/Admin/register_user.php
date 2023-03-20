@@ -13,17 +13,9 @@
 		}
 	}
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "anprdb";
+  include "../include/config.php";
 
   $emailErr = "";
-
-  $conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
-      if($conn->connect_error){
-          die("Connection Failed: " . $conn->connect_error);
-      }
 
   $email = $password = $user_type = $repassword = $error_msg = $msg = "";
 

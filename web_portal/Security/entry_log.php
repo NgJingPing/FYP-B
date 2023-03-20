@@ -86,16 +86,8 @@
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
 <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+    include "../include/config.php";
     $referenceID = "";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
 
 	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID ORDER BY referenceID DESC";
 	$result = $conn->query($myquery);

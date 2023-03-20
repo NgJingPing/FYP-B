@@ -39,15 +39,7 @@
 
 <?php
 	$id = $_GET["referenceID"];
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
+	include "../include/config.php";
 
 	$myquery = "SELECT * FROM deniedAccess WHERE deniedAccess.referenceID = $id; ";
 	$result = $conn->query($myquery);

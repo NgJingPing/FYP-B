@@ -15,16 +15,8 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['type'])) {
 ?>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "anprdb";
+include "../include/config.php";
 $referenceID = "";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection Failed: " . $conn->connect_error);
-}
 ?>
 <div class="widget_group">
     <div class="widget_container">

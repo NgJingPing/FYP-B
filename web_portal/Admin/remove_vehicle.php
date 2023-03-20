@@ -13,20 +13,7 @@
 		}
 	}
 
-// set the servername,username and password
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "anprdb";
-
-// Create connection
-//The mysqli_connect() function attempts to open a connection to the MySQL Server 
-//running on host which can be either a host name or an IP address. 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if (!$conn) {
-    die("Connection Failed: ". msqli_connect_error());
-}
+include "../include/config.php";
 
 error_reporting(0);
 

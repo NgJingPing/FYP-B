@@ -54,15 +54,7 @@
     <link type="text/css" rel="stylesheet" href="style/style.css">
 
 <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
+    include "../include/config.php";
 
 	$myquery = "SELECT * FROM deniedAccess ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);

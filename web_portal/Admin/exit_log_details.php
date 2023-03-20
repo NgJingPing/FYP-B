@@ -39,15 +39,7 @@
 
 <?php
 	$id = $_GET["referenceID"];
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
+	include "../include/config.php";
 
 	$myquery = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, exitlog.image, exitlog.image_2, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE exitlog.referenceID = $id; ";
 	$result = $conn->query($myquery);

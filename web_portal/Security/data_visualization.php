@@ -219,15 +219,7 @@
     <!--Line chart ends here-->
 
     <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
+    include "../include/config.php";
     
     $myquery = "SELECT entrylog.referenceID, vehicle.vehicleID, vehicle.tenantLotNumber, vehicle.licensePlate, entrylog.entryTime, tenant.name FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID INNER JOIN tenant ON vehicle.tenantLotNumber = tenant.tenantLotNumber;";
 	$result = $conn->query($myquery);

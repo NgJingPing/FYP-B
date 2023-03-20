@@ -107,10 +107,7 @@
     </div>
 
      <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+    include "../include/config.php";
     $ytotalCountArray = $ydateArray = $yentryCountArray = $yexitCountArray = $ydeniedCountArray = array();
 
     $ystartdate = date('Y-m-d');
@@ -118,11 +115,6 @@
     $ystartdate->modify('5 year ago');
     $yenddate = date('Y-m-d');
     $yenddate = new DateTime($yenddate);
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
 
     if(isset($_POST["submit"])) {
         if(empty($_POST["start"])) {

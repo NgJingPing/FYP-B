@@ -70,10 +70,7 @@
 		<h1>Report</h1>
 	</header>
 <?php
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "anprdb";
+    include "../include/config.php";
     $referenceID = $startdate = $enddate = "";
     $label = "";
 
@@ -84,12 +81,6 @@
 		$label = $_GET["label"];
 	}
 
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if($conn->connect_error){
-		die("Connection Failed: " . $conn->connect_error);
-	}
-    
     echo '
         <form method="post" action="" class="date_selector">
             <label class="date_selector_label">Start Date</label> <input type="date" id="start" name="start" class="date_input">

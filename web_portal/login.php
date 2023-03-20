@@ -9,10 +9,7 @@ $username = "root";
 $password = "";
 $dbname = "anprdb";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname); // Create DB connection object
-    if($conn->connect_error){
-        die("Connection Failed: " . $conn->connect_error);
-    }
+include "include/config.php";
 
     if(isset($_POST["login_button"])) {// If login button is clicked, do the following
   	    $email = mysqli_escape_string($conn, $_POST["email"]);
