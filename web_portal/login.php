@@ -1,4 +1,5 @@
 <?php
+/*
 session_start();
 session_destroy();
 $error_msg = "";
@@ -11,7 +12,8 @@ $dbname = "anprdb";
 
 include "include/config.php";
 
-    if(isset($_POST["login_button"])) {// If login button is clicked, do the following
+    // If login button is clicked, do the following
+    if(isset($_POST["login_button"])) {
   	    $email = mysqli_escape_string($conn, $_POST["email"]);
   	    $pass = mysqli_escape_string($conn, $_POST["password"]);
 
@@ -47,7 +49,9 @@ include "include/config.php";
 		} else {
 		$error_msg = "<p>Invalid password or login id</p>";
 		}
-    }
+    }*/
+
+    require_once "include/controllerBeforeLogin.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +87,10 @@ include "include/config.php";
   margin-right: auto;
 }
 
+  .alert.success {background-color: #4DAC62;}
+  .alert.error {background-color: #f44336;}
+  .alert.warning {background-color: #ff9800;}
+
 .closebtn {
   margin-left: auto;
   color: white;
@@ -112,10 +120,20 @@ include "include/config.php";
 </div>
 
 <?php
-  if ($error_msg != ""){
-    echo '<div class="alert">
+/*Alert Message for After Success Change Password*/
+    if (isset($_SESSION['info'])){
+    echo '<div class="alert success">
             <span class="closebtn">&times;</span>
-            ' . $error_msg . '
+            ' . $_SESSION['info'] . '
+            </div>';
+    }
+?>
+
+<?php
+  if ($errors != ""){
+    echo '<div class="alert error">
+            <span class="closebtn">&times;</span>
+            ' . $errors . '
           </div>';
   }
 ?>
@@ -129,6 +147,8 @@ include "include/config.php";
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
+
+      <a href="forgot_password.php">Forgot Password?</a>
 
       <button class="button_login" type="submit" value="Login" name="login_button">Login</button>
     </div>
