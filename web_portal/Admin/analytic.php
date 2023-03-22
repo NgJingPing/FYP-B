@@ -36,55 +36,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/style.css">
     <script src="script/navbar.js"></script>
-    <style>
-        body{
-            font-family: 'Lato', Arial, Helvetica, sans-serif;
-            font-weight: 400;
-            width: 100%;
-            font-size: 16px;
-   
-        }
-        .tab-con{
-          box-shadow: 0 2px 16px rgba(0,0,0,.1);
-          border-radius: 5px;
-          width: fit-content;
-          margin-bottom: 0px;
-        }
-
-        .tabs {
-          display: flex;
-          list-style: none;
-          padding: 10px;
-          margin-top: 15px;
-          
-        }
-        .tabs li {
-          padding: 10px;
-          color: #919191;
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-weight: bold;
-        }
-
-        .tabs li.active,
-        .tabs li:hover {
-          color: rgba(0, 100, 0, 1);
-        }
-
-        .content {
-          background-color: #fff;
-        }
-
-        .content > div {
-          padding: 20px;
-        }
-
-        .content > div:not(:first-child) {
-          display: none;
-        }
-
-    </style>
 </head>
 
 <body>

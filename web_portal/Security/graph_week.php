@@ -4,57 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body{
-            font-family: 'Lato', Arial, Helvetica, sans-serif;
-            font-weight: 400;
-            width: 100%;
-            font-size: 16px;
-   
-        }
-        .container {
-            justify-content: center;
-            align-items: center;
-        }
-        .chartCard {
-            width: 700px;
-            height: auto;
-            align-items: center;
-            justify-content: center;
-            margin: 10px; 
-        }
-        .chartCard p{
-            font-weight: bold;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        .chartBox {
-            width: 700px;
-            padding: 20px;
-            border-radius: 20px;
-            border: solid 3px rgba(0, 100, 0, 1);
-            background: white;
-        }
-        .dbtn {
-            border-radius: 5px;
-            background-color: white;
-            box-shadow: 0 2px 16px rgba(0,0,0,.1);
-            width: fit-content;
-            padding: 10px;
-            font-weight: bold;
-            border: solid 1px;
-            margin-left: 0;
-            color: rgba(0, 100, 0, 1);
-        }
-        .dbtn i{
-            font-size:20px;
-        }
-        .dbtn span{
-            padding: 5px;
-        }
-
-    </style>
+    <link type="text/css" rel="stylesheet" href="style/style.css">
     
 </head>
 
@@ -66,7 +16,7 @@
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-6 col-lg-6 chartCard">
-                    <p>Total Flows</p>
+                    <p>Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart18"></canvas>
                     </div>
@@ -257,7 +207,11 @@
                     xAxisKey: 'day',
                 },
             scales: {
+                x: {
+                    stacked: true
+                },
                 y: {
+                    stacked: true,
                     ticks: {
                         precision: 0,
                         beginAtZero: true

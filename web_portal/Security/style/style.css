@@ -309,3 +309,107 @@ div.waves {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+
+
+/*analytic page styling*/
+body {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    width: 100%;
+    font-size: 16px;
+}
+
+.tab-con {
+    box-shadow: 0 2px 16px rgba(0,0,0,.1);
+    border-radius: 5px;
+    width: fit-content;
+    margin-bottom: 0px;
+}
+
+.tabs {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.tabs li {
+    padding: 10px;
+    color: #919191;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tabs li.active,
+.tabs li:hover {
+    color: rgba(0, 100, 0, 1);
+}
+
+.content {
+    background-color: #fff;
+}
+
+.content > div {
+    padding: 20px;
+}
+
+.content > div:not(:first-child) {
+    display: none;
+}
+
+/*styling for the charts*/
+body {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    width: 100%;
+    font-size: 16px;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+}
+
+.chartCard {
+    width: 700px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.chartCard p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.chartBox {
+    width: 700px;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px rgba(0, 100, 0, 1);
+    background: white;
+}
+
+.dbtn {
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 16px rgba(0,0,0,.1);
+    width: fit-content;
+    padding: 10px;
+    font-weight: bold;
+    border: solid 1px;
+    margin-left: 0;
+    color: rgba(0, 100, 0, 1);
+}
+
+.dbtn i {
+    font-size: 20px;
+}
+
+.dbtn span {
+    padding: 5px;
+}
