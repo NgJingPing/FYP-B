@@ -65,7 +65,8 @@ $sql6 = "CREATE TABLE users (
     email VARCHAR(256) NOT NULL,
     password VARCHAR(256) NOT NULL,
     role INT(1) NOT NULL,
-    isAdvanced BOOLEAN NOT NULL
+    isAdvanced BOOLEAN NOT NULL,
+    code MEDIUMINT(50) NULL
     );
 ";
 
