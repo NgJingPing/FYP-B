@@ -73,7 +73,6 @@ include "include/config.php";
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/login.css">
-    <script src="script/navbar.js"></script>
 <style>
 
 .alert {
