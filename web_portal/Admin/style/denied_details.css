@@ -18,10 +18,28 @@ body{
 .error {
     color: red;
 }
+
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 /*Navbar css starts here*/
 .navigation_bar {
   height: 100%;
-  min-width: 250px; 
+  width: 280px; 
   position: fixed; 
   z-index: 1; 
   top: 0; 
@@ -29,11 +47,30 @@ body{
   background-color: #061C17;
   overflow: hidden; 
   padding-top: 40px;
+  cursor: pointer;
+  overflow-y: auto;
+}
+
+.navigation_bar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.navigation_bar::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.navigation_bar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.navigation_bar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 
 .navigation_bar .logo_container {
-  display: block;
-  margin: 0px 32px;
+    display: block;
+    margin: 0 42px;
 }
 
 .navigation_bar .naim_logo {
@@ -87,8 +124,9 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 
 .navigation_links_container{
-  margin-top: 100px;
-  max-height: 350px;
+  width: 100%;
+  margin-top: 10%;
+  padding-bottom: 32px;
 }
 
 .fa-angle-right {
@@ -99,6 +137,13 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
  display: none;
  font-size: 1.25rem;
  padding-left: 57px;
+}
+
+#hamburger_icon {
+  left: -8px;
+  position: relative;
+  font-size: clamp(1.25rem, 2rem + 2vw, 2rem);
+  color: #C5E5CC;
 }
 
 @media screen and (max-height: 540px) {
@@ -136,7 +181,7 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 
 .db_image{
-  width: 100%;
+  width: 60%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);

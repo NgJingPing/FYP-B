@@ -35,6 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/log_details.css">
+    <script src="script/navbar.js"></script>
 </head>
 
 <?php
@@ -51,28 +52,25 @@
 <body>
 	<!--Sidebar starts here-->
 <div class="navigation_bar">
-  <div class="logo_container"> 
-  <img src="../images/naim.png" class="naim_logo"></img>
-  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
-  <div class="logo_tail"><span>ANPR</span></div> 
-  </div>
-  <div class="navigation_links_container">
-
-  <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
-  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
-  <div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
-    <div class="sub_menu">
-        <div class="navigation_links"><a href="report.php"></i>Report</a></div>
-        <div class="navigation_links"><a href="entry_log.php" class="active_page"></i>Entry Log</a></div>
-        <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
-        <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
-    </div>
-  <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>  
-  <div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
-  <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
-  
-</div>
-</div>
+	<div class="logo_container"> 
+		<img src="../images/naim.png" class="naim_logo"></img>
+		<div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
+		<div class="logo_tail"><span>ANPR</span></div> 
+	</div>
+	<div class="navigation_links_container">
+		<div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+		<div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
+		<div class="navigation_links drop_down_btn"><a href="#" class="active_page"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
+			<div class="sub_menu">
+				<div class="navigation_links"><a href="report.php"></i>Report</a></div>
+				<div class="navigation_links"><a href="entry_log.php" class="active_page"></i>Entry Log</a></div>
+				<div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+				<div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
+			</div>
+		<div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
+		<div class="navigation_links"><a href="profile.php"><i class="fa-solid fa-user"></i>Profile</a></div>
+		<div class="navigation_links" id="last_nav_link"><a href="../login.php" id="last_nav_link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
+	</div>
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->

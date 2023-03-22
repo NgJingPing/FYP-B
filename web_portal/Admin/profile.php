@@ -86,7 +86,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style/style.css">
-
+    <script src="script/navbar.js"></script>
 
     <style>
     .card {
@@ -183,15 +183,34 @@
 		  top: 0;
 		  width: 100%; /* Full width */
 		  height: 100%; /* Full height */
-		  overflow: auto; /* Enable scroll if needed */
+		  overflow: hidden; /* Disable scroll if needed */
 		  background-color: #061C17; /* Fallback color */
-		  padding-top: 60px;
+		  overflow-y: scroll; /* Enable scroll if needed */
+		  padding-top: 65px;
+		}
+		
+		.modal::-webkit-scrollbar {
+			width: 15px;
+		}
+
+		.modal::-webkit-scrollbar-track {
+			background-color: #f1f1f1;
+		}
+
+		.modal::-webkit-scrollbar-thumb {
+			background-color: #888;
+			border-radius: 5px;
+		}
+
+		.modal::-webkit-scrollbar-thumb:hover {
+			background-color: #555;
 		}
 
 		.modal-content {
 		  background-color: #f2f2f2;
 		  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
 		  border: 1px solid #888;
+		  overflow: hidden;
 		  width: 80%; /* Could be more or less, depending on screen size */
 		}
 
@@ -240,13 +259,13 @@
 		.alert {
 			font-size: 18px;
 			font-weight: bold;
-		  background-color: #FFFFFF;
-		  color: white;
-		  opacity: 1;
-		  transition: opacity 0.6s;
+			background-color: #FFFFFF;
+			color: white;
+			opacity: 1;
+			transition: opacity 0.6s;
 			width: 95%;
 			margin-left: auto;
-      margin-right: auto;
+      		margin-right: auto;
 		}
 
 		.alert.success {background-color: #4DAC62;}
@@ -269,18 +288,18 @@
 		}
 
 		.button_submit, .button_cancel {
-      font-size: 1.25rem;
-      padding: 5px;
-      margin-top: 30px;
+			font-size: 1.25rem;
+			padding: 5px;
+			margin-top: 30px;
 			margin-bottom: 30px;
 			margin-left: auto;
 			margin-right: auto;
-      width: 60%;
-      border: none;
-      display: block;
-      height: 45px;
-      border-radius: 4px;
-      box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
+			width: 60%;
+			border: none;
+			display: block;
+			height: 45px;
+			border-radius: 4px;
+			box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
 	  }
 
 	  .button_submit {
@@ -325,40 +344,36 @@
 <body>
     <!--Sidebar starts here-->
 <div class="navigation_bar">
-  <div class="logo_container"> 
-  <img src="../images/naim.png" class="naim_logo"></img>
-  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
-  <div class="logo_tail"><span>ANPR</span></div> 
-  </div>
-  <div class="navigation_links_container">
-
-  <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
-  <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
-  <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
-  <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
-    <div class="sub_menu">
-        <div class="navigation_links"><a href="report.php"></i>Report</a></div>
-        <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
-        <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
-        <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
+	<div class="logo_container"> 
+        <img src="../images/naim.png" class="naim_logo"></img>
+        <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
+        <div class="logo_tail"><span>ANPR</span></div> 
     </div>
-  <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
-  <?php 
-  
-  if($session_type == "Super Admin") {
-      echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left:0px; padding-left:8px;"></i></a></div>
-    <div class="sub_menu">
-        <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
-        <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
-    </div>';
-  }
-  ?>  
-  <div class="navigation_links"><a href="profile.php" class="active_page"><i class="fa-solid fa-user"></i>Profile</a></div>
-
-  <div class="navigation_links"><a href="../login.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
-  
-</div>
-</div>
+    <div class="navigation_links_container">
+        <div class="navigation_links"><a href="index.php"><i class="fa-solid fa-house"></i>Dashboard</a></div>
+        <div class="navigation_links"><a href="register_vehicle.php"><i class="fa-solid fa-person-circle-plus"></i>Registration</a></div>
+        <div class="navigation_links"><a href="view_vehicle.php"><i class="fa-solid fa-table"></i>Database</a></div>
+        <div class="navigation_links drop_down_btn"><a href="#"><i class="fa-solid fa-clipboard-list"></i>Log<i class="fa-solid fa-angle-right"></i></a></div>
+            <div class="sub_menu">
+                <div class="navigation_links"><a href="report.php"></i>Report</a></div>
+                <div class="navigation_links"><a href="entry_log.php"></i>Entry Log</a></div>
+                <div class="navigation_links"><a href="exit_log.php"></i>Exit Log</a></div>
+                <div class="navigation_links"><a href="denied_access.php"></i>Denial Log</a></div>
+            </div>
+        <div class="navigation_links"><a href="analytic.php"><i class="fa fa-line-chart"></i>Analytics</a></div>
+        <?php 
+        
+        if($session_type == "Super Admin") {
+            echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left: 5px; padding-left:8px;"></i></a></div>
+            <div class="sub_menu">
+                <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
+                <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
+            </div>';
+        }
+        ?>  
+        <div class="navigation_links"><a href="profile.php" class="active_page"s><i class="fa-solid fa-user"></i>Profile</a></div>
+        <div class="navigation_links" id="last_nav_link"><a href="../login.php" id="last_nav_link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></div>
+    </div>
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
@@ -425,7 +440,7 @@
       <br>
       <p>NAIM Holdings Berhad</p>
       <br>
-      <p><button onclick="document.getElementById('id01').style.display='block'">Change Password</button><br></p>
+      <p><button onclick="openpopout()">Change Password</button><br></p>
       <br>
     </div>
 </div>
@@ -435,7 +450,7 @@
 
   <form class="modal-content animate" action="profile.php" method="post">
     <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <span onclick="closepopout()" class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="input_container">
@@ -456,7 +471,7 @@
 		<div class="com_con">
 		<div class="form_group">
 		<div class="form_container">
-		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="button_cancel">Cancel</button>
+		<button type="button" onclick="closepopout()" class="button_cancel">Cancel</button>
 		</div>
 		<div class="form_container">
 		 <button type="submit" name = "submit" class="button_submit">Submit</button>
@@ -486,6 +501,34 @@ for (i = 0; i < close.length; i++) {
     div.style.opacity = "0";
     setTimeout(function(){ div.style.display = "none"; }, 600);
   }
+}
+
+manageModelScrollbar();
+
+function openpopout(){
+	document.getElementById('id01').style.display="block"; 
+	document.querySelector("body").style.overflow = "hidden";
+	window.addEventListener('resize', function() {
+		manageModelScrollbar();
+	})
+}
+
+function closepopout(){
+	document.getElementById('id01').style.display="none"; 
+	document.querySelector("body").style.overflow = "visible";
+	window.addEventListener('resize', function() {
+		manageModelScrollbar();
+	})
+}
+
+function manageModelScrollbar(){
+	var windowHeight = window.innerHeight;
+	if (windowHeight > 690){
+		document.getElementById('id01').style.overflowY ="hidden"; 
+	}
+	else{
+		document.getElementById('id01').style.overflowY ="scroll"; 
+	}
 }
 </script>
 
