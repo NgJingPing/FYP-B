@@ -90,15 +90,20 @@
     if(isset($_POST["submit"])) {
         if(empty($_POST["start"])) {
             $startdate = date("Y-m-d");
+            $startdate = new DateTime($startdate);
         } else {
-            $startdate = $_POST["start"];
+            $startdate = new DateTime($_POST["start"]);
         }
 
         if(empty($_POST["end"])) {
             $enddate = date("Y-m-d");
+            $enddate = new DateTime($enddate);
         } else {
-            $enddate = $_POST["end"];
+            $enddate = new DateTime($_POST["end"]);
         }
+        $enddate->modify('+1 day');
+        $startdate = $startdate->format("Y-m-d");
+        $enddate = $enddate->format("Y-m-d");
 
         $label = "";
 
@@ -238,14 +243,10 @@
             $result3 = $conn->query($myquery3);
         }
 
-        if(strlen($label) == 17 || strlen($label) == 18) {
-            if (strlen($label) == 17) {
-                if($label[1] == " "){
-                    $label = "0".$label;
-                }
-            }
+       if(strlen($label) > 7) {
             $z = substr($label, -4);
-            $y =  substr($label, 0, 6);
+            $y = substr($label, 0, 6);
+            $y = str_replace("-", "", $y);
             $x = $y." ".$z;
             $x = strtotime($x);
             $format = 'Y-m-d';

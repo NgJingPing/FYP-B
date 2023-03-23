@@ -86,8 +86,8 @@
     while($startdate <= $enddate){
         $sql = "SELECT(SELECT COUNT(*) FROM entrylog WHERE WEEK(`entryTime`) = WEEK('$sdate') AND YEAR(`entryTime`) = YEAR('$sdate')) + (SELECT COUNT(*) FROM exitlog WHERE WEEK(`exitTime`) = WEEK('$sdate') AND YEAR(`exitTime`) = YEAR('$sdate')) AS total;";
         $result = $conn->query($sql);
-        $start = strtotime('sunday', strtotime($sdate));
-        $end = strtotime('saturday', strtotime($sdate));
+        $start = strtotime('last sunday', strtotime($sdate));
+        $end = strtotime('next saturday', strtotime($sdate));
         $format = 'j M';
         $format2 = 'j M Y';
         $start_day = date($format, $start);
