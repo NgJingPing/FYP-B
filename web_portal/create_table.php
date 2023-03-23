@@ -82,8 +82,7 @@ foreach($tables as $sql){
 }
 
 //
-//$sql = "INSERT INTO vehicle (licensePlate, tenantLotNumber, brand, model, colour)
-//VALUES ('".$_POST['plateNumber']."', '".$_POST['tenantLotNumber']."', '".$_POST['brand']."','".$_POST['model']."','".$_POST['colour']."')";
+
 //
 // Hardcoded
 $sql1 = "INSERT INTO tenant (tenantLotNumber, name, phoneNumber)
