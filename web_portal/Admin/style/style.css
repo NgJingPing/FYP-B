@@ -372,11 +372,10 @@ body {
 }
 
 .chartCard {
-    width: 700px;
     height: auto;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 25px 0;
 }
 
 .chartCard p {
@@ -386,7 +385,6 @@ body {
 }
 
 .chartBox {
-    width: 700px;
     padding: 20px;
     border-radius: 20px;
     border: solid 3px rgba(0, 100, 0, 1);
@@ -412,3 +410,28 @@ body {
 .dbtn span {
     padding: 5px;
 }
+
+.table-responsive .row{
+  width: 100%;
+}
+
+.table-responsive .row .allflows{
+  width: 100%;
+}
+
+.table-responsive .row .totalflows,
+.table-responsive .row .deniedflows,
+.table-responsive .row .entryflows,
+.table-responsive .row .exitflows
+{
+  width: 50%;
+}
+
+.table-responsive .row .chartCard .chartBox{
+  width: 100%;
+}
+
+.table-responsive .row .chartCard .chartBox canvas{
+  width: 100%;
+}
+

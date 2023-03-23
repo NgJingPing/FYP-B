@@ -15,7 +15,7 @@
     <div class="table-responsive">
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard">
+                <div class="col-sm-6 col-lg-6 chartCard allflows">
                     <p>Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart18"></canvas>
@@ -25,13 +25,13 @@
         </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard">
+                <div class="col-sm-6 col-lg-6 chartCard totalflows">
                     <p>Total Entry & Exit Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart13"></canvas>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6 chartCard">
+                <div class="col-sm-6 col-lg-6 chartCard deniedflows">
                     <p>Total Denied Access Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart16"></canvas>
@@ -41,13 +41,13 @@
         </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard">
+                <div class="col-sm-6 col-lg-6 chartCard entryflows">
                     <p>Total Entry Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart14"></canvas>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6 chartCard">
+                <div class="col-sm-6 col-lg-6 chartCard exitflows">
                     <p>Total Exit Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart15"></canvas>
@@ -203,6 +203,30 @@
         type: 'bar',
         data,
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                bgColor,
+                tooltip: {
+                    enabled: true,
+                    displayColors: false,
+                    backgroundColor: 'White',
+                    borderColor: 'rgba(50, 205, 50, 1)',
+                    borderWidth: 2,
+                    titleColor: 'black',
+                    titleAlign: 'center',
+                    titleFont:{
+                        size: 18
+                    },
+                    bodyColor: 'black',
+                    bodyAlign: 'center',
+                    bodyFont:{
+                        size: 16
+                    },
+                    cornerRadius: 2,
+                    yAlign: 'top'
+                }
+            },
             parsing: {
                     xAxisKey: 'day',
                 },
@@ -218,8 +242,7 @@
                     }
                 }
             }
-        },
-        plugins: [bgColor]
+        }
     };
 
     // render init block
@@ -238,7 +261,7 @@
             console.log(label);
             console.log(value);
 
-            window.open("report.php?label=" + value);
+            window.open("report.php?label=" + value,"report");
 
         }
     }
@@ -272,6 +295,34 @@
         type: 'bar',
         data,
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                bgColor,
+                legend: {onClick: function() {}},
+                tooltip: {
+                    enabled: true,
+                    displayColors: false,
+                    backgroundColor: 'White',
+                    borderColor: 'rgba(50, 205, 50, 1)',
+                    borderWidth: 2,
+                    titleColor: 'black',
+                    titleAlign: 'center',
+                    titleFont:{
+                        size: 18
+                    },
+                    bodyColor: 'black',
+                    bodyAlign: 'center',
+                    bodyFont:{
+                        size: 16
+                    },
+                    cornerRadius: 2,
+                    yAlign: 'top'
+                }
+            },
+            onHover: (event, chartElement) => {
+               event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+            },
             scales: {
                 y: {
                     ticks: {
@@ -280,8 +331,7 @@
                     }
                 }
             }
-        },
-        plugins: [bgColor]
+        }
     };
 
     
@@ -301,7 +351,7 @@
             console.log(label);
             console.log(value);
 
-            window.open("report.php?label=" + label);
+            window.open("report.php?label=" + label,"report");
 
         }
     }
@@ -325,6 +375,34 @@
         type: 'bar',
         data,
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                bgColor,
+                legend: {onClick: function() {}},
+                tooltip: {
+                    enabled: true,
+                    displayColors: false,
+                    backgroundColor: 'White',
+                    borderColor: 'rgba(50, 205, 50, 1)',
+                    borderWidth: 2,
+                    titleColor: 'black',
+                    titleAlign: 'center',
+                    titleFont:{
+                        size: 18
+                    },
+                    bodyColor: 'black',
+                    bodyAlign: 'center',
+                    bodyFont:{
+                        size: 16
+                    },
+                    cornerRadius: 2,
+                    yAlign: 'top'
+                }
+            },
+            onHover: (event, chartElement) => {
+               event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+            },
             scales: {
                 y: {
                     ticks: {
@@ -333,8 +411,7 @@
                     }
                 }
             }
-        },
-        plugins: [bgColor]
+        }
     };
 
     
@@ -354,7 +431,7 @@
             console.log(label);
             console.log(value);
 
-            window.open("report.php?label=" + label);
+            window.open("report.php?label=" + label,"report");
 
         }
     }
@@ -378,6 +455,34 @@
         type: 'bar',
         data,
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                bgColor,
+                legend: {onClick: function() {}},
+                tooltip: {
+                    enabled: true,
+                    displayColors: false,
+                    backgroundColor: 'White',
+                    borderColor: 'rgba(50, 205, 50, 1)',
+                    borderWidth: 2,
+                    titleColor: 'black',
+                    titleAlign: 'center',
+                    titleFont:{
+                        size: 18
+                    },
+                    bodyColor: 'black',
+                    bodyAlign: 'center',
+                    bodyFont:{
+                        size: 16
+                    },
+                    cornerRadius: 2,
+                    yAlign: 'top'
+                }
+            },
+            onHover: (event, chartElement) => {
+               event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+            },
             scales: {
                 y: {
                     ticks: {
@@ -386,8 +491,7 @@
                     }
                 }
             }
-        },
-        plugins: [bgColor]
+        }
     };
 
     
@@ -407,7 +511,7 @@
             console.log(label);
             console.log(value);
 
-            window.open("report.php?label=" + label);
+            window.open("report.php?label=" + label,"report");
 
         }
     }
@@ -431,6 +535,34 @@
         type: 'bar',
         data,
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                bgColor,
+                legend: {onClick: function() {}},
+                tooltip: {
+                    enabled: true,
+                    displayColors: false,
+                    backgroundColor: 'White',
+                    borderColor: 'rgba(50, 205, 50, 1)',
+                    borderWidth: 2,
+                    titleColor: 'black',
+                    titleAlign: 'center',
+                    titleFont:{
+                        size: 18
+                    },
+                    bodyColor: 'black',
+                    bodyAlign: 'center',
+                    bodyFont:{
+                        size: 16
+                    },
+                    cornerRadius: 2,
+                    yAlign: 'top'
+                }
+            },
+            onHover: (event, chartElement) => {
+               event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+            },
             scales: {
                 y: {
                     ticks: {
@@ -439,8 +571,7 @@
                     }
                 }
             }
-        },
-        plugins: [bgColor]
+        }
     };
 
     
@@ -460,7 +591,7 @@
             console.log(label);
             console.log(value);
 
-            window.open("report.php?label=" + label);
+            window.open("report.php?label=" + label,"report");
 
         }
     }
