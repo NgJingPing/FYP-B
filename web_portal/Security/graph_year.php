@@ -58,7 +58,7 @@
 
      <?php
     include "../include/config.php";
-    $ytotalCountArray = $ydateArray = $yentryCountArray = $yexitCountArray = $ydeniedCountArray = array();
+    $ytotalCountArray = $ydateArray = $yentryCountArray = $yexitCountArray = $ydeniedCountArray = array(); 
 
     $ystartdate = date('Y-m-d');
     $ystartdate = new DateTime($ystartdate);
@@ -133,7 +133,7 @@
 
     for(let i = 0; i < ydateArrayJS.length; i++) {
         x.push({
-            day: ydateArrayJS[i],
+            day: ydateArrayJS[i], 
             total: ytotalCountArrayJS[i],
             entry: yentryCountArrayJS[i],
             exit: yexitCountArrayJS[i],
@@ -143,6 +143,7 @@
 
     Chart.defaults.font.family = "'Lato', Arial, Helvetica, sans-serif";
 
+    //Data for the Flows chart
     data = {
         datasets: [{
         label: 'Total Flows',
@@ -248,11 +249,13 @@
     };
 
     // render init block
+    // Flows chart
     let myChart20 = new Chart(
         document.getElementById('myChart20'),
         config
     );
 
+    // Onclick function for the Flows chart
     function clickHandler20(click){
         var points = myChart20.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -271,6 +274,7 @@
     myChart20.canvas.onclick = clickHandler20;
 
      // setup 
+     //Data for the Total Flows chart
     data = {
         labels: ydateArrayJS,
         datasets: [{
@@ -344,11 +348,13 @@
 
     
     // render init block
+    // Total Flows chart
     let myChart9 = new Chart(
         document.getElementById('myChart9'),
         config
     );
 
+    // Onclick function for the Total Flows chart
     function clickHandler9(click){
         var points = myChart9.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -367,6 +373,7 @@
     myChart9.canvas.onclick = clickHandler9;
 
     // setup 
+    //Data for the Entry Flows chart
     data = {
         labels: ydateArrayJS,
         datasets: [{
@@ -430,11 +437,13 @@
 
     
     // render init block
+    // Total Entry chart
     let myChart10 = new Chart(
         document.getElementById('myChart10'),
         config
     );
 
+    // Onclick function for the Entry Flows chart
     function clickHandler10(click){
         var points = myChart10.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -453,6 +462,7 @@
     myChart10.canvas.onclick = clickHandler10;
 
      // setup 
+     //Data for the Exit Flows chart
     data = {
         labels: ydateArrayJS,
         datasets: [{
@@ -516,11 +526,13 @@
 
     
     // render init block
+    // Exit Flows chart
     let myChart11 = new Chart(
         document.getElementById('myChart11'),
         config
     );
 
+    // Onclick function for the Exit Flows chart
     function clickHandler11(click){
         var points = myChart11.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -539,6 +551,7 @@
     myChart11.canvas.onclick = clickHandler11;
 
      // setup 
+     //Data for the Denied Access Flows chart
     data = {
         labels: ydateArrayJS,
         datasets: [{
@@ -602,11 +615,13 @@
 
     
     // render init block
+    // Denied Access Flows chart
     let myChart12 = new Chart(
         document.getElementById('myChart12'),
         config
     );
 
+    // Onclick function for the Denied Access Flows chart
     function clickHandler12(click){
         var points = myChart12.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -628,6 +643,7 @@
     var chartVersion3 = document.getElementById('chartVersion');
     chartVersion3.innerText = Chart.version;
 
+    // Function for download the charts into PDF file
     function downloadPDF3(){
         var canvas9 = document.getElementById('myChart9');
         var canvas12 = document.getElementById('myChart12');

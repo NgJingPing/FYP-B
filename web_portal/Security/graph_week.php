@@ -148,6 +148,7 @@
 
     Chart.defaults.font.family = "'Lato', Arial, Helvetica, sans-serif";
 
+    //Data for the Flows chart
     data = {
         datasets: [{
         label: 'Total Flows',
@@ -246,11 +247,13 @@
     };
 
     // render init block
+    // Flows chart
     let myChart18 = new Chart(
         document.getElementById('myChart18'),
         config
     );
 
+    // Onclick function for the Flows chart
     function clickHandler18(click){
         var points = myChart18.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -269,6 +272,7 @@
     myChart18.canvas.onclick = clickHandler18;
 
     // setup 
+    //Data for the Total Flows chart
     data = {
         labels: dateArrayJS,
         datasets: [{
@@ -336,11 +340,13 @@
 
     
     // render init block
+    // Total Flows chart
     let myChart13 = new Chart(
         document.getElementById('myChart13'),
         config
     );
 
+    // Onclick function for the Total Flows chart
     function clickHandler13(click){
         var points = myChart13.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -359,6 +365,7 @@
     myChart13.canvas.onclick = clickHandler13;
 
      // setup 
+     //Data for the Entry Flows chart
     data = {
         labels: dateArrayJS,
         datasets: [{
@@ -416,11 +423,13 @@
 
     
     // render init block
+    // Entry Flows chart
     let myChart14 = new Chart(
         document.getElementById('myChart14'),
         config
     );
 
+    // Onclick function for the Entry Flows chart
     function clickHandler14(click){
         var points = myChart14.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -439,6 +448,7 @@
     myChart14.canvas.onclick = clickHandler14;
 
      // setup 
+     //Data for the Exit Flows chart
     data = {
         labels: dateArrayJS,
         datasets: [{
@@ -496,11 +506,13 @@
 
     
     // render init block
+    // Exit Flows chart
     let myChart15 = new Chart(
         document.getElementById('myChart15'),
         config
     );
 
+    // Onclick function for the Exit Flows chart
     function clickHandler15(click){
         var points = myChart15.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -519,6 +531,7 @@
     myChart15.canvas.onclick = clickHandler15;
 
      // setup 
+     //Data for the Denied Access Flows chart
     data = {
         labels: dateArrayJS,
         datasets: [{
@@ -576,11 +589,13 @@
 
     
     // render init block
+    // Denied Access Flows chart
     let myChart16 = new Chart(
         document.getElementById('myChart16'),
         config
     );
 
+    // Onclick function for the Denied Access Flows chart
     function clickHandler16(click){
         var points = myChart16.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
         if(points[0]){
@@ -602,6 +617,7 @@
     var chartVersion = document.getElementById('chartVersion');
     chartVersion.innerText = Chart.version;
 
+    // Function for download the charts into PDF file
     function downloadPDF4(){
         var canvas13 = document.getElementById('myChart13');
         var canvas16 = document.getElementById('myChart16');
