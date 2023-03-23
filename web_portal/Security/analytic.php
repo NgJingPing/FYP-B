@@ -105,7 +105,7 @@
     let divsArray = Array.from(divs);
 
     // console.log(tabsArray);
-
+    // function for switching the tab to daily, weekly, monthly or yearly
     tabsArray.forEach((ele) => {
       ele.addEventListener("click", function (e) {
         // console.log(ele);
