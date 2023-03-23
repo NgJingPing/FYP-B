@@ -146,15 +146,6 @@
     //Data for the Flows chart
     data = {
         datasets: [{
-        label: 'Total Flows',
-        data: x,
-        backgroundColor: 'rgba(50, 205, 50, 0.2)',
-        borderColor: 'rgba(50, 205, 50, 1)',
-        borderWidth: 1,
-        parsing: {
-            yAxisKey: 'total'
-        }
-        }, {
         label: 'Entry Flows',
         data: x,
         backgroundColor: 'rgba(0, 150, 255, 0.2)',
