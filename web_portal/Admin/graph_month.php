@@ -198,7 +198,6 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                bgColor,
                 tooltip: {
                     enabled: true,
                     displayColors: false,
@@ -241,7 +240,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     // render init block
@@ -300,7 +300,6 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                bgColor,
                 legend: {onClick: function() {}},
                 tooltip: {
                     enabled: true,
@@ -339,7 +338,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -389,7 +389,6 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                bgColor,
                 legend: {onClick: function() {}},
                 tooltip: {
                     enabled: true,
@@ -428,7 +427,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -478,7 +478,6 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                bgColor,
                 legend: {onClick: function() {}},
                 tooltip: {
                     enabled: true,
@@ -517,7 +516,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
@@ -567,7 +567,6 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                bgColor,
                 legend: {onClick: function() {}},
                 tooltip: {
                     enabled: true,
@@ -606,7 +605,8 @@
                     }
                 }
             }
-        }
+        },
+        plugins: [bgColor]
     };
 
     
