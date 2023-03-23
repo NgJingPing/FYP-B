@@ -22,7 +22,7 @@ import mysql.connector
 import uuid
 import datetime
 
-cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.40.20.mp4")
+cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.52.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 #cap = cv2.VideoCapture(1)
 #cap = cv2.VideoCapture()
@@ -35,17 +35,14 @@ camera = "entry"
 # Get the video frame count
 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-# Set the frame rate to 60 frames per second
-fps = 60
+# Set the frame rate per second (based on video lagging)
+target_fps = 5
 
 # Get the video frame count
-#fps = int(cap.get(cv2.CAP_PROP_FPS))
+video_fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-# Set the wait time between frames in milliseconds
-wait_time = int(1000 / fps)
-
-# Skip 20 frames per second
-skip_frames = 20
+# Skip frames per second
+skip_frames = round(video_fps / target_fps)
 
 # Counter for skipped frames
 skipped_frames = 0
@@ -383,7 +380,7 @@ while True:
         frames = detect()
         
         # Show FPS Count
-        cv2.putText(frames, "FPS: " + str(round(fps)), (800, 35), cv2.QT_FONT_NORMAL, 0.8, (58, 245, 255), 2)
+        cv2.putText(frames, "FPS: " + str(round(target_fps)), (800, 35), cv2.QT_FONT_NORMAL, 0.8, (58, 245, 255), 2)
         
         # Show Result Menu
         sbx = 20 
