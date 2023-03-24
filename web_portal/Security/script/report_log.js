@@ -1,8 +1,28 @@
-$(document).ready(function(){  
-  $('#log_table').DataTable();
-  $('#log_table2').DataTable();  
-  $('#log_table3').DataTable();  
-});  
+$(document).ready(function(){
+	
+	var dataTable = $('#log_table').DataTable({
+		"buttons": [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+	});
+
+	var dataTable2 = $('#log_table2').DataTable({
+		"buttons": [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+	});
+
+	var dataTable3 = $('#log_table3').DataTable({
+		"buttons": [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+	});
+
+	dataTable.buttons().container().appendTo('.entry');
+	dataTable2.buttons().container().appendTo('.exit');
+	dataTable3.buttons().container().appendTo('.denied');
+
+});	
 
 //Navbar 
 var dropdown = document.getElementsByClassName("drop_down_btn");

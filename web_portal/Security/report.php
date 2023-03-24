@@ -23,17 +23,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANPR - Report</title>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+	<!-- JQuery and Bootstrap CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+    <!-- ENDS HERE -->
+
+    <!-- DataTables CDN -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap.min.css" /> 
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>  
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap.min.js"></script>   
+    <!-- ENDS HERE -->
+    <!-- DataTables Buttons CDN -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css" /> 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>  
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>  
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.bootstrap.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.print.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <!-- ENDS HERE -->
+
+    <!-- Fonts CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
+    <!-- ENDS HERE -->
     <link type="text/css" rel="stylesheet" href="style/style.css">
     <script src="script/navbar.js"></script>
 </head>
@@ -79,7 +104,7 @@
 	if(isset($_GET["label"])) {
 		$label = $_GET["label"];
 	}
-
+    
     echo '
         <form method="post" action="" class="date_selector">
             <label class="date_selector_label">Start Date</label> <input type="date" id="start" name="start" class="date_input">
@@ -118,7 +143,7 @@
         
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive">
+        echo '<div class="log_container"> <div class="table-responsive entry">
                 <table id="log_table" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
@@ -149,7 +174,7 @@
 
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive">
+        echo '<div class="log_container"> <div class="table-responsive exit">
                 <table id="log_table2" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
@@ -179,7 +204,7 @@
         echo '</table></div></div>';  
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive">
+        echo '<div class="log_container"> <div class="table-responsive denied">
                 <table id="log_table3" class="table table-striped table-bordered">   
 			    <thead>  
                     <tr>
@@ -243,7 +268,7 @@
             $result3 = $conn->query($myquery3);
         }
 
-       if(strlen($label) >= 15) {
+        if(strlen($label) >= 15) {
             $z = substr($label, -4);
             $y = substr($label, 0, 6);
             $y = str_replace("-", "", $y);
@@ -265,7 +290,7 @@
 
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive">
+        echo '<div class="log_container"> <div class="table-responsive entry">
                 <table id="log_table" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
@@ -296,7 +321,7 @@
 
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive">
+        echo '<div class="log_container"> <div class="table-responsive exit">
                 <table id="log_table2" class="table table-striped table-bordered">  
 			    <thead>  
                     <tr>
@@ -326,7 +351,7 @@
         echo '</table></div></div>';  
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive">
+        echo '<div class="log_container"> <div class="table-responsive denied">
                 <table id="log_table3" class="table table-striped table-bordered">   
 			    <thead>  
                     <tr>

@@ -34,6 +34,15 @@
     <!-- ENDS HERE -->
     <!-- DataTables Buttons CDN -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css" /> 
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>  
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
     <script src="https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>  
     <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.bootstrap.min.js"></script> 
     <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.print.min.js"></script> 
@@ -53,11 +62,13 @@
     <!-- ENDS HERE -->
     <link type="text/css" rel="stylesheet" href="style/style.css">
     <script src="script/navbar.js"></script>
+    <script src="script/database.js"></script>
 </head>
 <body>
     <!--Sidebar starts here-->
 <div class="navigation_bar">
     <div class="logo_container"> 
+
         <img src="../images/naim.png" class="naim_logo"></img>
         <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div> 
         <div class="logo_tail"><span>ANPR</span></div> 
@@ -97,8 +108,26 @@
 
     <section>
         <div class="log_container">
-            <div class="table-responsive">
-            <table id="log_table" class="table table-striped table-bordered">  
+             <div class="card-header">
+				<div class="row">
+					<div class="col-sm-2">Hide Column</div>
+					<div class="col-sm-4">
+						<select name="column_name" id="column_name" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							<option value="0">License Plate</option>
+				            <option value="1">Tenant Lot Number</option>
+				            <option value="2">Tenant Name</option>
+				            <option value="3">Contact Number</option>
+				            <option value="4">Brand</option>
+                            <option value="5">Model</option>
+                            <option value="6">Colour</option>
+                            <option value="7">Active</option>
+                            <option value="8">Action</option>
+						</select>
+					</div>
+				</div>
+			</div>
+            <div class="table-responsive database">
+            <table id="db_table" class="table table-striped table-bordered">  
                 <thead>
                     <tr>
                         <th>License Plate</th>
