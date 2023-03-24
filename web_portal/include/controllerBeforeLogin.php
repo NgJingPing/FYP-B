@@ -84,7 +84,7 @@
 
                 try{
                     $mail->Send();
-                    $info = "We've sent a passwrod reset otp to your email - $email";
+                    $info = "We've sent a password reset otp to your email - $email";
                     $_SESSION['info'] = $info;
                     $_SESSION['email'] = $email;
                     header('location: reset_password.php');

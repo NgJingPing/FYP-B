@@ -41,6 +41,9 @@ if($email == false){
     margin-right: auto;
 }
 
+.alert.success {background-color: #4DAC62;}
+.alert.error {background-color: #f44336;}
+
 .closebtn {
     margin-left: auto;
     color: white;
@@ -74,6 +77,16 @@ if($email == false){
     echo '<div class="alert">
             <span class="closebtn">&times;</span>
             ' . $errors . '
+            </div>';
+    }
+?>
+
+<?php
+/*Alert Message */
+    if (isset($_SESSION['info'])){
+    echo '<div class="alert success">
+            <span class="closebtn">&times;</span>
+            ' . $_SESSION['info'] . '
             </div>';
     }
 ?>
