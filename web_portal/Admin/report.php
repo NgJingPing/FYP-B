@@ -253,7 +253,7 @@
             $result3 = $conn->query($myquery3);
         }
 
-        if(strlen($label) > 7) {
+        if(strlen($label) >= 15) {
             $z = substr($label, -4);
             $y = substr($label, 0, 6);
             $y = str_replace("-", "", $y);

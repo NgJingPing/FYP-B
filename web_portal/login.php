@@ -1,56 +1,8 @@
 <?php
-/*
-session_start();
-session_destroy();
-$error_msg = "";
-$email = $pass = $user_type = "";
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "anprdb";
-
-include "include/config.php";
-
-    // If login button is clicked, do the following
-    if(isset($_POST["login_button"])) {
-  	    $email = mysqli_escape_string($conn, $_POST["email"]);
-  	    $pass = mysqli_escape_string($conn, $_POST["password"]);
-
-        $myquery = "SELECT password, role, isAdvanced FROM users WHERE email = '$email';";
-
-  	    $sql = mysqli_query($conn, $myquery);
-  	    $pass = hash("sha256", $pass);
-  	    $dbpass = "";
-        $role = "";
-  	    while($row = mysqli_fetch_assoc($sql)) {
-  		    $dbpass = $row['password'];
-            $role = $row['role'];
-            $advanced = $row['isAdvanced'];
-  	    }
-
-        if($pass == $dbpass) {
-            if($role == 1) {
-                $user_type = "Admin";
-                if($advanced == 1){
-                    $user_type = "Super Admin";
-                }
-            } else {
-                $user_type = "Security";
-            }
-		    session_start();
-		    $_SESSION['email'] = $email;
-            $_SESSION['type'] = $user_type;
-            if($user_type == "Admin" || $user_type == "Super Admin") {
-                header("location: Admin/index.php");
-            } else {
-                header("location: Security/index.php");
-            }
-		} else {
-		$error_msg = "<p>Invalid password or login id</p>";
-		}
-    }*/
-
+    //Destroy session to prevent wrong login
+    session_start();
+    session_destroy();
+    //The php below store php code for login and forgot password process
     require_once "include/controllerBeforeLogin.php";
 ?>
 <!DOCTYPE html>
@@ -111,6 +63,7 @@ include "include/config.php";
 </head>
 <body>
 
+<!---Logo and TItle of the website--->
 <div class="logo_container">
   <div class="logo_group">
   <img src="images/naim.png" alt="NAIM" class="center" style="width:240px;height:60px;">
@@ -119,8 +72,8 @@ include "include/config.php";
   </div>
 </div>
 
+<!---Alert Message for After Success Change Password--->
 <?php
-/*Alert Message for After Success Change Password*/
     if (isset($_SESSION['info'])){
     echo '<div class="alert success">
             <span class="closebtn">&times;</span>
@@ -129,6 +82,7 @@ include "include/config.php";
     }
 ?>
 
+<!---Alert Message for Wrong Login--->
 <?php
   if ($errors != ""){
     echo '<div class="alert error">
@@ -138,7 +92,7 @@ include "include/config.php";
   }
 ?>
 
-
+<!---Form to Login--->
   <form class="modal-content animate" action="login.php" method="POST">
 
     <div class="container">
@@ -155,6 +109,7 @@ include "include/config.php";
 
   </form>
 
+<!---JavaScript to close alert message--->
 <script>
   var close = document.getElementsByClassName("closebtn");
   var i;
