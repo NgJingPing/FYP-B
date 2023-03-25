@@ -346,7 +346,7 @@ def detect():
                                         
     return frames
 
-#Close Result Menu
+# Close Result Menu
 ot = False
 mx = 0
 my = 0
@@ -370,6 +370,7 @@ while True:
     # Display the frame if we have not skipped it
     if skipped_frames % (skip_frames + 1) == 0:
         
+        # Initialise window screen
         screen_width = 1000
         screen_height = 600
     
