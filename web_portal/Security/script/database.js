@@ -14,11 +14,15 @@ $(document).ready(function(){
 
 	var remove_column = $('#column_name').val();
 
-	var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
+	if($('#column_name').val() == null){
+		dataTable.columns(all_column).visible(true);
+	} else{
+		var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
 
-	dataTable.columns(remove_column).visible(false);
+		dataTable.columns(remove_column).visible(false);
 
-	dataTable.columns(remaining_column).visible(true);
+		dataTable.columns(remaining_column).visible(true);
+	}
 	});
 
 	dataTable.buttons().container().appendTo('.table-responsive');

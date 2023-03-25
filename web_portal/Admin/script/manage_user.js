@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	var dataTable = $('#db_table').DataTable({
+	var dataTable = $('#user_table').DataTable({
 		"buttons": [
         'copy', 'csv', 'excel', 'pdf', 'print'
       ]
@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	$('#column_name').change(function(){
 
-	var all_column = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+	var all_column = ["0", "1", "2", "3"];
 
 	var remove_column = $('#column_name').val();
 
@@ -25,6 +25,6 @@ $(document).ready(function(){
 	}
 	});
 
-	dataTable.buttons().container().appendTo('.table-responsive');
+	dataTable.buttons().container().appendTo('.user');
 
 });	

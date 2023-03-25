@@ -143,8 +143,23 @@
         
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive entry">
-                <table id="log_table" class="table table-striped table-bordered">  
+        echo '<div class="log_container"> 
+                <div class="card-header">
+				    <div class="row">
+					    <div class="col-sm-2">Hide Column</div>
+					    <div class="col-sm-4">
+						    <select name="column_name" id="column_name_entry" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							    <option value="0">No</option>
+				                <option value="1">Timestamp</option>
+				                <option value="2">License Plate Number</option>
+				                <option value="3">Tenant Lot Number</option>
+				                <option value="4">Actions</option>
+						    </select>
+					    </div>
+				    </div>
+			    </div>
+                <div class="table-responsive entry">
+                <table id="log_table" class="table table-striped table-bordered"  style="width:100%;">  
 			    <thead>  
                     <tr>
                         <th>No</td>  
@@ -174,8 +189,23 @@
 
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive exit">
-                <table id="log_table2" class="table table-striped table-bordered">  
+        echo '<div class="log_container"> 
+                <div class="card-header">
+				    <div class="row">
+					    <div class="col-sm-2">Hide Column</div>
+					    <div class="col-sm-4">
+						    <select name="column_name" id="column_name_exit" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							    <option value="0">No</option>
+				                <option value="1">Timestamp</option>
+				                <option value="2">License Plate Number</option>
+				                <option value="3">Tenant Lot Number</option>
+				                <option value="4">Actions</option>
+						    </select>
+					    </div>
+				    </div>
+			    </div>
+                <div class="table-responsive exit">
+                <table id="log_table2" class="table table-striped table-bordered"  style="width:100%;">  
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -204,8 +234,22 @@
         echo '</table></div></div>';  
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive denied">
-                <table id="log_table3" class="table table-striped table-bordered">   
+        echo '<div class="log_container"> 
+                <div class="card-header">
+				    <div class="row">
+					    <div class="col-sm-2">Hide Column</div>
+					    <div class="col-sm-4">
+						    <select name="column_name" id="column_name_denied" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							    <option value="0">No</option>
+				                <option value="1">Timestamp</option>
+				                <option value="2">License Plate Number</option>
+				                <option value="3">Actions</option>
+						    </select>
+					    </div>
+				    </div>
+			    </div>
+                <div class="table-responsive denied">
+                <table id="log_table3" class="table table-striped table-bordered"  style="width:100%;">   
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -290,8 +334,23 @@
 
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive entry">
-                <table id="log_table" class="table table-striped table-bordered">  
+        echo '<div class="log_container"> 
+                <div class="card-header">
+				    <div class="row">
+					    <div class="col-sm-2">Hide Column</div>
+					    <div class="col-sm-4">
+						    <select name="column_name" id="column_name_entry" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							    <option value="0">No</option>
+				                <option value="1">Timestamp</option>
+				                <option value="2">License Plate Number</option>
+				                <option value="3">Tenant Lot Number</option>
+				                <option value="4">Actions</option>
+						    </select>
+					    </div>
+				    </div>
+			    </div>
+                <div class="table-responsive entry">
+                <table id="log_table" class="table table-striped table-bordered"  style="width:100%;">  
 			    <thead>  
                     <tr>
                         <th>No</td>  
@@ -321,8 +380,23 @@
 
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive exit">
-                <table id="log_table2" class="table table-striped table-bordered">  
+        echo '<div class="log_container"> 
+                <div class="card-header">
+				    <div class="row">
+					    <div class="col-sm-2">Hide Column</div>
+					    <div class="col-sm-4">
+						    <select name="column_name" id="column_name_exit" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							    <option value="0">No</option>
+				                <option value="1">Timestamp</option>
+				                <option value="2">License Plate Number</option>
+				                <option value="3">Tenant Lot Number</option>
+				                <option value="4">Actions</option>
+						    </select>
+					    </div>
+				    </div>
+			    </div>
+                <div class="table-responsive exit">
+                <table id="log_table2" class="table table-striped table-bordered"  style="width:100%;">  
 			    <thead>  
                     <tr>
                         <th>No</th>  
@@ -351,8 +425,22 @@
         echo '</table></div></div>';  
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
-        echo '<div class="log_container"> <div class="table-responsive denied">
-                <table id="log_table3" class="table table-striped table-bordered">   
+        echo '<div class="log_container"> 
+                <div class="card-header">
+				    <div class="row">
+					    <div class="col-sm-2">Hide Column</div>
+					    <div class="col-sm-4">
+						    <select name="column_name" id="column_name_denied" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+							    <option value="0">No</option>
+				                <option value="1">Timestamp</option>
+				                <option value="2">License Plate Number</option>
+				                <option value="3">Actions</option>
+						    </select>
+					    </div>
+				    </div>
+			    </div>
+                <div class="table-responsive denied">
+                <table id="log_table3" class="table table-striped table-bordered"  style="width:100%;">   
 			    <thead>  
                     <tr>
                         <th>No</th>  

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	var dataTable = $('#log_table').DataTable({
+	var dataTable = $('#entry_table').DataTable({
 		"buttons": [
         'copy', 'csv', 'excel', 'pdf', 'print'
       ]
@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 	});
 
-	var dataTable2 = $('#log_table2').DataTable({
+	var dataTable2 = $('#exit_table').DataTable({
 		"buttons": [
         'copy', 'csv', 'excel', 'pdf', 'print'
       ]
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 	});
 
-	var dataTable3 = $('#log_table3').DataTable({
+	var dataTable3 = $('#denied_table').DataTable({
 		"buttons": [
         'copy', 'csv', 'excel', 'pdf', 'print'
       ]
@@ -84,20 +84,3 @@ $(document).ready(function(){
 
 
 });	
-
-//Navbar 
-var dropdown = document.getElementsByClassName("drop_down_btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-dropdown[i].addEventListener("click", function() {
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-
-    dropdownContent.style.display = "none";
-  } else {
-      
-    dropdownContent.style.display = "block";
-  }
-});
-}
