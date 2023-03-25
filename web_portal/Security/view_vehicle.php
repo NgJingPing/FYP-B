@@ -112,7 +112,7 @@
 				</div>
 			</div>
             <div class="table-responsive database">
-            <table id="db_table" class="table table-striped table-bordered">
+            <table id="db_table" class="table table-striped table-bordered" style="width:100%;">
                 <thead>
                     <tr>
                         <th>License Plate</th>
