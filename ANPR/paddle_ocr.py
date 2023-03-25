@@ -7,6 +7,8 @@ folder and the permanent entrylog images will store in entrylog folder inside th
 will in exitlog folder inside the images folder.
 
 """
+
+# Import Python Library
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
@@ -14,19 +16,14 @@ from keras.preprocessing.image import save_img
 from PIL import ImageFont, ImageDraw, Image
 #from tensorflow.keras.utils import save_img
 import os.path
-
 from paddleocr import PaddleOCR,draw_ocr
-ocr = PaddleOCR(use_angle_cls=True, lang="en")
-
 import mysql.connector
 import uuid
 import datetime
 
+# Initialise camera
 cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.52.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
-#cap = cv2.VideoCapture(1)
-#cap = cv2.VideoCapture()
-#cap.open("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 
 #Camere Types (entry/exit)
 camera = "entry"
@@ -47,19 +44,22 @@ skip_frames = round(video_fps / target_fps)
 # Counter for skipped frames
 skipped_frames = 0
 
+# Initialise Yolov5 for vehicle detection
 net = cv2.dnn.readNetFromONNX("ANPR\yolov5n.onnx")
-
-net_2 = cv2.dnn.readNetFromONNX("ANPR\yolov5n_2.onnx")
 
 file = open("ANPR\coco.txt", "r")
 classes = file.read().split('\n')
-#print(classes)
+
+# Initialise Yolov5 for licence plate detection
+net_2 = cv2.dnn.readNetFromONNX("ANPR\yolov5n_2.onnx")
 
 file_2 = open("ANPR\coco2.txt","r")
 classes_2 = file_2.read().split('\n')
-#print(classes_2)
 
-#Image folder location
+# Initialise paddle ocr for OCR Recognition
+ocr = PaddleOCR(use_angle_cls=True, lang="en")
+
+# Image folder location
 folder_path = "ANPR\images"
 plate = ""
 vehicle_id = ""
@@ -67,30 +67,30 @@ current_plate = ""
 count = 0
 found = True
 area = [(170,182),(930,194),(936,590),(9,530)]
-#area = [(550,271),(990,360),(870,620),(1,502)] 
 
+# Initialise Result Menu
 vehicle_detected = '...'
 licence_detected = '...'
 number_plate = '...' 
 matched = '...'
 
-# Detection Function (Vehicle Detection, licence Plate Detection and OCR Recognition)
+
+# Detection Function (Vehicle Detection, Licence Plate Detection and OCR Recognition)
 def detect():
     global folder_path, plate, vehicle_id, current_plate, count, found, area, vehicle_detected, licence_detected, number_plate, matched
+    ## Connect to database
     conn = mysql.connector.connect (
         host = "localhost",
         user = "root",
         password = "",
         database = "anprdb"
     )
-
+    
+    ## Vehicle Detection Start Here
     blob = cv2.dnn.blobFromImage(frames, scalefactor = 1/255, size=(640,640), mean=[0,0,0], swapRB=True, crop=False)
 
     net.setInput(blob)
     detections = net.forward()[0]
-
-    #print(detections.shape)
-
     classes_ids = []
     confidences = []
     boxes = []
@@ -160,7 +160,8 @@ def detect():
                         file_exists = os.path.exists("ANPR\entrylogtemp\saved.jpg")
                     elif camera.lower() == "exit":
                         file_exists = os.path.exists("ANPR\exitlogtemp\saved.jpg")
-                        
+                    
+                    ## Licence Plate Detection Start Here
                     if file_exists == True:
                         if camera.lower() == "entry":
                             vehicle_img = cv2.imread('ANPR\entrylogtemp\saved.jpg')
@@ -176,8 +177,6 @@ def detect():
                         confidences_2 = []
                         boxes_2 = []
                         rows_2 = detections_2.shape[0]
-                
-                        #print(detections.shape)
 
                         img_width_2, img_height_2 = vehicle_img.shape[1], vehicle_img.shape[0]
                         x_scale_2 = img_width_2/640
@@ -217,7 +216,6 @@ def detect():
                             cv2.rectangle(vehicle_img,(x2,y2),(x2+w2, y2+h2) ,(51 ,51,255),2)
                             cv2.rectangle(vehicle_img, (x2, y2 - 30), (x2 + w2, y2), (51,51,255), -2)
                             cv2.putText(vehicle_img, text_2, (x2+5, y2 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
-                            # cv2.imshow('Licence Plate', plate)
                             # Save real-time licence plate image with bounding box 
                             if camera.lower() == "entry":
                                 save_img('ANPR\entrylogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
@@ -226,7 +224,7 @@ def detect():
                                 save_img('ANPR\exitlogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
                                 plate_img = 'ANPR\exitlogtemp\saved2.jpg'
                             
-                
+                            ## OCR Recognition Start Here
                             file_exists = os.path.exists(plate_img)
                             if file_exists == True:
                                 try:
@@ -238,7 +236,7 @@ def detect():
                                         elif(len(line) == 2):
                                             plate = line[0][1][0] + line[1][1][0]
                                         
-                                        plate = plate.upper()
+                                        plate = plate.upper() 
                                         for y in plate:
                                             a = ['1','2','3','4','5','6','7','8','9','0','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'M','O','P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z']
                                             for x in a:
@@ -348,7 +346,8 @@ def detect():
                                         
     return frames
 
-ot = False # Close Result Menu
+#Close Result Menu
+ot = False
 mx = 0
 my = 0
 # Mouse Pointer Function
@@ -394,7 +393,6 @@ while True:
         draw = ImageDraw.Draw(img_pil)
         draw.text((sbx, sby),  "^", font = font, fill = (255, 255, 255))
         frames = np.array(img_pil)
-        #cv2.putText(frames, "^", (sbx, sby), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1.6, (255, 255, 255), 2)
         cv2.imshow('Automatic number-plate recognition (ANPR) System', frames)
         cv2.setMouseCallback('Automatic number-plate recognition (ANPR) System',mousePoints)
         
