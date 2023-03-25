@@ -104,7 +104,8 @@
 <?php
     include "../include/config.php";
     $referenceID = "";
-
+    // This SQL query retrieves data from the entrylog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, entry time, and tenant lot number for all vehicles in the entry log. 
+    //The results are sorted in descending order based on the reference ID.
 	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID ORDER BY referenceID DESC";
 	$result = $conn->query($myquery);
 ?>
@@ -141,7 +142,7 @@
                     <th>Actions</th>  
                 </tr>  
             </thead>  
-
+            <!-- Display the queried data into table form -->
 			<?php
                 if($result){
                     while($row = mysqli_fetch_array($result))  

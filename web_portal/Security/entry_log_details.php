@@ -41,7 +41,8 @@
 <?php
 	$id = $_GET["referenceID"];
 	include "../include/config.php";
-
+	// This SQL query retrieves information about a specific vehicle entry from the entrylog and vehicle tables, joining them on the vehicleID column and filtering the results based on the reference ID. 
+	// The query returns the reference ID, license plate number, entry time, vehicle images, tenant lot number, brand, model, and color of the vehicle associated with the specified reference ID.
 	$myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, entrylog.image_2, vehicle.tenantLotNumber, vehicle.brand, vehicle.model, vehicle.colour FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE entrylog.referenceID = $id; ";
 	$result = $conn->query($myquery);
 	if(mysqli_num_rows($result) == 1) {

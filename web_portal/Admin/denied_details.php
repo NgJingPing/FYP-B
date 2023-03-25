@@ -37,6 +37,7 @@
     <script src="script/navbar.js"></script>
 </head>
 
+<!-- Returns data from deniedAccess table from with the corresponding referenceID from database-->
 <?php
 	$id = $_GET["referenceID"];
 	include "../include/config.php";

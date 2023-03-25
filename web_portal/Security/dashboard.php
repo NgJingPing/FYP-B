@@ -25,6 +25,7 @@ $referenceID = "";
         </div>
         <i class="fa-solid fa-right-left"></i>
         <div class="widget_value">
+            <!-- Returns the number of entries and exits and of the current day/date and displays the sum -->
             <?php
             $totalflowquery = "SELECT(SELECT COUNT(*) FROM entrylog WHERE DATE(`entryTime`) = CURDATE()) + (SELECT COUNT(*) FROM exitlog WHERE DATE(`exitTime`) = CURDATE()) AS total";
             $result = $conn->query($totalflowquery);
@@ -42,6 +43,7 @@ $referenceID = "";
         </div>
         <i class="fa-solid fa-arrow-right-to-bracket"></i>
         <div class="widget_value">
+            <!-- Returns the number of entries of the current day/date from database-->
             <?php
             $totalentryquery = "SELECT COUNT(*) AS totalentry FROM entrylog WHERE DATE(`entryTime`) = CURDATE()";
             $result = $conn->query($totalentryquery);
@@ -59,6 +61,7 @@ $referenceID = "";
         </div>
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         <div class="widget_value">
+            <!-- Returns the number of exits of the current day/date from database -->
             <?php
             $totalexitquery = "SELECT COUNT(*) AS totalexit FROM exitlog WHERE DATE(`exitTime`) = CURDATE()";
             $result = $conn->query($totalexitquery);
@@ -76,6 +79,7 @@ $referenceID = "";
         </div>
         <i class="fa-solid fa-ban"></i>
         <div class="widget_value">
+            <!-- Returns the number of denied access of the current day/date from database -->
             <?php
             $totaldeniedquery = "SELECT COUNT(*) AS totaldenied FROM deniedaccess WHERE DATE(`deniedTime`) = CURDATE()";
             $result = $conn->query($totaldeniedquery);
@@ -88,6 +92,7 @@ $referenceID = "";
 
     </div>
 </div>
+<!-- Returns the last 10 vehicles that has entered on the current day/date from database -->
 <?php
 $entrylogquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE DATE(entryTime) = CURDATE() ORDER BY entrylog.referenceID DESC LIMIT 10";
 $result = $conn->query($entrylogquery);
@@ -103,7 +108,7 @@ $result = $conn->query($entrylogquery);
                     <td>Tenant Lot Number</td>
                 </tr>
             </thead>
-
+            <!-- Display the queried data into table form -->
             <?php
             if ($result) {
                 while ($row = mysqli_fetch_array($result)) {
@@ -122,9 +127,8 @@ $result = $conn->query($entrylogquery);
             ?>
         </table>
     </div>
-
+    <!-- Returns the last 10 vehicles that has exited on the current day/date from database -->
     <?php
-
     $exitlogquery = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE DATE(exitTime) = CURDATE() ORDER BY exitlog.referenceID DESC LIMIT 10";
     $result = $conn->query($exitlogquery);
     ?>
@@ -138,7 +142,7 @@ $result = $conn->query($entrylogquery);
                     <td>Tenant Lot Number</td>
                 </tr>
             </thead>
-
+            <!-- Display the queried data into table form -->
             <?php
             if ($result) {
                 while ($row = mysqli_fetch_array($result)) {

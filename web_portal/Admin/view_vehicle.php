@@ -146,6 +146,9 @@
                 
                    include "../include/config.php";
                     //echo "Connected successfully </br>";
+                    
+                    //This SQL query retrieves information about all vehicles and their corresponding tenants by performing an inner join on the vehicle and tenant tables based on the tenantLotNumber column. 
+                    //The query returns the vehicle ID, license plate number, tenant lot number, tenant name, tenant phone number, vehicle brand, model, colour, and active status for all vehicles associated with a tenant lot number.
 
                     $sql = "SELECT vehicle.vehicleID, vehicle.licensePlate, vehicle.tenantLotNumber, name, phoneNumber, vehicle.brand, vehicle.model, vehicle.colour, vehicle.isActive FROM vehicle JOIN tenant WHERE vehicle.tenantLotNumber = tenant.tenantLotNumber;";
                     $result = mysqli_query($conn, $sql);

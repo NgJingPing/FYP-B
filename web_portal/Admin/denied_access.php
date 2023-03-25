@@ -62,9 +62,10 @@
     <script src="script/navbar.js"></script>
     <script src="script/log_table.js"></script>
 
+    <!-- Returns every data from deniedAccess table from database-->
 <?php
     include "../include/config.php";
-
+    
 	$myquery = "SELECT * FROM deniedAccess ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);
 ?>
@@ -134,7 +135,7 @@
                     <th>Actions</th>  
                 </tr>  
             </thead>  
-
+            <!-- Display the queried data into table form -->
 			<?php
                 if($result){
                     while($row = mysqli_fetch_array($result))  

@@ -66,7 +66,8 @@
 
 <?php
     include "../include/config.php";
-
+    // This SQL query retrieves data from the exitlog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, exit time, and tenant lot number for all vehicles in the entry log. 
+    //The results are sorted in descending order based on the reference ID.
 	$myquery = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID ORDER BY referenceID DESC; ";
 	$result = $conn->query($myquery);
 ?>

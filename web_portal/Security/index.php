@@ -71,7 +71,7 @@
     <header>
     <h1>Dashboard</h1>
     </header>
-  
+    <!-- Loads dashboard.php into the inner HTML -->
     <div id="table" onload = "table();">
     </div>
   </div>
