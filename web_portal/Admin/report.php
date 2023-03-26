@@ -70,7 +70,6 @@
 
     $count = $count2 = $count3 = 1;
     
-    // get the plate number from the link
 	if(isset($_GET["label"])) {
 		$label = $_GET["label"];
 	}
@@ -102,12 +101,13 @@
 
         $label = "";
 
+        // This SQL query retrieves data from the entrylog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, entry time, and tenant lot number for all vehicles in the entry log between the selected dates. 
         $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE entrylog.entryTime BETWEEN '$startdate' AND '$enddate';";
 	    $result = $conn->query($myquery);
-
+        // This SQL query retrieves data from the exitlog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, exit time, and tenant lot number for all vehicles in the exit log between the selected dates. 
         $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE exitlog.exitTime BETWEEN '$startdate' AND '$enddate';";
 	    $result2 = $conn->query($myquery2);
-
+        // This SQL query retrieves data from the deniedAccess between the selected dates.
         $myquery3 = "SELECT * FROM deniedAccess WHERE deniedTime BETWEEN '$startdate' AND '$enddate';";
         $result3 = $conn->query($myquery3);
         
@@ -142,6 +142,7 @@
 
         while($row = mysqli_fetch_array($result))  
         {  
+            //Display the queried data into table form
             $date = $row['entryTime'];
             $dateObject = new DateTime($date);
             $format = $dateObject->format('d M Y h:i A');
@@ -188,6 +189,7 @@
 
         while($row = mysqli_fetch_array($result2))  
         {  
+            //Display the queried data into table form
             $date = $row['exitTime'];
             $dateObject = new DateTime($date);
             $format = $dateObject->format('d M Y h:i A');
@@ -231,6 +233,7 @@
 
         while($row = mysqli_fetch_array($result3))  
         {  
+            //Display the queried data into table form
             $date = $row['deniedTime'];
             $dateObject = new DateTime($date);
             $format = $dateObject->format('d M Y h:i A');
@@ -246,25 +249,28 @@
         echo '</table></div></div>';  
     }
 
+    //show the record based on the selected bar/point from the analytic page
     if($label != "") {
         if(strlen($label) == 10){
+            // This SQL query retrieves data from the entrylog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, entry time, and tenant lot number for all vehicles in the entry log based on the selected dates 
             $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE DATE(entrylog.entryTime) = '$label';";
 	        $result = $conn->query($myquery);
-
+            // This SQL query retrieves data from the exitlog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, exit time, and tenant lot number for all vehicles in the exit log based on the selected dates.
             $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE DATE(exitlog.exitTime) = '$label';";
 	        $result2 = $conn->query($myquery2);
-
+            // This SQL query retrieves data from the deniedAccess based on the selected dates.
             $myquery3 = "SELECT * FROM deniedAccess WHERE DATE(deniedTime) = '$label';";
             $result3 = $conn->query($myquery3);
         }
 
         if(strlen($label) == 4) {
+            // This SQL query retrieves data from the entrylog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, entry time, and tenant lot number for all vehicles in the entry log based on the selected dates 
             $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE YEAR(entrylog.entryTime) = '$label';";
 	        $result = $conn->query($myquery);
-
+            // This SQL query retrieves data from the exitlog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, exit time, and tenant lot number for all vehicles in the exit log based on the selected dates.
             $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE YEAR(exitlog.exitTime) = '$label';";
 	        $result2 = $conn->query($myquery2);
-
+            // This SQL query retrieves data from the deniedAccess based on the selected dates.
             $myquery3 = "SELECT * FROM deniedAccess WHERE YEAR(deniedTime) = '$label';";
             $result3 = $conn->query($myquery3);
         }
@@ -272,12 +278,13 @@
         if(strlen($label) == 7) {
             $month = substr($label, 5, 2);
             $year = substr($label, 0, 4);
+            // This SQL query retrieves data from the entrylog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, entry time, and tenant lot number for all vehicles in the entry log based on the selected dates 
             $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE MONTH(entrylog.entryTime) = '$month' AND YEAR(entrylog.entryTime) =  '$year';";
 	        $result = $conn->query($myquery);
-
+            // This SQL query retrieves data from the exitlog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, exit time, and tenant lot number for all vehicles in the exit log based on the selected dates.
             $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE MONTH(exitlog.exitTime) = '$month' AND YEAR(exitlog.exitTime) = '$year';";
 	        $result2 = $conn->query($myquery2);
-
+            // This SQL query retrieves data from the deniedAccess based on the selected dates.
             $myquery3 = "SELECT * FROM deniedAccess WHERE MONTH(deniedTime) = '$month' AND YEAR(deniedTime) = '$year';";
             $result3 = $conn->query($myquery3);
         }
@@ -291,12 +298,13 @@
             $format = 'Y-m-d';
             $week = date($format, $x);
 
+            // This SQL query retrieves data from the entrylog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, entry time, and tenant lot number for all vehicles in the entry log based on the selected dates 
             $myquery = "SELECT entrylog.referenceID, vehicle.licensePlate, entrylog.entryTime, vehicle.tenantLotNumber FROM entrylog INNER JOIN vehicle ON entrylog.vehicleID = vehicle.vehicleID WHERE WEEK(entrylog.entryTime) = WEEK('$week') AND YEAR(entrylog.entryTime) =  YEAR('$week');";
 	        $result = $conn->query($myquery);
-
+            // This SQL query retrieves data from the exitlog and vehicle tables, joining them on the vehicleID column, and returning the reference ID, license plate number, exit time, and tenant lot number for all vehicles in the exit log based on the selected dates.
             $myquery2 = "SELECT exitlog.referenceID, vehicle.licensePlate, exitlog.exitTime, vehicle.tenantLotNumber FROM exitlog INNER JOIN vehicle ON exitlog.vehicleID = vehicle.vehicleID WHERE WEEK(exitlog.exitTime) = WEEK('$week') AND YEAR(exitlog.exitTime) = YEAR('$week');";
 	        $result2 = $conn->query($myquery2);
-
+            // This SQL query retrieves data from the deniedAccess based on the selected dates.
             $myquery3 = "SELECT * FROM deniedAccess WHERE WEEK(deniedTime) = WEEK('$week') AND YEAR(deniedTime) = YEAR('$week');";
             $result3 = $conn->query($myquery3);
         }
@@ -333,6 +341,7 @@
 
         while($row = mysqli_fetch_array($result))  
         {  
+            //Display the queried data into table form
             $date = $row['entryTime'];
             $dateObject = new DateTime($date);
             $format = $dateObject->format('d M Y h:i A');
@@ -379,6 +388,7 @@
 
         while($row = mysqli_fetch_array($result2))  
         {  
+            //Display the queried data into table form
             $date = $row['exitTime'];
             $dateObject = new DateTime($date);
             $format = $dateObject->format('d M Y h:i A');
@@ -422,6 +432,7 @@
 
         while($row = mysqli_fetch_array($result3))  
         {  
+            //Display the queried data into table form
             $date = $row['deniedTime'];
             $dateObject = new DateTime($date);
             $format = $dateObject->format('d M Y h:i A');

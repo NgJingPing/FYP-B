@@ -63,6 +63,7 @@
     include "../include/config.php";
     $referenceID = "";
 
+     //This SQL query retrieves information about all users
 	$myquery = "SELECT * FROM users;";
 	$result = $conn->query($myquery);
 ?>
@@ -101,7 +102,8 @@
 			<?php
                 if($result){
                     while($row = mysqli_fetch_array($result))  
-                    { 
+                    {
+                        // output data of each row
                         if($row["role"] == "1")
                         {
                             $role = "Admin";

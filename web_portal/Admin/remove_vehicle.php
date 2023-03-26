@@ -18,8 +18,7 @@ include "../include/config.php";
 error_reporting(0);
 
 $vehicle = $_GET['vehicleID'];
-#$del1 = "DELETE FROM entryLog WHERE licensePlate='$vehicle';";
-#$del2 =  "DELETE FROM exitLog WHERE licensePlate='$vehicle';";
+// This SQL query remove the vehicle from the vehicle table based on the vehicleID 
 $del3 = "DELETE FROM vehicle WHERE vehicleID=$vehicle;";
 
 $data = mysqli_query($conn,$del3);

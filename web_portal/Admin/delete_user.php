@@ -17,7 +17,7 @@
 		$id = $_GET['userID'];
 
 		include "../include/config.php";
-
+		// This SQL query remove the user from the users table based on the userID 
 		$query = "DELETE FROM users WHERE userID='$id'";
 		$query_run = mysqli_query($conn, $query);
 

@@ -113,6 +113,7 @@
 
 	if(isset($_POST["submit"])) {
 		$advance = FALSE;
+		//get the type of user from the form
 		if($_POST["user_type"] == "sadmin"){
 			$role = 1;
 			$advance = TRUE;
@@ -121,7 +122,7 @@
 		} else {
 			$role = 2;
 		}
-		
+		//This query will update the user infromation based on the input from the form
 		$myquery = "UPDATE users SET role = ?, isAdvanced = ? WHERE userID = $userID;";
 		$stmt = $conn->prepare($myquery);
 		$stmt->bind_param("ss", $role, $advance);

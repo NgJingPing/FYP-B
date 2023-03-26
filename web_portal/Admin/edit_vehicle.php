@@ -108,7 +108,7 @@
 			header("Location: view_vehicle.php");
 		}
 
-
+		//treat the special characters and slashes as normal text
 		function test_input($data) {
 		    $data = trim($data);
 		    $data = stripslashes($data);
@@ -116,6 +116,7 @@
 		    return $data;
 		}
 
+		//if the submit button is clicked
 		if (isset($_POST["submit"])) {
 
 			if(empty($_POST["plateNumber"])) {
@@ -123,9 +124,9 @@
 			} elseif (strlen($_POST["plateNumber"]) > 15 ){
 				$plateNumberErr = "License plate number should not exceed 15 characters";
 			} else {
-				$plateNumber = test_input($_POST["plateNumber"]);
-				$plateNumber = str_replace(' ', '', $plateNumber);
-				$plateNumber = mysqli_escape_string($conn, $plateNumber);
+				$plateNumber = test_input($_POST["plateNumber"]); //get the license plate from the form
+				$plateNumber = str_replace(' ', '', $plateNumber); //remove white space
+				$plateNumber = mysqli_escape_string($conn, $plateNumber); //prevent sql injection
 			}
 
 			if(empty($_POST["tenantName"])) {
@@ -133,8 +134,8 @@
 			} elseif (strlen($_POST["tenantName"]) > 50 ){
 				$tenantNameErr = "Tenant name should not exceed 50 characters";
 			} else {
-				$tenantName = test_input($_POST["tenantName"]);
-				$tenantName = mysqli_escape_string($conn, $tenantName);
+				$tenantName = test_input($_POST["tenantName"]); //get the tenant name from the form
+				$tenantName = mysqli_escape_string($conn, $tenantName); //prevent sql injection
 			}
 
 			if(empty($_POST["contactNumber"])) {
@@ -144,8 +145,8 @@
 			} elseif (!preg_match('/^[0-9]*$/',$_POST["contactNumber"])){
 				$contactNumberErr = "Contact number should only contain numbers";
 			} else {
-				$contactNumber = test_input($_POST["contactNumber"]);
-				$contactNumber = mysqli_escape_string($conn, $contactNumber);
+				$contactNumber = test_input($_POST["contactNumber"]); //get the contact number from the form
+				$contactNumber = mysqli_escape_string($conn, $contactNumber); //prevent sql injection
 			}
 
 			if(empty($_POST["brand"])) {
@@ -153,8 +154,8 @@
 			} elseif (strlen($_POST["brand"]) > 20 ){
 				$brandErr = "Brand should not exceed 20 characters";
 			} else {
-				$brand = test_input($_POST["brand"]);
-				$brand = mysqli_escape_string($conn, $brand);
+				$brand = test_input($_POST["brand"]); //get the brand from the form
+				$brand = mysqli_escape_string($conn, $brand); //prevent sql injection
 			}
 
 			if(empty($_POST["model"])) {
@@ -162,8 +163,8 @@
 			} elseif (strlen($_POST["model"]) > 30 ){
 				$modelErr = "Model should not exceed 30 characters";
 			} else {
-				$model = test_input($_POST["model"]);
-				$model = mysqli_escape_string($conn, $model);
+				$model = test_input($_POST["model"]); //get the model from the form
+				$model = mysqli_escape_string($conn, $model); //prevent sql injection
 			}
 
 			if(empty($_POST["color"])) {
@@ -171,8 +172,8 @@
 			} elseif (strlen($_POST["color"]) > 20 ){
 				$colorErr = "Colour should not exceed 20 characters";
 			} else {
-				$color = test_input($_POST["color"]);
-				$color = mysqli_escape_string($conn, $color);
+				$color = test_input($_POST["color"]); //get the color from the form
+				$color = mysqli_escape_string($conn, $color); //prevent sql injection
 			}
 
 			$check = isset($_POST['active']) ? "checked" : "unchecked";
