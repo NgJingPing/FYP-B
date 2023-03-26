@@ -88,6 +88,22 @@
         $result = $conn->query($sql);
         $start = strtotime('last sunday', strtotime($sdate));
         $end = strtotime('next saturday', strtotime($sdate));
+        
+        $x = date("Y-m-d", $start);
+        $y = date("Y-m-d", $end);
+        $x = date_create($x);
+        $y = date_create($y);
+        $diff = date_diff($x,$y);
+        $diff = $diff->format("%R%a days");
+        $z = substr($diff, 1, 3);
+        $z = str_replace(" ", "", $z);
+        
+        if($z > 7){
+            $start = strtotime('sunday', strtotime($sdate));
+            $end = strtotime('saturday', strtotime($sdate));
+        }
+
+
         $format = 'j M';
         $format2 = 'j M Y';
         $start_day = date($format, $start);
