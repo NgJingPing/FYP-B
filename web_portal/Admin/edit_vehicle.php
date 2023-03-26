@@ -18,57 +18,40 @@
 <html lang="en">
 
 <head>
-    <meta charset = "utf-8">
-	<meta name = "author" content = "Sabrina Tan">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php include "../include/head.php";?>
     <title>ANPR - Edit</title>
+	<style>
+		.alert {
+			font-size: 18px;
+			font-weight: bold;
+			background-color: #FFFFFF;
+			color: white;
+			opacity: 1;
+			transition: opacity 0.6s;
+			width: 95%;
+			margin-left: auto;
+			margin-right: auto;
+		}
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style/registration.css">
-    <script src="script/navbar.js"></script>
+		.alert.success {background-color: #4DAC62;}
+		.alert.error {background-color: #f44336;}
+		.alert.warning {background-color: #ff9800;}
 
-		<style>
-			.alert {
-				font-size: 18px;
-				font-weight: bold;
-			  background-color: #FFFFFF;
-			  color: white;
-			  opacity: 1;
-			  transition: opacity 0.6s;
-				width: 95%;
-				margin-left: auto;
-	      margin-right: auto;
-			}
+		.closebtn {
+			margin-left: auto;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size: 28px;
+			line-height: 22px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
 
-			.alert.success {background-color: #4DAC62;}
-			.alert.error {background-color: #f44336;}
-			.alert.warning {background-color: #ff9800;}
-
-			.closebtn {
-			  margin-left: auto;
-			  color: white;
-			  font-weight: bold;
-			  float: right;
-			  font-size: 28px;
-			  line-height: 22px;
-			  cursor: pointer;
-			  transition: 0.3s;
-			}
-
-			.closebtn:hover {
-			  color: black;
-			}
-		</style>
+		.closebtn:hover {
+			color: black;
+		}
+	</style>
 </head>
 
 <body>
@@ -94,7 +77,7 @@
         <?php 
         
         if($session_type == "Super Admin") {
-            echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left: 5px; padding-left:8px;"></i></a></div>
+            echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left: 0px; padding-left:8px;"></i></a></div>
             <div class="sub_menu">
                 <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
                 <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>

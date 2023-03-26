@@ -68,100 +68,81 @@
 <html lang="en">
 
 <head>
-    <meta charset = "utf-8">
-	<meta name = "author" content = "Jeffery Sia">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php include "../include/head.php";?>
 	<title>ANPR - Profile</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style/style.css">
-    <script src="script/navbar.js"></script>
-
     <style>
-    .card {
-      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-      width: 80%;
-      text-align: center;
-      font-family: arial;
-      padding: 20px 20px;
-      margin: 10px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 50px;
-      opacity: 90%;
-      border-radius: 5px;
-    }
+		.card {
+			box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+			width: 80%;
+			text-align: center;
+			font-family: arial;
+			padding: 20px 20px;
+			margin: 10px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 50px;
+			opacity: 90%;
+			border-radius: 5px;
+		}
 
-    .title {
-      color: #4DAC62;
-      font-size: 1.2rem;
-    }
+		.title {
+			color: #4DAC62;
+			font-size: 1.2rem;
+		}
 
-	.emailtext{
-		font-size: 1.2rem;
-	}
+		.emailtext{
+			font-size: 1.2rem;
+		}
 
-    button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: #061C17;
-      text-align: center;
-      cursor: pointer;
-      width: 60%;
-      font-size: 18px;
-    }
+		button {
+			border: none;
+			outline: 0;
+			display: inline-block;
+			padding: 8px;
+			color: white;
+			background-color: #061C17;
+			text-align: center;
+			cursor: pointer;
+			width: 60%;
+			font-size: 18px;
+		}
 
-    button:hover, a:hover {
-      opacity: 0.7;
-    }
+		button:hover, a:hover {
+			opacity: 0.7;
+		}
 
-    .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 240px;
-    }
-
-
+		.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 240px;
+		}
 
 		input[type=password] {
-		  width: 100%;
-		  padding: 12px 20px;
-		  margin: 8px 0;
-		  display: inline-block;
-		  border: 1px solid #ccc;
-		  box-sizing: border-box;
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
 			font-size: 1.25rem;
 			box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
 		}
 
 		.cancelbtn {
-		  width: 60%;
-		  padding: 10px 18px;
-		  background-color: #f44336;
+			width: 60%;
+			padding: 10px 18px;
+			background-color: #f44336;
 		}
 
 		.imgcontainer {
-		  text-align: center;
-		  margin: 24px 0 12px 0;
-		  position: relative;
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
 		}
 
 		.input_container {
-		  padding: 16px;
+		  	padding: 16px;
 			background-color: #f2f2f2;
 		}
 
@@ -170,22 +151,22 @@
 		}
 
 		span.psw {
-		  float: right;
-		  padding-top: 16px;
+			float: right;
+			padding-top: 16px;
 		}
 
 		.modal {
-		  display: none; /* Hidden by default */
-		  position: fixed; /* Stay in place */
-		  z-index: 1; /* Sit on top */
-		  left: 0;
-		  top: 0;
-		  width: 100%; /* Full width */
-		  height: 100%; /* Full height */
-		  overflow: hidden; /* Disable scroll if needed */
-		  background-color: #061C17; /* Fallback color */
-		  overflow-y: scroll; /* Enable scroll if needed */
-		  padding-top: 65px;
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: hidden; /* Disable scroll if needed */
+			background-color: #061C17; /* Fallback color */
+			overflow-y: scroll; /* Enable scroll if needed */
+			padding-top: 65px;
 		}
 		
 		.modal::-webkit-scrollbar {
@@ -206,42 +187,42 @@
 		}
 
 		.modal-content {
-		  background-color: #f2f2f2;
-		  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-		  border: 1px solid #888;
-		  overflow: hidden;
-		  width: 80%; /* Could be more or less, depending on screen size */
+			background-color: #f2f2f2;
+			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+			border: 1px solid #888;
+			overflow: hidden;
+			width: 80%; /* Could be more or less, depending on screen size */
 		}
 
 		.close {
-		  position: absolute;
-		  right: 25px;
-		  top: 0;
-		  color: #000;
-		  font-size: 35px;
-		  font-weight: bold;
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
 		}
 
 		.close:hover,
 		.close:focus {
-		  color: red;
-		  cursor: pointer;
+			color: red;
+			cursor: pointer;
 		}
 
 		/* Add Zoom Animation */
 		.animate {
-		  -webkit-animation: animatezoom 0.6s;
-		  animation: animatezoom 0.6s
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
 		}
 
 		@-webkit-keyframes animatezoom {
-		  from {-webkit-transform: scale(0)}
-		  to {-webkit-transform: scale(1)}
+			from {-webkit-transform: scale(0)}
+			to {-webkit-transform: scale(1)}
 		}
 
 		@keyframes animatezoom {
-		  from {transform: scale(0)}
-		  to {transform: scale(1)}
+			from {transform: scale(0)}
+			to {transform: scale(1)}
 		}
 
 		/* Change styles for span and cancel button on extra small screens */
@@ -272,18 +253,18 @@
 		.alert.warning {background-color: #ff9800;}
 
 		.closebtn {
-		  margin-left: auto;
-		  color: white;
-		  font-weight: bold;
-		  float: right;
-		  font-size: 28px;
-		  line-height: 22px;
-		  cursor: pointer;
-		  transition: 0.3s;
+			margin-left: auto;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size: 28px;
+			line-height: 22px;
+			cursor: pointer;
+			transition: 0.3s;
 		}
 
 		.closebtn:hover {
-		  color: black;
+		 	 color: black;
 		}
 
 		.button_submit, .button_cancel {
@@ -299,49 +280,49 @@
 			height: 45px;
 			border-radius: 4px;
 			box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
-	  }
+	  	}
 
-	  .button_submit {
-	    background-color: #061C17;
-	    color: #C5E5CC;
-	  }
+		.button_submit {
+			background-color: #061C17;
+				color: #C5E5CC;
+		}
 
-	  .button_cancel {
-	    background-color: #C5E5CC;
-	    color: #061C17;
-	  }
+		.button_cancel {
+				background-color: #C5E5CC;
+				color: #061C17;
+		}
 
-	  .button_submit:hover, .button_cancel:hover {
-	    color: #4DAC62;
-	  }
+		.button_submit:hover, .button_cancel:hover {
+				color: #4DAC62;
+		}
 
 		.form_group {
-        display: flex;
-        width: 100%;
-      }
+			display: flex;
+			width: 100%;
+     	 }
 
 
-    .form_container {
-        display: inline-block;
-        width: 100%;
-      }
+   		 .form_container {
+       	 display: inline-block;
+     	   width: 100%;
+     	 }
 
-      .form_container label{
-        font-weight: normal;
-        padding-top: 5px;
-        margin-right: 10px;
-        font-size: 1.25rem;
-        white-space: nowrap;
-      }
+     	 .form_container label{
+			font-weight: normal;
+			padding-top: 5px;
+			margin-right: 10px;
+			font-size: 1.25rem;
+			white-space: nowrap;
+    	  }
 
-	  @media only screen and (min-width: 800px) {
-    	.emailtext, .title{font-size: 2rem;}
+	  	@media only screen and (min-width: 800px) {
+    		.emailtext, .title{font-size: 2rem;}
   		}
     </style>
 </head>
 
 <body>
-    <!--Sidebar starts here-->
+<!--Sidebar starts here-->
 <div class="navigation_bar">
 	<div class="logo_container"> 
 		<img src="../images/naim.png" class="naim_logo"></img>

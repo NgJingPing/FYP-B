@@ -18,23 +18,8 @@
 <html lang="en">
 
 <head>
-    <meta charset = "utf-8">
-	<meta name = "autor" content = "Sabrina Tan">
+	<?php include "../include/head.php";?>
     <title>ANPR - Denied Access Log Details</title>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/2ffaabbca0.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style/denied_details.css">
-    <script src="script/navbar.js"></script>
 </head>
 
 <!-- Returns data from deniedAccess table from with the corresponding referenceID from database-->
@@ -72,7 +57,7 @@
         <?php 
         
         if($session_type == "Super Admin") {
-            echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left: 5px; padding-left:8px;"></i></a></div>
+            echo '<div class="navigation_links drop_down_btn"><a href="#"><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left: 0px; padding-left:8px;"></i></a></div>
             <div class="sub_menu">
                 <div class="navigation_links"><a href="register_user.php"></i>Add User</a></div>
                 <div class="navigation_links"><a href="manage_user.php"></i>View User</a></div>
@@ -85,6 +70,7 @@
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
+
 <div class="content-container">
 	<header>
 		<h1>Denied Access Log Details</h1>
