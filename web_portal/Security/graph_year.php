@@ -224,7 +224,11 @@
                     stacked: true,
                     type: 'time',
                     time: {
-                        unit: 'year'
+                        unit: 'year',
+                        tooltipFormat: 'yyyy',
+                        displayFormats: {
+                            day: 'yyyy'
+                        }
                     }
                 },
                 y: {
@@ -323,7 +327,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'year'
+                        unit: 'year',
+                        tooltipFormat: 'yyyy',
+                        displayFormats: {
+                            day: 'yyyy'
+                        }
                     }
                 },
                 y: {
@@ -412,7 +420,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'year'
+                        unit: 'year',
+                        tooltipFormat: 'yyyy',
+                        displayFormats: {
+                            day: 'yyyy'
+                        }
                     }
                 },
                 y: {
@@ -501,7 +513,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'year'
+                        unit: 'year',
+                        tooltipFormat: 'yyyy',
+                        displayFormats: {
+                            day: 'yyyy'
+                        }
                     }
                 },
                 y: {
@@ -590,7 +606,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'year'
+                        unit: 'year',
+                        tooltipFormat: 'yyyy',
+                        displayFormats: {
+                            day: 'yyyy'
+                        }
                     }
                 },
                 y: {

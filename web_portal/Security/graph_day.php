@@ -221,7 +221,11 @@
                     stacked: true,
                     type: 'time',
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        tooltipFormat: 'dd MMM yyyy',
+                        displayFormats: {
+                            day: 'dd MMM yyyy'
+                        }
                     }
                 },
                 y: {
@@ -320,7 +324,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        tooltipFormat: 'dd MMM yyyy',
+                        displayFormats: {
+                            day: 'dd MMM yyyy'
+                        }
                     }
                 },
                 y: {
@@ -409,7 +417,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        tooltipFormat: 'dd MMM yyyy',
+                        displayFormats: {
+                            day: 'dd MMM yyyy'
+                        }
                     }
                 },
                 y: {
@@ -498,7 +510,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        tooltipFormat: 'dd MMM yyyy',
+                        displayFormats: {
+                            day: 'dd MMM yyyy'
+                        }
                     }
                 },
                 y: {
@@ -587,7 +603,11 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        tooltipFormat: 'dd MMM yyyy',
+                        displayFormats: {
+                            day: 'dd MMM yyyy'
+                        }
                     }
                 },
                 y: {
