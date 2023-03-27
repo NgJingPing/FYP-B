@@ -103,6 +103,7 @@
         
         
         echo '<h2 class="report_table_name">Entry Log</h2>';
+        echo '<section>';
         echo '<div class="log_container"> 
                 <div class="card-header">
 				    <div class="row">
@@ -147,9 +148,11 @@
             $count += 1;
         } 
         echo '</table></div></div>';  
+        echo '</section>';
 
 
         echo '<h2 class="report_table_name">Exit Log</h2>';
+        echo '<section>';
         echo '<div class="log_container"> 
                 <div class="card-header">
 				    <div class="row">
@@ -193,9 +196,12 @@
             </tr>';   
             $count2 += 1;
         }
-        echo '</table></div></div>';  
+        echo '</table></div></div>'; 
+        echo '</section>';
+
 
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
+        echo '<section>';
         echo '<div class="log_container"> 
                 <div class="card-header">
 				    <div class="row">
@@ -237,6 +243,7 @@
             $count3 += 1;
         }
         echo '</table></div></div>';  
+        echo '</section>';
     }
 
     //show the record based on the selected bar/point from the analytic page

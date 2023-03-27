@@ -159,7 +159,6 @@ padding-left: 57px;
     display: block;
     margin-top: 20px;
     margin-left: 300px;
-    margin-right: auto;
   }
   
   header h1{
@@ -168,7 +167,7 @@ padding-left: 57px;
   }
 
   form {
-      width: 100%;
+      width: 104%;
       padding: 10px;
       margin: auto;
       color: #061C17;
@@ -181,6 +180,7 @@ padding-left: 57px;
 
   .form_group {
     display: block;
+    margin-right: 2%;
     min-width: 300px;
     }
 

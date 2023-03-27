@@ -154,11 +154,14 @@ body::-webkit-scrollbar-thumb:hover {
     .navigation_links_container{margin-top: 10px;}
   }
 /*Navbar css ends here*/
+  section{
+    width: 100%;
+    padding-right: 40px;
+  }
 
   .content-container{
     margin-top: 20px;
     margin-left:300px;
-    margin-right: 20px;
   }
 
   header h1{
@@ -166,9 +169,13 @@ body::-webkit-scrollbar-thumb:hover {
     color: #061C17;
   }
 
+  #table{
+    margin: 30px 0;
+  }
+
   .widget_group{
     display: block;
-    width: 100%;
+    width: 106%;
   }
 
   .widget_container{
@@ -204,7 +211,7 @@ body::-webkit-scrollbar-thumb:hover {
   
   .dashboard_logs{
     display: block;
-    width: 100%;
+    width: 106%;
   }
 
 .dashboard_logs_container {
@@ -224,6 +231,7 @@ body::-webkit-scrollbar-thumb:hover {
     display: flex;
     gap: 5px;
     flex-direction: row;
+    width: 100%;
   }
 
   .widget_container{
@@ -234,6 +242,7 @@ body::-webkit-scrollbar-thumb:hover {
     display: flex;
     gap: 5px;
     flex-direction: row;
+    width: 100%;
   }
 
   .dashboard_logs_container{
@@ -309,6 +318,12 @@ color: #C5E5CC;
   color: #4DAC62;
 }
 
+@media only screen and (max-width: 900px) {
+  .date_selector {
+    margin: 30px 0;
+    margin-left: 11px;
+  }
+}
 
 div.waves {
   bottom: 0;
