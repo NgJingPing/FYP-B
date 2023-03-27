@@ -193,7 +193,6 @@
 				$sql = "UPDATE tenant SET name = '$tenantName', phoneNumber = '$contactNumber' WHERE tenantLotNumber = '$nums'";
 				$conn->query($sql);
 
-				$conn->close();
 				$msg = "Record is updated.";
 				$tenantLotNumber = $plateNumber = $tenantName = $contactNumber = $model = $brand = $color = "";
 				$tenantLotNumberErr = $plateNumberErr = $tenantNameErr = $contactNumberErr = $modelErr = $brandErr = $colorErr = "";
@@ -226,7 +225,6 @@
 			}
 			$_SESSION['num'] = $tenantLotNumber;
 		}
-		$conn->close();
 	?>
 	<div class="content-container">
 	<header>
