@@ -28,7 +28,7 @@
 			color: white;
 			opacity: 1;
 			transition: opacity 0.6s;
-			width: 95%;
+			width: 100%;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -215,10 +215,10 @@
 
 	<?php
 		if ($msg != ""){
-			echo '<div class="alert success">
+			echo '<section><div class="alert success">
 							<span class="closebtn">&times;</span>
 							' . $msg . '
-						</div>';
+						</div></section>';
 		}
 	?>
 

@@ -28,7 +28,7 @@
 			color: white;
 			opacity: 1;
 			transition: opacity 0.6s;
-			width: 95%;
+			width: 100%;
 			margin-left: auto;
 	        margin-right: auto;
 		}
@@ -128,10 +128,10 @@
 		$stmt->bind_param("ss", $role, $advance);
 		$stmt->execute();
 		$msg = "Record is updated.";
-		echo '<div class="alert success">
+		echo '<section><div class="alert success">
 						<span class="closebtn">&times;</span>
 						' . $msg . '
-					</div>';
+					</div></section>';
 
 				
 	}

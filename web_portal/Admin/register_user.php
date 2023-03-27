@@ -74,7 +74,7 @@
 			  color: white;
 			  opacity: 1;
 			  transition: opacity 0.6s;
-				width: 95%;
+				width: 100%;
 				margin-left: auto;
 	      margin-right: auto;
 			}
@@ -143,24 +143,24 @@
 
 <?php
 	if ($msg != ""){
-		echo '<div class="alert success">
+		echo '<section><div class="alert success">
 						<span class="closebtn">&times;</span>
 						' . $msg . '
-					</div>';
+					</div></section>';
 	}
 
 	if ($emailErr != ""){
-		echo '<div class="alert error">
+		echo '<section><div class="alert error">
 						<span class="closebtn">&times;</span>
 						' . $emailErr . '
-					</div>';
+					</div></section>';
 	}
 
 	if ($error_msg != ""){
-		echo '<div class="alert error">
+		echo '<section><div class="alert error">
 						<span class="closebtn">&times;</span>
 						' . $error_msg . '
-					</div>';
+					</div></section>';
 	}
 ?>
 
