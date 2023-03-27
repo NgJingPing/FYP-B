@@ -54,7 +54,7 @@
           $email = $password = $user_type = $repassword = $error_msg = "";
           $_POST["email"] = $_POST["password"] = $_POST["repassword"] = $_POST["user_type"] = "";
         } else {
-          $error_msg = "<p>Password does not same</p>";
+          $error_msg = "<p>Password does not match</p>";
         }
     }
   }
