@@ -74,7 +74,9 @@ button:hover {
 }
 
 .container {
-  padding: 16px;
+  width: 100%;
+  padding: 16px 100px;
+  border-radius: 5px;
   background-color: #f2f2f2;
 }
 
