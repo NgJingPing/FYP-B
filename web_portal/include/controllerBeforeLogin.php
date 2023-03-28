@@ -102,20 +102,24 @@
 
     //if user click check reset otp button
     if(isset($_POST['check-reset-otp'])){
-        $_SESSION['info'] = "";
-        $otp_code = mysqli_real_escape_string($conn, $_POST['otp']);
-        $check_code = "SELECT * FROM users WHERE code = $otp_code";
-        $code_res = mysqli_query($conn, $check_code);
-        if(mysqli_num_rows($code_res) > 0){
-            $fetch_data = mysqli_fetch_assoc($code_res);
-            $email = $fetch_data['email'];
-            $_SESSION['email'] = $email;
-            $info = "Please create a new password that you don't use on any other site.";
-            $_SESSION['info'] = $info;
-            header('location: new_password.php');
-            exit();
+        unset($_SESSION['info']);
+        if (is_numeric($_POST['otp'])) { 
+            $otp_code = mysqli_real_escape_string($conn, $_POST['otp']);
+            $check_code = "SELECT * FROM users WHERE code = $otp_code";
+            $code_res = mysqli_query($conn, $check_code);
+            if(mysqli_num_rows($code_res) > 0){
+                $fetch_data = mysqli_fetch_assoc($code_res);
+                $email = $fetch_data['email'];
+                $_SESSION['email'] = $email;
+                $info = "Please create a new password that you don't use on any other site.";
+                $_SESSION['info'] = $info;
+                header('location: new_password.php');
+                exit();
+            }else{
+                $errors = "You've entered incorrect code!";
+            }
         }else{
-            $errors = "You've entered incorrect code!";
+            $errors = "You should only enter number";
         }
     }
 

@@ -56,16 +56,6 @@
   </div>
 </div>
 
-<!---Alert Message for After Success Change Password--->
-<?php
-    if (isset($_SESSION['info'])){
-    echo '<div class="alert success">
-            <span class="closebtn">&times;</span>
-            ' . $_SESSION['info'] . '
-            </div>';
-    }
-?>
-
 <!---Alert Message for Wrong Login--->
 <?php
   if ($errors != ""){
