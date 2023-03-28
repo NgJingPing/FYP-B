@@ -7,45 +7,16 @@
 <head>
     <?php include "include/head.php";?>
     <title>ANPR - Forgot Password</title>
-    <style>
-      /*Alert Message Css */
-      .alert {
-          font-size: 18px;
-          font-weight: bold;
-          background-color: #f44336;
-          color: white;
-          opacity: 1;
-          transition: opacity 0.6s;
-          width: 95%;
-          margin-left: auto;
-          margin-right: auto;
-      }
-
-      .closebtn {
-          margin-left: auto;
-          color: white;
-          font-weight: bold;
-          float: right;
-          font-size: 28px;
-          line-height: 22px;
-          cursor: pointer;
-          transition: 0.3s;
-      }
-
-      .closebtn:hover {
-         color: black;
-      }
-    </style>
 </head>
 
 <body>
 
 <div class="logo_container">
-  <div class="logo_group">
-  <img src="images/naim.png" alt="NAIM" class="center" style="width:240px;height:60px;">
-  <div class="logo"><span class="logo_initial">V</span><span>ISION</span></div>
-  <div class="logo_tail"><span>ANPR</span></div>
-  </div>
+<div class="logo_group">
+<img src="images/naim.png" alt="NAIM" class="center" style="width:240px;height:60px;">
+<div class="logo"><span class="logo_initial">V</span><span>ISION</span></div>
+<div class="logo_tail"><span>ANPR</span></div>
+</div>
 </div>
 
 <?php

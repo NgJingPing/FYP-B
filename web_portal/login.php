@@ -19,38 +19,6 @@
 <head>
   <?php include "include/head.php";?>
   <title>ANPR - Login</title>
-  <style>
-    .alert {
-        font-size: 18px;
-        font-weight: bold;
-        background-color: #f44336;
-        color: white;
-        opacity: 1;
-        transition: opacity 0.6s;
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .alert.success {background-color: #4DAC62;}
-    .alert.error {background-color: #f44336;}
-    .alert.warning {background-color: #ff9800;}
-
-    .closebtn {
-        margin-left: auto;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 28px;
-        line-height: 22px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .closebtn:hover {
-        color: black;
-    }
-  </style>
 </head>
 
 <body>
