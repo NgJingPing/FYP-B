@@ -161,13 +161,13 @@
 
       <div class="form_container">
       <p><label for="email"><b>Enter New User Email</b></label><span class="error"> * </span><br>
-      <input type="text" class="form_control" placeholder="Enter Email" name="email" required><span class="error"></p>
+      <input type="text" class="form_control" name="email" required><span class="error"></p>
 
       <p><label for="psw"><b>Enter Password for New User</b></label><span class="error"> * </span><br>
-      <input type="password" class="form_control" placeholder="Enter Password" name="password" required></p>
+      <input type="password" class="form_control" name="password" required></p>
 
       <p><label for="psw"><b>Re-enter the Password</b></label><span class="error"> * </span><br>
-      <input type="password" class="form_control" placeholder="Re-enter Password" name="repassword" required></p>
+      <input type="password" class="form_control" name="repassword" required></p>
 			</div>
 
 			<div>
