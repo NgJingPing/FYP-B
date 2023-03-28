@@ -29,6 +29,9 @@
     }
 ?>
 
+<!---Script to close alert message--->
+<script src="script/alert.js"></script>
+
 
     <form class="modal-content animate" action="forgot_password.php" method="POST">
 

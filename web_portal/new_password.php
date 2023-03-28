@@ -45,6 +45,9 @@ if($email == false){
     }
 ?>
 
+<!---Script to close alert message--->
+<script src="script/alert.js"></script>
+
 
     <form class="modal-content animate" action="new_password.php" method="POST">
 

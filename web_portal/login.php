@@ -52,6 +52,9 @@
     }
 ?>
 
+<!---Script to close alert message--->
+<script src="script/alert.js"></script>
+
 <!---Form to Login--->
   <form class="modal-content animate" action="login.php" method="POST">
 
