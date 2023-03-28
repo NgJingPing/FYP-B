@@ -129,7 +129,8 @@
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
         if($password !== $cpassword){
-            $errors['password'] = "Confirm password not matched!";
+            $errors = "Confirm password not matched! ";
+            $_SESSION['info'] = null; 
         }else{
             $code = 0;
             $email = $_SESSION['email']; //getting this email using session
