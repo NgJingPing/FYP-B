@@ -125,12 +125,11 @@
 
     //if user click change password button
     if(isset($_POST['change-password'])){
-        $_SESSION['info'] = "";
+        unset($_SESSION['info']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
         if($password !== $cpassword){
             $errors = "New password and confirm password do not match! ";
-            $_SESSION['info'] = null; 
         }else{
             $code = 0;
             $email = $_SESSION['email']; //getting this email using session

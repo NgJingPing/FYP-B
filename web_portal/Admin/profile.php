@@ -15,7 +15,7 @@
 
 	include "../include/config.php";
 
-  $msgErr = "";
+	$msgErr = "";
 
 
 	$oldpassword = $newpassword = $renewpassword = $error_msg = $msg = $successmsg = "";
@@ -45,22 +45,22 @@
 		if($oldpassword != "" & $newpassword != "" & $renewpassword != "") {
 			if ($oldpassword == $dbpass){
 				if ($newpassword == $renewpassword){
-          $newpassword = hash("sha256", $newpassword);
-          $myquery = "UPDATE users set password = ? WHERE userID = ?";
-          $stmt = $conn->prepare($myquery);
-          $stmt->bind_param("si", $newpassword, $userid);
-          $stmt->execute();
-          $conn->close();
-          $successmsg = "New Password is saved.";
-          $email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
-          $_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
-        } else {
-          $error_msg = "<p>New Password does not match</p>";
-        }
+		$newpassword = hash("sha256", $newpassword);
+		$myquery = "UPDATE users set password = ? WHERE userID = ?";
+		$stmt = $conn->prepare($myquery);
+		$stmt->bind_param("si", $newpassword, $userid);
+		$stmt->execute();
+		$conn->close();
+		$successmsg = "New Password is saved.";
+		$email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
+		$_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
+		} else {
+		$error_msg = "<p>New Password does not match</p>";
+		}
 			} else {
 				$msg = "<p>Incorrect password entered</p>";
 			}
-    }
+	}
 
 	}
 ?>
@@ -71,7 +71,7 @@
 <head>
 	<?php include "../include/head.php";?>
 	<title>ANPR - Profile</title>
-    <style>
+	<style>
 		.card {
 			box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 			width: 80%;
@@ -319,39 +319,39 @@
 		@media only screen and (min-width: 800px) {
 			.emailtext, .title{font-size: 2rem;}
 		}
-    </style>
+	</style>
 </head>
 
 <body>
 <!--Sidebar starts here-->
 <?php 
-    // Give active page  
-    $page = 'Profile';
-    $subpage = '';
-    // Give user role
-    if($session_type == "Super Admin") {
-        $role = "Super admin"; include "../include/navbar.php";
-    }
-    else{
-        $role = "Admin"; include "../include/navbar.php";
-    }
+	// Give active page  
+	$page = 'Profile';
+	$subpage = '';
+	// Give user role
+	if($session_type == "Super Admin") {
+		$role = "Super admin"; include "../include/navbar.php";
+	}
+	else{
+		$role = "Admin"; include "../include/navbar.php";
+	}
 ?> 
 </div>
 <script src="script/log.js"></script>
 <!--Sidebar ends here-->
 
 <?php
-  include "../include/config.php";
-  $referenceID = "";
+include "../include/config.php";
+$referenceID = "";
 
-  $myquery = "SELECT role, isAdvanced FROM users where email = '$session_email'";
-  $sql = mysqli_query($conn,$myquery);
-  $role = "";
-  $isAdvanced = "";
-  while($row = mysqli_fetch_assoc($sql)) {
-    $role = $row['role'];
-    $isAdvanced = $row['isAdvanced'];
-  }
+$myquery = "SELECT role, isAdvanced FROM users where email = '$session_email'";
+$sql = mysqli_query($conn,$myquery);
+$role = "";
+$isAdvanced = "";
+while($row = mysqli_fetch_assoc($sql)) {
+	$role = $row['role'];
+	$isAdvanced = $row['isAdvanced'];
+}
 ?>
 
 <div class="content-container">
@@ -383,50 +383,50 @@
 			}
 		?>
 
-    <div class="card">
-      <img src="../images/administrator.png" alt="User" class="center" style="width:240px;height:260px;">
-      <br>
-      <p class="emailtext"><?php echo $session_email;?></p>
-      <br>
-      <p class="title">
-        <?php
-          if ($role == 1 && $isAdvanced == 1){
-            echo "Super Admin";
-          } else if ($role == 1 && $isAdvanced == 0){
-            echo "Admin";
-          } else if ($role == 2 && $isAdvanced == 0){
-            echo "Security";
-          }
-        ?>
-      </p>
-      <br>
-      <p>NAIM Holdings Berhad</p>
-      <br>
-      <p><button onclick="openpopout()">Change Password</button><br></p>
-      <br>
-    </div>
+	<div class="card">
+	<img src="../images/administrator.png" alt="User" class="center" style="width:240px;height:260px;">
+	<br>
+	<p class="emailtext"><?php echo $session_email;?></p>
+	<br>
+	<p class="title">
+		<?php
+		if ($role == 1 && $isAdvanced == 1){
+			echo "Super Admin";
+		} else if ($role == 1 && $isAdvanced == 0){
+			echo "Admin";
+		} else if ($role == 2 && $isAdvanced == 0){
+			echo "Security";
+		}
+		?>
+	</p>
+	<br>
+	<p>NAIM Holdings Berhad</p>
+	<br>
+	<p><button onclick="openpopout()">Change Password</button><br></p>
+	<br>
+	</div>
 </div>
 
 
 <div id="id01" class="modal">
 
-  <form class="modal-content animate" action="profile.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="closepopout()" class="close" title="Close Modal">&times;</span>
-    </div>
+<form class="modal-content animate" action="profile.php" method="post">
+	<div class="imgcontainer">
+	<span onclick="closepopout()" class="close" title="Close Modal">&times;</span>
+	</div>
 
-    <div class="input_container">
-      <label for="oldpassword"><b>Enter Old Password</b></label><span class="error"> * </span><br>
-      <input type="password" placeholder="Enter Old Password" name="oldpassword" required></p><br>
+	<div class="input_container">
+	<label for="oldpassword"><b>Enter Old Password</b></label><span class="error"> * </span><br>
+	<input type="password" placeholder="Enter Old Password" name="oldpassword" required></p><br>
 
-      <label for="newpassword"><b>Enter New Password</b></label><span class="error"> * </span><br>
-      <input type="password" placeholder="Enter New Password" name="newpassword" required></p><br>
+	<label for="newpassword"><b>Enter New Password</b></label><span class="error"> * </span><br>
+	<input type="password" placeholder="Enter New Password" name="newpassword" required></p><br>
 
 			<label for="renewpassword"><b>Re-Enter New Password</b></label><span class="error"> * </span><br>
-      <input type="password" placeholder="Re-Enter New Password" name="renewpassword" required></p><br>
+	<input type="password" placeholder="Re-Enter New Password" name="renewpassword" required></p><br>
 
 
-    </div>
+	</div>
 
 
 
@@ -436,11 +436,11 @@
 		<button type="button" onclick="closepopout()" class="button_cancel">Cancel</button>
 		</div>
 		<div class="form_container">
-		 <button type="submit" name = "submit" class="button_submit">Submit</button>
+		<button type="submit" name = "submit" class="button_submit">Submit</button>
 		</div>
 		</div>
 		</div>
-  </form>
+</form>
 </div>
 
 <script>
@@ -449,20 +449,20 @@ var modal = document.getElementById('id01');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
 }
 
 var close = document.getElementsByClassName("closebtn");
 var i;
 
 for (i = 0; i < close.length; i++) {
-  close[i].onclick = function(){
-    var div = this.parentElement;
-    div.style.opacity = "0";
-    setTimeout(function(){ div.style.display = "none"; }, 600);
-  }
+close[i].onclick = function(){
+	var div = this.parentElement;
+	div.style.opacity = "0";
+	setTimeout(function(){ div.style.display = "none"; }, 600);
+}
 }
 
 manageModelScrollbar();
