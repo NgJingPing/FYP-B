@@ -129,7 +129,7 @@
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
         if($password !== $cpassword){
-            $errors = "Confirm password not matched! ";
+            $errors = "New password and confirm password do not match! ";
             $_SESSION['info'] = null; 
         }else{
             $code = 0;
