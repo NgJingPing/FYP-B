@@ -1,7 +1,15 @@
 <?php
     //Destroy session to prevent wrong login
+    //Bring message from succes create password
     session_start();
-    session_destroy();
+    $info = "";
+    if (isset($_SESSION['info'])){
+      $info = $_SESSION['info'];
+      session_destroy();
+    }else{
+      session_destroy();
+    }
+
     //The php below store php code for login and forgot password process
     require_once "include/controllerBeforeLogin.php";
 ?>
@@ -64,6 +72,16 @@
             ' . $errors . '
           </div>';
   }
+?>
+
+<?php
+/*Alert Message */
+    if ($info != ""){
+    echo '<div class="alert success">
+            <span class="closebtn">&times;</span>
+            ' . $info . '
+            </div>';
+    }
 ?>
 
 <!---Form to Login--->
