@@ -44,22 +44,22 @@
 		if($oldpassword != "" & $newpassword != "" & $renewpassword != "") {
 			if ($oldpassword == $dbpass){
 				if ($newpassword == $renewpassword){
-          $newpassword = hash("sha256", $newpassword);
-          $myquery = "UPDATE users set password = ? WHERE userID = ?";
-          $stmt = $conn->prepare($myquery);
-          $stmt->bind_param("si", $newpassword, $userid);
-          $stmt->execute();
-          $conn->close();
-          $successmsg = "New Password is saved.";
-          $email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
-          $_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
-        } else {
-          $error_msg = "<p>New Password does not match</p>";
-        }
+					$newpassword = hash("sha256", $newpassword);
+					$myquery = "UPDATE users set password = ? WHERE userID = ?";
+					$stmt = $conn->prepare($myquery);
+					$stmt->bind_param("si", $newpassword, $userid);
+					$stmt->execute();
+					$conn->close();
+					$successmsg = "New Password is saved.";
+					$email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
+					$_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
+				} else {
+					$error_msg = "<p>New password and re-enter password do not match!</p>";
+				}
 			} else {
 				$msg = "<p>Incorrect password entered</p>";
 			}
-    }
+    	}
 
 	}
 ?>
@@ -243,7 +243,7 @@
 			color: white;
 			opacity: 1;
 			transition: opacity 0.6s;
-			width: 95%;
+			width: 100%;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -354,24 +354,24 @@
 
 		<?php
 			if ($successmsg != ""){
-				echo '<div class="alert success">
+				echo '<section><div class="alert success">
 								<span class="closebtn">&times;</span>
 								' . $successmsg . '
-							</div>';
+							</div></section>';
 			}
 
 			if ($error_msg != ""){
-				echo '<div class="alert error">
+				echo '<section><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $error_msg . '
-							</div>';
+							</div></section>';
 			}
 
 			if ($msg != ""){
-				echo '<div class="alert error">
+				echo '<section><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $msg . '
-							</div>';
+							</div></section>';
 			}
 		?>
 

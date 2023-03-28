@@ -45,22 +45,22 @@
 		if($oldpassword != "" & $newpassword != "" & $renewpassword != "") {
 			if ($oldpassword == $dbpass){
 				if ($newpassword == $renewpassword){
-		$newpassword = hash("sha256", $newpassword);
-		$myquery = "UPDATE users set password = ? WHERE userID = ?";
-		$stmt = $conn->prepare($myquery);
-		$stmt->bind_param("si", $newpassword, $userid);
-		$stmt->execute();
-		$conn->close();
-		$successmsg = "New Password is saved.";
-		$email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
-		$_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
-		} else {
-		$error_msg = "<p>New Password does not match</p>";
-		}
+					$newpassword = hash("sha256", $newpassword);
+					$myquery = "UPDATE users set password = ? WHERE userID = ?";
+					$stmt = $conn->prepare($myquery);
+					$stmt->bind_param("si", $newpassword, $userid);
+					$stmt->execute();
+					$conn->close();
+					$successmsg = "New Password is saved.";
+					$email = $newpassword = $role = $isAdvanced = $renewpassword = $oldpassword = $error_msg = $userid ="";
+					$_POST["oldpassword"] = $_POST["newpassword"] = $_POST["renewpassword"] = "";
+				} else {
+					$error_msg = "<p>New password and re-enter password do not match!</p>";
+				}
 			} else {
 				$msg = "<p>Incorrect password entered</p>";
 			}
-	}
+		}
 
 	}
 ?>
