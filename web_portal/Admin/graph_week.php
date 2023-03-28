@@ -104,8 +104,8 @@
         }
 
 
-        $format = 'j M';
-        $format2 = 'j M Y';
+        $format = 'd M';
+        $format2 = 'd M Y';
         $start_day = date($format, $start);
         $end_day = date($format2, $end);
         $date = $start_day . "-". $end_day;
