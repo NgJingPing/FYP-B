@@ -288,8 +288,8 @@ for ($c = 1; $c <= 300; $c++) {
 }
 
 echo "<h2>Generate Data</h2>";
-echo "<h3>✔ 25 tenant data inserted successfully</h3>";
-echo "<h3>✔ 25 tehicle data inserted successfully</h3>";
+echo "<h3>✔ 25 Tenant data inserted successfully</h3>";
+echo "<h3>✔ 25 Vehicle data inserted successfully</h3>";
 echo "<h3>✔ 600 Entrylog data inserted successfully</h3>";
 echo "<h3>✔ 600 Exitlog data inserted successfully</h3>";
 echo "<h3>✔ 300 Deniedaccess data inserted successfully</h3>";
