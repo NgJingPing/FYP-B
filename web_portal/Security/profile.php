@@ -70,7 +70,7 @@
 <head>
 	<?php include "../include/head.php";?>
 	<title>ANPR - Profile</title>
-    <style>
+   <style>
 		.card {
 			box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 			width: 80%;
@@ -142,7 +142,7 @@
 		}
 
 		.input_container {
-		  	padding: 16px;
+			padding: 16px;
 			background-color: #f2f2f2;
 		}
 
@@ -227,13 +227,13 @@
 
 		/* Change styles for span and cancel button on extra small screens */
 		@media screen and (max-width: 300px) {
-		  span.psw {
-		     display: block;
-		     float: none;
-		  }
-		  .cancelbtn {
-		     width: 100%;
-		  }
+			span.psw {
+				display: block;
+				float: none;
+			}
+			.cancelbtn {
+				width: 100%;
+			}
 		}
 
 		.alert {
@@ -264,7 +264,7 @@
 		}
 
 		.closebtn:hover {
-		 	 color: black;
+			color: black;
 		}
 
 		.button_submit, .button_cancel {
@@ -280,45 +280,45 @@
 			height: 45px;
 			border-radius: 4px;
 			box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
-	  	}
+		}
 
 		.button_submit {
 			background-color: #061C17;
-				color: #C5E5CC;
+			color: #C5E5CC;
 		}
 
 		.button_cancel {
-				background-color: #C5E5CC;
-				color: #061C17;
+			background-color: #C5E5CC;
+			color: #061C17;
 		}
 
 		.button_submit:hover, .button_cancel:hover {
-				color: #4DAC62;
+		color: #4DAC62;
 		}
 
 		.form_group {
 			display: flex;
 			width: 100%;
-     	 }
+		}
 
 
-   		 .form_container {
-       	 display: inline-block;
-     	   width: 100%;
-     	 }
+		.form_container {
+			display: inline-block;
+			width: 100%;
+		}
 
-     	 .form_container label{
+		.form_container label{
 			font-weight: normal;
 			padding-top: 5px;
 			margin-right: 10px;
 			font-size: 1.25rem;
 			white-space: nowrap;
-    	  }
+		}
 
-	  	@media only screen and (min-width: 800px) {
-    		.emailtext, .title{font-size: 2rem;}
-  		}
-    </style>
+		@media only screen and (min-width: 800px) {
+			.emailtext, .title{font-size: 2rem;}
+		}
+	</style>
 </head>
 
 <body>
@@ -354,21 +354,21 @@
 
 		<?php
 			if ($successmsg != ""){
-				echo '<section><div class="alert success">
+				echo '<section style="padding:0px;padding-right:40px;"><div class="alert success">
 								<span class="closebtn">&times;</span>
 								' . $successmsg . '
 							</div></section>';
 			}
 
 			if ($error_msg != ""){
-				echo '<section><div class="alert error">
+				echo '<section style="padding:0px;padding-right:40px;;"><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $error_msg . '
 							</div></section>';
 			}
 
 			if ($msg != ""){
-				echo '<section><div class="alert error">
+				echo '<section style="padding:0px;padding-right:40px;"><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $msg . '
 							</div></section>';
