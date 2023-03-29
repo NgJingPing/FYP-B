@@ -465,8 +465,6 @@ close[i].onclick = function(){
 }
 }
 
-manageModelScrollbar();
-
 function openpopout(){
 	document.getElementById('id01').style.display="block"; 
 	document.querySelector("body").style.overflow = "hidden";
@@ -481,16 +479,6 @@ function closepopout(){
 	window.addEventListener('resize', function() {
 		manageModelScrollbar();
 	})
-}
-
-function manageModelScrollbar(){
-	var windowHeight = window.innerHeight;
-	if (windowHeight > 690){
-		document.getElementById('id01').style.overflowY ="hidden"; 
-	}
-	else{
-		document.getElementById('id01').style.overflowY ="scroll"; 
-	}
 }
 </script>
 

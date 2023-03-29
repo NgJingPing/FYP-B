@@ -181,10 +181,10 @@
             </tr>';   
             $count2 += 1;
         }
-        echo '</table></div></div>'; 
+        echo '</table></div></div>';  
         echo '</section>';
 
-
+        
         echo '<h2 class="report_table_name">Denied Access Log</h2>';
         echo '<section>';
         echo '<div class="log_container"> 

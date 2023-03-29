@@ -38,17 +38,17 @@ body::-webkit-scrollbar-thumb:hover {
 
 /*Navbar css starts here*/
 .navigation_bar {
-    height: 100%;
-    width: 280px; 
-    position: fixed; 
-    z-index: 1; 
-    top: 0; 
-    left: 0;
-    background-color: #061C17;
-    overflow: hidden; 
-    padding-top: 40px;
-    cursor: pointer;
-    overflow-y: auto;
+  height: 100%;
+  width: 280px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #061C17;
+  overflow: hidden; 
+  padding-top: 40px;
+  cursor: pointer;
+  overflow-y: auto;
 }
 
 .navigation_bar::-webkit-scrollbar {
@@ -146,7 +146,6 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   color: #C5E5CC;
 }
 
-
 @media screen and (max-height: 540px) {
   .navigation_bar {padding-top: 5px;}
   .navigation_bar a{font-size: 1.25rem;}
@@ -183,10 +182,10 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   }
 
   .db_image{
-    width: 60%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
+      width: 60%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.3);
   }
 
   div.waves {
@@ -203,3 +202,4 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   @media only screen and (min-width: 800px) {
     .main_container{font-size: 1.8rem;}
   }
+  /*Navbar css ends here*/

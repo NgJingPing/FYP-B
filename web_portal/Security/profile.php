@@ -459,8 +459,6 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
-manageModelScrollbar();
-
 function openpopout(){
 	document.getElementById('id01').style.display="block"; 
 	document.querySelector("body").style.overflow = "hidden";
@@ -477,15 +475,6 @@ function closepopout(){
 	})
 }
 
-function manageModelScrollbar(){
-	var windowHeight = window.innerHeight;
-	if (windowHeight > 690){
-		document.getElementById('id01').style.overflowY ="hidden"; 
-	}
-	else{
-		document.getElementById('id01').style.overflowY ="scroll"; 
-	}
-}
 </script>
 
 <div class="waves"></div>

@@ -38,17 +38,17 @@ body::-webkit-scrollbar-thumb:hover {
 
 /*Navbar css starts here*/
 .navigation_bar {
-    height: 100%;
-    width: 280px; 
-    position: fixed; 
-    z-index: 1; 
-    top: 0; 
-    left: 0;
-    background-color: #061C17;
-    overflow: hidden; 
-    padding-top: 40px;
-    cursor: pointer;
-    overflow-y: auto;
+  height: 100%;
+  width: 280px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #061C17;
+  overflow: hidden; 
+  padding-top: 40px;
+  cursor: pointer;
+  overflow-y: auto;
 }
 
 .navigation_bar::-webkit-scrollbar {
@@ -128,7 +128,6 @@ font-family: 'Lato', Arial, Helvetica, sans-serif;
   margin-top: 10%;
   padding-bottom: 32px;
 }
-
 
 .fa-angle-right {
   padding-left: 80px;
