@@ -43,7 +43,7 @@
         <form method="post" action="" class="date_selector">
             <label class="date_selector_label">Start Date</label> <input type="date" id="start" name="start" class="date_input">
             <label class="date_selector_label">End date</label> <input type="date" id="end" name="end" class="date_input">
-            <button type="submit" class="button_submit" name ="submit" value="Submit">Search</button>
+            <button type="submit" id="submit" class="button_submit" name ="submit" value="Submit">Search</button>
         </form>
 
         <div class="tab-con">
