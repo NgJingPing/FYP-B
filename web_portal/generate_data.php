@@ -209,7 +209,7 @@ for ($a = 1; $a <= 600; $a++) {
     // Generate Entrylog's date time bewteen 2023 and 2028
     $randomDateTime = generateRandomDateTime();
 
-    $sql8 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2)
+    $sql8 = "INSERT INTO entrylog (vehicleID, entryTime, image, image_2)
     VALUES ('$randomNumber', '$randomDateTime', 'entrylog\\\generateData.jpg', 'entrylog\\\generateData_2.jpg')";
 
 

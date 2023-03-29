@@ -54,7 +54,7 @@
 	    );
     ";
 
-    $sql3 = "CREATE TABLE entryLog (
+    $sql3 = "CREATE TABLE entrylog (
         referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
         vehicleID INT(6) NOT NULL, 
         entryTime DATETIME NOT NULL,
@@ -64,7 +64,7 @@
        );
     ";
 
-    $sql4 = "CREATE TABLE exitLog (
+    $sql4 = "CREATE TABLE exitlog (
         referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
         vehicleID INT(6) NOT NULL, 
         exitTime DATETIME NOT NULL,
