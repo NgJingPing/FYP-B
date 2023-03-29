@@ -98,13 +98,13 @@
             array_push($yentryCountArray, $row["total"]);
         }
 
-        $sql11 = "SELECT(SELECT COUNT(*) FROM exitLog WHERE YEAR(`exitTime`) = '$ysdate') AS total;";
+        $sql11 = "SELECT(SELECT COUNT(*) FROM exitlog WHERE YEAR(`exitTime`) = '$ysdate') AS total;";
         $result11 = $conn->query($sql11);
         while($row = mysqli_fetch_array($result11)){
             array_push($yexitCountArray, $row["total"]);
         }
 
-        $sql12 = "SELECT(SELECT COUNT(*) FROM deniedaccess WHERE YEAR(`deniedTime`) = '$ysdate') AS total;";
+        $sql12 = "SELECT(SELECT COUNT(*) FROM deniedAccess WHERE YEAR(`deniedTime`) = '$ysdate') AS total;";
         $result12 = $conn->query($sql12);
         while($row = mysqli_fetch_array($result12)){
             array_push($ydeniedCountArray, $row["total"]);

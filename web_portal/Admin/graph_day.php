@@ -103,7 +103,7 @@
             array_push($exitCountArray, $row["total"]);
         }
 
-        $sql4 = "SELECT(SELECT COUNT(*) FROM deniedaccess WHERE DATE(`deniedTime`) = '$sdate') AS total;";
+        $sql4 = "SELECT(SELECT COUNT(*) FROM deniedAccess WHERE DATE(`deniedTime`) = '$sdate') AS total;";
         $result4 = $conn->query($sql4);
         while($row = mysqli_fetch_array($result4)){
             array_push($deniedCountArray, $row["total"]);

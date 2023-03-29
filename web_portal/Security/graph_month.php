@@ -102,13 +102,13 @@
             array_push($mentryCountArray, $row["total"]);
         }
 
-        $sql7 = "SELECT(SELECT COUNT(*) FROM exitLog WHERE MONTH(`exitTime`) = '$msdate' AND YEAR(`exitTime`) = '$msydate') AS total;";
+        $sql7 = "SELECT(SELECT COUNT(*) FROM exitlog WHERE MONTH(`exitTime`) = '$msdate' AND YEAR(`exitTime`) = '$msydate') AS total;";
         $result7 = $conn->query($sql7);
         while($row = mysqli_fetch_array($result7)){
             array_push($mexitCountArray, $row["total"]);
         }
 
-        $sql8 = "SELECT(SELECT COUNT(*) FROM deniedaccess WHERE MONTH(`deniedTime`) = '$msdate' AND YEAR(`deniedTime`) = '$msydate') AS total;";
+        $sql8 = "SELECT(SELECT COUNT(*) FROM deniedAccess WHERE MONTH(`deniedTime`) = '$msdate' AND YEAR(`deniedTime`) = '$msydate') AS total;";
         $result8 = $conn->query($sql8);
         while($row = mysqli_fetch_array($result8)){
             array_push($mdeniedCountArray, $row["total"]);
