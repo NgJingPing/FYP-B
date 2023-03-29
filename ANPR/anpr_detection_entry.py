@@ -261,18 +261,18 @@ def detect():
                                             vehicle_id = myresult[0]
                                             if current_plate != plate:
                                                 if camera.lower() == "entry":
-                                                    sql4 = "SELECT vehicleID, referenceID FROM entryLog ORDER BY referenceID DESC LIMIT 1"
+                                                    sql4 = "SELECT vehicleID, referenceID FROM entrylog ORDER BY referenceID DESC LIMIT 1"
                                                 elif camera.lower() == "exit":
-                                                    sql4 = "SELECT vehicleID, referenceID FROM exitLog ORDER BY referenceID DESC LIMIT 1"
+                                                    sql4 = "SELECT vehicleID, referenceID FROM exitlog ORDER BY referenceID DESC LIMIT 1"
                                                 mycursor.execute(sql4)
                                                 myresult = mycursor.fetchone()
                                                 if(myresult != None):
                                                     vID = myresult[0]
                                                     if(vID == vehicle_id):
                                                         if camera.lower() == "entry":
-                                                            sql2 = "UPDATE entryLog SET entryTime = %s WHERE referenceID = %s"
+                                                            sql2 = "UPDATE entrylog SET entryTime = %s WHERE referenceID = %s"
                                                         elif camera.lower() == "exit":
-                                                            sql2 = "UPDATE exitLog SET exitTime = %s WHERE referenceID = %s"
+                                                            sql2 = "UPDATE exitlog SET exitTime = %s WHERE referenceID = %s"
                                                         rID = myresult[1]
                                                         z = (date, rID)
                                                         mycursor.execute(sql2, z)
@@ -280,9 +280,9 @@ def detect():
                                                         count = 0
                                                     else:
                                                         if camera.lower() == "entry":
-                                                            sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                            sql2 = "INSERT INTO entrylog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
                                                         elif camera.lower() == "exit":
-                                                            sql2 = "INSERT INTO exitLog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                            sql2 = "INSERT INTO exitlog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
                                                         val = (vehicle_id, date, img_name, img_name_2)
                                                         mycursor.execute(sql2, val)
                                                         conn.commit()
@@ -294,9 +294,9 @@ def detect():
                                                         count = 0
                                                 else:
                                                     if camera.lower() == "entry":
-                                                        sql2 = "INSERT INTO entryLog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                        sql2 = "INSERT INTO entrylog (vehicleID, entryTime, image, image_2) VALUES (%s, %s, %s, %s)"
                                                     elif camera.lower() == "exit":
-                                                        sql2 = "INSERT INTO exitLog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
+                                                        sql2 = "INSERT INTO exitlog (vehicleID, exitTime, image, image_2) VALUES (%s, %s, %s, %s)"
                                                     val = (vehicle_id, date, img_name, img_name_2)
                                                     mycursor.execute(sql2, val)
                                                     conn.commit()
