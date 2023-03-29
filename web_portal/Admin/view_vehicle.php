@@ -109,7 +109,7 @@
                             "</td><td>".$row["colour"]."</td><td>".$active."</td><td><span><a href='edit_vehicle.php?vehicleID=$row[vehicleID]'><i class='fa-solid fa-pen-to-square'></i></a>
                             </span>";
                             $id = $row['vehicleID'];
-                            $sql2 = "SELECT * FROM entryLog WHERE vehicleID = $id;";
+                            $sql2 = "SELECT * FROM entrylog WHERE vehicleID = $id;";
                             $result2 = mysqli_query($conn, $sql2);
                             if(mysqli_num_rows($result2) == 0){
                                 echo '<span><a onClick="javascript:return confirm(\'Do you really want to delete this record? \n\nLicense Plate: '.$row["licensePlate"]. '\nTenant: '.$row["name"].'\')" href="remove_vehicle.php?vehicleID='.$row["vehicleID"].'"><i class="fa-solid fa-trash-can"></i></a></span>';
