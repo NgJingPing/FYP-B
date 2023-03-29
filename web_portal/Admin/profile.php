@@ -469,7 +469,6 @@ function openpopout(){
 	document.getElementById('id01').style.display="block"; 
 	document.querySelector("body").style.overflow = "hidden";
 	window.addEventListener('resize', function() {
-		manageModelScrollbar();
 	})
 }
 
@@ -477,7 +476,6 @@ function closepopout(){
 	document.getElementById('id01').style.display="none"; 
 	document.querySelector("body").style.overflow = "visible";
 	window.addEventListener('resize', function() {
-		manageModelScrollbar();
 	})
 }
 </script>
