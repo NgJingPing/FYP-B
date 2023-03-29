@@ -354,21 +354,21 @@
 
 		<?php
 			if ($successmsg != ""){
-				echo '<section style="padding:0px;padding-right:40px;"><div class="alert success">
+				echo '<section style="padding:0px;padding-right:40px;margin:0;"><div class="alert success">
 								<span class="closebtn">&times;</span>
 								' . $successmsg . '
 							</div></section>';
 			}
 
 			if ($error_msg != ""){
-				echo '<section style="padding:0px;padding-right:40px;;"><div class="alert error">
+				echo '<section style="padding:0px;padding-right:40px;margin:0;"><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $error_msg . '
 							</div></section>';
 			}
 
 			if ($msg != ""){
-				echo '<section style="padding:0px;padding-right:40px;"><div class="alert error">
+				echo '<section style="padding:0px;padding-right:40px;margin:0;"><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $msg . '
 							</div></section>';
