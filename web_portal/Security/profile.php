@@ -354,27 +354,27 @@
 
 		<?php
 			if ($successmsg != ""){
-				echo '<section style="padding:0px;padding-right:40px;"><div class="alert success">
+				echo '<section><div class="alert success">
 								<span class="closebtn">&times;</span>
 								' . $successmsg . '
 							</div></section>';
 			}
 
 			if ($error_msg != ""){
-				echo '<section style="padding:0px;padding-right:40px;;"><div class="alert error">
+				echo '<section><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $error_msg . '
 							</div></section>';
 			}
 
 			if ($msg != ""){
-				echo '<section style="padding:0px;padding-right:40px;"><div class="alert error">
+				echo '<section><div class="alert error">
 								<span class="closebtn">&times;</span>
 								' . $msg . '
 							</div></section>';
 			}
 		?>
-
+	<section>
     <div class="card">
       <img src="../images/security.png" alt="User" class="center" style="width:240px;height:260px;">
       <br>
@@ -403,6 +403,7 @@
         }
       ?>
     </div>
+	</section>
 </div>
 
 
