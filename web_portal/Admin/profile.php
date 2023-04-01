@@ -382,7 +382,7 @@ while($row = mysqli_fetch_assoc($sql)) {
 							</div></section>';
 			}
 		?>
-
+	<section>
 	<div class="card">
 	<img src="../images/administrator.png" alt="User" class="center" style="width:240px;height:260px;">
 	<br>
@@ -405,6 +405,7 @@ while($row = mysqli_fetch_assoc($sql)) {
 	<p><button onclick="openpopout()">Change Password</button><br></p>
 	<br>
 	</div>
+	</section>
 </div>
 
 
