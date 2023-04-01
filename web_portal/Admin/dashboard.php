@@ -83,7 +83,7 @@ $referenceID = "";
         <div class="widget_value">
             <!-- Returns the number of denied access of the current day/date from database -->
             <?php
-            $totaldeniedquery = "SELECT COUNT(*) AS totaldenied FROM deniedaccess WHERE DATE(`deniedTime`) = CURDATE()";
+            $totaldeniedquery = "SELECT COUNT(*) AS totaldenied FROM deniedAccess WHERE DATE(`deniedTime`) = CURDATE()";
             $result = $conn->query($totaldeniedquery);
             while ($row = mysqli_fetch_array($result)) {
                 echo "<p>" . $row['totaldenied'] . "</p>";
