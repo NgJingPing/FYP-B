@@ -211,21 +211,20 @@ body::-webkit-scrollbar-thumb:hover {
   
   .dashboard_logs{
     display: block;
-    width: 106%;
+    width: 100%;
   }
 
 .dashboard_logs_container {
     color: #061C17;
     margin: 10px;
     display: block;
-    width: 90%;
+    width: 96%;
     padding: 10px;
     background-color:#f2f2f2;
     opacity: 90%;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
-
 
 .table{
     width: 100%;
@@ -296,7 +295,7 @@ thead{
 
 /*register_vehicle.php begins here*/
 form {
-  width: 104%;
+  width: 100%;
   padding: 10px;
   margin: auto;
   color: #061C17;
@@ -334,7 +333,7 @@ background-color: #e9e9e9;
 
 .form_control {
 border: 1px solid #333;
-width: 96%;
+width: 100%;
 border: none;
 display: block;
 height: 40px;
@@ -348,7 +347,7 @@ background-color: #fff;
 font-size: 1.25rem;
 padding: 5px;
 margin-top: 30px;
-width: 96%;
+width: 100%;
 border: none;
 display: block;
 height: 45px;
@@ -572,19 +571,11 @@ div.waves {
 .table-responsive .row .chartCard .chartBox canvas{
   width: 100%;
 }
-
-.date_selector_label:last-of-type {
-    margin-top: 20px;
-}
-
-.dbtn {
-    margin-bottom: 10px;
-}
 /*Media query on desktop*/
 @media only screen and (min-width: 900px) {
 
-  section{
-    padding-right: 40px;
+  body {
+    font-size: 16px;
   }
 
   .content-container{
@@ -622,7 +613,16 @@ div.waves {
   /*register_vehicle.php*/
   .form_group {
   display: flex;
+  gap: 20px;
   min-width: 520px; 
+}
+
+.form_control {
+  width: 100%;
+}
+
+.button_submit, .button_cancel {
+  width: 100%;
 }
   /*log details*/
   .main_container{font-size: 1.8rem;}
