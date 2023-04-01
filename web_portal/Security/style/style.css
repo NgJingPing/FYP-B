@@ -6,7 +6,6 @@
 
 html{
   font-size: 100%;
-  width: 99%;
 }
 
 body{
@@ -131,7 +130,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   .fa-angle-right {
-    padding-left: 80px;
+    padding-left: 20px;
   }
 
   .sub_menu {
@@ -141,8 +140,6 @@ body::-webkit-scrollbar-thumb:hover {
   }
   
   #hamburger_icon {
-    left: -8px;
-    position: relative;
     font-size: clamp(1.25rem, 2rem + 2vw, 2rem);
     color: #C5E5CC;
   }
@@ -157,12 +154,14 @@ body::-webkit-scrollbar-thumb:hover {
 /*Navbar css ends here*/
   section{
     width: 100%;
+    padding: 0;
+    margin: 0;
     padding-right: 40px;
   }
 
   .content-container{
     margin-top: 20px;
-    margin-left: 300px;
+    margin-left: 320px;
   }
 
   header h1{

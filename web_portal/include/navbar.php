@@ -20,7 +20,7 @@
                     </div>
                 <div class="navigation_links"><a href="analytic.php" <?php if ($page == 'Analytics') { echo 'class="active_page"'; } ?>><i class="fa fa-line-chart"></i>Analytics</a></div>
                 <?php if($role == "Super admin") { ?>
-                    <div class="navigation_links drop_down_btn"><a href="#" <?php if ($page == 'Management') { echo 'class="active_page"'; } ?>><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right" style="margin-left: 0px; padding-left:8px;"></i></a></div>
+                    <div class="navigation_links drop_down_btn"><a href="#" <?php if ($page == 'Management') { echo 'class="active_page"'; } ?>><i class="fa fa-users"></i>Management<i class="fa-solid fa-angle-right"></i></a></div>
                     <div class="sub_menu">
                         <div class="navigation_links"><a href="register_user.php" <?php if ($subpage == 'Add User') { echo 'class="active_page"'; } ?>></i>Add User</a></div>
                         <div class="navigation_links"><a href="manage_user.php" <?php if ($subpage == 'View User') { echo 'class="active_page"'; } ?>></i>View User</a></div>
