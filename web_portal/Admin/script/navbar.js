@@ -45,7 +45,7 @@ window.onload=function(){
     document.getElementsByClassName("logo_container")[0].innerHTML = `
     <span style="display:flex;">
       <span><i class="fa fa-xmark" id="hamburger_icon"></i></span>
-      <span style="width:100%; position:relative; top:-2px;">
+      <span style="width:100%; position:relative; top:-2px; left:-25px;">
         <span style="display:flex; gap:5px;">
           <div><img style="width:150px" src="../images/naim.png" class="naim_logo"></img></div>
           <div style="display:flex;">
@@ -67,7 +67,7 @@ window.onload=function(){
     document.getElementsByClassName("navigation_links_container")[0].style.marginTop = "5%";
     document.getElementsByClassName("content-container")[0].style.marginLeft = "45px";
   }
-  s
+  
   function shrink(){
     document.getElementsByClassName("navigation_bar")[0].style.width = "100%";
     document.getElementsByClassName("navigation_bar")[0].style.height = "110px";
@@ -76,7 +76,7 @@ window.onload=function(){
     document.getElementsByClassName("logo_container")[0].innerHTML = `
     <span style="display:flex;">
       <span><i class="fa fa-bars" id="hamburger_icon"></i></span>
-      <span style="width:100%; position:relative; top:-2px;">
+      <span style="width:100%; position:relative; top:-2px; left:-25px;">
         <span style="display:flex; gap:5px;">
           <div><img style="width:150px" src="../images/naim.png" class="naim_logo"></img></div>
           <div style="display:flex;">
