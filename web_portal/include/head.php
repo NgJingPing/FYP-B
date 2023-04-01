@@ -48,9 +48,6 @@
 <script src="script/log_table.js"></script>
 <script src="script/database.js"></script>
 <script src="script/manage_user.js"></script>
-<link type="text/css" rel="stylesheet" href="style/denied_details.css">
-<link type="text/css" rel="stylesheet" href="style/log_details.css">
-<link type="text/css" rel="stylesheet" href="style/registration.css">
 <!-- ENDS HERE -->
 
 <!-- Other styling and scipting -->

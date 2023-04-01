@@ -65,7 +65,6 @@ window.onload=function(){
     }
     document.getElementsByClassName("navigation_links_container")[0].style.display = "block";
     document.getElementsByClassName("navigation_links_container")[0].style.marginTop = "5%";
-    document.getElementsByClassName("content-container")[0].style.marginLeft = "45px";
   }
   
   function shrink(){
@@ -96,7 +95,6 @@ window.onload=function(){
     }
     document.getElementsByClassName("navigation_links_container")[0].style.display = "none";
     document.getElementsByClassName("navigation_links_container")[0].style.marginTop = "5%";
-    document.getElementsByClassName("content-container")[0].style.marginLeft = "45px";
   }
 
   function expandMore() {
@@ -121,7 +119,6 @@ window.onload=function(){
     }
     document.getElementsByClassName("navigation_links_container")[0].style.display = "block";
     document.getElementsByClassName("navigation_links_container")[0].style.marginTop = "10%";
-    document.getElementsByClassName("content-container")[0].style.marginLeft = "320px";
   }
 }
 
