@@ -572,6 +572,14 @@ div.waves {
 .table-responsive .row .chartCard .chartBox canvas{
   width: 100%;
 }
+
+.date_selector_label:last-of-type {
+    margin-top: 20px;
+}
+
+.dbtn {
+    margin-bottom: 10px;
+}
 /*Media query on desktop*/
 @media only screen and (min-width: 900px) {
 
