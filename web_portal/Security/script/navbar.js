@@ -44,7 +44,7 @@ window.onload=function(){
     document.getElementsByClassName("navigation_bar")[0].style.marginBottom = "40px";
     document.getElementsByClassName("logo_container")[0].innerHTML = `
     <span style="display:flex;">
-      <span><i class="fa fa-bars" id="hamburger_icon"></i></span>
+      <span><i class="fa fa-xmark" id="hamburger_icon"></i></span>
       <span style="width:100%; position:relative; top:-2px;">
         <span style="display:flex; gap:5px;">
           <div><img style="width:150px" src="../images/naim.png" class="naim_logo"></img></div>
@@ -65,7 +65,7 @@ window.onload=function(){
     }
     document.getElementsByClassName("navigation_links_container")[0].style.display = "block";
     document.getElementsByClassName("navigation_links_container")[0].style.marginTop = "5%";
-    document.getElementsByClassName("content-container")[0].style.marginLeft = "30px";
+    document.getElementsByClassName("content-container")[0].style.marginLeft = "45px";
   }
   s
   function shrink(){
@@ -75,7 +75,7 @@ window.onload=function(){
     document.getElementsByClassName("navigation_bar")[0].style.marginBottom = "40px";
     document.getElementsByClassName("logo_container")[0].innerHTML = `
     <span style="display:flex;">
-      <span><i class="fa fa-xmark" id="hamburger_icon"></i></span>
+      <span><i class="fa fa-bars" id="hamburger_icon"></i></span>
       <span style="width:100%; position:relative; top:-2px;">
         <span style="display:flex; gap:5px;">
           <div><img style="width:150px" src="../images/naim.png" class="naim_logo"></img></div>
@@ -96,7 +96,7 @@ window.onload=function(){
     }
     document.getElementsByClassName("navigation_links_container")[0].style.display = "none";
     document.getElementsByClassName("navigation_links_container")[0].style.marginTop = "5%";
-    document.getElementsByClassName("content-container")[0].style.marginLeft = "30px";
+    document.getElementsByClassName("content-container")[0].style.marginLeft = "45px";
   }
 
   function expandMore() {
