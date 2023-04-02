@@ -24,13 +24,13 @@
         </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard totalflows">
+                <div class="col-sm-12 col-lg-6 chartCard totalflows">
                     <p>Total Entry & Exit Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart9"></canvas>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6 chartCard deniedflows">
+                <div class="col-sm-12 col-lg-6 chartCard deniedflows">
                     <p>Total Denied Access Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart12"></canvas>
@@ -40,13 +40,13 @@
         </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard entryflows">
+                <div class="col-sm-12 col-lg-6 chartCard entryflows">
                     <p>Total Entry Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart10"></canvas>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6 chartCard exitflows">
+                <div class="col-sm-12 col-lg-6 chartCard exitflows">
                     <p>Total Exit Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart11"></canvas>

@@ -25,13 +25,13 @@
         </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard totalflows">
+                <div class="col-sm-12 col-lg-6 chartCard totalflows">
                     <p>Total Entry & Exit Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6 chartCard deniedflows">
+                <div class="col-sm-12 col-lg-6 chartCard deniedflows">
                     <p>Total Denied Access Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart4"></canvas>
@@ -41,13 +41,13 @@
         </div>
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard entryflows">
+                <div class="col-sm-12 col-lg-6 chartCard entryflows">
                     <p>Total Entry Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart2"></canvas>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6 chartCard exitflows">
+                <div class="col-sm-12 col-lg-6 chartCard exitflows">
                     <p>Total Exit Flows</p>
                     <div class="chartBox">
                         <canvas id="myChart3"></canvas>
@@ -62,7 +62,7 @@
     $totalCountArray = $dateArray = $entryCountArray = $exitCountArray = $deniedCountArray = array();
     $startdate = date('Y-m-d');
     $startdate = new DateTime($startdate);
-    $startdate->modify('1 month ago');
+    $startdate->modify('7 day ago');
     $enddate = date('Y-m-d');
     $enddate = new DateTime($enddate);
 
@@ -224,7 +224,7 @@
                         unit: 'day',
                         tooltipFormat: 'dd MMM yyyy',
                         displayFormats: {
-                            day: 'dd MMM yyyy'
+                            day: 'dd MMM'
                         }
                     }
                 },
@@ -327,7 +327,7 @@
                         unit: 'day',
                         tooltipFormat: 'dd MMM yyyy',
                         displayFormats: {
-                            day: 'dd MMM yyyy'
+                            day: 'dd MMM'
                         }
                     }
                 },
@@ -420,7 +420,7 @@
                         unit: 'day',
                         tooltipFormat: 'dd MMM yyyy',
                         displayFormats: {
-                            day: 'dd MMM yyyy'
+                            day: 'dd MMM'
                         }
                     }
                 },
@@ -513,7 +513,7 @@
                         unit: 'day',
                         tooltipFormat: 'dd MMM yyyy',
                         displayFormats: {
-                            day: 'dd MMM yyyy'
+                            day: 'dd MMM'
                         }
                     }
                 },
@@ -606,7 +606,7 @@
                         unit: 'day',
                         tooltipFormat: 'dd MMM yyyy',
                         displayFormats: {
-                            day: 'dd MMM yyyy'
+                            day: 'dd MMM'
                         }
                     }
                 },

@@ -572,16 +572,32 @@ div.waves {
 .table-responsive .row .entryflows,
 .table-responsive .row .exitflows
 {
-  width: 50%;
+  width: 100%;
+  min-height: 300px;
 }
 
 .table-responsive .row .chartCard .chartBox{
   width: 100%;
+  min-height: 300px;
 }
 
 .table-responsive .row .chartCard .chartBox canvas{
   width: 100%;
+  min-height: 300px;
 }
+
+.table-responsive{
+    padding-bottom: 20px;
+}
+
+.date_selector_label:last-of-type {
+    margin-top: 20px;
+}
+
+.dbtn {
+    margin-bottom: 10px;
+}
+
 /*Media query on desktop*/
 @media only screen and (min-width: 900px) {
 
@@ -637,5 +653,30 @@ div.waves {
 }
   /*log details*/
   .main_container{font-size: 1.8rem;}
+
+
+/*chart*/
+.table-responsive .row {
+    width: 100%;
+}
+
+.table-responsive .row .allflows {
+    width: 100%;
+}
+
+.table-responsive .row .totalflows,
+.table-responsive .row .deniedflows,
+.table-responsive .row .entryflows,
+.table-responsive .row .exitflows {
+    width: 50%;
+}
+
+.table-responsive .row .chartCard .chartBox {
+    width: 100%;
+}
+
+.table-responsive .row .chartCard .chartBox canvas {
+    width: 100%;
+}
 }
 
