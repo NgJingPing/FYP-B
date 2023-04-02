@@ -141,6 +141,15 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+  }
+}
+
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;
