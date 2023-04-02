@@ -539,6 +539,13 @@ div.waves {
     background: white;
 }
 
+.chartBox2 {
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px rgba(0, 100, 0, 1);
+    background: white;
+}
+
 .dbtn {
     border-radius: 5px;
     background-color: white;
@@ -672,6 +679,10 @@ div.waves {
 }
 
 .table-responsive .row .chartCard .chartBox {
+    width: 100%;
+}
+
+.table-responsive .row .chartCard .chartBox2 {
     width: 100%;
 }
 
