@@ -262,7 +262,7 @@ thead{
 }
 
 .date_selector {
-  margin-left: 11px;
+  margin: 0px;
 }
 
 .date_selector,.date_selector_label {
@@ -707,5 +707,9 @@ div.waves {
     width: 100%;
     min-height: 755px;
 }
+.date_selector {
+  margin: 11px;
+}
+
 }
 
