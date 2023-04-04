@@ -593,6 +593,16 @@ div.waves {
   min-height: 300px;
 }
 
+.table-responsive .row .chartCard .chartBox2{
+  width: 100%;
+  min-height: 300px;
+}
+
+.table-responsive .row .chartCard .chartBox2 canvas{
+  width: 100%;
+  min-height: 300px;
+}
+
 .table-responsive{
     padding-bottom: 20px;
 }
@@ -604,6 +614,7 @@ div.waves {
 .dbtn {
     margin-bottom: 10px;
 }
+
 
 /*Media query on desktop*/
 @media only screen and (min-width: 900px) {
@@ -682,12 +693,19 @@ div.waves {
     width: 100%;
 }
 
-.table-responsive .row .chartCard .chartBox2 {
-    width: 100%;
-}
-
 .table-responsive .row .chartCard .chartBox canvas {
     width: 100%;
+    min-height: 400px;
+}
+
+.table-responsive .row .chartCard .chartBox2 {
+    width: 100%;
+    min-height: 755px;
+}
+
+.table-responsive .row .chartCard .chartBox2 canvas {
+    width: 100%;
+    min-height: 755px;
 }
 }
 

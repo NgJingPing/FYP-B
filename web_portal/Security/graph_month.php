@@ -15,10 +15,10 @@
     <div class="table-responsive">
         <div class="container-lg- m-1 d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-6 col-lg-6 chartCard allflows" style="min-height:300px;">
+                <div class="col-sm-6 col-lg-6 chartCard allflows">
                     <p>Flows</p>
-                    <div class="chartBox2" style="min-height:300px;">
-                        <canvas id="myChart19" style="min-height:300px;"></canvas>
+                    <div class="chartBox2">
+                        <canvas id="myChart19"></canvas>
                     </div>
                 </div>
             </div>

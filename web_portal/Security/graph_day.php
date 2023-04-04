@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-6 chartCard allflows">
                     <p>Flows</p>
-                    <div class="chartBox">
+                    <div class="chartBox2">
                         <canvas id="myChart17"></canvas>
                     </div>
                 </div>
