@@ -97,12 +97,14 @@
         $diff = $diff->format("%R%a days");
         $z = substr($diff, 1, 3);
         $z = str_replace(" ", "", $z);
-        
         if($z > 7){
             $start = strtotime('sunday', strtotime($sdate));
             $end = strtotime('saturday', strtotime($sdate));
+            if($end < $start){
+                $start = strtotime('last sunday', strtotime($sdate));
+                $end = strtotime('saturday', strtotime($sdate));
+            }
         }
-
 
         $format = 'd M';
         $format2 = 'd M Y';
