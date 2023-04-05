@@ -141,7 +141,7 @@ body::-webkit-scrollbar-thumb:hover {
   
   #hamburger_icon {
     position:relative;
-    left:-20px;
+    left:-25px;
     font-size: clamp(1.25rem, 2rem + 2vw, 2rem);
     color: #C5E5CC;
   }

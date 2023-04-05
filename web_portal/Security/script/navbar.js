@@ -40,12 +40,15 @@ window.onload=function(){
   function expand() {
     document.getElementsByClassName("navigation_bar")[0].style.width = "100%";
     document.getElementsByClassName("navigation_bar")[0].style.height = "auto";
+    document.getElementsByClassName("navigation_bar")[0].style.padding = "0px";
+    document.getElementsByClassName("navigation_bar")[0].style.margin = "0px";
+    document.getElementsByClassName("logo_container")[0].style.margin = "30px 50px 20px 50px";
     document.getElementsByClassName("navigation_bar")[0].style.position = "static";
     document.getElementsByClassName("navigation_bar")[0].style.marginBottom = "40px";
     document.getElementsByClassName("logo_container")[0].innerHTML = `
     <span style="display:flex;">
       <span><i class="fa fa-xmark" id="hamburger_icon"></i></span>
-      <span style="width:100%; position:relative; top:-2px; left:-25px;">
+      <span style="width:100%; position:relative; top:-2px; left:-30px;">
         <span style="display:flex; gap:5px;">
           <div><img style="width:150px" src="../images/naim.png" class="naim_logo"></img></div>
           <div style="display:flex;">
@@ -69,13 +72,16 @@ window.onload=function(){
   
   function shrink(){
     document.getElementsByClassName("navigation_bar")[0].style.width = "100%";
-    document.getElementsByClassName("navigation_bar")[0].style.height = "110px";
+    document.getElementsByClassName("navigation_bar")[0].style.height = "auto";
+    document.getElementsByClassName("navigation_bar")[0].style.padding = "0px";
+    document.getElementsByClassName("navigation_bar")[0].style.margin = "0px";
+    document.getElementsByClassName("logo_container")[0].style.margin = "30px 50px 20px 50px";
     document.getElementsByClassName("navigation_bar")[0].style.position = "static";
     document.getElementsByClassName("navigation_bar")[0].style.marginBottom = "40px";
     document.getElementsByClassName("logo_container")[0].innerHTML = `
     <span style="display:flex;">
       <span><i class="fa fa-bars" id="hamburger_icon"></i></span>
-      <span style="width:100%; position:relative; top:-2px; left:-25px;">
+      <span style="width:100%; position:relative; top:-2px; left:-30px;">
         <span style="display:flex; gap:5px;">
           <div><img style="width:150px" src="../images/naim.png" class="naim_logo"></img></div>
           <div style="display:flex;">
