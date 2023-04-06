@@ -10,7 +10,7 @@ window.onload=function(){
 
   function navigation(value){
     var hamburger_icon = document.getElementsByClassName("logo_container")[0]
-    if (value < 900) {
+    if (value < 1100) {
       var close = true;
       if (hamburger_icon){
         hamburger_icon.addEventListener("click", 

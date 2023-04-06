@@ -188,13 +188,14 @@ body::-webkit-scrollbar-thumb:hover {
   .widget_group{
     display: block;
     width: 100%;
+    margin: 10px;
   }
 
   .widget_container{
     min-height: 140px;
     padding: 10px 10px 20px 10px;
-    margin: 10px;
-    width: 96%;
+    margin: 10px 0px 10px 0;
+    width: 100%;
     background: #061C17;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -224,6 +225,7 @@ body::-webkit-scrollbar-thumb:hover {
   .dashboard_logs{
     display: block;
     width: 100%;
+    margin: 10px;
   }
 
 .dashboard_logs .log_container{
@@ -236,7 +238,7 @@ body::-webkit-scrollbar-thumb:hover {
     margin: 10px;
     margin-top: 0;
     display: block;
-    width: 96%;
+    width: 100%;
     padding: 10px;
     background-color: #f2f2f2;
     opacity: 90%;
@@ -256,11 +258,11 @@ thead{
 
 .log_container {
   background-color:#f2f2f2;
-  padding: 20px 20px;
-    margin: 50px 10px 0px 10px;
-    opacity: 90%;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 20px;
+
+  opacity: 90%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .log_container:last-child {
@@ -623,7 +625,7 @@ div.waves {
 
 
 /*Media query on desktop*/
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1100px) {
 
   body {
     font-size: 16px;
