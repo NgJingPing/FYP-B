@@ -182,7 +182,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   #table{
-    margin: 30px 10px 0px 0px;
+    margin: 30px 20px 0px 0px;
   }
 
   .widget_group{
@@ -225,7 +225,6 @@ body::-webkit-scrollbar-thumb:hover {
   .dashboard_logs{
     display: block;
     width: 100%;
-    margin: 10px;
   }
 
 .dashboard_logs .log_container{
@@ -255,17 +254,9 @@ thead{
 
 }
 
-.log_container{
-  margin: 50px 10px 0px 10px;
-}
-
-.entry_log_container, .exit_log_container{
-  margin-top: 50px;
-  margin-right: 10px;
-}
-
 .log_container, .entry_log_container, .exit_log_container {
   background-color:#f2f2f2;
+  margin: 50px 10px 0px 10px;
   padding: 20px;
   opacity: 90%;
   border-radius: 5px;
@@ -648,6 +639,10 @@ div.waves {
     gap: 5px;
     flex-direction: row;
     width: 100%;
+  }
+
+  #table {
+    margin-right: 0px;
   }
 
   .widget_container{
