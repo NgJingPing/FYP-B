@@ -49,8 +49,53 @@
     <!-- Loads dashboard.php into the inner HTML -->
     <section>
         <div id="table" onload = "table();"></div>
+		<div class="dashboard_logs">
+			<div id="show_entry" style="width:100%;"></div>
+			<div id="show_exit" style="width:100%;"></div>
+		</div>
+
     </section>
   </div>
   <div class="waves"></div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){  
+			$("#show_entry").load("./entry_loader.php");
+
+			setInterval(function(){
+				$.ajax({
+				url: "./entry_checker.php",
+				success: function(response){
+					let curr = $(".curr_val").text();
+					console.log(response);
+					console.log(curr);
+					if(response != curr){
+						$("#show_entry").load("./entry_loader.php");
+					}
+				}
+			});
+			}, 1500);
+
+			$("#show_exit").load("./exit_loader.php");
+
+			setInterval(function(){
+				$.ajax({
+				url: "./exit_checker.php",
+				success: function(response){
+					let curr = $(".curr_val2").text();
+					console.log(response);
+					console.log(curr);
+					if(response != curr){
+						$("#show_exit").load("./exit_loader.php");
+					}
+				}
+			});
+			}, 1500);
+		});
+	</script>
+	<?php
+		include "../include/config.php";
+		include "../include/head.php";
+	?>
   </body>
 </html>
