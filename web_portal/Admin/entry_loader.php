@@ -7,7 +7,7 @@ $result = $conn->query("SELECT entrylog.referenceID, vehicle.licensePlate, entry
 
 if($result2->num_rows > 0) {
 	if ($result) {
-        echo '<div class="dashboard_logs_container">';
+        echo '<div class="log_container">';
         echo '<h1>Recent Entries</h1>';
         echo '<div class="table-responsive entry">';
         echo '<div style="display:none;" class="curr_val">'.$result2->num_rows.'</div>';

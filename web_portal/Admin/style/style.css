@@ -226,18 +226,17 @@ body::-webkit-scrollbar-thumb:hover {
     width: 100%;
   }
 
-  #show_entry, #show_exit{
+.dashboard_logs_container {
     color: #061C17;
-    display: block;
     margin: 10px;
+    display: block;
     width: 96%;
     padding: 10px;
     background-color:#f2f2f2;
     opacity: 90%;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    
-  } 
+}
 
 .table{
     width: 100%;
@@ -647,7 +646,7 @@ div.waves {
     width: 100%;
   }
 
-  #show_entry, #show_exit{
+  .dashboard_logs_container{
     width: 50%;
   }
 

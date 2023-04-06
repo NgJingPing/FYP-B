@@ -8,7 +8,7 @@ $result3 = $conn->query("SELECT exitlog.referenceID, vehicle.licensePlate, exitl
 
 if($result4->num_rows > 0) {
 	if ($result3) {
-        echo '<div class="dashboard_logs_container">';
+        echo '<div class="log_container">';
         echo '<h1>Recent Exits</h1>';
         echo '<div class="table-responsive exit">';
         echo '<div style="display:none;" class="curr_val2">'.$result4->num_rows.'</div>';
