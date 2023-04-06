@@ -12,7 +12,7 @@ if($result4->num_rows > 0) {
         echo '<h1>Recent Exits</h1>';
         echo '<div class="table-responsive exit">';
         echo '<div style="display:none;" class="curr_val2">'.$result4->num_rows.'</div>';
-        echo '<table id="exit_table" class="table table-striped table-bordered">
+        echo '<table id="exit_table" class="table table-striped table-bordered" style="width:100%;">
                 <thead>
                     <tr>
                         <td>Timestamp</td>
