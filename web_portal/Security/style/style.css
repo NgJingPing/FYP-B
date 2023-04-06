@@ -165,7 +165,7 @@ body::-webkit-scrollbar-thumb:hover {
     margin-top: 0px;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1100px) {
     section{
       padding-right: 0;
     }
@@ -182,7 +182,7 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   #table{
-    margin: 30px 0;
+    margin: 30px 10px 0px 0px;
   }
 
   .widget_group{
@@ -194,7 +194,7 @@ body::-webkit-scrollbar-thumb:hover {
   .widget_container{
     min-height: 140px;
     padding: 10px 10px 20px 10px;
-    margin: 10px 0px 10px 0;
+    margin: 10px 20px 10px 0px;
     width: 100%;
     background: #061C17;
     border-radius: 5px;
@@ -229,14 +229,13 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
 .dashboard_logs .log_container{
-    margin-top:10px;
+    margin-top: 10px;
     margin-bottom: 15px;
 }
 
 .dashboard_logs_container {
     color: #061C17;
     margin: 10px;
-    margin-top: 0;
     display: block;
     width: 100%;
     padding: 10px;
@@ -256,10 +255,18 @@ thead{
 
 }
 
-.log_container {
+.log_container{
+  margin: 50px 10px 0px 10px;
+}
+
+.entry_log_container, .exit_log_container{
+  margin-top: 50px;
+  margin-right: 10px;
+}
+
+.log_container, .entry_log_container, .exit_log_container {
   background-color:#f2f2f2;
   padding: 20px;
-
   opacity: 90%;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
