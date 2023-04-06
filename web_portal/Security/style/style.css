@@ -711,5 +711,9 @@ div.waves {
   margin: 11px;
 }
 
+ .dashboard_logs_container{
+    width: 100%;
+  }
+
 }
 
