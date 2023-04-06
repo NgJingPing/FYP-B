@@ -36,7 +36,6 @@
 <?php
     include "../include/config.php";
     $referenceID = "";
-
 ?>
   <div class="content-container">
     <header>
@@ -44,7 +43,7 @@
     </header>
     <!-- Loads dashboard.php into the inner HTML -->
     <section>
-        <div id="table" onload = "table();"></div>
+        <div id="table"></div>
 		<div class="dashboard_logs">
 			<div id="show_entry" style="width:100%;"></div>
 			<div id="show_exit" style="width:100%;"></div>
@@ -56,6 +55,35 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){  
+			$("#table").load("./widget_loader.php");
+
+			setInterval(function(){
+				$.ajax({
+				url: "./widget_checker.php",
+				success: function(response){
+					let curr = $(".totalflow").text();
+					let curr2 = $(".entryflow").text();
+					let curr3 = $(".exitflow").text();
+					let curr4 = $(".deniedflow").text();
+					var count = response.split(',');
+					console.log(count[0]);
+					if(count[0].text() != curr){
+						$("#table").load("./widget_loader.php");
+					} 
+					if(count[1].text() != curr2){
+						$("#table").load("./widget_loader.php");
+					} 
+					if(count[2].text() != curr3){
+						$("#table").load("./widget_loader.php");
+					} 
+					if(count[3].text() != curr4){
+						$("#table").load("./widget_loader.php");
+					} 
+				}
+			});
+			}, 1500);
+
+
 			$("#show_entry").load("./entry_loader.php");
 
 			setInterval(function(){
