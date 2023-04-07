@@ -68,8 +68,8 @@
 			    </div>
 		</div>
 	</div>
-    <div class="table-responsive user">
-		<table id="user_table" class="table table-striped table-bordered" style="width:100%">  
+    <div class="table-responsive user" style="overflow-x: hidden;">
+		<table id="user_table" class="table table-striped table-bordered display responsive nowrap" style="width:100%">  
 			<thead>  
                 <tr>  
                     <th>User ID</th>   

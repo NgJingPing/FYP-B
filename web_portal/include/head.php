@@ -17,6 +17,11 @@
 <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap.min.js"></script>   
 <!-- ENDS HERE -->
 
+<!-- dataTables Responsive -->
+<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+<link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css"  rel="stylesheet">
+<!-- ENDS HERE -->
+
 <!-- DataTables Buttons CDN -->
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css" /> 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

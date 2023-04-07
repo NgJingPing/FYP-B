@@ -63,8 +63,8 @@
 				</div>
 			</div>
 		</div>
-        <div class="table-responsive exit">
-            <table id="exit_table" class="table table-striped table-bordered"  style="width:100%;">  
+        <div class="table-responsive exit" style="overflow-x: hidden;">
+            <table id="exit_table" class="table table-striped table-bordered display responsive nowrap"  style="width:100%;">  
 			<thead>  
                 <tr>  
                     <th>Reference ID</th>  

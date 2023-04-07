@@ -57,8 +57,8 @@
 					</div>
 				</div>
 			</div>
-            <div class="table-responsive database">
-            <table id="db_table" class="table table-striped table-bordered" style="width:100%;">
+            <div class="table-responsive database" style="overflow-x: hidden;">
+            <table id="db_table" class="table table-striped table-bordered display responsive nowrap" style="width:100%;">
                 <thead>
                     <tr>
                         <th>License Plate</th>

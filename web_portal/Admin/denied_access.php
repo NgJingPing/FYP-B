@@ -65,8 +65,8 @@
 				</div>
 			</div>
 		</div>
-        <div class="table-responsive denied">
-        <table id="denied_table" class="table table-striped table-bordered"  style="width:100%;">   
+        <div class="table-responsive denied" style="overflow-x: hidden;">
+        <table id="denied_table" class="table table-striped table-bordered display responsive nowrap"  style="width:100%;">   
 			<thead>  
                 <tr>  
                     <th>Reference ID</th>  

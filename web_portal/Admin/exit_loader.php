@@ -10,9 +10,9 @@ if($result4->num_rows > 0) {
 	if ($result3) {
         echo '<div class="exit_log_container">';
         echo '<h1>Recent Exits</h1>';
-        echo '<div class="table-responsive exit">';
+        echo '<div class="table-responsive exit" style="overflow-x: hidden;">';
         echo '<div style="display:none;" class="curr_val2">'.$result4->num_rows.'</div>';
-        echo '<table id="exit_table" class="table table-striped table-bordered" style="width:100%;">
+        echo '<table id="exit_table" class="table table-striped table-bordered display responsive nowrap" style="width:100%;">
                 <thead>
                     <tr>
                         <td>Timestamp</td>

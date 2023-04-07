@@ -9,9 +9,9 @@ if($result2->num_rows > 0) {
 	if ($result) {
         echo '<div class="entry_log_container">';
         echo '<h1>Recent Entries</h1>';
-        echo '<div class="table-responsive entry">';
+        echo '<div class="table-responsive entry" style="overflow-x: hidden;">';
         echo '<div style="display:none;" class="curr_val">'.$result2->num_rows.'</div>';
-        echo '<table id="entry_table" class="table table-striped table-bordered" style="width:100%;">
+        echo '<table id="entry_table" class="table table-striped table-bordered display responsive nowrap" style="width:100%;">
                 <thead>
                     <tr>
                         <td>Timestamp</td>
