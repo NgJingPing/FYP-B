@@ -36,7 +36,7 @@
 
 <div class="content-container">
     <header>
-		<h1>Analytics</h1>
+		<h1 style="font-size:36px;">Analytics</h1>
 	</header>
 
     <section>
