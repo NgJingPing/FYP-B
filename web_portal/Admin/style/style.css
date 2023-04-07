@@ -263,8 +263,12 @@ thead{
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-.log_container:last-child {
-  margin-bottom: 50px;
+.entry_log_container, .exit_log_container {
+    margin: 10px 10px 0px 10px;
+}
+
+.dashboard_logs{
+    margin-bottom: 10px;
 }
 
 .date_selector {
