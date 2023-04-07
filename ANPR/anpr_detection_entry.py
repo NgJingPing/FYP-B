@@ -20,7 +20,7 @@ import uuid
 import datetime
 
 # Initialise camera
-cap = cv2.VideoCapture("ANPR\WhatsApp Video 2022-11-09 at 14.39.52.mp4")
+cap = cv2.VideoCapture("ANPR\client dataset\Video_1.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 
 #Camere Types (entry/exit)
@@ -31,7 +31,7 @@ camera = "entry"
 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
 # Set the frame rate per second (based on video lagging)
-target_fps = 5
+target_fps = 10
 
 # Get the video frame count
 video_fps = int(cap.get(cv2.CAP_PROP_FPS))
@@ -64,7 +64,8 @@ vehicle_id = ""
 current_plate = ""
 count = 0
 found = True
-area = [(170,182),(930,194),(936,590),(9,530)]
+#area = [(170,182),(930,194),(936,590),(9,530)]
+area = [(937,585),(920,150),(180,150),(10,530)]
 
 # Initialise Result Menu
 vehicle_detected = '...'
@@ -138,9 +139,11 @@ def detect():
                             save_img('ANPR\entrylogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         elif camera.lower() == "exit":
                             save_img('ANPR\exitlogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
-                        area = [(170,182),(930,194),(936,590),(9,530)] 
+                        #area = [(170,182),(930,194),(936,590),(9,530)] 
+                        area = [(937,585),(920,150),(180,150),(10,530)]
                     else:
-                        area = [(170,182),(930,194),(936,590),(9,530)]
+                        #area = [(170,182),(930,194),(936,590),(9,530)]
+                        area = [(937,585),(920,150),(180,150),(10,530)]
                     cv2.rectangle(frames,(x1,y1), (x1+w+5, y1+h), (51,51,255), 2)
                     cv2.rectangle(frames, (x1, y1 - 40), (x1 + w + 5, y1), (51,51,255), -2)
                     cv2.putText(frames, text, (x1, y1-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
@@ -150,9 +153,11 @@ def detect():
                             save_img('ANPR\entrylogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         elif camera.lower() == "exit":
                             save_img('ANPR\exitlogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
-                        area = [(170,182),(930,194),(936,590),(9,530)] 
+                        #area = [(170,182),(930,194),(936,590),(9,530)] 
+                        area = [(937,585),(920,150),(180,150),(10,530)]
                     else:
-                        area = [(170,182),(930,194),(936,590),(9,530)]
+                        #area = [(170,182),(930,194),(936,590),(9,530)]
+                        area = [(937,585),(920,150),(180,150),(10,530)]
 
                     if camera.lower() == "entry":
                         file_exists = os.path.exists("ANPR\entrylogtemp\saved.jpg")
@@ -240,7 +245,6 @@ def detect():
                                             for x in a:
                                                 if(y == x):
                                                     plate_num += x 
-                                        print("Number plate is:", plate_num)
 
                                         plate = plate_num
                                         date = datetime.datetime.now()
@@ -251,6 +255,12 @@ def detect():
                                             img_name = 'exitlog\{}.jpg'.format(uuid.uuid1())
                                             img_name_2 = 'exitlog\{}_2.jpg'.format(uuid.uuid1())
                                         active = True
+                                        
+                                        # Check if the plate starts with "O" and "0" and result is not found, then replace to Q.
+                                        if plate.startswith("O") or plate.startswith("0") and matched == "Not Found":
+                                            plate = "Q" + plate[1:]
+                                            
+                                        print("Number plate is:", plate)
 
                                         mycursor = conn.cursor()
                                         sql = "SELECT vehicleID FROM vehicle WHERE licensePlate = %s AND isActive = %s"
@@ -311,7 +321,7 @@ def detect():
                                                 matched = "Found"
                                                 print("Found")
                                         else:
-                                            if (count == 4) & (current_plate != plate):
+                                            if count == 4 and current_plate != plate:
                                                 sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
                                                 val = (plate, date, img_name, img_name_2)
                                                 mycursor.execute(sql3, val)
@@ -320,14 +330,14 @@ def detect():
                                                 cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
                                                 # Save image without Licence Plate detection box
                                                 cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
-                                                found = False
-                                                number_plate = plate
-                                                matched = "Not Found"
-                                                print("Not Found")
                                                 current_plate = plate
                                                 count = 0
                                             else: 
                                                 count += 1
+                                            found = False
+                                            number_plate = plate
+                                            matched = "Not Found"
+                                            print("Not Found")
                                             if count > 4:
                                                 count = 0 
                                 except:
