@@ -67,16 +67,16 @@
 					let curr4 = $(".deniedflow").text();
 					var count = response.split(',');
 					console.log(count[0]);
-					if(count[0].text() != curr){
+					if(count[0] != curr){
 						$("#table").load("./widget_loader.php");
 					} 
-					if(count[1].text() != curr2){
+					if(count[1] != curr2){
 						$("#table").load("./widget_loader.php");
 					} 
-					if(count[2].text() != curr3){
+					if(count[2] != curr3){
 						$("#table").load("./widget_loader.php");
 					} 
-					if(count[3].text() != curr4){
+					if(count[3] != curr4){
 						$("#table").load("./widget_loader.php");
 					} 
 				}
