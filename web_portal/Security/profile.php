@@ -320,6 +320,23 @@
 		@media only screen and (min-width: 800px) {
 			.emailtext, .title{font-size: 2rem;}
 		}
+
+		@media screen and (max-width: 1100px) {
+			.form_group {
+				display: block;
+				width: 100%;
+				min-width: 0px; 
+			}
+
+			.form_container {
+				display: block;
+				width: 100%;
+			}
+
+			.button_submit, .button_cancel {
+				width: 100%;
+			}
+		}
 	</style>
 </head>
 
