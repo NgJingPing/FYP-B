@@ -8,24 +8,23 @@ Real-Time Vehicle License Plate Recognition.
 ### Libraries and Dependencies 
 **Web Portal**
 Database Server
-  •	Server Type: MariaDB
-  •	Server Version: 10.4.24-MariaDB - mariadb.org binary distribution
+  +	Server Type: MariaDB
+  +	Server Version: 10.4.24-MariaDB - mariadb.org binary distribution
 Web Server
-  •	PHP Version: 7.4.29 or above
+  +	PHP Version: 7.4.29 or above
 phpMyAdmin
-  •	Version: 5.2.0 or above
+  +	Version: 5.2.0 or above
 CDN/ Library/ Framework
-  •	JQuery
-  •	Bootstrap 3
-  •	Google Fonts (Lato, Bungee Hairline)
-  •	FontAwesome
-  •	DataTables
-  •	PHPMailer
+  +	JQuery
+  +	Bootstrap 3
+  +	Google Fonts (Lato, Bungee Hairline)
+  +	FontAwesome
+  +	DataTables
+  +	PHPMailer
 
 **ANPR System**
 Install python 3.9.7 or above through this link: https://www.python.org/downloads/
 Libraries:
-'''
 pip install opencv-python
 pip install numpy
 pip install matplotlib
@@ -38,7 +37,6 @@ pip install paddlepaddle
 pip install "paddleocr>=2.0.1"
 pip install mysql-connector-python
 pip install uuid
-'''
 
 ### Database Creation
 **Method 1**
