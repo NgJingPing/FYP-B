@@ -166,8 +166,6 @@
 			height: 100%; /* Full height */
 			overflow: hidden; /* Disable scroll if needed */
 			background-color: #061C17; /* Fallback color */
-			overflow-y: scroll; /* Enable scroll if needed */
-			padding-top: 65px;
 		}
 		
 		.modal::-webkit-scrollbar {
@@ -189,7 +187,10 @@
 
 		.modal-content {
 			background-color: #f2f2f2;
-			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 			border: 1px solid #888;
 			overflow: hidden;
 			width: 80%; /* Could be more or less, depending on screen size */
@@ -217,13 +218,13 @@
 		}
 
 		@-webkit-keyframes animatezoom {
-			from {-webkit-transform: scale(0)}
-			to {-webkit-transform: scale(1)}
+			from {-webkit-transform: translate(-50%, -50%) scale(0)}
+			to {-webkit-transform: translate(-50%, -50%) scale(1)}
 		}
 
 		@keyframes animatezoom {
-			from {transform: scale(0)}
-			to {transform: scale(1)}
+			from {transform: translate(-50%, -50%) scale(0)}
+			to {transform: translate(-50%, -50%) scale(1)}
 		}
 
 		/* Change styles for span and cancel button on extra small screens */
@@ -275,7 +276,7 @@
 			margin-bottom: 30px;
 			margin-left: auto;
 			margin-right: auto;
-			width: 60%;
+			width: 100%;
 			border: none;
 			display: block;
 			height: 45px;
@@ -299,6 +300,7 @@
 
 		.form_group {
 			display: flex;
+			padding: 0px 16px;
 			width: 100%;
 		}
 
@@ -319,6 +321,24 @@
 		@media only screen and (min-width: 800px) {
 			.emailtext, .title{font-size: 2rem;}
 		}
+
+		@media screen and (max-width: 1100px) {
+			.form_group {
+				display: block;
+				width: 100%;
+				min-width: 0px; 
+			}
+
+			.form_container {
+				display: block;
+				width: 100%;
+			}
+
+			.button_submit, .button_cancel {
+				width: 100%;
+			}
+		}
+
 	</style>
 </head>
 
@@ -469,15 +489,11 @@ close[i].onclick = function(){
 function openpopout(){
 	document.getElementById('id01').style.display="block"; 
 	document.querySelector("body").style.overflow = "hidden";
-	window.addEventListener('resize', function() {
-	})
 }
 
 function closepopout(){
 	document.getElementById('id01').style.display="none"; 
 	document.querySelector("body").style.overflow = "visible";
-	window.addEventListener('resize', function() {
-	})
 }
 </script>
 
