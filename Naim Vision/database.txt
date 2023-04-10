@@ -1,0 +1,73 @@
+CREATE DATABASE anprdb;
+
+USE anprdb;
+
+CREATE TABLE tenant (
+    tenantLotNumber VARCHAR(6) PRIMARY KEY NOT NULL,
+    name VARCHAR(256) NOT NULL,
+    phoneNumber VARCHAR(10) NOT NULL
+    );
+    
+CREATE TABLE vehicle (
+     vehicleID INT(6) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+     tenantLotNumber VARCHAR(6) NOT NULL, 
+     licensePlate VARCHAR(20) NOT NULL,
+     brand VARCHAR(20) NOT NULL,
+     model VARCHAR(20) NOT NULL,
+     colour VARCHAR(20) NOT NULL,
+     isActive BOOLEAN NOT NULL,
+     FOREIGN KEY(tenantLotNumber) REFERENCES tenant(tenantLotNumber)
+     );
+
+CREATE TABLE entrylog (
+    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    vehicleID INT(6) NOT NULL, 
+    entryTime DATETIME NOT NULL,
+    image VARCHAR(100) NOT NULL,
+    image_2 VARCHAR(100) NOT NULL,
+    FOREIGN KEY(vehicleID) REFERENCES vehicle(vehicleID)
+    );
+    
+CREATE TABLE exitlog (
+    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    vehicleID INT(6) NOT NULL, 
+    exitTime DATETIME NOT NULL,
+    image VARCHAR(100) NOT NULL,
+    image_2 VARCHAR(100) NOT NULL,
+    FOREIGN KEY(vehicleID) REFERENCES vehicle(vehicleID)
+    );    
+
+CREATE TABLE deniedAccess(
+    referenceID INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    licensePlate VARCHAR(20) NOT NULL, 
+    deniedTime DATETIME NOT NULL,
+    image VARCHAR(100) NOT NULL,
+    image_2 VARCHAR(100) NOT NULL
+    );      
+
+CREATE TABLE users (
+    userID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR(256) NOT NULL,
+    password VARCHAR(256) NOT NULL,
+    role INT(1) NOT NULL,
+    isAdvanced BOOLEAN NOT NULL,
+    code MEDIUMINT(50) NULL
+    );
+
+INSERT INTO users (email, password, role, isAdvanced)
+    VALUES ('naim000@naim.com.my', '0318d42a9fc37c470c9539c801c24d6773c71623e9e710a3c7051fbda6c54cd2', 1, TRUE);
+
+INSERT INTO users (email, password, role, isAdvanced)
+    VALUES ('naim001@naim.com.my', '1c7029b1716f84c8906bd15f775221f4e3e381c0986ddf27c93378a09bc213e8', 1, FALSE);
+
+INSERT INTO users (email, password, role, isAdvanced)
+    VALUES ('naim002@naim.com.my', 'f4b00dc3ca0a71b1872f6ff8a98bbe90ba0a55788c70b01d8e7b75d18a05aa07', 1, FALSE);
+
+INSERT INTO users (email, password, role, isAdvanced)
+    VALUES ('naim100@naim.com.my', '3cb75b3bbf41b3e45945104bf9f4faaff67ff62572679fed26ee936e34c1c810', 2, FALSE);
+
+INSERT INTO users (email, password, role, isAdvanced)
+    VALUES ('naim101@naim.com.my', 'bf495392145a1cbbe6d36ee74c6b6714cfcc880339931a0538911fa9192bb5c1', 2, FALSE);
+
+INSERT INTO users (email, password, role, isAdvanced)
+    VALUES ('naim102@naim.com.my', '8c4243072cc8cabd7b509a007bd34e304ed3f5d8fd38fa502fed849e0f15c652', 2, FALSE);
