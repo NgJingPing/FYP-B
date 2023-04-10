@@ -7,13 +7,17 @@ Real-Time Vehicle License Plate Recognition.
 
 ### Libraries and Dependencies 
 **Web Portal**
+
 Database Server
   +	Server Type: MariaDB
   +	Server Version: 10.4.24-MariaDB - mariadb.org binary distribution
+  
 Web Server
   +	PHP Version: 7.4.29 or above
+  
 phpMyAdmin
   +	Version: 5.2.0 or above
+
 CDN/ Library/ Framework
   +	JQuery
   +	Bootstrap 3
@@ -23,7 +27,9 @@ CDN/ Library/ Framework
   +	PHPMailer
 
 **ANPR System**
+
 Install python 3.9.7 or above through this link: https://www.python.org/downloads/
+
 Libraries:
 + pip install opencv-python
 + pip install numpy
@@ -39,28 +45,36 @@ Libraries:
 + pip install uuid
 
 ### Database Creation
+
 **Method 1**
 
 Run the create_database.php in the web_portal folder through a web browser. If you are not using the localhost, please change the following codes: 
+
 *File path: Naim Vision > web_portal > create_database.php*
 
 ![image](https://user-images.githubusercontent.com/71062682/230804908-2f4275ff-0046-47ab-8a9d-e8fc79b46a56.png)
 
 
 **Method 2**
+
 Step 1: In the Naim Vision folder copy the codes in the database.txt. 
+
 *File path: Naim Vision > database.txt.*
 
 ![image](https://user-images.githubusercontent.com/71062682/230804924-c638671e-6af6-4686-81bd-7711cdc85e5c.png)
 
 Step 2: Paste the codes to phpMyAdmin SQL tab and click the Go button. 
+
 ![image](https://user-images.githubusercontent.com/71062682/230805322-32797368-2168-46b3-b0f8-5e28204ae60b.png)
 
 **Actions**
+
 The database and tables will be created: 
+
 ![image](https://user-images.githubusercontent.com/71062682/230805386-2e924489-a070-441b-b530-90b0ee28d12a.png)
 
 Six users will be created in the users table, which can be used to log in to the web portal. 
+
 ![image](https://user-images.githubusercontent.com/71062682/230805068-2849aedd-2215-46a5-890e-7b7d354633cb.png)
 
 The user information is as follows:
@@ -84,7 +98,9 @@ Security
 + Password:	naim102
 
 ### Amend the Configuration File
+
 In the config.php, change the $servername, $username, and $password if you are not using the localhost.
+
 *File path: Naim Vision > web_portal > include > config.php*
 
 ![image](https://user-images.githubusercontent.com/71062682/230805182-2abe11e5-fe33-4309-be71-aa6c25ecbfce.png)
@@ -94,8 +110,8 @@ In the config.php, change the $servername, $username, and $password if you are n
 
 In controllerBeforeLogin.php, change Host (line 72), Username (line 74) and Password (line75) if not using Google Gmail service to send mail.
 If you plan to use Google Gmail service to send mail, you can change the Username and Password to the Gmail that you want to use for this feature. 
-For further reference, refer to this link:
-GitHub - PHPMailer/PHPMailer: The classic email sending library for PHP
+For further reference, refer to this link: https://github.com/PHPMailer/PHPMailer
+
 *File path: Naim Vision > web_portal > include > controllerBeforeLogin.php*
 
 ![image](https://user-images.githubusercontent.com/71062682/230805235-4294f571-d525-4411-8166-3169fd9c0a7a.png)
