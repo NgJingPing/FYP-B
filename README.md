@@ -601,6 +601,7 @@ Step 8b: A red alert message appears if the user enters passwords that do not ma
 
 ### ANPR System
 *File path: Naim Vision > ANPR > anpr_detection_entry.py*
+
 *File path: Naim Vision > ANPR > anpr_detection_exit.py*
 
 Step 1: Open the anpr_detection_entry.py or anpr_detection_exit.py with any Python IDLE Environment. The following is a suggested Python IDLE editor. Click the download button to install Visual Studio Code: (https://code.visualstudio.com/)
