@@ -205,3 +205,173 @@ Step 2: The Denied Access Log Details page contains the timestamp and an image o
 **Analytics (analytic.php)**
 Step 1: Click on the Analytics button on the navigation bar.
 ![image](https://user-images.githubusercontent.com/71062682/230808410-f4c5a810-cc7c-4466-995c-aa092fc0f116.png)
+Step 2: After clicking the Analytics button, the page should look like the image below.
+![image](https://user-images.githubusercontent.com/71062682/230812825-3d2d0fea-c4cb-456e-b758-792fae517cf1.png)
+Step 3: By default, the charts will show the records in daily mode. The big chart with the title Flows is a stacked chart that shows the entry, exit and denied flow all at once. The Total Entry & Exit Flows chart shows the sum of the entry and exit flows. The other three small charts individually show the entry, exit, and denied flow.
+![image](https://user-images.githubusercontent.com/71062682/230812941-e4092097-6410-4cb7-bb97-eaeefac3d1b6.png)
+![image](https://user-images.githubusercontent.com/71062682/230812950-2279c08b-ae34-4183-b48d-5a7d46ad80b8.png)
+Step 4: Step 4: Click on the chart legend to remove the displayed data.
+![image](https://user-images.githubusercontent.com/71062682/230812978-630702fb-92f6-4b0c-9a8f-0d58bee133b7.png)
+Step 5: Hover the mouse over the bar to view each flow's label.
+![image](https://user-images.githubusercontent.com/71062682/230812998-452edd50-b578-4f59-95d8-1f7141daa4fb.png)
+Step 6: Click on the bar to view the details on the Report page. The report page will filter the data based on the clicked date on the bar.
+![image](https://user-images.githubusercontent.com/71062682/230813037-b5ecff3e-7f51-49af-9cb0-5ede9b712260.png)
+![image](https://user-images.githubusercontent.com/71062682/230813047-82e44ecf-51cf-4044-b5b1-98f8e00d7c60.png)
+Step 7: The search functionality allows the users to filter the data based on the selected date range.
+![image](https://user-images.githubusercontent.com/71062682/230813085-b3cb4d86-5e8d-4fa8-9aa9-089dffae6ab3.png)
+![image](https://user-images.githubusercontent.com/71062682/230813107-dd67008d-72c4-476d-8beb-ab85646f0760.png)
+Step 8: Click the Weekly, Monthly or Yearly button to switch the chart to the respective mode.
+![image](https://user-images.githubusercontent.com/71062682/230813131-a624e660-5b33-4f8e-9aa5-a70d3aaf32bf.png)
+![image](https://user-images.githubusercontent.com/71062682/230813159-4502d38c-8d3e-41ca-ad95-ca82c4af30e1.png)
+![image](https://user-images.githubusercontent.com/71062682/230813180-f6a1c6f4-2528-42bc-9950-26f84133d83e.png)
+Step 9: Click the PDF button to download the charts.
+![image](https://user-images.githubusercontent.com/71062682/230813218-5a6a5b16-3d19-4d61-90f3-36be2dd41392.png)
+Step 10: Click the Line button to switch the bar chart to the line chart.
+![image](https://user-images.githubusercontent.com/71062682/230813264-55dd9fff-e6a4-4896-a258-4ef57a247c7a.png)
+Step 11: Click the Bar button to switch the line chart to the bar chart.
+![image](https://user-images.githubusercontent.com/71062682/230813293-67702cbb-feaf-4c89-9ea6-ab40f59b2290.png)
+
+**Registration of New User (register_user.php)**
+Registration of new users is a feature that is only available for super admin. Other user groups, such as admin and security, do not have this feature in their web portal. This feature enables the super admin to create new users to the database, either admin or security. 
+Step 1: Click on the Add User button on the navigation bar.
+![image](https://user-images.githubusercontent.com/71062682/230813381-4184b52e-8155-4cdc-9d89-3974c2a82d5a.png)
+Step 2: After clicking the Analytics button, the page should look like the image below.
+![image](https://user-images.githubusercontent.com/71062682/230813395-031c977b-f0d0-4c3a-af4a-83b7d15901ea.png)
+Step 3: Choose the type of user you wish to create. In this case, the created user type will be an admin as the admin radio button is selected.
+![image](https://user-images.githubusercontent.com/71062682/230813428-75b752f8-c905-4a94-9a78-47fdd14d9b09.png)
+Step 4: Enter the email address of the new user.
+![image](https://user-images.githubusercontent.com/71062682/230813459-819cdf32-e467-4fc3-88be-47d9e7a2a61d.png)
+Step 5: Enter the password for the new user.
+![image](https://user-images.githubusercontent.com/71062682/230813489-d963ce91-e002-41ee-b95b-48b5f2341f06.png)
+Step 6: Re-enter the password for the new user.
+![image](https://user-images.githubusercontent.com/71062682/230813519-60afe0b6-3257-423d-a9ea-53d2986121d0.png)
+Step 7: Click the Register button to register the new user.
+![image](https://user-images.githubusercontent.com/71062682/230813549-0500f92d-4b1b-4915-a483-2bcebe4587fb.png)
+Step 8: A successful message will be shown after clicking the register button.
+![image](https://user-images.githubusercontent.com/71062682/230813580-321777a1-7088-4b34-b0e0-43ea8c89b53e.png)
+Step 8a: After clicking the register button, an alert message will be shown if the registered email address exists in the database.
+![image](https://user-images.githubusercontent.com/71062682/230813609-c736cbfd-8695-4521-aa24-e154aca0bdcd.png)
+Step 8b: After clicking the register button, an alert message will be shown if the enter and re-enter password does not match.
+![image](https://user-images.githubusercontent.com/71062682/230813635-5eec9f5b-bcb5-468b-8e28-34756ee9829f.png)
+
+**Account Management (manage_user.php)**
+This feature is only available for super admin.
+Step 1: Click on the View User button on the navigation bar.
+![image](https://user-images.githubusercontent.com/71062682/230813691-cb65c886-2abf-42ae-84f4-9032e5ff7fa1.png)
+Step 2: After clicking the View User button, the page should look like the image below.
+ ![image](https://user-images.githubusercontent.com/71062682/230813717-d69bda6b-3ae9-4663-981f-e288ac944436.png)
+Step 3: To hide a column from the table, click on the nothing selected text. A drop-down menu will be shown.
+![image](https://user-images.githubusercontent.com/71062682/230813748-2e123920-cfea-431c-a02f-fc92e19eb0b7.png)
+![image](https://user-images.githubusercontent.com/71062682/230813759-56baa866-c756-43b6-ae8e-88bbaf3a1728.png)
+Step 4: Click the Action text to hide the Action column. A cross icon will be displayed, and the Action column will be hidden. 
+![image](https://user-images.githubusercontent.com/71062682/230813787-26eadf61-751c-4ff1-82cc-c54d23d02020.png)
+Step 5: Click the Action text again to show the Action column. The cross icon will be removed, and the Action column will be displayed in table. 
+![image](https://user-images.githubusercontent.com/71062682/230813814-e79949a2-b113-4409-a2f7-0f75c7dfc98b.png)
+Step 6: Search the user with the role security by entering the security text in the search bar. The table will filter the data based on the search result.
+![image](https://user-images.githubusercontent.com/71062682/230813838-58ebad7e-e759-4ee7-adfb-85ca0bf6bcad.png)
+Step 7: Click the buttons below to either copy the table, download the table in CSV, excel or PDF format, or print the table.
+![image](https://user-images.githubusercontent.com/71062682/230813864-8f0f49a4-f128-41b7-b7d8-84c72808aaf7.png)
+
+**Edit User (edit_user.php)**
+This feature is only available for super admin.
+Step 1: Click on the Edit icon to edit the user.
+![image](https://user-images.githubusercontent.com/71062682/230813906-7c42ba2e-8fe6-4de0-896e-be9761a5a19e.png)
+Step 2: After clicking the Edit icon, the page should look like the image below. The information displayed is based on the user that have been selected.
+![image](https://user-images.githubusercontent.com/71062682/230813926-7cbdf398-21da-454f-b829-60a525b5783f.png)
+Step 3: Change the user type from Security to Admin by selecting the admin radio button, and click the submit button.
+![image](https://user-images.githubusercontent.com/71062682/230813965-cbd86dbf-e04b-42f6-95ac-4c443228dedd.png)
+Step 4: A successful message will be shown after clicking the submit button.
+![image](https://user-images.githubusercontent.com/71062682/230814002-56e25409-2ead-459c-9dc2-0286b7fd4b89.png)
+Step 5: Navigate back to the View User page, and the information is updated accordingly.
+![image](https://user-images.githubusercontent.com/71062682/230814036-6f316732-ca37-4c64-876d-c6a2de95c313.png)
+
+**Delete User (delete_user.php)**
+This feature is only available for super admin.
+Step 1: Click on the Delete icon to delete the user.
+![image](https://user-images.githubusercontent.com/71062682/230814085-c3ef6a61-3184-49ee-a6c6-2768579f4a15.png)
+Step 2: An alert box will appear and click on the OK button.
+![image](https://user-images.githubusercontent.com/71062682/230814108-9e4c0c6f-2928-4c4e-83ae-b25ddbee849e.png)
+Step 3: The user has been removed after the OK button is clicked.
+![image](https://user-images.githubusercontent.com/71062682/230814147-9a0385d9-aacc-4dac-911f-486e7525d01e.png)
+
+**User Profile Card (profile.php)**
+This user profile page will display a card containing the user’s email address, role, company, and a change password button that enables the user to change their account password.
+![image](https://user-images.githubusercontent.com/71062682/230814185-503fd44c-f718-45e9-9744-1dde20222ca3.png)
+To change the account password, follow the steps below:
+Step 1:  Click the Change Password button.
+![image](https://user-images.githubusercontent.com/71062682/230814205-3592209d-2b2c-4c27-be8b-bea19ca6f336.png)
+Step 2: A form will pop out. The “x” symbol at the top right corner and the “Cancel” button at the bottom left of the form can be used to close the pop-out form.
+![image](https://user-images.githubusercontent.com/71062682/230814227-99de3c98-01e2-44d4-8ff1-bc4f71e46d0e.png)
+Step 3: Enter the old password of the account.
+![image](https://user-images.githubusercontent.com/71062682/230814259-d025eed3-6c28-41f3-88f5-5b310f2f5713.png)
+Step 4: Enter the new password for the account.
+![image](https://user-images.githubusercontent.com/71062682/230814287-e5e423fc-a794-4ab0-ade8-52348198877a.png)
+Step 5: Re-enter the new password that creates for this account.
+![image](https://user-images.githubusercontent.com/71062682/230814313-ef5af421-fc51-4587-ad0b-581725589260.png)
+Step 6: Click the “Submit” button at the bottom right of the form to submit the changes.
+![image](https://user-images.githubusercontent.com/71062682/230814340-06e06e9c-f68c-4682-a17f-4087da92d7a7.png)
+Step 7a: An alert message with green background will pop out at the top of the user profile card to indicate that the user changes the password successfully.
+![image](https://user-images.githubusercontent.com/71062682/230814363-2cec10ff-75ea-4d3e-88dc-357ad1983eb4.png)
+Step 7b: When the user enters the wrong old password, a red background alert message will appear at the top of the profile card to indicate that the user has entered the wrong old password.
+![image](https://user-images.githubusercontent.com/71062682/230814388-313a56d0-9784-4320-bbf9-05a876cff2e6.png)
+Step 7c: When the user re-enters the new password that does not match the new password entered before, a red background alert message will appear at the top of the profile card.
+![image](https://user-images.githubusercontent.com/71062682/230814420-32d7b82e-02ef-4d0e-8157-4e2e20513239.png)
+
+**Forgot Password (forgot_password.php)**
+This feature is only available on the login page. Users could click the “Forgot Password?” link in the login form if they forgot their password.
+![image](https://user-images.githubusercontent.com/71062682/230814446-93fc5500-a7c9-40dd-9f13-a80dd179e3c5.png)
+Step 1: Enter the email address that the user forgot its password.
+![image](https://user-images.githubusercontent.com/71062682/230814458-6a853829-e108-4ba6-99c3-565fd98da09d.png)
+Step 2: Click the “Continue” button below and wait a few seconds.
+![image](https://user-images.githubusercontent.com/71062682/230814476-6c0dc9b7-246a-467a-89aa-2d599a485d4d.png)
+Step 3a: A green background alert message will appear at the top of the form.
+![image](https://user-images.githubusercontent.com/71062682/230814500-b370419d-5392-4e03-80f3-44e1d93154e8.png)
+Step 3b: A red background alert message will pop out if the user enters an email that does not exist in the database.
+![image](https://user-images.githubusercontent.com/71062682/230814524-8119e676-f493-4703-b046-8888c0654520.png)
+Step 4: Enter the 6-digit code that sends to the user’s mailbox.
+![image](https://user-images.githubusercontent.com/71062682/230814544-f338e42a-1591-41c3-a8da-520d8e72823d.png)
+Below is an example of the mail content shown using Outlook:
+![image](https://user-images.githubusercontent.com/71062682/230814578-1ed747bd-c277-457b-af75-7b057fb61248.png)
+Step 5: Click the “Check Code” button to proceed to the next page.
+![image](https://user-images.githubusercontent.com/71062682/230814598-08bbae04-6ede-42d5-9322-bbf7b575e34d.png)
+Step 6a: A green background alert message will appear at the top of the page.
+![image](https://user-images.githubusercontent.com/71062682/230814613-b8e531f3-bbfe-4640-be8c-735aae8c22db.png)
+Step 6b: Enter an incorrect code the alert message pops out.
+![image](https://user-images.githubusercontent.com/71062682/230814629-0b87f695-ce9e-42e2-91d8-c8c16c2ae6aa.png)
+Step 6c: The alert message will pop out if the user enters the alphabet in the input field since it only accepts numbers.
+![image](https://user-images.githubusercontent.com/71062682/230814650-9b0bcfa9-8f68-4afa-9939-4e45eb600e42.png)
+Step 7: Fill in the form and click the “Change” button to change the password.
+![image](https://user-images.githubusercontent.com/71062682/230814667-b2da9e8c-61a0-4154-95a2-a12b091593de.png)
+Step 8a: The user will be redirected to the login page, and a green background alert message will appear at the top of the login form.
+![image](https://user-images.githubusercontent.com/71062682/230814686-a41c29fe-3b73-4ac3-8b0c-1c3537c96e5f.png)
+Step 8b: A red alert message appears if the user enters passwords that do not match.
+![image](https://user-images.githubusercontent.com/71062682/230814712-b736150f-d877-4ddf-ab30-4b62949b5942.png)
+
+### ANPR System
+*File path: Naim Vision > ANPR > anpr_detection_entry.py*
+*File path: Naim Vision > ANPR > anpr_detection_exit.py*
+Step 1: Open the anpr_detection_entry.py or anpr_detection_exit.py with any Python IDLE Environment. The following is a suggested Python IDLE editor. Click the download button to install Visual Studio Code: (https://code.visualstudio.com/)
+![image](https://user-images.githubusercontent.com/71062682/230814795-ebc343ec-e584-4aea-97e4-a4227ccb484f.png)
+Step 2: To use Python in Visual Studio Code, look for and install the appropriate Python extension. 
+![image](https://user-images.githubusercontent.com/71062682/230814815-2e5fc03d-2d32-4038-b634-8966f0a40b1f.png)
+Step 3: Open the Naim Vision Folder in visual studio code. 
+![image](https://user-images.githubusercontent.com/71062682/230814837-93b96832-cd40-4baf-beb3-ea41de6e69af.png)
+Step 4: In the Naim Vision folder, anpr_detection_entry.py will use to detect the entry log and anpr_detection_exit.py will use to detect the exit log. These two files can be duplicated and renamed in the future. The entrylogtemp and exitlogtemp folders will temporarily store the entry and exit log images during the ANPR detection. The images folder will store the entry and exit log images permanently, which will be used on the web portal. Although entrylog folder is used for storing the entry log images and the exitlog folder is used for storing the exit log images, both folders are also used for storing the denied log images. The yolov5 is the YOLO version 5 library folder that is used for detection purposes. The coco file contains the detection text label.
+![image](https://user-images.githubusercontent.com/71062682/230814847-17116e21-7179-48da-add6-f69a8fce4546.png)
+Download Yolov5 (optional): https://github.com/ultralytics/yolov5
+Step 5: After setup, the environment installs all the python dependencies listed above. Check all the libraries installed correctly by typing the pip list in the terminal.
+![image](https://user-images.githubusercontent.com/71062682/230814881-42a3bb3f-b80c-4568-b780-7e2199c909d5.png)
+Step 6: Replace the video path or camera API address inside the cv2.VideoCapture function. Change the camera type to either entry or exit. The entry and exit mean the camera input will insert the records into the database for the respective table.
+![image](https://user-images.githubusercontent.com/71062682/230814906-aa704789-5bd6-4add-aa47-3b83a90f49ce.png)
+Step 7: Increase the target_fps value if the video needs a smoother frame. Otherwise, decrease the target_fps value to reduce the video lagging problem. The higher fps value requires more power to process the frame per second.
+![image](https://user-images.githubusercontent.com/71062682/230814921-c2a7d279-3013-4cab-9453-8ba09b9b2c3f.png)
+Step 8: Scroll down the anpr_detection_entry.py or anpr_detection_exit.py. The code shown in the image below is used to connect the file to the database. Change the codes if you are not using localhost.
+![image](https://user-images.githubusercontent.com/71062682/230814938-43c33b39-4a89-4471-98db-eb7c7a4cffad.png)
+Step 9: Run the anpr_detection_entry.py or anpr_detection_exit.py to detect the vehicle and license plate and recognise the license plate number (OCR). The OCR stand for Optical Character Recognition. The ANPR system window will open, and it looks:
+![image](https://user-images.githubusercontent.com/71062682/230814956-63e260a6-a841-41c5-9846-96ccb95f40bd.png)
+The window will be able to indicate the fps rate. The detection will detect when the vehicle position is inside the green box. The up arrow red button is used to show the detection result, and it can expand and close the resulting menu.
+Step 10: Click the up red arrow button to expand the resulting menu. It will indicate the status of vehicle detection, license plate detection, license plate number and match result. To close the resulting menu, click the X button.
+![image](https://user-images.githubusercontent.com/71062682/230814980-89490b0c-a4fd-42c8-b20a-49134e40b353.png)
+Step 11: The terminal will display the match result and the license plate number. 
+![image](https://user-images.githubusercontent.com/71062682/230815020-0c340f46-d6b4-44f9-9c78-34d756b30b6d.png)
+Step 12: After finishing running anpr_detection_entry.py or anpr_detection_exit.py, close all the files and the python IDLE editor.
