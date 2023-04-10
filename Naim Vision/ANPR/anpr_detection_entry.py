@@ -20,7 +20,7 @@ import uuid
 import datetime
 
 # Initialise camera
-cap = cv2.VideoCapture("ANPR\client dataset\Video_1.mp4")
+cap = cv2.VideoCapture("Naim Vision\ANPR\client dataset\Video_1.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 
 #Camere Types (entry/exit)
@@ -43,22 +43,22 @@ skip_frames = round(video_fps / target_fps)
 skipped_frames = 0
 
 # Initialise Yolov5 for vehicle detection
-net = cv2.dnn.readNetFromONNX("ANPR\yolov5n.onnx")
+net = cv2.dnn.readNetFromONNX("Naim Vision\ANPR\yolov5n.onnx")
 
-file = open("ANPR\coco.txt", "r")
+file = open("Naim Vision\ANPR\coco.txt", "r")
 classes = file.read().split('\n')
 
 # Initialise Yolov5 for licence plate detection
-net_2 = cv2.dnn.readNetFromONNX("ANPR\yolov5n_2.onnx")
+net_2 = cv2.dnn.readNetFromONNX("Naim Vision\ANPR\yolov5n_2.onnx")
 
-file_2 = open("ANPR\coco2.txt","r")
+file_2 = open("Naim Vision\ANPR\coco2.txt","r")
 classes_2 = file_2.read().split('\n')
 
 # Initialise paddle ocr for OCR Recognition
 ocr = PaddleOCR(use_angle_cls=True, lang="en")
 
 # Image folder location
-folder_path = "ANPR\images"
+folder_path = "Naim Vision\ANPR\images"
 plate = ""
 vehicle_id = ""
 current_plate = ""
@@ -136,9 +136,9 @@ def detect():
                     if (x1>0 and y1>0 and h>0 and w>0):
                         # Save real-time vehicle image without bounding box 
                         if camera.lower() == "entry":
-                            save_img('ANPR\entrylogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                            save_img('Naim Vision\ANPR\entrylogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         elif camera.lower() == "exit":
-                            save_img('ANPR\exitlogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                            save_img('Naim Vision\ANPR\exitlogtemp\saved3.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         #area = [(170,182),(930,194),(936,590),(9,530)] 
                         area = [(937,585),(920,150),(180,150),(10,530)]
                     else:
@@ -150,9 +150,9 @@ def detect():
                     if (x1>0 and y1>0 and h>0 and w>0):
                         # Save real-time vehicle image with bounding box 
                         if camera.lower() == "entry":
-                            save_img('ANPR\entrylogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                            save_img('Naim Vision\ANPR\entrylogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         elif camera.lower() == "exit":
-                            save_img('ANPR\exitlogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+                            save_img('Naim Vision\ANPR\exitlogtemp\saved.jpg', cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
                         #area = [(170,182),(930,194),(936,590),(9,530)] 
                         area = [(937,585),(920,150),(180,150),(10,530)]
                     else:
@@ -160,18 +160,18 @@ def detect():
                         area = [(937,585),(920,150),(180,150),(10,530)]
 
                     if camera.lower() == "entry":
-                        file_exists = os.path.exists("ANPR\entrylogtemp\saved.jpg")
+                        file_exists = os.path.exists("Naim Vision\ANPR\entrylogtemp\saved.jpg")
                     elif camera.lower() == "exit":
-                        file_exists = os.path.exists("ANPR\exitlogtemp\saved.jpg")
+                        file_exists = os.path.exists("Naim Vision\ANPR\exitlogtemp\saved.jpg")
                     
                     ## Licence Plate Detection Start Here
                     if file_exists == True:
                         if camera.lower() == "entry":
-                            vehicle_img = cv2.imread('ANPR\entrylogtemp\saved.jpg')
-                            vehicle_img_2 = cv2.imread('ANPR\entrylogtemp\saved.jpg')
+                            vehicle_img = cv2.imread('Naim Vision\ANPR\entrylogtemp\saved.jpg')
+                            vehicle_img_2 = cv2.imread('Naim Vision\ANPR\entrylogtemp\saved.jpg')
                         elif camera.lower() == "exit":
-                            vehicle_img = cv2.imread('ANPR\exitlogtemp\saved.jpg')
-                            vehicle_img_2 = cv2.imread('ANPR\exitlogtemp\saved.jpg')
+                            vehicle_img = cv2.imread('Naim Vision\ANPR\exitlogtemp\saved.jpg')
+                            vehicle_img_2 = cv2.imread('Naim Vision\ANPR\exitlogtemp\saved.jpg')
                         blob_2 = cv2.dnn.blobFromImage(vehicle_img,scalefactor= 1/255,size=(640,640),mean=[0,0,0],swapRB= True, crop= False)
                         net_2.setInput(blob_2)
                         detections_2 = net_2.forward()[0]
@@ -213,19 +213,19 @@ def detect():
                             licence_detected = "Yes" 
                             # Save real-time licence plate image without bounding box 
                             if camera.lower() == "entry":
-                                save_img('ANPR\entrylogtemp\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                                save_img('Naim Vision\ANPR\entrylogtemp\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
                             elif camera.lower() == "exit":
-                                save_img('ANPR\exitlogtemp\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                                save_img('Naim Vision\ANPR\exitlogtemp\saved4.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
                             cv2.rectangle(vehicle_img,(x2,y2),(x2+w2, y2+h2) ,(51 ,51,255),2)
                             cv2.rectangle(vehicle_img, (x2, y2 - 30), (x2 + w2, y2), (51,51,255), -2)
                             cv2.putText(vehicle_img, text_2, (x2+5, y2 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
                             # Save real-time licence plate image with bounding box 
                             if camera.lower() == "entry":
-                                save_img('ANPR\entrylogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
-                                plate_img = 'ANPR\entrylogtemp\saved2.jpg'
+                                save_img('Naim Vision\ANPR\entrylogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                                plate_img = 'Naim Vision\ANPR\entrylogtemp\saved2.jpg'
                             elif camera.lower() == "exit":
-                                save_img('ANPR\exitlogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
-                                plate_img = 'ANPR\exitlogtemp\saved2.jpg'
+                                save_img('Naim Vision\ANPR\exitlogtemp\saved2.jpg', cv2.cvtColor(plate, cv2.COLOR_BGR2RGB))
+                                plate_img = 'Naim Vision\ANPR\exitlogtemp\saved2.jpg'
                             
                             ## OCR Recognition Start Here
                             file_exists = os.path.exists(plate_img)
