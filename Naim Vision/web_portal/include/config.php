@@ -1,9 +1,9 @@
 <?php
     // set the servername,username and password
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "anprdb";
+    $servername = "b6tbs7zg8rgt7bzirw0b-mysql.services.clever-cloud.com";
+    $username = "ukh3yi0dkztfb7zu";
+    $password = "d5CpElwU7CB9gqa8n6aZ";
+    $dbname = "b6tbs7zg8rgt7bzirw0b";
 
     // Create connection
     //The mysqli_connect() function attempts to open a connection to the MySQL Server 

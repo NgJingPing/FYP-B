@@ -18,6 +18,7 @@ from paddleocr import PaddleOCR,draw_ocr
 import mysql.connector
 import uuid
 import datetime
+import ftplib
 
 # Initialise camera
 cap = cv2.VideoCapture("Naim Vision\ANPR\client dataset\Video_1.mp4")
@@ -73,17 +74,27 @@ licence_detected = '...'
 number_plate = '...' 
 matched = '...'
 
+## Connect to database
+conn = mysql.connector.connect (
+    host = "b6tbs7zg8rgt7bzirw0b-mysql.services.clever-cloud.com",
+    user = "ukh3yi0dkztfb7zu",
+    password = "d5CpElwU7CB9gqa8n6aZ",
+    database = "b6tbs7zg8rgt7bzirw0b",
+    port = "3306"
+)
+
+#Connect InfinityFree FTP 
+ftp = ftplib.FTP("ftpupload.net", "epiz_33897000", "Eb2Zpg63lM")
+
+#Set InfinityFree upload directory
+if camera.lower() == "entry":
+    ftp.cwd('/htdocs/Naim Vision/ANPR/images/entrylog')
+elif camera.lower() == "exit":
+    ftp.cwd('/htdocs/Naim Vision/ANPR/images/exitlog')
 
 # Detection Function (Vehicle Detection, Licence Plate Detection and OCR Recognition)
 def detect():
     global folder_path, plate, vehicle_id, current_plate, count, found, area, vehicle_detected, licence_detected, number_plate, matched
-    ## Connect to database
-    conn = mysql.connector.connect (
-        host = "localhost",
-        user = "root",
-        password = "",
-        database = "anprdb"
-    )
     
     ## Vehicle Detection Start Here
     blob = cv2.dnn.blobFromImage(frames, scalefactor = 1/255, size=(640,640), mean=[0,0,0], swapRB=True, crop=False)
@@ -233,6 +244,8 @@ def detect():
                                 try:
                                     result = ocr.ocr(plate_img, cls=True)
                                     plate_num = ''
+                                    uid = uuid.uuid1()
+                                    uid_2 = uuid.uuid1()
                                     for line in result:
                                         if(len(line) == 1):
                                             plate = line[0][1][0]
@@ -249,11 +262,11 @@ def detect():
                                         plate = plate_num
                                         date = datetime.datetime.now()
                                         if camera.lower() == "entry":
-                                            img_name = 'entrylog\{}.jpg'.format(uuid.uuid1())
-                                            img_name_2 = 'entrylog\{}_2.jpg'.format(uuid.uuid1())
+                                            img_name = 'entrylog\{}.jpg'.format(uid)
+                                            img_name_2 = 'entrylog\{}_2.jpg'.format(uid_2)
                                         elif camera.lower() == "exit":
-                                            img_name = 'exitlog\{}.jpg'.format(uuid.uuid1())
-                                            img_name_2 = 'exitlog\{}_2.jpg'.format(uuid.uuid1())
+                                            img_name = 'exitlog\{}.jpg'.format(uid)
+                                            img_name_2 = 'exitlog\{}_2.jpg'.format(uid_2)
                                         active = True
                                         
                                         # Check if the plate starts with "O" and "0" and result is not found, then replace to Q.
@@ -340,11 +353,17 @@ def detect():
                                             print("Not Found")
                                             if count > 4:
                                                 count = 0 
+                                        
+                                        #Open files and upload files to InfinityFree
+                                        dir_files = [img_name, img_name_2]
+                                        for dir_file in dir_files:
+                                            with open(folder_path+"\\"+dir_file, "rb") as f:
+                                                command = "STOR " + os.path.basename(dir_file)
+                                                ftp.storbinary(command, f)
+                                            
                                 except:
                                     continue
-
-
-                        # cv2.imshow('Vehicle', vehicle_img)    
+ 
                 else:
                     licence_detected = "No"
                     vehicle_detected = "No" 
