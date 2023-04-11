@@ -47,7 +47,7 @@
           $myquery = "INSERT INTO users (email, password, role, isAdvanced)
           VALUES (?, ?, ?, ?)";
           $stmt = $conn->prepare($myquery);
-          $stmt->bind_param("ssss", $email, $password, $user_type, $advanced);
+          $stmt->bind_param("ssii", $email, $password, $user_type, $advanced);
           $stmt->execute();
           $conn->close();
           $msg = "New user is added. Record is saved.";
