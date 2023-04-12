@@ -59,7 +59,7 @@
 		<div class="row">
 			<div class="col-sm-2">Hide Column</div>
 			    <div class="col-sm-4">
-				    <select name="column_name" id="column_name" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+				    <select name="column_name" id="column_name_user" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 					    <option value="0">User ID</option>
 				        <option value="1">Email</option>
 				        <option value="2">Role</option>

@@ -1,86 +1,137 @@
 $(document).ready(function(){
-	
-	var dataTable = $('#entry_table').DataTable({
-		"buttons": [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
-	});
 
-	$('#column_name_entry').selectpicker();
+  var dataTable = $('#entry_table').DataTable({
+    "buttons": [
+      'copy', 'csv', 'excel', 'pdf', 'print'
+    ],
+    "processing": true
+  });
 
-	$('#column_name_entry').change(function(){
+  $('#column_name_entry').selectpicker();
 
-	var all_column = ["0", "1", "2", "3", "4"];
+  $('#column_name_entry').change(function(){
 
-	var remove_column = $('#column_name_entry').val();
+    var all_column = ["0", "1", "2", "3", "4"];
 
-	if($('#column_name_entry').val() == null){
-		dataTable.columns(all_column).visible(true);
-	} else{
-		var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
+    var remove_column = $('#column_name_entry').val();
 
-		dataTable.columns(remove_column).visible(false);
+    if($('#column_name_entry').val() == null){
+      dataTable.columns(all_column).visible(true);
+      sessionStorage.removeItem("entry_table_hidden_columns"); // Remove session storage when all columns are visible
+    } else{
+      var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
 
-		dataTable.columns(remaining_column).visible(true);
-	}
+      dataTable.columns(remove_column).visible(false);
 
-	});
+      dataTable.columns(remaining_column).visible(true);
 
-	var dataTable2 = $('#exit_table').DataTable({
-		"buttons": [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
-	});
+      sessionStorage.setItem("entry_table_hidden_columns", JSON.stringify(remove_column)); // Set session storage with hidden columns
+    }
 
-	$('#column_name_exit').selectpicker();
+    $('#column_name_entry').val(remove_column); // set the selected options of the selectpicker
+	$('#column_name_entry').selectpicker('refresh'); // refresh the selectpicker to update the UI
 
-	$('#column_name_exit').change(function(){
+  });
 
-	var all_column = ["0", "1", "2", "3", "4"];
+  // Check if there are any hidden columns in session storage and hide them on page load
+  var hiddenColumns = JSON.parse(sessionStorage.getItem("entry_table_hidden_columns"));
+  if(hiddenColumns != null){
+    var remaining_column = ["0", "1", "2", "3", "4"].filter(function(obj) { return hiddenColumns.indexOf(obj) == -1; });
+    dataTable.columns(hiddenColumns).visible(false);
+    dataTable.columns(remaining_column).visible(true);
+    $('#column_name_entry').val(hiddenColumns); // set the selected options of the selectpicker
+	$('#column_name_entry').selectpicker('refresh'); // refresh the selectpicker to update the UI
+  }
 
-	var remove_column = $('#column_name_exit').val();
+  dataTable.buttons().container().appendTo('.entry');
 
-	if($('#column_name_exit').val() == null){
-		dataTable2.columns(all_column).visible(true);
-	} else{
-		var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
+  var dataTable2 = $('#exit_table').DataTable({
+    "buttons": [
+      'copy', 'csv', 'excel', 'pdf', 'print'
+    ],
+    "processing": true
+  });
 
-		dataTable2.columns(remove_column).visible(false);
+  $('#column_name_exit').selectpicker();
 
-		dataTable2.columns(remaining_column).visible(true);
-	}
+  $('#column_name_exit').change(function(){
 
-	});
+    var all_column = ["0", "1", "2", "3", "4"];
 
-	var dataTable3 = $('#denied_table').DataTable({
-		"buttons": [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
-	});
+    var remove_column = $('#column_name_exit').val();
 
-	$('#column_name_denied').selectpicker();
+    if($('#column_name_exit').val() == null){
+      dataTable2.columns(all_column).visible(true);
+      sessionStorage.removeItem("exit_table_hidden_columns"); // Remove session storage when all columns are visible
+    } else{
+      var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
 
-	$('#column_name_denied').change(function(){
+      dataTable2.columns(remove_column).visible(false);
 
-	var all_column = ["0", "1", "2", "3"];
+      dataTable2.columns(remaining_column).visible(true);
 
-	var remove_column = $('#column_name_denied').val();
+      sessionStorage.setItem("exit_table_hidden_columns", JSON.stringify(remove_column)); // Set session storage with hidden columns
+    }
 
-	if($('#column_name_denied').val() == null){
-		dataTable3.columns(all_column).visible(true);
-	} else{
-		var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
+    $('#column_name_exit').val(remove_column); // set the selected options of the selectpicker
+	$('#column_name_exit').selectpicker('refresh'); // refresh the selectpicker to update the UI
 
-		dataTable3.columns(remove_column).visible(false);
+  });
 
-		dataTable3.columns(remaining_column).visible(true);
-	}
+  // Check if there are any hidden columns in session storage and hide them on page load
+  var hiddenColumns2 = JSON.parse(sessionStorage.getItem("exit_table_hidden_columns"));
+  if(hiddenColumns2 != null){
+    var remaining_column = ["0", "1", "2", "3", "4"].filter(function(obj) { return hiddenColumns2.indexOf(obj) == -1; });
+    dataTable2.columns(hiddenColumns2).visible(false);
+    dataTable2.columns(remaining_column).visible(true);
+    $('#column_name_exit').val(hiddenColumns2); // set the selected options of the selectpicker
+	$('#column_name_exit').selectpicker('refresh'); // refresh the selectpicker to update the UI
+  }
 
-	});
+  dataTable2.buttons().container().appendTo('.exit');
 
-	dataTable.buttons().container().appendTo('.entry');
-	dataTable2.buttons().container().appendTo('.exit');
-	dataTable3.buttons().container().appendTo('.denied');
+  var dataTable3 = $('#denied_table').DataTable({
+    "buttons": [
+      'copy', 'csv', 'excel', 'pdf', 'print'
+    ],
+    "processing": true
+  });
 
+  $('#column_name_denied').selectpicker();
 
-});	
+  $('#column_name_denied').change(function(){
+
+    var all_column = ["0", "1", "2", "3"];
+
+    var remove_column = $('#column_name_denied').val();
+
+    if($('#column_name_denied').val() == null){
+      dataTable3.columns(all_column).visible(true);
+      sessionStorage.removeItem("denied_table_hidden_columns"); // Remove session storage when all columns are visible
+    } else{
+      var remaining_column = all_column.filter(function(obj) { return remove_column.indexOf(obj) == -1; });
+
+      dataTable3.columns(remove_column).visible(false);
+
+      dataTable3.columns(remaining_column).visible(true);
+
+      sessionStorage.setItem("denied_table_hidden_columns", JSON.stringify(remove_column)); // Set session storage with hidden columns
+    }
+
+    $('#column_name_denied').val(remove_column); // set the selected options of the selectpicker
+	$('#column_name_denied').selectpicker('refresh'); // refresh the selectpicker to update the UI
+
+  });
+
+  // Check if there are any hidden columns in session storage and hide them on page load
+  var hiddenColumns3 = JSON.parse(sessionStorage.getItem("denied_table_hidden_columns"));
+  if(hiddenColumns3 != null){
+    var remaining_column = ["0", "1", "2", "3"].filter(function(obj) { return hiddenColumns3.indexOf(obj) == -1; });
+    dataTable3.columns(hiddenColumns3).visible(false);
+    dataTable3.columns(remaining_column).visible(true);
+    $('#column_name_denied').val(hiddenColumns3); // set the selected options of the selectpicker
+	$('#column_name_denied').selectpicker('refresh'); // refresh the selectpicker to update the UI
+  }
+
+  dataTable3.buttons().container().appendTo('.denied');
+});

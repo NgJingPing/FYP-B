@@ -9,7 +9,6 @@
     }else{
       session_destroy();
     }
-
     //The php below store php code for login and forgot password process
     require_once "include/controllerBeforeLogin.php";
 ?>
@@ -17,6 +16,9 @@
 <html lang="en">
 
 <head>
+<script>
+   sessionStorage.clear()
+</script>
   <?php include "include/head.php";?>
   <title>ANPR - Login</title>
 </head>

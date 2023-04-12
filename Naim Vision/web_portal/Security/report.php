@@ -94,7 +94,7 @@
 				    <div class="row">
 					    <div class="col-sm-2">Hide Column</div>
 					    <div class="col-sm-4">
-						    <select name="column_name" id="column_name_entry" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+						    <select name="column_name" id="column_name_rentry" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 							    <option value="0">No</option>
 				                <option value="1">Timestamp</option>
 				                <option value="2">License Plate Number</option>
@@ -143,7 +143,7 @@
 				    <div class="row">
 					    <div class="col-sm-2">Hide Column</div>
 					    <div class="col-sm-4">
-						    <select name="column_name" id="column_name_exit" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+						    <select name="column_name" id="column_name_rexit" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 							    <option value="0">No</option>
 				                <option value="1">Timestamp</option>
 				                <option value="2">License Plate Number</option>
@@ -192,7 +192,7 @@
 				    <div class="row">
 					    <div class="col-sm-2">Hide Column</div>
 					    <div class="col-sm-4">
-						    <select name="column_name" id="column_name_denied" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+						    <select name="column_name" id="column_name_rdenied" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 							    <option value="0">No</option>
 				                <option value="1">Timestamp</option>
 				                <option value="2">License Plate Number</option>
@@ -299,7 +299,7 @@
 				    <div class="row">
 					    <div class="col-sm-2">Hide Column</div>
 					    <div class="col-sm-4">
-						    <select name="column_name" id="column_name_entry" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+						    <select name="column_name" id="column_name_rentry" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 							    <option value="0">No</option>
 				                <option value="1">Timestamp</option>
 				                <option value="2">License Plate Number</option>
@@ -346,7 +346,7 @@
 				    <div class="row">
 					    <div class="col-sm-2">Hide Column</div>
 					    <div class="col-sm-4">
-						    <select name="column_name" id="column_name_exit" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+						    <select name="column_name" id="column_name_rexit" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 							    <option value="0">No</option>
 				                <option value="1">Timestamp</option>
 				                <option value="2">License Plate Number</option>
@@ -392,7 +392,7 @@
 				    <div class="row">
 					    <div class="col-sm-2">Hide Column</div>
 					    <div class="col-sm-4">
-						    <select name="column_name" id="column_name_denied" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
+						    <select name="column_name" id="column_name_rdenied" class="form-control selectpicker" data-icon-base="fas" data-tick-icon="fa fa-times" multiple>
 							    <option value="0">No</option>
 				                <option value="1">Timestamp</option>
 				                <option value="2">License Plate Number</option>
