@@ -43,17 +43,21 @@ Libraries:
 + pip install "paddleocr>=2.0.1"
 + pip install mysql-connector-python
 + pip install uuid
++ pip install ftplib
 
 ### Database Creation
 
 **Method 1**
 
-Run the create_database.php in the web_portal folder through a web browser. If you are not using the localhost, please change the following codes: 
+Run the create_database.php in the web_portal folder through a web browser. Change the $servername, $username, and $password to your own hosted service credential.
 
 *File path: Naim Vision > web_portal > create_database.php*
 
-![image](https://user-images.githubusercontent.com/71062682/230804908-2f4275ff-0046-47ab-8a9d-e8fc79b46a56.png)
+![image](https://user-images.githubusercontent.com/71062682/232187982-cb21262a-5a82-4731-9345-5f704c15c52c.png)
 
+If you are using localhost, amend the codes as follows:
+
+![image](https://user-images.githubusercontent.com/71062682/232189157-c726e126-38cc-4900-9677-b80353c51b29.png)
 
 **Method 2**
 
@@ -97,13 +101,18 @@ Security
 + Email:	naim102@naim.com.my
 + Password:	naim102
 
+
 ### Amend the Configuration File
 
-In the config.php, change the $servername, $username, and $password if you are not using the localhost.
+In the config.php, change the $servername, $username, $password, and $database to your own hosted service credential.
 
 *File path: Naim Vision > web_portal > include > config.php*
 
-![image](https://user-images.githubusercontent.com/71062682/230805182-2abe11e5-fe33-4309-be71-aa6c25ecbfce.png)
+![image](https://user-images.githubusercontent.com/71062682/232188497-3111cb97-9e32-49eb-82c1-c5df8a59062a.png)
+
+If you are using localhost, amend the codes as follows:
+
+![image](https://user-images.githubusercontent.com/71062682/232188979-f8c2b327-f5e1-4f66-ac3d-facb633840d0.png)
 
 
 ### Configuration for PHPMailer
