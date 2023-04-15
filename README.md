@@ -65,6 +65,10 @@ Step 1: In the Naim Vision folder copy the codes in the database.txt.
 
 *File path: Naim Vision > database.txt.*
 
+If you are using localhost, you can copy all the codes in database.txt.
+
+If you are using your own hosted service credential, you can copy all the codes in database.txt except line 1 CREATE DATABASE anprdb. The hosted service credential will create a database in its phpMyAdmin, and you need to replace the database name in the text file below.
+
 ![image](https://user-images.githubusercontent.com/71062682/230804924-c638671e-6af6-4686-81bd-7711cdc85e5c.png)
 
 Step 2: Paste the codes to phpMyAdmin SQL tab and click the Go button. 
@@ -630,38 +634,68 @@ Step 8b: A red alert message appears if the user enters passwords that do not ma
 *File path: Naim Vision > ANPR > anpr_detection_exit.py*
 
 Step 1: Open the anpr_detection_entry.py or anpr_detection_exit.py with any Python IDLE Environment. The following is a suggested Python IDLE editor. Click the download button to install Visual Studio Code: (https://code.visualstudio.com/)
+
 ![image](https://user-images.githubusercontent.com/71062682/230814795-ebc343ec-e584-4aea-97e4-a4227ccb484f.png)
 
 Step 2: To use Python in Visual Studio Code, look for and install the appropriate Python extension. 
+
 ![image](https://user-images.githubusercontent.com/71062682/230814815-2e5fc03d-2d32-4038-b634-8966f0a40b1f.png)
 
 Step 3: Open the Naim Vision Folder in visual studio code. 
+
 ![image](https://user-images.githubusercontent.com/71062682/230814837-93b96832-cd40-4baf-beb3-ea41de6e69af.png)
 
 Step 4: In the Naim Vision folder, anpr_detection_entry.py will use to detect the entry log and anpr_detection_exit.py will use to detect the exit log. These two files can be duplicated and renamed in the future. The entrylogtemp and exitlogtemp folders will temporarily store the entry and exit log images during the ANPR detection. The images folder will store the entry and exit log images permanently, which will be used on the web portal. Although entrylog folder is used for storing the entry log images and the exitlog folder is used for storing the exit log images, both folders are also used for storing the denied log images. The yolov5 is the YOLO version 5 library folder that is used for detection purposes. The coco file contains the detection text label.
+
 ![image](https://user-images.githubusercontent.com/71062682/230814847-17116e21-7179-48da-add6-f69a8fce4546.png)
 
 Download Yolov5 (optional): https://github.com/ultralytics/yolov5
 Step 5: After setup, the environment installs all the python dependencies listed above. Check all the libraries installed correctly by typing the pip list in the terminal.
+
 ![image](https://user-images.githubusercontent.com/71062682/230814881-42a3bb3f-b80c-4568-b780-7e2199c909d5.png)
 
 Step 6: Replace the video path or camera API address inside the cv2.VideoCapture function. Change the camera type to either entry or exit. The entry and exit mean the camera input will insert the records into the database for the respective table.
+
 ![image](https://user-images.githubusercontent.com/71062682/230814906-aa704789-5bd6-4add-aa47-3b83a90f49ce.png)
 
 Step 7: Increase the target_fps value if the video needs a smoother frame. Otherwise, decrease the target_fps value to reduce the video lagging problem. The higher fps value requires more power to process the frame per second.
+
 ![image](https://user-images.githubusercontent.com/71062682/230814921-c2a7d279-3013-4cab-9453-8ba09b9b2c3f.png)
 
-Step 8: Scroll down the anpr_detection_entry.py or anpr_detection_exit.py. The code shown in the image below is used to connect the file to the database. Change the codes if you are not using localhost.
-![image](https://user-images.githubusercontent.com/71062682/230814938-43c33b39-4a89-4471-98db-eb7c7a4cffad.png)
+Step 8: Scroll down the anpr_detection_entry.py or anpr_detection_exit.py. The code shown in the image below is used to connect the file to the database. Change the codes if you are using your own hosted service credential.
 
-Step 9: Run the anpr_detection_entry.py or anpr_detection_exit.py to detect the vehicle and license plate and recognise the license plate number (OCR). The OCR stand for Optical Character Recognition. The ANPR system window will open, and it looks:
+![image](https://user-images.githubusercontent.com/71062682/232194605-c9f87dc2-3800-451b-a68e-1b13f44b4956.png)
+
+If you are using localhost, you can remove the port and follow the code below:
+
+![image](https://user-images.githubusercontent.com/71062682/232194643-41cc509f-1bba-4a9b-ba9c-27afc8e1b403.png)
+
+Step 9: Skip this step and remove the codes if you are using localhost. Otherwise, you can amend the code below if you are using your own hosted service credential. The hosted service credential able to support FTP (File Transfer Protocol). Replace the hostname, username and password follow the format below.
+
+Format: ftp = ftplib.FTP("your FTP hostname", "your FTP username", "your FTP password")
+
+![image](https://user-images.githubusercontent.com/71062682/232194693-63dd7218-b3b0-432b-a6ef-7e41f91a6d06.png)
+
+Set the upload file directory to your own hosted service credential.
+
+![image](https://user-images.githubusercontent.com/71062682/232194722-5aee99a5-1198-4249-8ba6-629a3c8e20b7.png)
+
+If the FTP is not working, you need to ensure that the code below is amend correctly. Otherwise, you can ignore or remove the code if you are using localhost. 
+
+![image](https://user-images.githubusercontent.com/71062682/232194795-d541c266-7839-4a93-b8a6-cc126fdb68ec.png)
+
+Step 10: Run the anpr_detection_entry.py or anpr_detection_exit.py to detect the vehicle and license plate and recognise the license plate number (OCR). The OCR stand for Optical Character Recognition. The ANPR system window will open, and it looks:
+
 ![image](https://user-images.githubusercontent.com/71062682/230814956-63e260a6-a841-41c5-9846-96ccb95f40bd.png)
 
 The window will be able to indicate the fps rate. The detection will detect when the vehicle position is inside the green box. The up arrow red button is used to show the detection result, and it can expand and close the resulting menu.
-Step 10: Click the up red arrow button to expand the resulting menu. It will indicate the status of vehicle detection, license plate detection, license plate number and match result. To close the resulting menu, click the X button.
+
+Step 11: Click the up red arrow button to expand the resulting menu. It will indicate the status of vehicle detection, license plate detection, license plate number and match result. To close the resulting menu, click the X button.
+
 ![image](https://user-images.githubusercontent.com/71062682/230814980-89490b0c-a4fd-42c8-b20a-49134e40b353.png)
 
-Step 11: The terminal will display the match result and the license plate number. 
+Step 12: The terminal will display the match result and the license plate number. 
+
 ![image](https://user-images.githubusercontent.com/71062682/230815020-0c340f46-d6b4-44f9-9c78-34d756b30b6d.png)
 
-Step 12: After finishing running anpr_detection_entry.py or anpr_detection_exit.py, close all the files and the python IDLE editor.
+Step 13: After finishing running anpr_detection_entry.py or anpr_detection_exit.py, close all the files and the python IDLE editor.
