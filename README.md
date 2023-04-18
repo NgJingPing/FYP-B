@@ -87,24 +87,7 @@ Six users will be created in the users table, which can be used to log in to the
 
 The user information is as follows:
 
-Super Admin
-+ Email:	naim000@naim.com.my
-+ Password:	naim000
-
-Admin
-+ Email:	naim001@naim.com.my
-+ Password:	naim001
-+ Email:	naim002@naim.com.my
-+ Password:	naim002
-
-Security
-+ Email:	naim100@naim.com.my
-+ Password:	naim100
-+ Email:	naim101@naim.com.my
-+ Password:	naim101
-+ Email:	naim102@naim.com.my
-+ Password:	naim102
-
+![image](https://user-images.githubusercontent.com/71062682/232776017-7c30c54c-41e5-4816-8750-55d0fd8966db.png)
 
 ### Amend the Configuration File
 
