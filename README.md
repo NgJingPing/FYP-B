@@ -614,6 +614,7 @@ Step 8b: A red alert message appears if the user enters passwords that do not ma
 
 ### ANPR System
 **Paddle OCR**
+
 *File path: Naim Vision > ANPR > anpr_detection_entry.py*
 
 *File path: Naim Vision > ANPR > anpr_detection_exit.py*
