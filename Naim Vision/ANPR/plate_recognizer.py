@@ -253,10 +253,10 @@ def detect():
                                     
                                     with open(save_plate, 'rb') as fp:
                                         response = requests.post(
-                                            'https://api.platerecognizer.com/v1/plate-reader/',
+                                            'API URL',
                                             data=dict(regions=regions),  # Optional
                                             files=dict(upload=fp),
-                                            headers={'Authorization': 'Token b5571e18155117e2dbe83dc8aee73623b835dd31'})
+                                            headers={'Authorization': 'Token xxxxxxxxxxxx'})
                                     #pprint(response.json())
                                     data = response.json()
                                     s = (data['results'][0]['plate'])
