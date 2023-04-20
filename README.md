@@ -686,6 +686,7 @@ Step 12: The terminal will display the match result and the license plate number
 Step 13: After finishing running anpr_detection_entry.py or anpr_detection_exit.py, close all the files and the python IDLE editor.
 
 **Plate Recognizer**
+
 Link:  https://platerecognizer.com/
 
 Step 1: After registering the account, click here:
@@ -700,6 +701,6 @@ Step 3: Copy the token and replace the text XXXXXXXXXXXX in line 259 as your tok
 
 ![image](https://user-images.githubusercontent.com/71062682/233334945-ee64f6a3-6e1a-48a8-bc1d-968ecff6ce97.png)
 
-*File path: Naim Vision > ANPR > plate_recognizer.py *
+*File path: Naim Vision > ANPR > plate_recognizer.py*
 
 ![image](https://user-images.githubusercontent.com/71062682/233335062-ff4ed48d-f6ee-4941-b7b1-0f15bf21383b.png)
