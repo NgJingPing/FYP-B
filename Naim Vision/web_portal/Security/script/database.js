@@ -20,9 +20,42 @@ $(document).ready(function(){
               }
           },
           {
-              extend: 'pdf',
+              extend: 'pdfHtml5',
               exportOptions: {
                   columns: ':visible'
+              },
+              customize: function (doc) {
+                  // Set page margins
+                  doc.pageMargins = [30, 30, 30, 30];
+
+                  // Set table width to 100%
+                  doc.content[1].layout = 'fullWidth';
+
+                  // Add padding to table cells
+                  doc.content[1].table.body.forEach(function(row) {
+                    row.forEach(function(cell) {
+                      cell.margin = [5, 5, 5, 5];
+                      cell.style = 'cellPadding';
+                    });
+                  });
+
+                  // Define the 'cellPadding' style
+                  doc.styles.cellPadding = {
+                    fillColor: '#f3f3f3',
+                    halign: 'left',
+                    padding: 6
+                  };
+
+                  doc.content[1].table.body.forEach(function(row, i) {
+                    if (i === 0) {
+                        // set header row styles
+                        row.forEach(function(cell) {
+                            cell.fillColor = '#061C17';
+                            cell.color = '#C5E5CC';
+                            cell.bold = true;
+                        });
+                    }
+                });
               }
           },
           {

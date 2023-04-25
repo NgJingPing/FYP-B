@@ -47,10 +47,73 @@ $(document).ready(function(){
     $('#exit_table').DataTable().destroy();
    
     var exit = $('#exit_table').DataTable({
-        order: [ 0, 'desc' ],
-        buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+        "order": [ 0, 'desc' ],
+        "buttons": [
+          {
+              extend: 'copy',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'csv',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'excel',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdfHtml5',
+              exportOptions: {
+                  columns: ':visible'
+              },
+              customize: function (doc) {
+                  // Set page margins
+                  doc.pageMargins = [30, 30, 30, 30];
+
+                  // Set table width to 100%
+                  doc.content[1].layout = 'fullWidth';
+
+                  // Add padding to table cells
+                  doc.content[1].table.body.forEach(function(row) {
+                    row.forEach(function(cell) {
+                      cell.margin = [5, 5, 5, 5];
+                      cell.style = 'cellPadding';
+                    });
+                  });
+
+                  // Define the 'cellPadding' style
+                  doc.styles.cellPadding = {
+                    fillColor: '#f3f3f3',
+                    halign: 'left',
+                    padding: 6
+                  };
+
+                  doc.content[1].table.body.forEach(function(row, i) {
+                    if (i === 0) {
+                        // set header row styles
+                        row.forEach(function(cell) {
+                            cell.fillColor = '#061C17';
+                            cell.color = '#C5E5CC';
+                            cell.bold = true;
+                        });
+                    }
+                });
+              }
+          },
+          {
+              extend: 'print',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          }
+      ],
+    "processing": true
     });
 
   exit.buttons().container().appendTo('.exit')
