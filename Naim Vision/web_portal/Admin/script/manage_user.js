@@ -1,9 +1,38 @@
 $(document).ready(function(){
 
   var dataTable = $('#user_table').DataTable({
-    "buttons": [
-      'copy', 'csv', 'excel', 'pdf', 'print'
-    ],
+      "buttons": [
+          {
+              extend: 'copy',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'csv',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'excel',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdf',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'print',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          }
+      ],
     "processing": true
   });
 

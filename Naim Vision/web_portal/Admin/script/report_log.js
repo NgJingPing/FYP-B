@@ -1,9 +1,38 @@
 $(document).ready(function(){
 
   var dataTable = $('#log_table').DataTable({
-    "buttons": [
-      'copy', 'csv', 'excel', 'pdf', 'print'
-    ],
+      "buttons": [
+          {
+              extend: 'copy',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'csv',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'excel',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdf',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'print',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          }
+      ],
     "processing": true
   });
 
@@ -46,9 +75,38 @@ $(document).ready(function(){
   dataTable.buttons().container().appendTo('.entry');
 
   var dataTable2 = $('#log_table2').DataTable({
-    "buttons": [
-      'copy', 'csv', 'excel', 'pdf', 'print'
-    ],
+      "buttons": [
+          {
+              extend: 'copy',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'csv',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'excel',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdf',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'print',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          }
+      ],
     "processing": true
   });
 
@@ -91,9 +149,38 @@ $(document).ready(function(){
   dataTable2.buttons().container().appendTo('.exit');
 
   var dataTable3 = $('#log_table3').DataTable({
-    "buttons": [
-      'copy', 'csv', 'excel', 'pdf', 'print'
-    ],
+      "buttons": [
+          {
+              extend: 'copy',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'csv',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'excel',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdf',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'print',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          }
+      ],
     "processing": true
   });
 
