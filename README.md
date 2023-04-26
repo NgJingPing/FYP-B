@@ -704,4 +704,4 @@ Step 3: Copy the token and replace the text XXXXXXXXXXXX in line 259 as your tok
 
 *File path: Naim Vision > ANPR > plate_recognizer.py*
 
-![image](https://user-images.githubusercontent.com/71062682/233335062-ff4ed48d-f6ee-4941-b7b1-0f15bf21383b.png)
+![image](https://user-images.githubusercontent.com/71062682/234573758-f157b536-5d04-4f70-a909-76fb0c903310.png)
