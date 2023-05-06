@@ -48,10 +48,11 @@ Libraries:
 + pip install mysql-connector-python
 + pip install uuid
 + pip install requests
++ pip install tensorflow
 
 Copy here:
 ```bash
-pip install opencv-python numpy matplotlib Pillow keras DateTime paddlepaddle-gpu paddlepaddle "paddleocr>=2.0.1" mysql-connector-python uuid requests
+pip install opencv-python numpy matplotlib Pillow keras DateTime paddlepaddle-gpu paddlepaddle "paddleocr>=2.0.1" mysql-connector-python uuid requests tensorflow
 ```
 
 ### Database Creation
