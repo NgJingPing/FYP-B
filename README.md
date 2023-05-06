@@ -28,8 +28,13 @@ CDN/ Library/ Framework
 
 **ANPR System**
 
-Install python 3.9.7 or above through this link: https://www.python.org/downloads/
+Install python 3.7.6 through this link: [Download python 3.7.6](https://github.com/NgJingPing/Test_repo/raw/main/python/python-3.7.6-amd64.exe)
 
+Upgrade pip version: 
+Copy here:
+```bash
+python -m pip install --upgrade pip
+```
 Libraries:
 + pip install opencv-python
 + pip install numpy
@@ -37,14 +42,17 @@ Libraries:
 + pip install Pillow
 + pip install keras
 + pip install DateTime
-+ pip install os-sys
 + pip install paddlepaddle-gpu
 + pip install paddlepaddle
 + pip install "paddleocr>=2.0.1"
 + pip install mysql-connector-python
 + pip install uuid
-+ pip install ftplib
 + pip install requests
+
+Copy here:
+```bash
+pip install opencv-python numpy matplotlib Pillow keras DateTime paddlepaddle-gpu paddlepaddle "paddleocr>=2.0.1" mysql-connector-python uuid requests
+```
 
 ### Database Creation
 
