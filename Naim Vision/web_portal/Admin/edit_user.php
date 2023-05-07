@@ -105,7 +105,7 @@
 		//This query will update the user infromation based on the input from the form
 		$myquery = "UPDATE users SET role = ?, isAdvanced = ? WHERE userID = $userID;";
 		$stmt = $conn->prepare($myquery);
-		$stmt->bind_param("ss", $role, $advance);
+		$stmt->bind_param("ii", $role, $advance);
 		$stmt->execute();
 		$msg = "Record is updated.";
 		echo '<section><div class="alert success">
