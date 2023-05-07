@@ -31,6 +31,7 @@ CDN/ Library/ Framework
 Install python 3.7.6 through this link: [Download python 3.7.6](https://github.com/NgJingPing/Test_repo/raw/main/python/python-3.7.6-amd64.exe)
 
 Upgrade pip version: 
+
 Copy here:
 ```bash
 python -m pip install --upgrade pip
