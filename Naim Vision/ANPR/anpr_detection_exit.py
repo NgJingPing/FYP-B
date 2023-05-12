@@ -21,7 +21,8 @@ import datetime
 import ftplib
 
 # Initialise camera
-cap = cv2.VideoCapture("Naim Vision\ANPR\client dataset\Video_1.mp4")
+#cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("Naim Vision\ANPR\WhatsApp Video 2022-11-09 at 14.39.54.mp4")
 #cap = cv2.VideoCapture("rtsp://admin:Matrix40001@192.168.1.60:554/Streaming/Channels/2/")
 
 #Camere Types (entry/exit)
@@ -91,10 +92,14 @@ if camera.lower() == "entry":
     ftp.cwd('/htdocs/Naim Vision/ANPR/images/entrylog')
 elif camera.lower() == "exit":
     ftp.cwd('/htdocs/Naim Vision/ANPR/images/exitlog')
+    
+ftp_img = ""
+ftp_img_2 = ""
+file = False
 
 # Detection Function (Vehicle Detection, Licence Plate Detection and OCR Recognition)
 def detect():
-    global folder_path, plate, vehicle_id, current_plate, count, found, area, vehicle_detected, licence_detected, number_plate, matched
+    global folder_path, plate, vehicle_id, current_plate, count, found, area, vehicle_detected, licence_detected, number_plate, matched, ftp_img, ftp_img_2, file
     
     ## Vehicle Detection Start Here
     blob = cv2.dnn.blobFromImage(frames, scalefactor = 1/255, size=(640,640), mean=[0,0,0], swapRB=True, crop=False)
@@ -300,6 +305,7 @@ def detect():
                                                         z = (date, rID)
                                                         mycursor.execute(sql2, z)
                                                         conn.commit()
+                                                        file = False
                                                         count = 0
                                                     else:
                                                         if camera.lower() == "entry":
@@ -313,6 +319,7 @@ def detect():
                                                         cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
                                                         # Save image without Licence Plate detection box
                                                         cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                                        file = True
                                                         current_plate = plate
                                                         count = 0
                                                 else:
@@ -327,12 +334,15 @@ def detect():
                                                     cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
                                                     # Save image without Licence Plate detection box
                                                     cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                                    file = True
                                                     current_plate = plate
                                                     count = 0
                                                 found = True
                                                 number_plate = plate
                                                 matched = "Found"
                                                 print("Found")
+                                                ftp_img = img_name
+                                                ftp_img_2 = img_name_2
                                         else:
                                             if count == 4 and current_plate != plate:
                                                 sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
@@ -343,24 +353,23 @@ def detect():
                                                 cv2.imwrite(os.path.join(folder_path, img_name), vehicle_img)
                                                 # Save image without Licence Plate detection box
                                                 cv2.imwrite(os.path.join(folder_path, img_name_2), vehicle_img_2)
+                                                file = True
                                                 current_plate = plate
                                                 count = 0
                                             else: 
                                                 count += 1
+                                                file = False
                                             found = False
                                             number_plate = plate
                                             matched = "Not Found"
                                             print("Not Found")
+                                            ftp_img = img_name
+                                            ftp_img_2 = img_name_2
                                             if count > 4:
                                                 count = 0 
+                                                file = False
+
                                         
-                                        #Open files and upload files to InfinityFree
-                                        dir_files = [img_name, img_name_2]
-                                        for dir_file in dir_files:
-                                            with open(folder_path+"\\"+dir_file, "rb") as f:
-                                                command = "STOR " + os.path.basename(dir_file)
-                                                ftp.storbinary(command, f)
-                                            
                                 except:
                                     continue
  
@@ -383,7 +392,10 @@ def mousePoints(e,x,y,f,p):
     if e == cv2.EVENT_LBUTTONDOWN:
         mx = x
         my = y
-        
+
+# Create and store current image path
+same_files = ["",""]
+
 while True:
     ret, frames = cap.read()
     
@@ -406,6 +418,19 @@ while True:
         # Vehicle Detection, licence Plate Detection and OCR Recognition
         frames = detect()
         
+        if (matched == "Found" or matched == "Not Found") and file == True:
+            # Current image path is not same as previous image path
+            if same_files[0] != ftp_img and  same_files[1] != ftp_img_2:
+                #Open files and upload files to InfinityFree
+                dir_files = [ftp_img, ftp_img_2]
+                # Store current image file path
+                same_files = [ftp_img, ftp_img_2]
+                for dir_file in dir_files:
+                    with open(folder_path+"\\"+dir_file, "rb") as f:
+                        print("Upload image to InfinityFree")
+                        command = "STOR " + os.path.basename(dir_file)
+                        ftp.storbinary(command, f)
+
         # Show FPS Count
         cv2.putText(frames, "FPS: " + str(round(target_fps)), (800, 35), cv2.QT_FONT_NORMAL, 0.8, (58, 245, 255), 2)
         
