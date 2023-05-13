@@ -473,6 +473,6 @@ while True:
             break
         
     
-
+ftp.quit()
 cap.release()
 cv2.destroyAllWindows()
