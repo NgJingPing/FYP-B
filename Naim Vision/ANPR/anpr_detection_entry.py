@@ -373,9 +373,10 @@ def detect():
                                 except:
                                     continue
  
-                else:
-                    licence_detected = "No"
-                    vehicle_detected = "No" 
+            else:
+                licence_detected = "No"
+                vehicle_detected = "No" 
+                number_plate = "..."
     
     # Green line box
     cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)

@@ -345,6 +345,8 @@ def detect():
                                                 number_plate = plate
                                                 matched = "Found"
                                                 print("Found")
+                                                ftp_img = img_name
+                                                ftp_img_2 = img_name_2
                                         else:
                                             if count == 4 and current_plate != plate:
                                                 sql3 = "INSERT INTO deniedAccess (licensePlate, deniedTime, image, image_2) VALUES (%s, %s, %s, %s)"
@@ -365,6 +367,8 @@ def detect():
                                             number_plate = plate
                                             matched = "Not Found"
                                             print("Not Found")
+                                            ftp_img = img_name
+                                            ftp_img_2 = img_name_2
                                             if count > 4:
                                                 count = 0 
                                                 file = False
@@ -373,9 +377,10 @@ def detect():
                                 except:
                                     continue
 
-                else:
-                    licence_detected = "No"
-                    vehicle_detected = "No" 
+            else:
+                licence_detected = "No"
+                vehicle_detected = "No" 
+                number_plate = "..."
     
     # Green line box
     cv2.polylines(frames, [np.array(area, np.int32)], True, (15, 220, 10), 6)
